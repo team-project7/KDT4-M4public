@@ -1,0 +1,27 @@
+{
+  "name": "kdt4-m4public",
+  "version": "1.0.0",
+  "description": "this is test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-project7/KDT4-M4public.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-project7/KDT4-M4public/issues"
+  },
+  "homepage": "https://github.com/team-project7/KDT4-M4public#readme",
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "2.8.3"
+  },
+  "dependencies": {
+    "sass": "^1.58.0"
+  }
+}
