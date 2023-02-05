@@ -11,6 +11,12 @@ a {
   padding: 60px 0 160px;
   width: 400px;
 }
+.login__area p {
+  display: none;
+  line-height: 16px;
+  font-size: 11px;
+  color: #f15746;
+}
 .login__title {
   padding-bottom: 50px;
   text-align: center;
@@ -40,7 +46,7 @@ a {
   line-height: 22px;
   border-bottom: 1px solid #ebebeb;
 }
-.login__input__text {
+.login__input__item input {
   outline: 0;
   border: 0;
 }
@@ -62,6 +68,58 @@ a {
   background-color: #000;
 }
 .login__btn__link.disable {
+  background-color: #ebebeb;
+  cursor: default;
+}
+
+.join {
+  margin: 0;
+  padding: 0;
+}
+.join__btn {
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+.join__btn__link {
+  font-weight: 700;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: #000;
+}
+.join__btn__link.disable {
+  background-color: #ebebeb;
+  cursor: default;
+}
+
+.cancel {
+  margin: 0;
+  padding: 0;
+}
+.cancel__btn {
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+.cancel__btn__link {
+  font-weight: 700;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: #000;
+}
+.cancel__btn__link.disable {
   background-color: #ebebeb;
   cursor: default;
 }

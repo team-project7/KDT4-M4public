@@ -2,6 +2,24 @@ a {
   text-decoration: none;
 }
 
+@mixin basicBtn {
+  font-weight: 700;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: #000;
+  &.disable {
+    background-color: #ebebeb;
+    cursor: default;
+  }
+}
+
 .login {
   margin: 0;
   padding: 0;
@@ -10,6 +28,13 @@ a {
     margin: 0 auto;
     padding: 60px 0 160px;
     width: 400px;
+
+    p {
+      display: none;
+      line-height: 16px;
+      font-size: 11px;
+      color: #f15746;
+    }
   }
   &__title {
     padding-bottom: 50px;
@@ -43,11 +68,11 @@ a {
       letter-spacing: -0.15px;
       line-height: 22px;
       border-bottom: 1px solid #ebebeb;
-    }
 
-    &__text {
-      outline: 0;
-      border: 0;
+      input {
+        outline: 0;
+        border: 0;
+      }
     }
   }
 
@@ -56,21 +81,34 @@ a {
     box-sizing: border-box;
 
     &__link {
-      font-weight: 700;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      width: 100%;
-      font-size: 16px;
-      letter-spacing: -0.16px;
-      height: 52px;
-      border-radius: 12px;
-      background-color: #000;
-      &.disable {
-        background-color: #ebebeb;
-        cursor: default;
-      }
+      @include basicBtn();
+    }
+  }
+}
+
+.join {
+  margin: 0;
+  padding: 0;
+
+  &__btn {
+    padding-top: 20px;
+    box-sizing: border-box;
+
+    &__link {
+      @include basicBtn();
+    }
+  }
+}
+
+.cancel {
+  margin: 0;
+  padding: 0;
+
+  &__btn {
+    padding-top: 20px;
+    box-sizing: border-box;
+    &__link {
+      @include basicBtn();
     }
   }
 }
