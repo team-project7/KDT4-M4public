@@ -1,7 +1,7 @@
 import Swiper from "swiper/swiper-bundle";
 import 'swiper/swiper-bundle.css'
 
-
+export default function appendbanner() {
 const swiperHTML = document.createElement('div')
 swiperHTML.className = 'swiper';
 const wrapperHTML = document.createElement('div')
@@ -59,6 +59,6 @@ const swiper = new Swiper('.swiper', {
       }
 })
 
-
+}
 
  

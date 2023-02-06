@@ -2,9 +2,13 @@ import appendFooter from './footer'
 import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
-const router = new Navigo('/')
+import appendbanner from './bannerswiper'
+import shop from './shop';
+import shopping from './shopping';
 
-appendFooter()
+const router = new Navigo('/')
+appendbanner();
+appendFooter();
 
 router
   .on('/login', function () {
@@ -16,5 +20,14 @@ router
     document.body.innerHTML = ''
     appendJoin()
     appendFooter()
+  })
+  .on('/shop', function () {
+    document.body.innerHTML = ''
+    shop()
+    appendFooter()
+  })
+  .on('/shopping', function () {
+    document.body.innerHTML = ''
+    shopping()
   })
   .resolve()
