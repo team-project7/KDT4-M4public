@@ -89,7 +89,7 @@ $RECYCLE.BIN/
 node_modules/
 .DS_Store
 .eslintcache
-dist
 .cache
+dist
 .vscode
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,macos,sass
