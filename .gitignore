@@ -93,3 +93,6 @@ node_modules/
 dist
 .vscode
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,macos,sass
+
+dist
+.parcel-cache/
