@@ -1,0 +1,34 @@
+.swiper {
+    cursor: pointer;
+    height: 480px;    
+  }
+  
+  .swiper .swiper-slide img {
+  height: 100%;
+  width: 100%;
+  }
+  
+  .swiper-button-prev::after,
+  .swiper-button-next::after{
+  color: #fff;
+  }
+  
+  .banner {
+  cursor: pointer;
+  height: 480px;  
+  }
+  .banner img{
+  height: 100%;
+  width: 100%; 
+  }
+  
+  .promotion {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  
+  
+  }
+  .promotion img{
+  object-fit: fill;
+  }
