@@ -4,7 +4,8 @@
   "description": "this is test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel ./index.html",
+    "login": "parcel ./page/login.html"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,15 @@
   },
   "homepage": "https://github.com/team-project7/KDT4-M4public#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
+    "parcel": "^2.8.3",
     "prettier": "2.8.3"
   },
   "dependencies": {
+    "navigo": "^8.11.1",
     "sass": "^1.58.0"
-  }
+  },
+  "keywords": []
 }
