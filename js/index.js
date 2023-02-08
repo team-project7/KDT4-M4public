@@ -18,6 +18,7 @@ import {
 } from './banner'
 import appendBrandFocus from './brandFocus'
 import { logout } from './request'
+import { appendProducts } from './products'
 /**header 구간 */
 //잠시 주석 처리
 // 로그아웃 버튼 기능 
@@ -42,6 +43,7 @@ if (localStorage.getItem('displayName')) {
 const router = new Navigo('/')
 appendHeadermain()
 appendbanner()
+appendProducts()
 bannerimg()
 bannerimg2()
 bannerimg3()
