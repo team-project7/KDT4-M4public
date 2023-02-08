@@ -16,6 +16,7 @@ bannerimg3();
 footerbanner();
 appendFooter();
 appendBrandFocus();
+
 router
   .on('/login', function () {
     document.body.innerHTML = ''
