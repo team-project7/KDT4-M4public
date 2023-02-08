@@ -13,9 +13,9 @@ appendbanner();
 bannerimg();
 bannerimg2();
 bannerimg3();
+appendBrandFocus();
 footerbanner();
 appendFooter();
-appendBrandFocus();
 
 router
   .on('/login', function () {
