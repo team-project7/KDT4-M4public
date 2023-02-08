@@ -1,5 +1,6 @@
 import Navigo from 'navigo'
 import appendJoin from './join'
+import { login } from './request'
 
 export default function appendLogin() {
   const loginEl = document.createElement('div')
@@ -48,7 +49,8 @@ export default function appendLogin() {
       </div>
   `
   document.body.append(loginEl)
-
+  const idInput = document.querySelector('.login__input__id')
+  const pwInput = document.querySelector('.login__input__pw')
   const idErrorText = document.querySelector('.id-error')
   const pwErrorText = document.querySelector('.pw-error')
   const loginBtnEl = document.querySelector('.login__btn__link')
@@ -57,6 +59,7 @@ export default function appendLogin() {
   const pwValidation = new RegExp(
     '^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
   )
+
   document.querySelector('.login__input__id').addEventListener('input', (e) => {
     !idValidation.test(e.target.value)
       ? [
@@ -90,17 +93,23 @@ export default function appendLogin() {
     }
   })
 
-  document.querySelector('.login__btn__link').addEventListener('click', () => {
-    if (
-      idErrorText.dataset.validate === 'true' &&
-      pwErrorText.dataset.validate === 'true'
-    ) {
-      console.log('로그인 시작')
-    } else {
-      window.alert('로그인 정보를 입력하세요!')
-      return
-    }
-  })
+  document
+    .querySelector('.login__btn__link')
+    .addEventListener('click', async () => {
+      if (
+        idErrorText.dataset.validate === 'true' &&
+        pwErrorText.dataset.validate === 'true'
+      ) {
+        const result = await login(idInput.value, pwInput.value)
+        if (result.accessToken) {
+          alert(`로그인 완료! 완영합니다`)
+          location.replace('/')
+        }
+      } else {
+        window.alert('로그인 정보를 입력하세요!')
+        return
+      }
+    })
 
   // 회원가입 페이지로 넘어가기
   const router = new Navigo('/')
