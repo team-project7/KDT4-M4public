@@ -1,7 +1,7 @@
 const headers = {
   'content-type': 'application/json',
   apikey: 'FcKdtJs202301',
-  username: 'KDT4_Team7',
+  username: 'KDT4_TEAM7',
 }
 
 export async function createUser(id, pw, displayname) {

@@ -17,6 +17,7 @@ import {
 } from './banner'
 import appendBrandFocus from './brandFocus'
 import { logout } from './request'
+import { appendProducts } from './products'
 /**header 구간 */
 // 로그아웃 버튼 기능
 const logoutBtnEl = document.querySelector('.logout')
@@ -39,6 +40,7 @@ if (localStorage.getItem('displayName')) {
 }
 const router = new Navigo('/')
 appendbanner()
+appendProducts()
 bannerimg()
 bannerimg2()
 bannerimg3()
