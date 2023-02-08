@@ -1,0 +1,19 @@
+@import url("./footer.scss");
+
+body {
+  width:100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+label {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  color: red;
+}
