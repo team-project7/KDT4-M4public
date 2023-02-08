@@ -13,7 +13,7 @@ appendbanner();
 bannerimg();
 bannerimg2();
 bannerimg3();
-appendBrandFocus();
+// appendBrandFocus();
 footerbanner();
 appendFooter();
 
