@@ -28,7 +28,6 @@ export default function appendLogin() {
               <input
                 class="login__input__pw"
                 type="password"
-                placeholder="예)korea@krea.co.kr"
                 autocomplete="off"
               />
             </div>
@@ -102,14 +101,17 @@ export default function appendLogin() {
       ) {
         const result = await login(idInput.value, pwInput.value)
         if (result.accessToken) {
-          alert(`로그인 완료! 완영합니다`)
+          alert(`로그인 완료! 환영합니다`)
           localStorage.setItem('email', result.user.email)
           localStorage.setItem('displayName', result.user.displayName)
           localStorage.setItem('token', result.accessToken)
           location.replace('/')
+        } else {
+          window.alert(`${result}`)
+          return
         }
       } else {
-        window.alert('로그인 정보를 입력하세요!')
+        window.alert('회원 정보를 입력하세요!')
         return
       }
     })
