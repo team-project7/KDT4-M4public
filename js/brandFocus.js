@@ -8,9 +8,7 @@ export default function appendBrandFocus() {
   const recommendBrandEls = document.createElement('div')
 
   // 배열
-  
-
-brandItems = [
+let brandItems = [
   {
     name: '샤넬',
     engname: 'chanel',
