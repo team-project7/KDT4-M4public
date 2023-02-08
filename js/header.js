@@ -1,3 +1,5 @@
+import { logout } from './request'
+
 export function appendHeadermain() {
     const headerEl = document.createElement('header')
     headerEl.className = 'header'
@@ -13,7 +15,8 @@ export function appendHeadermain() {
                         <a href="" class="top_link">관심상품</a>
                     </li>
                     <li class="top_item">
-                        <a href="/login" class="top_link">로그인</a>
+                        <a href="/login" class="top_link" id="login">로그인</a>
+                        <a class="top_link" id="logout">로그아웃</a>
                     </li>
                 </ul>
             </div>
@@ -76,7 +79,28 @@ export function appendHeadermain() {
        </div>
           `
  document.body.append(headerEl)
+
+ let token = localStorage.getItem('token')
+ 
+ const loginBtnEl = document.querySelector('#login')
+ const logoutBtnEl = document.querySelector('#logout')
+    if(token) {
+        loginBtnEl.innerHTML = ''
+     } 
+     else {
+        logoutBtnEl.innerHTML = ''
+     }
+
+ logoutBtnEl.addEventListener('click', () => {
+       logout(token)
+       window.alert('로그아웃 완료!')
+        localStorage.removeItem('token')
+        localStorage.removeItem('email')
+        localStorage.removeItem('displayName')
+        location.replace('/login')
+})
 }
+
 
 export function appendHeadersub() {
     const headerEl = document.createElement('header')
