@@ -103,6 +103,9 @@ export default function appendLogin() {
         const result = await login(idInput.value, pwInput.value)
         if (result.accessToken) {
           alert(`로그인 완료! 완영합니다`)
+          localStorage.setItem('email', result.user.email)
+          localStorage.setItem('displayName', result.user.displayName)
+          localStorage.setItem('token', result.accessToken)
           location.replace('/')
         }
       } else {
