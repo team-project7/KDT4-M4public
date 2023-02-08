@@ -4,7 +4,8 @@
   "description": "this is test",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel ./index.html"
+    "dev": "parcel ./index.html",
+    "login": "parcel ./page/login.html"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,10 @@
     "prettier": "2.8.3"
   },
   "dependencies": {
-    "sass": "^1.58.0"
+    "@mischnic/json-sourcemap": "^0.1.0",
+    "navigo": "^8.11.1",
+    "sass": "^1.58.0",
+    "swiper": "^9.0.2"
   },
   "keywords": []
 }
