@@ -7,9 +7,6 @@ export default function appendBrandFocus() {
   const smallEl = document.createElement('small')
   const recommendBrandEls = document.createElement('div')
 
-  // 배열
-
-
   // brandFocusEl.textContent = 'hello'
   h3El.textContent = 'Brand Focus'
   smallEl.textContent = '추천 브랜드'
@@ -31,6 +28,7 @@ export default function appendBrandFocus() {
   
   brandItems.map((brand) => {
     const recommendBrandEl = document.createElement('div')
+    
     recommendBrandEl.innerHTML = `
         <div class="recommendBrand">
           <a href="/shop">
