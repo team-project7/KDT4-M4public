@@ -46,3 +46,39 @@ export async function logout(token) {
   )
   return res.json()
 }
+
+export async function searchAll() {
+  headers.masterKey = true
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products',
+    {
+      method: 'GET',
+      headers,
+    }
+  )
+  return res.json()
+}
+
+export async function searchByName() {
+  headers.masterKey = true
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
+    {
+      method: 'POST',
+      headers,
+    }
+  )
+  return res.json()
+}
+
+export async function searchByBrand() {
+  headers.masterKey = true
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
+    {
+      method: 'POST',
+      headers,
+    }
+  )
+  return res.json()
+}
