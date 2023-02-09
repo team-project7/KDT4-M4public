@@ -17,12 +17,14 @@ export function appendProducts() {
         </div>
       </div>
     `
+  document.body.append(productEl)
   // 데이터 확인
   // const productData = async () => await searchAll()
   // console.log(productData)
   const productListEl = document.querySelector('.product__list__first')
   const productItemEl = document.createElement('div')
-  productItemEl.className - '.product__item'
+
+  productItemEl.className = '.product__item'
   productItemEl.innerHTML = /*html */ `
             <a class="product__item__inner" href="#">
               <div class="thumb_box">
@@ -52,5 +54,4 @@ export function appendProducts() {
             </a>
   `
   productListEl.append(productItemEl)
-  document.body.append(productEl)
 }
