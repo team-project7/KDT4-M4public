@@ -1,9 +1,9 @@
 import wishOff from '../image/wish-off.png'
 import rolex from '../image/brandFocus_rolex.jpg'
+import { searchAll } from './request'
 export function appendProducts() {
   const productEl = document.createElement('div')
   productEl.className = 'product'
-  const imgpath = ''
   productEl.innerHTML = /*html */ `
      <div class="product__title">
         <div>
@@ -13,7 +13,17 @@ export function appendProducts() {
       </div>
       <div class="product__list">
         <div class="product__list__first">
-          <div class="product__item">
+         
+        </div>
+      </div>
+    `
+  // 데이터 확인
+  // const productData = async () => await searchAll()
+  // console.log(productData)
+  const productListEl = document.querySelector('.product__list__first')
+  const productItemEl = document.createElement('div')
+  productItemEl.className - '.product__item'
+  productItemEl.innerHTML = /*html */ `
             <a class="product__item__inner" href="#">
               <div class="thumb_box">
                 <div class="item">
@@ -40,9 +50,7 @@ export function appendProducts() {
                 </div>
               </div>
             </a>
-          </div>
-        </div>
-      </div>
-    `
+  `
+  productListEl.append(productItemEl)
   document.body.append(productEl)
 }
