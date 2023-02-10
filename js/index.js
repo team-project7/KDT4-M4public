@@ -3,6 +3,7 @@ import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
 import appendbanner from './bannerswiper'
+import appendShortcut from './shortcut'
 import shop from './shop'
 import shopping from './shopping'
 import { appendHeadermain, appendHeadersub } from './header'
@@ -23,6 +24,7 @@ import { appendProducts } from './products'
 const router = new Navigo('/')
 appendHeadermain()
 appendbanner()
+appendShortcut()
 appendProducts()
 bannerimg()
 bannerimg2()
