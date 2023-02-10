@@ -1,7 +1,7 @@
 const headers = {
   'content-type': 'application/json',
   apikey: 'FcKdtJs202301',
-  username: 'KDT4_Team7',
+  username: 'KDT4_TEAM7',
 }
 
 export async function createUser(id, pw, displayname) {
@@ -42,6 +42,44 @@ export async function logout(token) {
     {
       method: 'POST',
       headers,
+    }
+  )
+  return res.json()
+}
+
+export async function searchAll() {
+  headers.masterKey = true
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products',
+    {
+      method: 'GET',
+      headers,
+    }
+  )
+  return res.json()
+}
+
+export async function searchByName() {
+  headers.masterKey = true
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
+    {
+      method: 'POST',
+      headers,
+    }
+  )
+  return res.json()
+}
+
+export async function searchByTag(tags) {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
+    {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        searchTags: [tags],
+      }),
     }
   )
   return res.json()
