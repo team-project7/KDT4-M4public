@@ -41,8 +41,9 @@ document.body.append(swiperHTML)
 swiperHTML.append(wrapperHTML,paginationEl,buttonprevEl,buttonnextEl)
 
 const swiper = new Swiper('.swiper', {
+    effect : 'fade', 
     autoplay: {
-        delay: 1000
+        delay: 2000
       },
       loop: true,
       slidesPerView: 1,

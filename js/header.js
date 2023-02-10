@@ -9,9 +9,6 @@ export function appendHeadermain() {
             <div class="top_inner">
                 <ul class="top_list">
                     <li class="top_item">
-                        <a href="" class="top_link">고객센터</a>
-                    </li>
-                    <li class="top_item">
                         <a href="" class="top_link">관심상품</a>
                     </li>
                     <li class="top_item">
@@ -34,9 +31,6 @@ export function appendHeadermain() {
                                     <a href="/" active>HOME</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="">STYLE</a>
-                                </li>
-                                <li class="gnb_item">
                                     <a href="/shop">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
@@ -54,9 +48,6 @@ export function appendHeadermain() {
             </div>
          </div>
          <ul class="ul_tab">
-            <li class="li_tab">
-                <a href="" class="tab" style="border-bottom-color: rgb(252, 28, 73);"><span class="tab_name" style="color:red">밸런타인 응모</span></a>
-            </li>
             <li class="li_tab">
                 <a href="" class="tab"><span class="tab_name">추천</span></a>
             </li>
@@ -100,7 +91,6 @@ export function appendHeadermain() {
         location.replace('/login')
 })
 }
-
 
 export function appendHeadersub() {
     const headerEl = document.createElement('header')

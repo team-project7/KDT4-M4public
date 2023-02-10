@@ -1,12 +1,13 @@
 
 .swiper {
-    cursor: pointer;
-    height: 480px;    
+    cursor: pointer; 
+    height: 480px;   
   }
   
   .swiper .swiper-slide img {
   height: 100%;
   width: 100%;
+  // object-fit: cover;
   }
   
   .swiper-button-prev::after,
@@ -31,7 +32,7 @@
   
   }
   .promotion img{
-  object-fit: fill;
+   object-fit: fill;
   }
 
   .banner_bottom {
