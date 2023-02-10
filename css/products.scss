@@ -50,6 +50,35 @@ div {
       grid-row-gap: 28px;
       row-gap: 28px;
     }
+
+    &__more {
+      color: #222;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0 32px;
+      text-align: center;
+
+      .morebtn {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        text-align: center;
+        background-color: #fff;
+        height: 42px;
+        border-radius: 12px;
+        font-size: 14px;
+        letter-spacing: -0.14px;
+        border: 1px solid #d3d3d3;
+        color: rgba(34, 34, 34, 0.8);
+        padding: 0 30px;
+        margin-top: 20px;
+      }
+    }
   }
 
   &__item {
