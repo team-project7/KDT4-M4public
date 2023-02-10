@@ -5,7 +5,7 @@ import appendJoin from './join'
 import appendbanner from './bannerswiper'
 import shop from './shop'
 import shopping from './shopping'
-import {appendHeadermain, appendHeadersub} from './header'
+import { appendHeadermain, appendHeadersub } from './header'
 import {
   bannerimg,
   bannerimg2,
@@ -17,6 +17,7 @@ import {
   footerbanner,
 } from './banner'
 import appendBrandFocus from './brandFocus'
+import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 
 const router = new Navigo('/')
@@ -26,6 +27,7 @@ appendProducts()
 bannerimg()
 bannerimg2()
 bannerimg3()
+appendProducts()
 appendBrandFocus()
 footerbanner()
 appendFooter()
