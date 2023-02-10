@@ -71,13 +71,15 @@ export async function searchByName() {
   return res.json()
 }
 
-export async function searchByBrand() {
-  headers.masterKey = true
+export async function searchByTag(tags) {
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
     {
       method: 'POST',
       headers,
+      body: JSON.stringify({
+        searchTags: [tags],
+      }),
     }
   )
   return res.json()
