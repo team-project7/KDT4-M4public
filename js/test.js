@@ -1,4 +1,4 @@
-import * as Admin from "./admin_request";
+import * as Admin from "./adminRequest";
 // import appendFooter from "./footer";
 
 // appendFooter();
@@ -38,8 +38,6 @@ async function get() {
   })
   count.textContent = `${arr.length}`
 }
-get();
-
 const inputFileEl = document.querySelector('input')
 inputFileEl.addEventListener('change', event => {
 

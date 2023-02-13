@@ -1,19 +1,24 @@
-@import url("./footer.scss");
-
-body {
-  width:100vw;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-between;
+canvas {
+  width: 400px;
+  height: 400px;
+  background-color: royalblue;
 }
 
-label {
-  width: 300px;
-  display: flex;
-  justify-content: space-between;
-}
+.admin-container {
+  width: 80vw;
+  .interactive {
+    display: flex;
+    gap: 25px;
+  
+    .item-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
 
-p {
-  color: red;
+    .image-field {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
