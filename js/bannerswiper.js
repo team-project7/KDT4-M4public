@@ -26,7 +26,7 @@ wrapperHTML.className = 'swiper-wrapper';
 
 const srcarray = [ swiper1,swiper2,swiper3,swiper4,swiper5,swiper6]
 const newcolor = ['#F5F3F3','#E7E3EF','#6A665E','#93586E','#F0EAE5','#C8CED3']
-const linkarray = ["/shop","/shopping","/mall","/event"]
+const linkarray = ["/exhibitions/816","/shop","/shop","/event"]
 for(let i = 0; i<=5; i++) {
     let sildeEl = document.createElement('div');
     sildeEl.className = 'swiper-slide';
