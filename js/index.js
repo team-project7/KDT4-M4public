@@ -4,7 +4,7 @@ import appendLogin from './login'
 import appendJoin from './join'
 import {appendbanner,smallappendbanner} from './bannerswiper'
 import shop from './shop'
-import shopping from './shopping'
+import exhibitions from './exhibitions'
 import { appendHeadermain, appendHeadersub } from './header'
 import {
   bannerimg,
@@ -54,9 +54,12 @@ router
     footerbanner()
     appendFooter()
   })
-  .on('/shopping', function () {
+  .on('/exhibitions/816', function () {
     document.body.innerHTML = ''
-    shopping()
+    appendHeadersub()
+    exhibitions()
+    footerbanner()
+    appendFooter()
   })
   .resolve()
 
