@@ -1,20 +1,22 @@
-const srcarray = ["https://user-images.githubusercontent.com/98297436/216817558-1bc5f74e-ef69-404a-8486-3c69df8150b3.png",
-"https://user-images.githubusercontent.com/98297436/216817724-fb5d3c23-8ed2-4086-9456-27ba2621eb08.jpg",
-"https://user-images.githubusercontent.com/98297436/217153588-99fe796c-1d90-4edb-a647-72a787da5382.jpg",
-"https://user-images.githubusercontent.com/98297436/217153663-35ce5b46-eba4-4029-a620-7be0806b58f0.jpg",
-"https://user-images.githubusercontent.com/98297436/217153726-5951e48f-0235-4402-8103-b46e7b90ad8c.jpg",
-"https://user-images.githubusercontent.com/98297436/217153768-de6ff551-45ba-4426-a778-4e5b3e0db1ec.jpg",
-"https://user-images.githubusercontent.com/98297436/217153802-a9dbf3a9-416d-4153-9feb-f74b56980b08.jpg",
-"https://user-images.githubusercontent.com/98297436/217153854-6faf6fbc-b90a-4e8d-bcc3-e64c9cc4b336.jpg",
-"https://user-images.githubusercontent.com/98297436/217157226-411f1a30-a093-4eac-b412-31f1218dcae3.png",
-"https://user-images.githubusercontent.com/98297436/217164074-dd95805f-2d04-428a-a8a8-3b9756839270.png",
-]
+import banner1 from '../image/banner1.jpg';
+import banner2 from '../image/banner2.jpg';
+import banner3 from '../image/banner3.jpg';
+import banner4 from '../image/banner4.jpg';
+import banner5 from '../image/banner5.jpg';
+import banner6 from '../image/banner6.jpg';
+import footerbanner1 from '../image/footerbanner1.png';
+import footerbanner2 from '../image/footerbanner2.png';
+
+
+const srcarray = [banner1,banner2,banner3,banner4,banner5,banner6,footerbanner1,footerbanner2]
+const bannercolor = ['#F2F2F2','#9A9C9E','#9094A5','#BFBBB3','#C3C8C4','#D1D3D7']
 const linkarray = ["/shop"]
 
 export function bannerimg() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
+    bannerEl.style.backgroundColor = `${bannercolor[0]}`;
     const linkEl = document.createElement('a')
     linkEl.href = linkarray[0]
     const bannerimgEl = document.createElement('img')
@@ -32,6 +34,7 @@ export function bannerimg2() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
+    bannerEl.style.backgroundColor = `${bannercolor[1]}`;
     const linkEl = document.createElement('a')
     linkEl.href = linkarray[0]
     const bannerimgEl = document.createElement('img')
@@ -48,6 +51,7 @@ export function bannerimg3() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
+    bannerEl.style.backgroundColor = `${bannercolor[2]}`;
     const linkEl = document.createElement('a')
     linkEl.href = linkarray[0]
     const bannerimgEl = document.createElement('img')
@@ -64,6 +68,7 @@ export function bannerimg4() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
+    bannerEl.style.backgroundColor = `${bannercolor[3]}`;
     const linkEl = document.createElement('a')
     linkEl.href = linkarray[0]
     const bannerimgEl = document.createElement('img')
@@ -80,6 +85,7 @@ export function bannerimg5() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
+    bannerEl.style.backgroundColor = `${bannercolor[4]}`;
     const linkEl = document.createElement('a')
     linkEl.href = linkarray[0]
     const bannerimgEl = document.createElement('img')
@@ -96,6 +102,7 @@ export function bannerimg6() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
+    bannerEl.style.backgroundColor = `${bannercolor[5]}`;
     const linkEl = document.createElement('a')
     linkEl.href = linkarray[0]
     const bannerimgEl = document.createElement('img')
@@ -108,36 +115,7 @@ export function bannerimg6() {
     linkEl.append(bannerimgEl);
 
 }
-export function bannerimg7() {
-    const bannerHTML = document.createElement('div')
-    let bannerEl = document.createElement('div');
-    bannerEl.className = 'banner';
-    const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
-    const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[6];
-    bannerimgEl.alt = 'banner';
 
-    document.body.append(bannerHTML)
-    bannerHTML.append(bannerEl)
-    bannerEl.append(linkEl)
-    linkEl.append(bannerimgEl);
-}
-export function bannerimg8() {
-    const bannerHTML = document.createElement('div')
-    let bannerEl = document.createElement('div');
-    bannerEl.className = 'banner';
-    const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
-    const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[7];
-    bannerimgEl.alt = 'banner';
-
-    document.body.append(bannerHTML)
-    bannerHTML.append(bannerEl)
-    bannerEl.append(linkEl)
-    linkEl.append(bannerimgEl);
-}
 
 export function footerbanner() {
     const bannerbottom = document.createElement('div')
@@ -170,8 +148,8 @@ export function footerbanner() {
     const banbottomimg = document.createElement('img')
     const banbottomimg2 = document.createElement('img')
 
-    banbottomimg.src = srcarray[8];
-    banbottomimg2.src = srcarray[9];
+    banbottomimg.src = srcarray[6];
+    banbottomimg2.src = srcarray[7];
     banbottomimg.alt = 'banbottom';
     banbottomimg2.alt = 'banbottom';
     document.body.append(bannerbottom)
