@@ -28,13 +28,13 @@ export function appendHeadermain() {
                         <nav class="gnb">
                             <ul class="gnb_list">
                                 <li class="gnb_item">
-                                    <a href="/" active>HOME</a>
+                                    <a href="/" class="gnb_link">HOME</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="/shop">SHOP</a>
+                                    <a href="/shop" class="gnb_link">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="">MY</a>
+                                    <a href="" class="gnb_link">MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -90,6 +90,10 @@ export function appendHeadermain() {
         localStorage.removeItem('displayName')
         location.replace('/login')
 })
+// const homeEl = document.querySelector('.gnb_link')
+// homeEl.addEventListener('click', () => {
+//     homeEl.classList.add('active')
+// })
 }
 
 export function appendHeadersub() {
@@ -100,9 +104,6 @@ export function appendHeadersub() {
          <div class="header_top">
             <div class="top_inner">
                 <ul class="top_list">
-                    <li class="top_item">
-                        <a href="" class="top_link">고객센터</a>
-                    </li>
                     <li class="top_item">
                         <a href="" class="top_link">관심상품</a>
                     </li>
@@ -123,9 +124,6 @@ export function appendHeadersub() {
                             <ul class="gnb_list">
                                 <li class="gnb_item">
                                     <a href="/" active>HOME</a>
-                                </li>
-                                <li class="gnb_item">
-                                    <a href="">STYLE</a>
                                 </li>
                                 <li class="gnb_item">
                                     <a href="/shop">SHOP</a>

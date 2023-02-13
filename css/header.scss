@@ -66,9 +66,13 @@ body {
 .gnb_area, .gnb_list {
     align-items: center;
 }
+.gnb_area, .gnb_list {
+    font-size: 700;
+}
 .gnb_item {
     margin-right: 40px;
 }
+
 .gnb_item a {
     font-size: 18px;
 }
@@ -129,3 +133,7 @@ body {
     background-position: center;
     cursor: pointer;
 }
+
+// .gnb_item a.active {
+//     font-weight: 700;
+// }

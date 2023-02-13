@@ -2,12 +2,13 @@
 .swiper {
     cursor: pointer; 
     height: 480px;   
+    
   }
   
   .swiper .swiper-slide img {
   height: 100%;
   width: 100%;
-  // object-fit: cover;
+  object-fit: contain;
   }
   
   .swiper-button-prev::after,
@@ -22,18 +23,9 @@
   .banner img{
   height: 100%;
   width: 100%; 
+  object-fit: contain;
   }
   
-  .promotion {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  
-  
-  }
-  .promotion img{
-   object-fit: fill;
-  }
 
   .banner_bottom {
     display: flex;
