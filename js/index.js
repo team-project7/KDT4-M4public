@@ -52,7 +52,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
-    shop()
+    appendProducts(' 남성', 12)
     footerbanner()
     appendFooter()
   })
