@@ -1,8 +1,6 @@
 import { shortcutItems } from './shortcutItems'
 
-CreateShortcut()
-
-function CreateShortcut() {
+export function appendShortcut() {
   const shortcutEl = document.createElement('div')
   shortcutEl.classList.add('shortcut_items_wrap')
 
