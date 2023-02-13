@@ -21,21 +21,23 @@ import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 
 const router = new Navigo('/')
-appendHeadermain()
-appendbanner()
-appendShortcut()
-bannerimg()
-bannerimg2()
-bannerimg3()
-bannerimg4()
-bannerimg5()
-bannerimg6()
-appendProducts(' 남성', 12)
-appendBrandFocus()
-footerbanner()
-appendFooter()
 
 router
+  .on('/', function () {
+    appendHeadermain()
+    appendbanner()
+    appendShortcut()
+    bannerimg()
+    bannerimg2()
+    bannerimg3()
+    bannerimg4()
+    bannerimg5()
+    bannerimg6()
+    appendProducts(' 남성', 12)
+    appendBrandFocus()
+    footerbanner()
+    appendFooter()
+  })
   .on('/login', function () {
     document.body.innerHTML = ''
     appendHeadersub()
@@ -60,6 +62,13 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     exhibitions()
+    footerbanner()
+    appendFooter()
+  })
+  .on('/products', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendProducts(' 남성', 12)
     footerbanner()
     appendFooter()
   })
