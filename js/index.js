@@ -2,9 +2,8 @@ import appendFooter from './footer'
 import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
-import {appendbanner,smallappendbanner} from './bannerswiper'
-import appendbanner from './bannerswiper'
-import appendShortcut from './shortcut'
+import { appendbanner, smallappendbanner } from './bannerswiper'
+import { appendShortcut } from './shortcut'
 import shop from './shop'
 import shopping from './shopping'
 import { appendHeadermain, appendHeadersub } from './header'
@@ -20,12 +19,11 @@ import {
 import appendBrandFocus from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
+
 const router = new Navigo('/')
 appendHeadermain()
 appendbanner()
 appendShortcut()
-appendProducts()
-
 bannerimg()
 bannerimg2()
 bannerimg3()
@@ -66,15 +64,15 @@ router
 
 let Top = document.createElement('div')
 Top.className = 'top'
-window.addEventListener('scroll', function() {
-  if(this.scrollY > 200) {
-    Top.classList.add('on');
-  }else {
-    Top.classList.remove('on');
+window.addEventListener('scroll', function () {
+  if (this.scrollY > 200) {
+    Top.classList.add('on')
+  } else {
+    Top.classList.remove('on')
   }
 })
 document.body.append(Top)
-Top.addEventListener('click', function(e) {
-   e.preventDefault();
-   window.scrollTo({ top:0, behavio: 'smooth' });
+Top.addEventListener('click', function (e) {
+  e.preventDefault()
+  window.scrollTo({ top: 0, behavio: 'smooth' })
 })
