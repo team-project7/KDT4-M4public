@@ -24,7 +24,7 @@ export async function appendItem(tag, dpnum, num) {
     productItemEl.classList = 'product__item'
     productItemEl.setAttribute('data-id', e.id)
     productItemEl.innerHTML = /*html */ `
-            <a class="product__item__inner" href="javascript:void(0)">
+            <a class="product__item__inner" href="">
               <div class="thumb_box">
                 <div class="item">
                   <picture class="item__img">
@@ -62,6 +62,9 @@ export async function appendItem(tag, dpnum, num) {
       : localStorage.getItem('wishlist').split(',')
 
   items.forEach((el, index) => {
+    // 쿼리 스트링 추가
+    const wishLink = el.querySelector('.product__item__inner')
+    wishLink.href = '/products' + `?name=${el.getAttribute('data-id')}`
     const wishicon = el.querySelector('.wish_icon')
     // 로컬스토리지 wishlist에 존재하는 데이터 값이 item엘리먼트의 data-id와 같다면
     // wishicon의 이미지를 wishOn으로 렌더링 한다.
@@ -82,10 +85,6 @@ export async function appendItem(tag, dpnum, num) {
       }
       wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
       e.stopPropagation()
-    }
-    el.onclick = () => {
-      location.href = `/products/${el.getAttribute('data-id')}`
-      console.log(index + 1)
     }
   })
 }
