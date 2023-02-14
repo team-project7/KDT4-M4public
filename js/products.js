@@ -1,6 +1,6 @@
 import { appendItem } from './item'
 export let listIndex = 0
-export function appendProducts(tag, num) {
+export function appendProducts(tag, dpnum, num) {
   const productEl = document.createElement('div')
   productEl.className = 'product'
   productEl.innerHTML = /*html */ `
@@ -17,7 +17,7 @@ export function appendProducts(tag, num) {
     `
   document.body.append(productEl)
 
-  appendItem(tag, num)
+  appendItem(tag, dpnum, num)
   // 여기는 한번만 렌더링
   const productListEl = document.querySelector('.product__list')
   const moreListEl = document.createElement('div')
@@ -30,6 +30,6 @@ export function appendProducts(tag, num) {
   const morebtnEl = document.querySelector('.morebtn')
   morebtnEl.addEventListener('click', () => {
     listIndex++
-    appendItem(tag, num)
+    appendItem(tag, dpnum, num)
   })
 }
