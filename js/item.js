@@ -22,6 +22,7 @@ export async function appendItem(tag, num) {
   chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
     productItemEl.classList = 'product__item'
+    productItemEl.setAttribute('data-id', e.id)
     productItemEl.innerHTML = /*html */ `
             <a class="product__item__inner" href="javascript:void(0)">
               <div class="thumb_box">
@@ -33,7 +34,7 @@ export async function appendItem(tag, num) {
                     />
                   </picture>
                   <span aria-label="관심상품" role="button" class="btn_wish">
-                    <img class="wish_icon" src="${wishOff}" alt="찜" />
+                    <img class="wish_icon" src="${wishOff}" alt="찜"  />
                   </span>
                 </div>
               </div>
@@ -54,14 +55,36 @@ export async function appendItem(tag, num) {
     productListFirstEl.append(productItemEl)
   })
   const items = document.querySelectorAll('.product__item')
+  // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
+  let wishlist =
+    localStorage.getItem('wishlist') === null
+      ? []
+      : localStorage.getItem('wishlist').split(',')
+
   items.forEach((el, index) => {
     const wishicon = el.querySelector('.wish_icon')
+    // 로컬스토리지 wishlist에 존재하는 데이터 값이 item엘리먼트의 data-id와 같다면
+    // wishicon의 이미지를 wishOn으로 렌더링 한다.
+    wishlist.forEach((e) => {
+      if (e === el.getAttribute('data-id')) {
+        wishicon.src = wishOn
+      }
+    })
+
     wishicon.onclick = (e) => {
-      console.log(`${index + 1}번째 항목찜목록클릭!`)
+      // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
+      if (wishicon.src == wishOn) {
+        wishlist = wishlist.filter((e) => e !== el.getAttribute('data-id'))
+        localStorage.setItem('wishlist', wishlist)
+      } else {
+        wishlist.push(el.getAttribute('data-id'))
+        localStorage.setItem('wishlist', wishlist)
+      }
       wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
       e.stopPropagation()
     }
     el.onclick = () => {
+      location.href = `/products/${el.getAttribute('data-id')}`
       console.log(index + 1)
     }
   })
