@@ -10,7 +10,7 @@ import footerbanner2 from '../image/footerbanner2.png';
 
 const srcarray = [banner1,banner2,banner3,banner4,banner5,banner6,footerbanner1,footerbanner2]
 const bannercolor = ['#F2F2F2','#9A9C9E','#9094A5','#BFBBB3','#C3C8C4','#D1D3D7']
-const linkarray = ["/shop"]
+const linkarray = ["/exhibitions/6",'/exhibitions/7','/exhibitions/8','/exhibitions/9','/exhibitions/10','/exhibitions/11']
 
 export function bannerimg() {
     const bannerHTML = document.createElement('div')
@@ -36,7 +36,7 @@ export function bannerimg2() {
     bannerEl.className = 'banner';
     bannerEl.style.backgroundColor = `${bannercolor[1]}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = linkarray[1]
     const bannerimgEl = document.createElement('img')
     bannerimgEl.src = srcarray[1];
     bannerimgEl.alt = 'banner';
@@ -53,7 +53,7 @@ export function bannerimg3() {
     bannerEl.className = 'banner';
     bannerEl.style.backgroundColor = `${bannercolor[2]}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = linkarray[2]
     const bannerimgEl = document.createElement('img')
     bannerimgEl.src = srcarray[2];
     bannerimgEl.alt = 'banner';
@@ -70,7 +70,7 @@ export function bannerimg4() {
     bannerEl.className = 'banner';
     bannerEl.style.backgroundColor = `${bannercolor[3]}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = linkarray[3]
     const bannerimgEl = document.createElement('img')
     bannerimgEl.src = srcarray[3];
     bannerimgEl.alt = 'banner';
@@ -87,7 +87,7 @@ export function bannerimg5() {
     bannerEl.className = 'banner';
     bannerEl.style.backgroundColor = `${bannercolor[4]}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = linkarray[4]
     const bannerimgEl = document.createElement('img')
     bannerimgEl.src = srcarray[4];
     bannerimgEl.alt = 'banner';
@@ -104,7 +104,7 @@ export function bannerimg6() {
     bannerEl.className = 'banner';
     bannerEl.style.backgroundColor = `${bannercolor[5]}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = linkarray[5]
     const bannerimgEl = document.createElement('img')
     bannerimgEl.src = srcarray[5];
     bannerimgEl.alt = 'banner';
@@ -168,3 +168,5 @@ export function footerbanner() {
     infotxt2.innerHTML = '앱 설치하기'
 
 }
+
+

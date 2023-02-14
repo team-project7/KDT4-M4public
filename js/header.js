@@ -147,3 +147,58 @@ export function appendHeadersub() {
  document.body.append(headerEl)
 }
   
+
+export function appendtitleBW() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Black vs White</h2>
+            <p class='description'>블랙과 화이트, 심플함과 심플함</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+
+export function appendtitleNike() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Nike AF1</h2>
+            <p class='description'>나이키 에어포스의 모든것</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+
+export function appendtitlejacket() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Director Classic Varsity Jacket</h2>
+            <p class='description'>Jacket BEST 랭킹</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+export function appendtitlechanel() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Miu Miu & CHANEL</h2>
+            <p class='description'>비슷한듯 다른 매력의 브랜드</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}

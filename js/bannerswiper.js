@@ -6,7 +6,7 @@ import swiper2 from '../image/bannerswiper2.jpg';
 import swiper3 from '../image/bannerswiper3.jpg';
 import swiper4 from '../image/bannerswiper4.jpg';
 import swiper5 from '../image/bannerswiper5.jpg';
-import swiper6 from '../image/bannerswiper6.jpg';
+
 
 // small-swiper-banner
 import smallswiper1 from '../image/smallswiper1.jpg';
@@ -24,10 +24,10 @@ swiperHTML.className = 'swiper';
 const wrapperHTML = document.createElement('div')
 wrapperHTML.className = 'swiper-wrapper';
 
-const srcarray = [ swiper1,swiper2,swiper3,swiper4,swiper5,swiper6]
-const newcolor = ['#F5F3F3','#E7E3EF','#6A665E','#93586E','#F0EAE5','#C8CED3']
-const linkarray = ["/exhibitions/816","/shop","/shop","/event"]
-for(let i = 0; i<=5; i++) {
+const srcarray = [ swiper1,swiper2,swiper3,swiper4,swiper5]
+const newcolor = ['#F5F3F3','#E7E3EF','#6A665E','#93586E','#F0EAE5']
+const linkarray = ["/exhibitions/1","exhibitions/2","/exhibitions/3","/exhibitions/4",'/exhibitions/5']
+for(let i = 0; i<=4; i++) {
     let sildeEl = document.createElement('div');
     sildeEl.className = 'swiper-slide';
     sildeEl.style.backgroundColor = `${newcolor[i]}`;

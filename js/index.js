@@ -4,9 +4,8 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
-import shop from './shop'
-import exhibitions from './exhibitions'
-import { appendHeadermain, appendHeadersub } from './header'
+import {exhibitions, exhibitsurgery, exhibitwnderkammer} from './exhibitions'
+import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlechanel } from './header'
 import {
   bannerimg,
   bannerimg2,
@@ -56,10 +55,103 @@ router
     footerbanner()
     appendFooter()
   })
-  .on('/exhibitions/816', function () {
+  .on('/exhibitions/1', function () {
     document.body.innerHTML = ''
     appendHeadersub()
     exhibitions()
+    appendProducts(' 신발', 12)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/2', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    smallappendbanner()
+    appendProducts('Apple', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/3', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    exhibitsurgery()
+    appendProducts(' 후드','8')
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/4', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    exhibitwnderkammer()
+    appendProducts(' 셔츠', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/5', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    smallappendbanner()
+    appendProducts(' 셔츠', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/6', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitleBW()
+    appendProducts(' 셔츠', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/7', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitleNike()
+    appendProducts(' 셔츠', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/8', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitlejacket()
+    appendProducts(' 후드', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/8', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitlejacket()
+    appendProducts(' 후드', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/9', function () {
+    document.body.innerHTML = ''
+    // appendHeadersub()
+    // appendtitlechanel()
+    appendProducts('Chanel', 20)
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitlechanel()
+    appendProducts('Miu Miu', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/10', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitlejacket()
+    appendProducts(' 후드', 20)
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/11', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendtitlejacket()
+    appendProducts(' 후드', 20)
     footerbanner()
     appendFooter()
   })
