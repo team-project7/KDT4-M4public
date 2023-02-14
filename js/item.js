@@ -24,7 +24,7 @@ export async function appendItem(tag, dpnum, num) {
     productItemEl.classList = 'product__item'
     productItemEl.setAttribute('data-id', e.id)
     productItemEl.innerHTML = /*html */ `
-            <a class="product__item__inner" href="">
+            <a class="product__item__inner" href="javascript:void(0)">
               <div class="thumb_box">
                 <div class="item">
                   <picture class="item__img">
@@ -57,14 +57,17 @@ export async function appendItem(tag, dpnum, num) {
   const items = document.querySelectorAll('.product__item')
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
   let wishlist =
-    localStorage.getItem('wishlist') === null
+    localStorage.getItem('wishlist').length === 0
       ? []
       : localStorage.getItem('wishlist').split(',')
-
+  console.log(wishlist)
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
     const wishLink = el.querySelector('.product__item__inner')
-    wishLink.href = '/products' + `?name=${el.getAttribute('data-id')}`
+    /* wishLink.href = '/products' + `?name=${el.getAttribute('data-id')}` */
+    wishLink.addEventListener('click', (e) => {
+      e.stopPropagation()
+    })
     const wishicon = el.querySelector('.wish_icon')
     // 로컬스토리지 wishlist에 존재하는 데이터 값이 item엘리먼트의 data-id와 같다면
     // wishicon의 이미지를 wishOn으로 렌더링 한다.
@@ -79,12 +82,13 @@ export async function appendItem(tag, dpnum, num) {
       if (wishicon.src == wishOn) {
         wishlist = wishlist.filter((e) => e !== el.getAttribute('data-id'))
         localStorage.setItem('wishlist', wishlist)
+        console.log(wishlist)
       } else {
         wishlist.push(el.getAttribute('data-id'))
         localStorage.setItem('wishlist', wishlist)
+        console.log(wishlist)
       }
       wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
-      e.stopPropagation()
     }
   })
 }
