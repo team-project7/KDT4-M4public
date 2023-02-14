@@ -1,4 +1,5 @@
 import wishOff from '../image/wish-off.png'
+import wishOn from '../image/wish-on.png'
 import { searchByTag } from './request'
 import { listIndex } from './products'
 
@@ -15,17 +16,14 @@ export async function appendItem(tag, num) {
   if (listIndex + 1 === chunk.length) {
     document.querySelector('.product__list__more').remove()
   }
-  const productListEl = document.querySelector('.product__list')
-  // 제품 아이템이 들어있는 리스트 엘리먼트
-  const productFirstListEl = document.createElement('div')
-  productFirstListEl.className = 'product__list__first'
-  productListEl.append(productFirstListEl)
+  const productListFirstEl = document.querySelector('.product__list__first')
+
   // 제품 아이템 엘리먼트
-  chunk[listIndex].map((e) => {
+  chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
     productItemEl.classList = 'product__item'
     productItemEl.innerHTML = /*html */ `
-            <a class="product__item__inner" href="#">
+            <a class="product__item__inner" href="javascript:void(0)">
               <div class="thumb_box">
                 <div class="item">
                   <picture class="item__img">
@@ -35,7 +33,7 @@ export async function appendItem(tag, num) {
                     />
                   </picture>
                   <span aria-label="관심상품" role="button" class="btn_wish">
-                    <img src="${wishOff}" alt="찜" />
+                    <img class="wish_icon" src="${wishOff}" alt="찜" />
                   </span>
                 </div>
               </div>
@@ -53,6 +51,18 @@ export async function appendItem(tag, num) {
             </a>
   `
 
-    productFirstListEl.append(productItemEl)
+    productListFirstEl.append(productItemEl)
+  })
+  const items = document.querySelectorAll('.product__item')
+  items.forEach((el, index) => {
+    const wishicon = el.querySelector('.wish_icon')
+    wishicon.onclick = (e) => {
+      console.log(`${index + 1}번째 항목찜목록클릭!`)
+      wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
+      e.stopPropagation()
+    }
+    el.onclick = () => {
+      console.log(index + 1)
+    }
   })
 }

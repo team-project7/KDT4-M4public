@@ -11,7 +11,8 @@ export function appendProducts(tag, num) {
         </div>
       </div>
       <div class="product__list">
-      
+        <div class="product__list__first">
+    </div>
       </div>
     `
   document.body.append(productEl)
@@ -22,7 +23,7 @@ export function appendProducts(tag, num) {
   const moreListEl = document.createElement('div')
   moreListEl.className = 'product__list__more'
   moreListEl.innerHTML = /*html*/ `
-  <a href="#" class="morebtn">더보기</a>
+  <a href="javascript:void(0)" class="morebtn">더보기</a>
   `
   productListEl.after(moreListEl)
 
