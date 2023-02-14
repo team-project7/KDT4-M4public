@@ -4,7 +4,7 @@
   "description": "this is test",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel ./test.html",
+    "dev": "parcel ./js/admin/test.html",
     "login": "parcel ./page/login.html"
   },
   "repository": {

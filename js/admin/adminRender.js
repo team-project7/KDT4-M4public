@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- RESET CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
-    />
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/test.scss" />
-    <!-- JS -->
-    <script type="module" defer src="./js/admin.js"></script>
-    <title>Kream</title>
-  </head>
-  <body>
-    <div class="admin-container">
+export function addSection () {
+  const adminContainer = document.createElement('div')
+  adminContainer.innerHTML = /*html*/`
+  <div class="admin-container">
       <section class="interactive">
         <div class="item-info">
           <label for="title">Title</label>
@@ -35,6 +20,11 @@
           <button id="admin-add-btn">ADD</button>
         </div>
       </section>
+      <select id="search-option">
+        <option value="admin-all"></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
       <section class="search">
         <span id="count"></span>
         <ul id="search-result"></ul>
@@ -60,5 +50,6 @@
         </ul>
       </aside>
     </div>
-  </body>
-</html>
+  `
+  return adminContainer
+}

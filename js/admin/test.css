@@ -1,0 +1,22 @@
+canvas {
+  width: 400px;
+  height: 400px;
+  background-color: royalblue;
+}
+
+.admin-container {
+  width: 80vw;
+}
+.admin-container .interactive {
+  display: flex;
+  gap: 25px;
+}
+.admin-container .interactive .item-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.admin-container .interactive .image-field {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=test.css.map */

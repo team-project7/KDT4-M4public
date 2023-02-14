@@ -1,6 +1,8 @@
 
 import * as Admin from "./adminRequest";
+import addSection from "./adminRender.js"
 
+document.body.append(addSection())
 const titleInput = document.querySelector("#admin-title-input")
 const descriptionInput = document.querySelector("#admin-description-input")
 const priceInput = document.querySelector("#admin-.price-input")
@@ -40,7 +42,7 @@ function getBase64(file) {
   const reader = new FileReader()
   return reader.readAsDataURL(file)
 }
-async function get() {
+export async function get() {
   const result = await Admin.searchAllItems();
   const arr = [...result]
 
