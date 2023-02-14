@@ -4,12 +4,12 @@ import { searchByTag } from './request'
 import { listIndex } from './products'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
-export async function appendItem(tag, num) {
+export async function appendItem(tag, dpnum, num) {
   const chunk = []
   const resultData = await searchByTag(tag)
   const chunkData = resultData.slice(0, num)
-  chunk.push(chunkData.slice(0, 4))
-  for (let i = 4; i < chunkData.length; i += 8) {
+  chunk.push(chunkData.slice(0, dpnum))
+  for (let i = dpnum; i < chunkData.length; i += 8) {
     chunk.push(chunkData.slice(i, i + 8))
   }
   // 모든 제품이 렌더링 되었을 경우 더보기 버튼 제거

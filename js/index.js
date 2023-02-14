@@ -33,7 +33,7 @@ router
     bannerimg4()
     bannerimg5()
     bannerimg6()
-    appendProducts(' 남성', 12)
+    appendProducts(' 남성', 6, 12)
     appendBrandFocus()
     footerbanner()
     appendFooter()
@@ -54,7 +54,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
-    appendProducts(' 남성', 12)
+    appendProducts(' 남성', 4, 12)
     footerbanner()
     appendFooter()
   })
@@ -68,7 +68,7 @@ router
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts(' 남성', 12)
+    appendProducts(' 남성', 4, 12)
     footerbanner()
     appendFooter()
   })
