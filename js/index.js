@@ -174,6 +174,11 @@ router
     appendProducts(' 남성', 4, 12)
     footerbanner()
     appendFooter()
+    // console.log(document.location.href)
+    // let url = new URL(document.location.href)
+    // const searchParams = url.searchParams
+
+    // console.log(searchParams.get('name'))
   })
   .resolve()
 
