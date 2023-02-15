@@ -1,22 +1,29 @@
 import wishOff from '../image/wish-off.png'
-import rolex from '../image/brandFocus_rolex.jpg'
-import { searchAll, searchByTag } from './request'
-/** 제품 아이템을 렌더링 하는 메소드 */
-export async function appendItem() {
-  const maleData = await searchByTag(' 남성')
-  console.log(maleData)
+import wishOn from '../image/wish-on.png'
+import { searchByTag } from './request'
+import { listIndex } from './products'
 
-  const productListEl = document.querySelector('.product__list')
-  // 제품 아이템이 들어있는 리스트 엘리먼트
-  const productFirstListEl = document.createElement('div')
-  productFirstListEl.className = 'product__list__first'
-  productListEl.append(productFirstListEl)
+/** 제품 아이템을 렌더링 하는 메소드 */
+export async function appendItem(tag, num) {
+  const chunk = []
+  const resultData = await searchByTag(tag)
+  const chunkData = resultData.slice(0, num)
+  chunk.push(chunkData.slice(0, 4))
+  for (let i = 4; i < chunkData.length; i += 8) {
+    chunk.push(chunkData.slice(i, i + 8))
+  }
+  // 모든 제품이 렌더링 되었을 경우 더보기 버튼 제거
+  if (listIndex + 1 === chunk.length) {
+    document.querySelector('.product__list__more').remove()
+  }
+  const productListFirstEl = document.querySelector('.product__list__first')
+
   // 제품 아이템 엘리먼트
-  maleData.map((e) => {
+  chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
     productItemEl.classList = 'product__item'
     productItemEl.innerHTML = /*html */ `
-            <a class="product__item__inner" href="#">
+            <a class="product__item__inner" href="javascript:void(0)">
               <div class="thumb_box">
                 <div class="item">
                   <picture class="item__img">
@@ -26,7 +33,7 @@ export async function appendItem() {
                     />
                   </picture>
                   <span aria-label="관심상품" role="button" class="btn_wish">
-                    <img src="${wishOff}" alt="찜" />
+                    <img class="wish_icon" src="${wishOff}" alt="찜" />
                   </span>
                 </div>
               </div>
@@ -43,14 +50,19 @@ export async function appendItem() {
               </div>
             </a>
   `
-    productFirstListEl.append(productItemEl)
-  })
 
-  // 여기는 한번만 렌더링
-  const moreListEl = document.createElement('div')
-  moreListEl.className = 'product__list__more'
-  moreListEl.innerHTML = /*html*/ `
-  <a href="#" class="morebtn">더보기</a>
-  `
-  productFirstListEl.after(moreListEl)
+    productListFirstEl.append(productItemEl)
+  })
+  const items = document.querySelectorAll('.product__item')
+  items.forEach((el, index) => {
+    const wishicon = el.querySelector('.wish_icon')
+    wishicon.onclick = (e) => {
+      console.log(`${index + 1}번째 항목찜목록클릭!`)
+      wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
+      e.stopPropagation()
+    }
+    el.onclick = () => {
+      console.log(index + 1)
+    }
+  })
 }

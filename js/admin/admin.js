@@ -1,5 +1,21 @@
-
+import * as Header from "../header.js"
 import * as Admin from "./adminRequest";
+import * as AdminRender from "./adminRender.js"
+import { doc } from "prettier";
+// Header.appendHeadersub()
+
+AdminRender.appendAdminPage()
+
+const navToggle = document.querySelector("#admin-page-nav__toggle-btn")
+const adminNav = document.querySelector(".admin-page-nav")
+navToggle.addEventListener("click", onNavToggle)
+
+function onNavToggle(e) {
+  adminNav.classList.contains("onToggle") 
+  ? e.target.textContent = "<<"
+  : e.target.textContent = ">>" 
+  adminNav.classList.toggle('onToggle')
+}
 
 const titleInput = document.querySelector("#admin-title-input")
 const descriptionInput = document.querySelector("#admin-description-input")
@@ -13,13 +29,25 @@ const count = document.querySelector("#count")
 const canvas = document.querySelector("#admin-canvas")
 const ctx = canvas.getContext("2d");
 
-const editBtn = document.querySelector("#admin-edit-btn")
-const addBtn = document.querySelector("#admin-add-btn")
-const searchBtn = document.querySelector("#admin-search-btn")
-const editDoneBtn = document.querySelector("#admin-edit-done-btn")
-const removeBtn = document.querySelector("#admin-remove-btn")
+
+const addBtn = document.querySelector("#admin-page-btns__add-btn")
+const removeBtn = document.querySelector("#admin-page-btns__remove-btn")
+const editBtn = document.querySelector("#admin-page-btns__edit-btn")
 const addDoneBtn = document.querySelector("#admin-add-done-btn")
-get()
+const editDoneBtn = document.querySelector("#admin-edit-done-btn")
+const closeBtn = document.querySelector("#admin-modal-btns__close-btns")
+const searchBtn = document.querySelector("#admin-search-btn")
+
+addBtn.addEventListener('click', () =>{
+  const modal = document.querySelector(".admin-modal")
+  modal.classList.add('active')
+})
+
+closeBtn.addEventListener('click', () =>{
+  const modal = document.querySelector(".admin-modal")
+  modal.classList.remove('active')
+})
+
 fileInput.addEventListener('change', onFileChange)
 function onFileChange(e) {
   const file = e.target.files[0];
@@ -40,6 +68,7 @@ function getBase64(file) {
   const reader = new FileReader()
   return reader.readAsDataURL(file)
 }
+
 async function get() {
   const result = await Admin.searchAllItems();
   const arr = [...result]
@@ -61,10 +90,11 @@ async function get() {
     thumbnailBase64.append(img ? img : undefined)
     const li = document.createElement('li')
    li.append(id, title, price, description, tags, img)
-   searchList.append(li)
+   document.body.append(li)
   })
   count.textContent = `${arr.length}`
 }
+
 async function onAddDoneBtnClicked() {
   await Admin.addItem({
     id: productIdEl.value,
