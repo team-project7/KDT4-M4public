@@ -60,14 +60,11 @@ export async function appendItem(tag, dpnum, num) {
     localStorage.getItem('wishlist').length === 0
       ? []
       : localStorage.getItem('wishlist').split(',')
-  console.log(wishlist)
+
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
-    const wishLink = el.querySelector('.product__item__inner')
-    /* wishLink.href = '/products' + `?name=${el.getAttribute('data-id')}` */
-    wishLink.addEventListener('click', (e) => {
-      e.stopPropagation()
-    })
+    const itemLink = el.querySelector('.product__item__inner')
+    itemLink.href = '/products' + `?name=${el.getAttribute('data-id')}`
     const wishicon = el.querySelector('.wish_icon')
     // 로컬스토리지 wishlist에 존재하는 데이터 값이 item엘리먼트의 data-id와 같다면
     // wishicon의 이미지를 wishOn으로 렌더링 한다.
@@ -89,6 +86,9 @@ export async function appendItem(tag, dpnum, num) {
         console.log(wishlist)
       }
       wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
+
+      e.preventDefault()
+      e.stopPropagation()
     }
   })
 }
