@@ -4,8 +4,8 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
-import {exhibitions, exhibitsurgery, exhibitwnderkammer} from './exhibitions'
-import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlechanel } from './header'
+import {exhibitions, exhibitsurgery, exhibitwnderkammer, exhibitpayco, exhibittoss, exhibitpoint} from './exhibitions'
+import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlechanel, appendtitlepadding } from './header'
 import {
   bannerimg,
   bannerimg2,
@@ -53,7 +53,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
-    appendProducts(' 남성', 4, 12)
+    appendProducts(' 남성', 12, 20)
     footerbanner()
     appendFooter()
   })
@@ -69,7 +69,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
-    appendProducts('Apple', 20)
+    appendProducts('Apple', 12)
     footerbanner()
     appendFooter()
   })
@@ -101,7 +101,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendtitleBW()
-    appendProducts(' 셔츠', 20)
+    appendProducts(' 스니커즈', 20)
     footerbanner()
     appendFooter()
   })
@@ -109,15 +109,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendtitleNike()
-    appendProducts(' 셔츠', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/8', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendtitlejacket()
-    appendProducts(' 후드', 20)
+    appendProducts(' 신발', 20)
     footerbanner()
     appendFooter()
   })
@@ -131,20 +123,17 @@ router
   })
   .on('/exhibitions/9', function () {
     document.body.innerHTML = ''
-    // appendHeadersub()
-    // appendtitlechanel()
-    appendProducts('Chanel', 20)
+    appendProducts('Chanel', 8)
     document.body.innerHTML = ''
     appendHeadersub()
     appendtitlechanel()
-    appendProducts('Miu Miu', 20)
+    appendProducts('Miu Miu', 8)
     footerbanner()
     appendFooter()
   })
   .on('/exhibitions/10', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendtitlejacket()
     appendProducts(' 후드', 20)
     footerbanner()
     appendFooter()
@@ -152,11 +141,33 @@ router
   .on('/exhibitions/11', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendtitlejacket()
-    appendProducts(' 후드', 20)
+    appendtitlepadding()
+    appendProducts(' 패딩', 20)
     footerbanner()
     appendFooter()
   })
+  .on('/exhibitions/small/1', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    exhibitpayco()
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/small/2', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    exhibittoss()
+    footerbanner()
+    appendFooter()
+  })
+  .on('/exhibitions/small/3', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    exhibitpoint()
+    footerbanner()
+    appendFooter()
+  })
+  
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()

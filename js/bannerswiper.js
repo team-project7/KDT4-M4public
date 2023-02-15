@@ -9,9 +9,7 @@ import swiper5 from '../image/bannerswiper5.jpg';
 
 
 // small-swiper-banner
-import smallswiper1 from '../image/smallswiper1.jpg';
 import smallswiper2 from '../image/smallswiper2.jpg';
-import smallswiper3 from '../image/smallswiper3.jpg';
 import smallswiper4 from '../image/smallswiper4.jpg';
 import smallswiper5 from '../image/smallswiper5.jpg';
 import smallswiper6 from '../image/smallswiper6.jpg';
@@ -85,10 +83,10 @@ export function smallappendbanner() {
   const wrapperHTML = document.createElement('div')
   wrapperHTML.className = 'swiper-wrapper';
   
-  const smallswiper = [smallswiper1,smallswiper2,smallswiper3,smallswiper4,smallswiper5,smallswiper6,smallswiper7,smallswiper8]
-  const newcolor = ['#F0F0F0','#E8F0F9','#E8F0F9','#6868EA','#262626','#262626','#282828','#020423']
-  const linkarray = ["/shop","/shopping","/mall","/event"]
-  for(let i = 0; i<=7; i++) {
+  const smallswiper = [smallswiper2,smallswiper4,smallswiper5,smallswiper6,smallswiper7,smallswiper8]
+  const newcolor = ['#E8F0F9','#6868EA','#262626','#262626','#282828','#020423']
+  const linkarray = ["exhibitions/7","/shop","/exhibitions/small/1","/exhibitions/small/2",'/exhibitions/small/3','https://www.instagram.com/kream.co.kr/']
+  for(let i = 0; i<smallswiper.length; i++) {
       let sildeEl = document.createElement('div');
       sildeEl.className = 'swiper-slide';
       sildeEl.style.backgroundColor = `${newcolor[i]}`;

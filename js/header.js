@@ -202,3 +202,16 @@ export function appendtitlechanel() {
     `
     document.body.append(headertitleEl)
 }
+export function appendtitlepadding() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>간절기 필수 패딩 베스트</h2>
+            <p class='description'>Polo & Stone Island</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
