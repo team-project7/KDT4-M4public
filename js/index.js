@@ -16,7 +16,7 @@ import {
 import appendBrandFocus from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
-
+import appendShopContent from './shop'
 const router = new Navigo('/')
 
 router
@@ -49,7 +49,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
-    appendProducts(' 남성', 12, 20)
+    appendShopContent()
     footerbanner()
     appendFooter()
   })
