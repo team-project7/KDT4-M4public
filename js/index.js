@@ -12,6 +12,7 @@ import {
   bannerimg3,
   bannerimg4,
   footerbanner,
+  line,
 } from './banner'
 import appendBrandFocus from './brandFocus'
 import { logout, searchAll } from './request'
@@ -24,12 +25,14 @@ router
     appendHeadermain()
     appendbanner()
     appendShortcut()
+    line()
+    appendProducts(' 남성', 4, 12)
+    line()
+    appendBrandFocus()
     bannerimg()
     bannerimg2()
     bannerimg3()
     bannerimg4()
-    appendProducts(' 남성', 6, 12)
-    appendBrandFocus()
     footerbanner()
     appendFooter()
   })
@@ -53,7 +56,7 @@ router
     footerbanner()
     appendFooter()
   })
-  router.on('/exhibitions/:name', function ({ data }) {
+  .on('/exhibitions/:name', function ({ data }) {
     console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
@@ -106,6 +109,7 @@ router
       case ' 패딩':
       appendtitlepadding()
       appendProducts(data.name, 12)
+      break
     default: 
     appendProducts(data.name, 12)
     }
@@ -113,7 +117,14 @@ router
     footerbanner()
     appendFooter()
   })
-  
+  .on('/tab/:exhibitions', function ({ data }) {
+    console.log(data)
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendProducts(' 남성', 4, 12)
+    footerbanner()
+    appendFooter()
+  })
   
   .on('/products', function () {
     document.body.innerHTML = ''

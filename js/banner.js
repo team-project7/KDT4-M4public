@@ -123,3 +123,8 @@ export function footerbanner() {
 }
 
 
+export function line () {
+    const lineEl = document.createElement('div')
+    lineEl.className = 'line'
+    document.body.append(lineEl)
+}
