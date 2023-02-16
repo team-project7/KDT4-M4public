@@ -82,7 +82,3 @@ export const smallswiper = [
     },
 
 ]
-
-
-
-//   const linkarray = ["exhibitions/7","/shop","/exhibitions/small/1","/exhibitions/small/2",'/exhibitions/small/3','https://www.instagram.com/kream.co.kr/']

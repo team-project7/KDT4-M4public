@@ -70,23 +70,6 @@ export function bannerimg4() {
     linkEl.append(bannerimgEl);
 
 }
-// export function bannerimg5() {
-//     const bannerHTML = document.createElement('div')
-//     let bannerEl = document.createElement('div');
-//     bannerEl.className = 'banner';
-//     bannerEl.style.backgroundColor = `${srcarray[4].bannercolor}`;
-//     const linkEl = document.createElement('a')
-//     linkEl.href = `/exhibitions/${srcarray[4].name}`
-//     const bannerimgEl = document.createElement('img')
-//     bannerimgEl.src = srcarray[4].img;
-//     bannerimgEl.alt = 'banner';
-
-//     document.body.append(bannerHTML)
-//     bannerHTML.append(bannerEl)
-//     bannerEl.append(linkEl)
-//     linkEl.append(bannerimgEl);
-
-// }
 
 
 export function footerbanner() {
@@ -115,8 +98,6 @@ export function footerbanner() {
 
     linkEl.className = 'banner_box'
     linkEl2.className = 'banner_box'
-    linkEl.href = `/exhibitions/${srcarray[4].id}`
-    linkEl2.href = `/exhibitions/${srcarray[5].id}`
     const banbottomimg = document.createElement('img')
     const banbottomimg2 = document.createElement('img')
 
