@@ -36,16 +36,12 @@ export const srcarray = [
 
     },
     {   
-        id: 5,
-        // name: ' 신발',
-        bannercolor: '#E8F0F9',
+       
         img: `${footerbanner1}`,
 
     },
     {   
-        id: 6,
-        // name: ' 신발',
-        bannercolor: '#E8F0F9',
+      
         img: `${footerbanner2}`,
 
     },
@@ -53,4 +49,3 @@ export const srcarray = [
 
 ]
 
-// const linkarray = ["/exhibitions/6",'/exhibitions/7','/exhibitions/8','/exhibitions/9','/exhibitions/10','/exhibitions/11']

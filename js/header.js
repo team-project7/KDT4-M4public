@@ -108,16 +108,19 @@ export function appendHeadersub() {
                         <a href="" class="top_link">관심상품</a>
                     </li>
                     <li class="top_item">
-                        <a href="/login" class="top_link">로그인</a>
+                        <!-- <a href="/login" class="top_link">로그인</a> -->
+                        <a href="/login" class="top_link" id="login">로그인</a>
+                        <a class="top_link" id="logout">로그아웃</a>
                     </li>
                 </ul>
             </div>
          </div>
          <div class="header_main">
             <div class="main_inner">
-                    <a href="/" class="logo"><img src="https://kream.co.kr/_nuxt/img/login_title.9f9ccc8.png" alt=""></a>
                 <div class="center">                  
-                </div>
+                    <a href="/" class="logo"><img src="https://kream.co.kr/_nuxt/img/login_title.9f9ccc8.png" alt=""></a>
+
+                    </div>
                 <div class="right">
                     <div class="gnb_area">
                         <nav class="gnb">
@@ -145,6 +148,26 @@ export function appendHeadersub() {
        </div>
           `
  document.body.append(headerEl)
+
+ let token = localStorage.getItem('token')
+ 
+ const loginBtnEl = document.querySelector('#login')
+ const logoutBtnEl = document.querySelector('#logout')
+    if(token) {
+        loginBtnEl.innerHTML = ''
+     } 
+     else {
+        logoutBtnEl.innerHTML = ''
+     }
+
+ logoutBtnEl.addEventListener('click', () => {
+       logout(token)
+       window.alert('로그아웃 완료!')
+        localStorage.removeItem('token')
+        localStorage.removeItem('email')
+        localStorage.removeItem('displayName')
+        location.replace('/login')
+})
 }
   
 
