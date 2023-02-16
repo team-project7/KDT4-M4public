@@ -189,14 +189,14 @@ export function appendtitlejacket() {
     `
     document.body.append(headertitleEl)
 }
-export function appendtitlechanel() {
+export function appendtitlehoodie() {
     const headertitleEl = document.createElement('div')
     headertitleEl.className = 'exhibition_title'
     headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
-            <h2 class='title'>Miu Miu & CHANEL</h2>
-            <p class='description'>비슷한듯 다른 매력의 브랜드</p>
+            <h2 class='title'>The Best Hoodie</h2>
+            <p class='description'>오랫동안 사랑받은 후드</p>
          </div>
        </div>
     `

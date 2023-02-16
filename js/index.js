@@ -5,14 +5,12 @@ import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
 import {exhibitions, exhibitsurgery, exhibitwnderkammer, exhibitpayco, exhibittoss, exhibitpoint} from './exhibitions'
-import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlechanel, appendtitlepadding } from './header'
+import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlehoodie, appendtitlepadding } from './header'
 import {
   bannerimg,
   bannerimg2,
   bannerimg3,
   bannerimg4,
-  bannerimg5,
-  bannerimg6,
   footerbanner,
 } from './banner'
 import appendBrandFocus from './brandFocus'
@@ -30,8 +28,6 @@ router
     bannerimg2()
     bannerimg3()
     bannerimg4()
-    bannerimg5()
-    bannerimg6()
     appendProducts(' 남성', 6, 12)
     appendBrandFocus()
     footerbanner()
@@ -57,116 +53,67 @@ router
     footerbanner()
     appendFooter()
   })
-  .on('/exhibitions/1', function () {
+  router.on('/exhibitions/:name', function ({ data }) {
+    console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
-    exhibitions()
-    appendProducts(' 신발', 12)
+    switch (data.name) {
+      // main banner-swiper 페이지
+      case ' 스마트워치' :
+      exhibitions()
+      appendProducts(data.name, 12)
+      break
+      case ' 남성' :
+      exhibitsurgery()
+      appendProducts(data.name, 12)
+      break
+      case ' 셔츠' :
+      exhibitwnderkammer()
+      appendProducts(data.name, 12)
+      break
+      case ' 셔츠' :
+      break
+      // shop small-swiper 페이지
+      case ' 스니커즈':
+      appendtitleNike()
+      appendProducts(data.name, 12)
+      break
+      case 'payco':
+      exhibitpayco()
+      break
+      case 'toss':
+      exhibittoss()
+      break
+      case 'point':
+      exhibitpoint()
+      break
+      case 'Instagram':
+      location.replace('https://www.instagram.com/kream.co.kr/')
+      break
+      // 고정 bannerimg 페이지
+      case ' 신발':
+      appendtitleBW()
+      appendProducts(data.name, 12)
+      break
+      case ' 의류':
+      appendtitlejacket()
+      appendProducts(data.name, 12)
+      break
+      case ' 후드':
+      appendtitlehoodie()
+      appendProducts(data.name, 12)
+      break
+      case ' 패딩':
+      appendtitlepadding()
+      appendProducts(data.name, 12)
+    default: 
+    appendProducts(data.name, 12)
+    }
+    
     footerbanner()
     appendFooter()
   })
-  .on('/exhibitions/2', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    smallappendbanner()
-    appendProducts('Apple', 12)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/3', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    exhibitsurgery()
-    appendProducts(' 후드','8')
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/4', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    exhibitwnderkammer()
-    appendProducts(' 셔츠', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/5', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    smallappendbanner()
-    appendProducts(' 셔츠', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/6', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendtitleBW()
-    appendProducts(' 스니커즈', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/7', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendtitleNike()
-    appendProducts(' 신발', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/8', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendtitlejacket()
-    appendProducts(' 후드', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/9', function () {
-    document.body.innerHTML = ''
-    appendProducts('Chanel', 8)
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendtitlechanel()
-    appendProducts('Miu Miu', 8)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/10', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendProducts(' 후드', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/11', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendtitlepadding()
-    appendProducts(' 패딩', 20)
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/small/1', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    exhibitpayco()
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/small/2', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    exhibittoss()
-    footerbanner()
-    appendFooter()
-  })
-  .on('/exhibitions/small/3', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    exhibitpoint()
-    footerbanner()
-    appendFooter()
-  })
+  
   
   .on('/products', function () {
     document.body.innerHTML = ''
@@ -181,6 +128,8 @@ router
     // console.log(searchParams.get('name'))
   })
   .resolve()
+ 
+
 
 let Top = document.createElement('div')
 Top.className = 'top'

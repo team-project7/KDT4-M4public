@@ -58,6 +58,7 @@ const tosscolor = ['#262626']
 
 const point = [small_point1,small_point2,small_point3,small_point4,small_point5,small_point6,small_point7]
 const pointcolor = ['#272727','#F9F9F9','#F9F9F9','#F9F9F9','#F9F9F9','#F9F9F9','#F9F9F9']
+
 export function exhibitions() {
 
     const bannerHTML = document.createElement('div')
