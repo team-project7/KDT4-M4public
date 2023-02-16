@@ -147,3 +147,71 @@ export function appendHeadersub() {
  document.body.append(headerEl)
 }
   
+
+export function appendtitleBW() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Black vs White</h2>
+            <p class='description'>블랙과 화이트, 심플함과 심플함</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+
+export function appendtitleNike() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Nike AF1</h2>
+            <p class='description'>나이키 에어포스의 모든것</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+
+export function appendtitlejacket() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>Director Classic Varsity Jacket</h2>
+            <p class='description'>Jacket BEST 랭킹</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+export function appendtitlehoodie() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>The Best Hoodie</h2>
+            <p class='description'>오랫동안 사랑받은 후드</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}
+export function appendtitlepadding() {
+    const headertitleEl = document.createElement('div')
+    headertitleEl.className = 'exhibition_title'
+    headertitleEl.innerHTML = /*html*/ `
+       <div class='exhibition_title_item'>
+         <div class='exhibition_title_wrapper'>
+            <h2 class='title'>간절기 필수 패딩 베스트</h2>
+            <p class='description'>Polo & Stone Island</p>
+         </div>
+       </div>
+    `
+    document.body.append(headertitleEl)
+}

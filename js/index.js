@@ -4,16 +4,13 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
-import shop from './shop'
-import exhibitions from './exhibitions'
-import { appendHeadermain, appendHeadersub } from './header'
+import {exhibitions, exhibitsurgery, exhibitwnderkammer, exhibitpayco, exhibittoss, exhibitpoint} from './exhibitions'
+import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlehoodie, appendtitlepadding } from './header'
 import {
   bannerimg,
   bannerimg2,
   bannerimg3,
   bannerimg4,
-  bannerimg5,
-  bannerimg6,
   footerbanner,
 } from './banner'
 import appendBrandFocus from './brandFocus'
@@ -31,8 +28,6 @@ router
     bannerimg2()
     bannerimg3()
     bannerimg4()
-    bannerimg5()
-    bannerimg6()
     appendProducts(' 남성', 6, 12)
     appendBrandFocus()
     footerbanner()
@@ -58,13 +53,68 @@ router
     footerbanner()
     appendFooter()
   })
-  .on('/exhibitions/816', function () {
+  router.on('/exhibitions/:name', function ({ data }) {
+    console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
-    exhibitions()
+    switch (data.name) {
+      // main banner-swiper 페이지
+      case ' 스마트워치' :
+      exhibitions()
+      appendProducts(data.name, 12)
+      break
+      case ' 남성' :
+      exhibitsurgery()
+      appendProducts(data.name, 12)
+      break
+      case ' 셔츠' :
+      exhibitwnderkammer()
+      appendProducts(data.name, 12)
+      break
+      case ' 셔츠' :
+      break
+      // shop small-swiper 페이지
+      case ' 스니커즈':
+      appendtitleNike()
+      appendProducts(data.name, 12)
+      break
+      case 'payco':
+      exhibitpayco()
+      break
+      case 'toss':
+      exhibittoss()
+      break
+      case 'point':
+      exhibitpoint()
+      break
+      case 'Instagram':
+      location.replace('https://www.instagram.com/kream.co.kr/')
+      break
+      // 고정 bannerimg 페이지
+      case ' 신발':
+      appendtitleBW()
+      appendProducts(data.name, 12)
+      break
+      case ' 의류':
+      appendtitlejacket()
+      appendProducts(data.name, 12)
+      break
+      case ' 후드':
+      appendtitlehoodie()
+      appendProducts(data.name, 12)
+      break
+      case ' 패딩':
+      appendtitlepadding()
+      appendProducts(data.name, 12)
+    default: 
+    appendProducts(data.name, 12)
+    }
+    
     footerbanner()
     appendFooter()
   })
+  
+  
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
@@ -78,6 +128,8 @@ router
     // console.log(searchParams.get('name'))
   })
   .resolve()
+ 
+
 
 let Top = document.createElement('div')
 Top.className = 'top'
