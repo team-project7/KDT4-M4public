@@ -16,7 +16,7 @@ import {
   bannerimg6,
   footerbanner,
 } from './banner'
-import appendBrandFocus from './brandFocus'
+import { appendBrandFocus, appendManBrandFocus, appendWomanBrandFocus, appendBrandBrandFocus } from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 
@@ -35,6 +35,9 @@ router
     bannerimg6()
     appendProducts(' 남성', 6, 12)
     appendBrandFocus()
+    appendManBrandFocus()
+    appendWomanBrandFocus()
+    appendBrandBrandFocus()
     footerbanner()
     appendFooter()
   })
@@ -50,11 +53,15 @@ router
     appendJoin()
     appendFooter()
   })
-  .on('/shop', function () {
+  .on('/shop', function (data) {
+    console.log(data)
+    let url = new URL(document.location.href)
+    const searchParams = url.searchParams
+    console.log(searchParams.get('id'))
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
-    appendProducts(' 남성', 4, 12)
+    appendProducts(` ${searchParams.get('id')}`, 4, 12)
     footerbanner()
     appendFooter()
   })
