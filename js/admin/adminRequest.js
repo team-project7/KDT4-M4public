@@ -33,8 +33,8 @@ export async function searchAllItems() {
   return json
 }
 
-export async function removeItem(item) {
-  const res = await fetch(`${API_URL}/${item.id}`, {
+export async function removeItem(id) {
+  const res = await fetch(`${API_URL}/${id}`, {
     method: 'DELETE',
     headers,
   })
@@ -56,7 +56,7 @@ export async function editItem(item) {
   return json
 }
 
-export async function searchIdividualItem(item) {
+export async function searchIndividualItem(item) {
   const res = await fetch(`${API_URL}/${item.id}`, {
     method: 'GET',
     headers,

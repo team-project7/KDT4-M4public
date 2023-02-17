@@ -19,10 +19,13 @@
   "homepage": "https://github.com/team-project7/KDT4-M4public#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
+    "buffer": "^5.7.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "parcel": "^2.8.3",
-    "prettier": "2.8.3"
+    "prettier": "2.8.3",
+    "process": "^0.11.10",
+    "util": "^0.12.5"
   },
   "dependencies": {
     "@mischnic/json-sourcemap": "^0.1.0",
