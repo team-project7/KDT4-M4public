@@ -134,6 +134,24 @@ body {
     cursor: pointer;
 }
 
-// .gnb_item a.active {
-//     font-weight: 700;
-// }
+
+.exhibition_title_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 28px;
+    text-align: center;
+}
+
+.title {
+    font-size: 21px;
+    font-weight: bold;
+    color: #222;
+}
+
+.description {
+    font-size: 14px;
+    color: rgba(34,34,34,.5);
+    margin-top: 6px;
+}
