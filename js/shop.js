@@ -23,7 +23,7 @@ export default function appendShopContent() {
   appendFilterList('성별')
   appendFilterList('가격')
 
-  appendSmallProducts(' 남성', 4, 12)
+  appendSmallProducts(' 남성', 4, 12, contentEl)
 }
 
 export function appendFilterList(category) {
