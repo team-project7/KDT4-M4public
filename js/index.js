@@ -4,40 +4,49 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
-import shop from './shop'
-import exhibitions from './exhibitions'
-import { appendHeadermain, appendHeadersub } from './header'
+import {exhibitions, exhibitsurgery, exhibitwnderkammer, exhibitpayco, exhibittoss, exhibitpoint} from './exhibitions'
+import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlehoodie, appendtitlepadding } from './header'
 import {
   bannerimg,
   bannerimg2,
   bannerimg3,
   bannerimg4,
-  bannerimg5,
-  bannerimg6,
   footerbanner,
+  line,
 } from './banner'
 import { appendBrandFocus, appendManBrandFocus, appendWomanBrandFocus, appendBrandBrandFocus } from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
-
+import appendShopContent from './shop'
 const router = new Navigo('/')
 
 router
-  .on('/', function () {
+  .on('/', function (data) {
+    console.log(data)
     appendHeadermain()
     appendbanner()
     appendShortcut()
+    line()
+    appendProducts(' 남성', 4, 12)
+    line()
+    switch(data.queryString) {
+      case '':
+      appendBrandFocus()
+      break
+      case 'man':
+      appendManBrandFocus()
+      break
+      case 'woman':
+      appendWomanBrandFocus()
+      break
+      case 'brand':
+      appendBrandBrandFocus()
+      break
+    }
     bannerimg()
     bannerimg2()
     bannerimg3()
     bannerimg4()
-    bannerimg5()
-    bannerimg6()
-    appendProducts(' 남성', 6, 12)
-    appendBrandFocus()
-    appendManBrandFocus()
-    appendWomanBrandFocus()
-    appendBrandBrandFocus()
     footerbanner()
     appendFooter()
   })
@@ -54,24 +63,87 @@ router
     appendFooter()
   })
   .on('/shop', function (data) {
-    console.log(data)
     let url = new URL(document.location.href)
     const searchParams = url.searchParams
     console.log(searchParams.get('id'))
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
+    appendShopContent()
     appendProducts(` ${searchParams.get('id')}`, 4, 12)
     footerbanner()
     appendFooter()
   })
-  .on('/exhibitions/816', function () {
+  .on('/exhibitions/:name', function ({ data }) {
+    console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
-    exhibitions()
+    switch (data.name) {
+      // main banner-swiper 페이지
+      case ' 스마트워치' :
+      exhibitions()
+      appendProducts(data.name, 12)
+      break
+      case ' 남성' :
+      exhibitsurgery()
+      appendProducts(data.name, 12)
+      break
+      case ' 셔츠' :
+      exhibitwnderkammer()
+      appendProducts(data.name, 12)
+      break
+      case ' 셔츠' :
+      break
+      // shop small-swiper 페이지
+      case ' 스니커즈':
+      appendtitleNike()
+      appendProducts(data.name, 12)
+      break
+      case 'payco':
+      exhibitpayco()
+      break
+      case 'toss':
+      exhibittoss()
+      break
+      case 'point':
+      exhibitpoint()
+      break
+      case 'Instagram':
+      location.replace('https://www.instagram.com/kream.co.kr/')
+      break
+      // 고정 bannerimg 페이지
+      case ' 신발':
+      appendtitleBW()
+      appendProducts(data.name, 12)
+      break
+      case ' 의류':
+      appendtitlejacket()
+      appendProducts(data.name, 12)
+      break
+      case ' 후드':
+      appendtitlehoodie()
+      appendProducts(data.name, 12)
+      break
+      case ' 패딩':
+      appendtitlepadding()
+      appendProducts(data.name, 12)
+      break
+    default: 
+    appendProducts(data.name, 12)
+    }
+    
     footerbanner()
     appendFooter()
   })
+  .on('/tab/:exhibitions', function ({ data }) {
+    console.log(data)
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendProducts(' 남성', 4, 12)
+    footerbanner()
+    appendFooter()
+  })
+  
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
@@ -85,6 +157,8 @@ router
     // console.log(searchParams.get('name'))
   })
   .resolve()
+ 
+
 
 let Top = document.createElement('div')
 Top.className = 'top'

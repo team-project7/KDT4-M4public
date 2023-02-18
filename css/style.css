@@ -2,4 +2,7 @@
 @import url("./footer.scss");
 @import url("./banner.scss");
 @import url("./brandFocus.scss");
-@import url("./products.scss");/*# sourceMappingURL=style.css.map */
+@import url("./products.scss");
+@import url("./header.scss");
+@import url("./shortcut.scss");
+@import url("./shop.scss");/*# sourceMappingURL=style.css.map */

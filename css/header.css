@@ -1,0 +1,141 @@
+body {
+  margin-top: 130px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: #fff;
+  height: 130px;
+}
+
+.header_top .top_inner {
+  display: flex;
+  padding: 8px 40px 0;
+  height: 22px;
+  justify-content: end;
+}
+
+.header_top .top_list {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(34, 34, 34, 0.8);
+}
+
+.header_top .top_item {
+  margin-left: 24px;
+}
+
+.main_inner {
+  display: flex;
+  padding: 20px 40px;
+  height: 64px;
+  min-width: 320px;
+  justify-content: space-between;
+}
+
+.main_inner .center {
+  margin: 0 20px;
+  max-width: 466px;
+}
+
+.main_inner .center .main_inner {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 200px;
+  height: 40px;
+}
+
+.main_inner .right {
+  min-width: 120px;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.gnb_area, .gnb_list, .search_btn_box {
+  display: flex;
+}
+
+.search_btn_box .btn_search img {
+  width: 32px;
+  height: 32px;
+}
+
+.gnb_area, .gnb_list {
+  align-items: center;
+}
+
+.gnb_area, .gnb_list {
+  font-weight: 500;
+}
+
+.gnb_item {
+  margin-right: 40px;
+}
+
+.gnb_item a {
+  font-size: 18px;
+}
+
+.ul_tab {
+  height: 44px;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.tab {
+  display: inline-flex;
+  height: 44px;
+  font-size: 16px;
+  padding-top: 15px;
+  padding-bottom: 6px;
+  color: #222;
+  cursor: pointer;
+}
+
+.tab_name {
+  line-height: 20px;
+}
+
+.tab_name .span:active {
+  border-bottom: 2px solid #222;
+}
+
+.li_tab + .li_tab {
+  margin-left: 27px;
+}
+
+.tab:not(.active) {
+  border-bottom-color: #222;
+}
+
+#logout {
+  cursor: pointer;
+}
+
+.top.on {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 48px;
+  padding-top: 4px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  background: url("https://user-images.githubusercontent.com/98297436/217767070-8c694d67-ba7a-4402-8309-3eb54738d04c.png");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}/*# sourceMappingURL=header.css.map */
