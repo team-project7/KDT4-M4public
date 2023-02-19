@@ -1,4 +1,35 @@
-export function renderAdminModal(edit = false) {
+/**
+ * appends 
+ * - modal for an item addition
+ * - modal for an item editing
+ * - navigation bar
+ * - search area
+ * - search result area
+ * @void
+ */
+export function appendAdminPage() {
+  const adminModalWrapper = document.createElement('div')
+  adminModalWrapper.classList.add('admin-add-modal-wrapper')
+  adminModalWrapper.setAttribute('id', 'admin-modal-add')
+  adminModalWrapper.append(renderAdminAddModal())
+
+  const adminEditModalWrapper = document.createElement('div')
+  adminEditModalWrapper.classList.add('admin-edit-modal-wrapper')
+  adminEditModalWrapper.setAttribute('id', 'admin-modal-edit')
+  adminEditModalWrapper.append(renderAdminEditModal())
+
+  document.body.append(adminModalWrapper)
+  document.body.append(adminEditModalWrapper)
+  document.body.append(renderNavBar());
+  document.body.append(renderSearchArea());
+  document.body.append(renderSearchContainer());
+}
+
+/**
+ * modal for an item addition
+ * @returns <aside class="admin-modal"></aside>
+ */
+export function renderAdminAddModal() {
   const adminModal = document.createElement('aside')
   adminModal.classList.add('admin-modal')
 
@@ -6,38 +37,74 @@ export function renderAdminModal(edit = false) {
   /*html*/`
     <section class="admin-modal-info">
       <div class="admin-modal-info__props">
-        <label for="admin-title-input">Title</label>
-        <input id="admin-title-input" type="text" for="price" placeholder="Title"/>
-        <label for="admin-description-input">Desc</label>
-        <input id="admin-description-input" type="text" for="desc" placeholder="Item Description"/>
-        <label for="admin-price-input">Price</label>
-        <input id="admin-price-input" type="text" for="price" placeholder="125200"/>
-        <label for="admin-tags-input">Tags</label>
-        <input id="admin-tags-input" type="text" for="tags" placeholder="Tag1, Tag2, ..." />
+        <label for="admin-add-title-input">Title</label>
+        <input id="admin-add-title-input" type="text" for="price" placeholder="Title"/>
+        <label for="admin-add-description-input">Desc</label>
+        <input id="admin-add-description-input" type="text" for="desc" placeholder="Item Description"/>
+        <label for="admin-add-price-input">Price</label>
+        <input id="admin-add-price-input" type="text" for="price" placeholder="125200"/>
+        <label for="admin-add-tags-input">Tags</label>
+        <input id="admin-add-tags-input" type="text" for="tags" placeholder="Tag1, Tag2, ..." />
       </div>
       <div class="admin-modal-info__image">
         <label for="image">Image</label>
-        <input id="admin-file-input" type="file" for="image" />
-        <canvas id="admin-canvas"></canvas>
+        <input id="admin-add-file-input" type="file" for="image" />
+        <canvas id="admin-add-canvas"></canvas>
       </div>
     </section>
     <div class="admin-modal-btns">
       <div class="flex-space"></div>
-      <button id="admin-modal-btns__${edit ? 'edit' : 'add'}-done-btn">DONE</button>
-      <button id="admin-modal-btns__close-btns">X</button>
+      <button id="admin-add-modal-btns__add-done-btn">ADD</button>
+      <button id="admin-add-modal-btns__close-btns">X</button>
     </div>
   `
+  
   return adminModal
 }
 
+/**
+ * modal for an item editing
+ * @returns <aside class="admin-modal"></aside>
+ */
+export function renderAdminEditModal() {
+  const adminEditModal = document.createElement('aside')
+  adminEditModal.classList.add('admin-modal')
 
-export function appendAdminPage() {
-  document.body.append(renderAdminModal())
-  document.body.append(renderNavBar());
-  document.body.append(renderSearchArea());
-  document.body.append(renderSearchContainer());
+  adminEditModal.innerHTML = 
+  /*html*/`
+    <section class="admin-modal-info">
+      <div class="admin-modal-info__props">
+        <span id="admin-edit-id"></span>
+        <label for="admin-edit-title-input">Title</label>
+        <input id="admin-edit-title-input" type="text" for="price" placeholder="Title"/>
+        <label for="admin-edit-description-input">Desc</label>
+        <input id="admin-edit-description-input" type="text" for="desc" placeholder="Item Description"/>
+        <label for="admin-edit-price-input">Price</label>
+        <input id="admin-edit-price-input" type="text" for="price" placeholder="125200"/>
+        <label for="admin-edit-tags-input">Tags</label>
+        <input id="admin-edit-tags-input" type="text" for="tags" placeholder="Tag1, Tag2, ..." />
+      </div>
+      <div class="admin-modal-info__image">
+        <label for="image">Image</label>
+        <input id="admin-edit-file-input" type="file" for="image" />
+        <canvas id="admin-edit-canvas"></canvas>
+      </div>
+    </section>
+    <div class="admin-modal-btns">
+      <div class="flex-space"></div>
+      <button id="admin-edit-modal-btns__edit-done-btn">EDIT</button>
+      <button id="admin-edit-modal-btns__close-btns">X</button>
+    </div>
+  `
+
+  return adminEditModal
 }
 
+/**
+ * 
+ * @param { Response[<item>] } resultArray 
+ * @returns Array.length ? <span>no result</span> : <ul class="admin-page-search"></ul>
+ */
 export function renderSearchResult(resultArray) {
   if(resultArray.length === 0) return document.createElement('span').innerHTML = "no result"
   const searchResultList = document.createElement('ul')
@@ -54,7 +121,6 @@ export function renderSearchResult(resultArray) {
       <span>Price</span>
       <span>Tags</span>
     </div>
-    <button class="top-btn" id="admin-page-search__totop-btn">TOP</button>
   `
   resultArray.forEach( (item, index) => {
     searchResultList.append(renderItem(item, index))
@@ -62,6 +128,12 @@ export function renderSearchResult(resultArray) {
   return searchResultList
 }
 
+/**
+ * 
+ * @param { Object <item>} item 
+ * @param { Integer } index 
+ * @returns <li class="admin-page-search__item"></li>
+ */
 function renderItem(item, index) {
   const searchItem = document.createElement('li')
   searchItem.classList.add('admin-page-search__item')
@@ -80,6 +152,10 @@ function renderItem(item, index) {
   return searchItem
 }
 
+/**
+ * 
+ * @returns <nav class="admin-page-nav"></nav>
+ */
 function renderNavBar() {
   const adminPageNavBar = document.createElement('nav')
   adminPageNavBar.classList.add('admin-page-nav')
@@ -105,6 +181,10 @@ function renderNavBar() {
   return adminPageNavBar
 }
 
+/**
+ * 
+ * @returns <section class="admin-search"></section>
+ */
 function renderSearchArea() {
   const searchEl = document.createElement('section')
   searchEl.classList.add('admin-search')
@@ -121,6 +201,10 @@ function renderSearchArea() {
   return searchEl
 }
 
+/**
+ * 
+ * @returns <section class="admin-page__search-container"></section>
+ */
 function renderSearchContainer() {
   const sectionEl = document.createElement('section')
   sectionEl.classList.add('admin-page__search-container')

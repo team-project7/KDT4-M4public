@@ -50,23 +50,19 @@ export async function editItem(item) {
       price: item.price, // 제품 가격
       description: item.description, // 제품 상세 설명
       tags: item.tags, // 제품 태그
+      thumbnailBase64: item.thumbnailBase64, // 제품 썸네일(대표) 사진(base64) - jpg, jpeg, webp, png, gif, svg
     }),
   })
   const json = await res.json()
   return json
 }
 
-export async function searchIndividualItem(item) {
-  const res = await fetch(`${API_URL}/${item.id}`, {
+export async function searchIndividualItem(id) {
+  const res = await fetch(`${API_URL}/${id}`, {
     method: 'GET',
-    headers,
-    body: JSON.stringify({
-      title: item.title, // 제품 이름
-      price: item.price, // 제품 가격
-      description: item.description, // 제품 상세 설명
-      tags: item.tags, // 제품 태그
-    }),
+    headers
   })
   const json = await res.json()
   return json
 }
+
