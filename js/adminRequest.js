@@ -1,4 +1,4 @@
-//아이디:adminTEAM7 비밀번호: adminTEAM7!
+
 const headers = {
   'content-type': 'application/json',
   apikey: 'FcKdtJs202301',

@@ -58,7 +58,7 @@ export async function searchAll() {
   )
   return res.json()
 }
-
+console.log(searchAll())
 export async function searchByName(searchText) {
   headers.masterKey = true
   const res = await fetch(
@@ -71,6 +71,7 @@ export async function searchByName(searchText) {
       }),
     }
   )
+ 
   return res.json()
 }
 
@@ -85,5 +86,6 @@ export async function searchByTag(tags) {
       }),
     }
   )
+ 
   return res.json()
 }

@@ -1,6 +1,6 @@
 import * as Admin from './adminRequest'
 import * as AdminRender from './adminRender.js'
-import { searchByTag, searchByName } from '../request.js'
+import { searchByTag, searchByName } from './request.js'
 
 //[init admin page]
 AdminRender.appendAdminPage()

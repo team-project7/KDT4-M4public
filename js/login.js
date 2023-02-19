@@ -91,7 +91,7 @@ export default function appendLogin() {
       loginBtnEl.classList.add('disable')
     }
   })
-
+//아이디:adminTEAM7 비밀번호: adminTEAM7!
   document
     .querySelector('.login__btn__link')
     .addEventListener('click', async () => {
@@ -105,7 +105,13 @@ export default function appendLogin() {
           localStorage.setItem('email', result.user.email)
           localStorage.setItem('displayName', result.user.displayName)
           localStorage.setItem('token', result.accessToken)
-          location.replace('/')
+          if(idInput === "adminTEAM7" && pwInput === "adminTEAM7!") {
+            location.replace('/admin')
+          }
+          else{
+            location.replace('/')
+          }
+          
         } else {
           window.alert(`${result}`)
           return
