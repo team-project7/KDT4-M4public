@@ -18,6 +18,7 @@ import appendBrandFocus from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
+import { adminPage, appendAdminPage } from './admin'
 const router = new Navigo('/')
 
 router
@@ -35,6 +36,10 @@ router
     bannerimg4()
     footerbanner()
     appendFooter()
+  })
+  .on('/admin', function () {
+    document.body.innerHTML = ''
+    adminPage()
   })
   .on('/login', function () {
     document.body.innerHTML = ''

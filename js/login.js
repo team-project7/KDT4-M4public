@@ -105,7 +105,7 @@ export default function appendLogin() {
           localStorage.setItem('email', result.user.email)
           localStorage.setItem('displayName', result.user.displayName)
           localStorage.setItem('token', result.accessToken)
-          if(idInput === "adminTEAM7" && pwInput === "adminTEAM7!") {
+          if(idInput.value === "adminteam7@abc.com" && pwInput.value === "adminteam7!") {
             location.replace('/admin')
           }
           else{

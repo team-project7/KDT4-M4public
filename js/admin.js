@@ -1,9 +1,11 @@
 import * as Admin from './adminRequest'
-import * as AdminRender from './adminRender.js'
+import { appendAdminPage, renderSearchResult} from './adminRender.js'
 import { searchByTag, searchByName } from './request.js'
 
+export function adminPage() {
+  
 //[init admin page]
-AdminRender.appendAdminPage()
+appendAdminPage()
 
 
 //[Modal]
@@ -297,7 +299,7 @@ async function appendSearchByTag() {
   const result = await searchByTag(tagName)
   const arr = [...result]
   
-  searchContainer.append(AdminRender.renderSearchResult(arr))
+  searchContainer.append(renderSearchResult(arr))
   const count = document.querySelector('#admin-search-count')
   count.textContent = arr.length
   const itemIds = document.querySelectorAll('.admin-item-id')
@@ -316,7 +318,7 @@ async function appendSearchByName() {
   const result = await searchByName(name)
   const arr = [...result]
 
-  searchContainer.append(AdminRender.renderSearchResult(arr))
+  searchContainer.append(renderSearchResult(arr))
   const count = document.querySelector('#admin-search-count')
   count.textContent = arr.length
   const itemIds = document.querySelectorAll('.admin-item-id')
@@ -332,7 +334,7 @@ async function appendSearchAll() {
   const result = await Admin.searchAllItems()
   const arr = [...result]
 
-  searchContainer.append(AdminRender.renderSearchResult(arr))
+  searchContainer.append(renderSearchResult(arr))
   const count = document.querySelector('#admin-search-count')
   count.textContent = arr.length
   const itemIds = document.querySelectorAll('.admin-item-id')
@@ -350,4 +352,6 @@ function copyOnClick(itemIds) {
       navigator.clipboard.writeText(e.target.textContent)
     })
   })
+}
+
 }
