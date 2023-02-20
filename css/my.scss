@@ -1,0 +1,206 @@
+body {
+  a {
+    text-decoration: none;
+  }
+  .mypage {
+    margin-top: 86px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding: 40px 40px 160px;
+    box-sizing: border-box;
+
+    .snb_area {
+      float: left;
+      width: 180px;
+      margin-right: 20px;
+
+      .snb_main_title {
+        color: #222222;
+        line-height: 29px;
+        padding-bottom: 30px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.15px;
+      }
+
+      .snb {
+        box-sizing: border-box;
+        .snb_list {
+          margin-bottom: 40px;
+          .snb_title {
+            line-height: 22px;
+            margin-bottom: 12px;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 18px;
+            letter-spacing: -0.27px;
+            font-weight: 700;
+          }
+          .snb_menu {
+            li {
+              margin-bottom: 10px;
+              a {
+                line-height: 18px;
+                font-size: 15px;
+                letter-spacing: -0.15px;
+                color: rgba(34, 34, 34, 0.5);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .my_home {
+      overflow: hidden;
+      min-height: 380px;
+      .user_membership {
+        display: flex;
+        padding: 23px 0 23px 23px;
+        border: 1px solid #ebebeb;
+        border-radius: 10px;
+        background-color: #fff;
+        .user_detail {
+          display: flex;
+          .user_thumb {
+            position: relative;
+            margin-right: 12px;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            flex-shrink: 0;
+          }
+          .user_info {
+            -webkit-box-align: center;
+            align-items: center;
+            .name {
+              line-height: 21px;
+              font-size: 18px;
+              letter-spacing: -0.27px;
+              font-weight: 600;
+              color: #000;
+            }
+            .email {
+              line-height: 18px;
+              font-size: 14px;
+              letter-spacing: -0.05px;
+              color: rgba(34, 34, 34, 0.5);
+            }
+            .profile {
+              display: inline-block;
+              margin-top: 12px;
+              margin: 12px 0px 0px;
+              height: 36px;
+              line-height: 34px;
+              padding: 0 14px;
+              border: 1px solid #d3d3d3;
+              color: rgba(34, 34, 34, 0.8);
+              font-size: 12px;
+              letter-spacing: -0.06px;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+
+      .membership_detail {
+        position: relative;
+        margin-left: auto;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+
+        ::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          bottom: 0;
+          background-color: #ebebeb;
+          width: 1px;
+        }
+        .membership_item {
+          display: inline-block;
+          width: 159px;
+          text-align: center;
+
+          .info {
+            display: block;
+            line-height: 19px;
+            font-size: 16px;
+            letter-spacing: -0.16px;
+            font-weight: 700;
+          }
+          .title {
+            line-height: 19px;
+            font-size: 13px;
+            letter-spacing: -0.07px;
+            color: rgba(34, 34, 34, 0.5);
+          }
+        }
+        .disabled {
+          pointer-events: none;
+          cursor: default;
+        }
+      }
+    }
+    .my_home_title {
+      margin-top: 42px;
+      padding-bottom: 16px;
+      display: flex;
+      max-width: 100%;
+    }
+    .recent_purchase {
+      .purchase_list_tab {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        background-color: #fafafa;
+        border-radius: 12px;
+
+        .tab_item {
+          display: table-cell;
+          text-align: center;
+
+          .tab_link {
+            position: relative;
+            display: block;
+            padding-top: 18px;
+            height: 96px;
+
+            .count {
+              margin-top: 2px;
+              font-size: 18px;
+              line-height: 20px;
+              letter-spacing: -0.09px;
+              font-weight: 700;
+            }
+
+            .tab_box {
+              .title {
+                font-size: 13px;
+                letter-spacing: -0.07px;
+                color: rgba(34, 34, 34, 0.8);
+              }
+            }
+          }
+        }
+        .tab_item:first-of-type .tab_link ::before {
+          content: '';
+          position: absolute;
+          top: 18px;
+          right: 0;
+          width: 1px;
+          bottom: 18px;
+          background-color: #ebebeb;
+        }
+        .total .count {
+          color: #f15746;
+        }
+      }
+    }
+  }
+}
