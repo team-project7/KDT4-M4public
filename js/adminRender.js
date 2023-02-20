@@ -29,7 +29,7 @@ export function appendAdminPage() {
  * modal for an item addition
  * @returns <aside class="admin-modal"></aside>
  */
-export function renderAdminAddModal() {
+function renderAdminAddModal() {
   const adminModal = document.createElement('aside')
   adminModal.classList.add('admin-modal')
 
@@ -66,7 +66,7 @@ export function renderAdminAddModal() {
  * modal for an item editing
  * @returns <aside class="admin-modal"></aside>
  */
-export function renderAdminEditModal() {
+function renderAdminEditModal() {
   const adminEditModal = document.createElement('aside')
   adminEditModal.classList.add('admin-modal')
 
