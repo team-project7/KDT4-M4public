@@ -93,35 +93,6 @@ export function appendMenu(container, menu, isfirst, test) {
                   <img src=${unchecked} alt="체크박스" />
                   <span class="link_text">${title}</span>
     `
-    function toggleOnly(me) {
-      const checkbox = me.querySelector('img')
-      checkbox.src = checked
-      const subEls = me.querySelector('.menu_list.sub')
-      if (subEls) {
-        subEls.style.display =
-          subEls.style.display === 'block' ? 'none' : 'block'
-      }
-      const allMenuEl = document
-        .querySelector('.search_filter')
-        .querySelectorAll('.menu')
-      Array.from(allMenuEl)
-        .filter((el) => el !== me)
-        .forEach((menu) => {
-          const checkbox = menu.querySelector('img')
-          checkbox.src = unchecked
-          const subEls = menu.querySelector('.menu_list.sub')
-          if (subEls && !menu.contains(me)) {
-            subEls.style.display = 'none'
-          }
-        })
-    }
-    li.addEventListener('click', (event) => {
-      console.log(event.currentTarget.textContent.trim())
-      event.preventDefault()
-      event.stopPropagation()
-      toggleOnly(li)
-    })
-
     if (submenus) {
       appendMenu(li, submenus, false, true)
       li.className = 'menu'
@@ -129,6 +100,36 @@ export function appendMenu(container, menu, isfirst, test) {
 
     ul.appendChild(li)
   }
-
   container.appendChild(ul)
+  console.log(12111111111111111111111111111111)
+
+  // 기능 구현 1. 하나만 체크할수 있게 설정
+  const menuListEl = container.querySelector('.menu_list')
+  const menuEls = menuListEl.querySelectorAll('.menu')
+
+  menuEls.forEach((e) => {
+    // console.log(e, '::', e.textContent.trim())
+    e.addEventListener('click', (target) => {
+      // console.log(target.currentTarget)
+      target.preventDefault()
+      target.stopPropagation()
+      // 클릭했을 때 엘리먼트의 텍스트를 출력한다. 근데 왜 2번나오지?
+      // console.log(target.target.innerText)
+      menuEls.forEach((j) => {
+        const checkbox = j.querySelector('img')
+        checkbox.src = unchecked
+      })
+      e.querySelector('img').src =
+        e.querySelector('img').src === unchecked ? checked : unchecked
+      const subEls = e.querySelector('.menu_list .sub')
+      if (subEls) {
+        subEls.style.display =
+          subEls.style.display === 'block' ? 'none' : 'block'
+      }
+      /*  const subEls = e.querySelector('.menu_list .sub')
+      subEls ? (subEls.style.display === 'block' ? 'none' : 'block') : '' */
+
+      // target.stopPropagation()
+    })
+  })
 }

@@ -4,8 +4,23 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
-import {exhibitions, exhibitsurgery, exhibitwnderkammer, exhibitpayco, exhibittoss, exhibitpoint} from './exhibitions'
-import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlehoodie, appendtitlepadding } from './header'
+import {
+  exhibitions,
+  exhibitsurgery,
+  exhibitwnderkammer,
+  exhibitpayco,
+  exhibittoss,
+  exhibitpoint,
+} from './exhibitions'
+import {
+  appendHeadermain,
+  appendHeadersub,
+  appendtitleBW,
+  appendtitleNike,
+  appendtitlejacket,
+  appendtitlehoodie,
+  appendtitlepadding,
+} from './header'
 import {
   bannerimg,
   bannerimg2,
@@ -26,7 +41,7 @@ router
     appendbanner()
     appendShortcut()
     line()
-    appendProducts(' 남성', 4, 12)
+    appendProducts('남성', 4, 12)
     line()
     appendBrandFocus()
     bannerimg()
@@ -62,58 +77,58 @@ router
     appendHeadersub()
     switch (data.name) {
       // main banner-swiper 페이지
-      case ' 스마트워치' :
-      exhibitions()
-      appendProducts(data.name, 12)
-      break
-      case ' 남성' :
-      exhibitsurgery()
-      appendProducts(data.name, 12)
-      break
-      case ' 셔츠' :
-      exhibitwnderkammer()
-      appendProducts(data.name, 12)
-      break
-      case ' 셔츠' :
-      break
+      case ' 스마트워치':
+        exhibitions()
+        appendProducts(data.name, 12)
+        break
+      case ' 남성':
+        exhibitsurgery()
+        appendProducts(data.name, 12)
+        break
+      case ' 셔츠':
+        exhibitwnderkammer()
+        appendProducts(data.name, 12)
+        break
+      case ' 셔츠':
+        break
       // shop small-swiper 페이지
       case ' 스니커즈':
-      appendtitleNike()
-      appendProducts(data.name, 12)
-      break
+        appendtitleNike()
+        appendProducts(data.name, 12)
+        break
       case 'payco':
-      exhibitpayco()
-      break
+        exhibitpayco()
+        break
       case 'toss':
-      exhibittoss()
-      break
+        exhibittoss()
+        break
       case 'point':
-      exhibitpoint()
-      break
+        exhibitpoint()
+        break
       case 'Instagram':
-      location.replace('https://www.instagram.com/kream.co.kr/')
-      break
+        location.replace('https://www.instagram.com/kream.co.kr/')
+        break
       // 고정 bannerimg 페이지
       case ' 신발':
-      appendtitleBW()
-      appendProducts(data.name, 12)
-      break
+        appendtitleBW()
+        appendProducts(data.name, 12)
+        break
       case ' 의류':
-      appendtitlejacket()
-      appendProducts(data.name, 12)
-      break
+        appendtitlejacket()
+        appendProducts(data.name, 12)
+        break
       case ' 후드':
-      appendtitlehoodie()
-      appendProducts(data.name, 12)
-      break
+        appendtitlehoodie()
+        appendProducts(data.name, 12)
+        break
       case ' 패딩':
-      appendtitlepadding()
-      appendProducts(data.name, 12)
-      break
-    default: 
-    appendProducts(data.name, 12)
+        appendtitlepadding()
+        appendProducts(data.name, 12)
+        break
+      default:
+        appendProducts(data.name, 12)
     }
-    
+
     footerbanner()
     appendFooter()
   })
@@ -121,15 +136,15 @@ router
     console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts(' 남성', 4, 12)
+    appendProducts('남성', 4, 12)
     footerbanner()
     appendFooter()
   })
-  
+
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts(' 남성', 4, 12)
+    appendProducts('남성', 4, 12)
     footerbanner()
     appendFooter()
     // console.log(document.location.href)
@@ -139,8 +154,6 @@ router
     // console.log(searchParams.get('name'))
   })
   .resolve()
- 
-
 
 let Top = document.createElement('div')
 Top.className = 'top'
