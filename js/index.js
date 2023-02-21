@@ -4,8 +4,23 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
-import {exhibitions, exhibitsurgery, exhibitwnderkammer, exhibitpayco, exhibittoss, exhibitpoint} from './exhibitions'
-import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlehoodie, appendtitlepadding } from './header'
+import {
+  exhibitions,
+  exhibitsurgery,
+  exhibitwnderkammer,
+  exhibitpayco,
+  exhibittoss,
+  exhibitpoint,
+} from './exhibitions'
+import {
+  appendHeadermain,
+  appendHeadersub,
+  appendtitleBW,
+  appendtitleNike,
+  appendtitlejacket,
+  appendtitlehoodie,
+  appendtitlepadding,
+} from './header'
 import {
   bannerimg,
   bannerimg2,
@@ -14,22 +29,37 @@ import {
   footerbanner,
   line,
 } from './banner'
-import appendBrandFocus from './brandFocus'
+import { appendBrandFocus, appendManBrandFocus, appendWomanBrandFocus, appendBrandBrandFocus } from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
 import { appendsearch } from './search'
+import { adminPage, appendAdminPage } from './admin'
 const router = new Navigo('/')
 
 router
-  .on('/', function () {
+  .on('/', function (data) {
+    console.log(data)
     appendHeadermain()
     appendbanner()
     appendShortcut()
     line()
     appendProducts('남성', 4, 12)
     line()
-    appendBrandFocus()
+    switch(data.queryString) {
+      case '':
+      appendBrandFocus()
+      break
+      case 'man':
+      appendManBrandFocus()
+      break
+      case 'woman':
+      appendWomanBrandFocus()
+      break
+      case 'brand':
+      appendBrandBrandFocus()
+      break
+    }
     bannerimg()
     bannerimg2()
     bannerimg3()
@@ -37,6 +67,10 @@ router
     appendsearch()
     footerbanner()
     appendFooter()
+  })
+  .on('/admin', function () {
+    document.body.innerHTML = ''
+    adminPage()
   })
   .on('/login', function () {
     document.body.innerHTML = ''
@@ -50,13 +84,17 @@ router
     appendJoin()
     appendFooter()
   })
-  .on('/shop', function (data) {
+  .on('/shop', function (datadata) {
+    let url = new URL(document.location.href)
+    const searchParams = url.searchParams
+    console.log(searchParams.get('id'))
     document.body.innerHTML = ''
     console.log(data.queryString)
     appendHeadersub()
     smallappendbanner()
     appendProducts(data.queryString, 4, 12)
     // appendShopContent()
+    appendProducts(` ${searchParams.get('id')}`, 4, 12)
     footerbanner()
     appendFooter()
   })
@@ -86,17 +124,17 @@ router
       appendProducts(data.name, 12)
       break
       case 'payco':
-      exhibitpayco()
-      break
+        exhibitpayco()
+        break
       case 'toss':
-      exhibittoss()
-      break
+        exhibittoss()
+        break
       case 'point':
-      exhibitpoint()
-      break
+        exhibitpoint()
+        break
       case 'Instagram':
-      location.replace('https://www.instagram.com/kream.co.kr/')
-      break
+        location.replace('https://www.instagram.com/kream.co.kr/')
+        break
       // 고정 bannerimg 페이지
       case '신발':
       appendtitleBW()
@@ -117,7 +155,7 @@ router
     default: 
     appendProducts(data.name, 12)
     }
-    
+
     footerbanner()
     appendFooter()
   })
@@ -135,8 +173,6 @@ router
     // console.log(searchParams.get('name'))
   })
   .resolve()
- 
-
 
 let Top = document.createElement('div')
 Top.className = 'top'
