@@ -1,6 +1,6 @@
 import { appendItem, appendSmallItem } from './item'
-export let listIndex = 0
-export function appendProducts(tag, dpnum, num) {
+
+export function appendProducts(tag, dpnum, num, listIndex) {
   const productEl = document.createElement('div')
   productEl.className = 'product'
   productEl.innerHTML = /*html */ `
@@ -16,10 +16,9 @@ export function appendProducts(tag, dpnum, num) {
       </div>
     `
   document.body.append(productEl)
-
-  appendItem(tag, dpnum, num)
+  appendItem(tag, dpnum, num, productEl, listIndex)
   // 여기는 한번만 렌더링
-  const productListEl = document.querySelector('.product__list')
+  const productListEl = productEl.querySelector('.product__list')
   const moreListEl = document.createElement('div')
   moreListEl.className = 'product__list__more'
   moreListEl.innerHTML = /*html*/ `
@@ -27,14 +26,14 @@ export function appendProducts(tag, dpnum, num) {
   `
   productListEl.after(moreListEl)
 
-  const morebtnEl = document.querySelector('.morebtn')
+  const morebtnEl = productEl.querySelector('.morebtn')
   morebtnEl.addEventListener('click', () => {
     listIndex++
-    appendItem(tag, dpnum, num)
+    appendItem(tag, dpnum, num, productEl, listIndex)
   })
 }
 /** 상점페이지 제품 목록을 렌더링하는 메소드*/
-export function appendSmallProducts(tag, dpnum, num, content) {
+export function appendSmallProducts(tag, dpnum, num, content, listIndex) {
   const productEl = document.createElement('div')
   productEl.className = 'product'
   productEl.innerHTML = /*html */ `
@@ -51,7 +50,7 @@ export function appendSmallProducts(tag, dpnum, num, content) {
     `
   content.append(productEl)
 
-  appendSmallItem(tag, dpnum, num)
+  appendSmallItem(tag, dpnum, num, listIndex)
   // 여기는 한번만 렌더링
   const productListEl = document.querySelector('.product__list')
   const moreListEl = document.createElement('div')
@@ -64,6 +63,6 @@ export function appendSmallProducts(tag, dpnum, num, content) {
   const morebtnEl = document.querySelector('.morebtn')
   morebtnEl.addEventListener('click', () => {
     listIndex++
-    appendSmallItem(tag, dpnum, num)
+    appendSmallItem(tag, dpnum, num, listIndex)
   })
 }

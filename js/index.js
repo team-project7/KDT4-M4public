@@ -29,7 +29,12 @@ import {
   footerbanner,
   line,
 } from './banner'
-import { appendBrandFocus, appendManBrandFocus, appendWomanBrandFocus, appendBrandBrandFocus } from './brandFocus'
+import {
+  appendBrandFocus,
+  appendManBrandFocus,
+  appendWomanBrandFocus,
+  appendBrandBrandFocus,
+} from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
@@ -43,24 +48,25 @@ router
     appendbanner()
     appendShortcut()
     line()
-    appendProducts('남성', 4, 12)
+    appendProducts('남성', 4, 12, 0)
     line()
-    switch(data.queryString) {
+    switch (data.queryString) {
       case '':
-      appendBrandFocus()
-      break
+        appendBrandFocus()
+        break
       case 'man':
-      appendManBrandFocus()
-      break
+        appendManBrandFocus()
+        break
       case 'woman':
-      appendWomanBrandFocus()
-      break
+        appendWomanBrandFocus()
+        break
       case 'brand':
-      appendBrandBrandFocus()
-      break
+        appendBrandBrandFocus()
+        break
     }
     bannerimg()
     bannerimg2()
+    appendProducts('여성', 4, 12, 0)
     bannerimg3()
     bannerimg4()
     footerbanner()
@@ -90,7 +96,7 @@ router
     appendHeadersub()
     smallappendbanner()
     appendShopContent()
-    appendProducts(` ${searchParams.get('id')}`, 4, 12)
+    /*  appendProducts(` ${searchParams.get('id')}`, 4, 12) */
     footerbanner()
     appendFooter()
   })
