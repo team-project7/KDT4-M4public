@@ -29,7 +29,7 @@ import {
   footerbanner,
   line,
 } from './banner'
-import appendBrandFocus from './brandFocus'
+import { appendBrandFocus, appendManBrandFocus, appendWomanBrandFocus, appendBrandBrandFocus } from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
@@ -37,14 +37,28 @@ import { adminPage, appendAdminPage } from './admin'
 const router = new Navigo('/')
 
 router
-  .on('/', function () {
+  .on('/', function (data) {
+    console.log(data)
     appendHeadermain()
     appendbanner()
     appendShortcut()
     line()
     appendProducts('남성', 4, 12)
     line()
-    appendBrandFocus()
+    switch(data.queryString) {
+      case '':
+      appendBrandFocus()
+      break
+      case 'man':
+      appendManBrandFocus()
+      break
+      case 'woman':
+      appendWomanBrandFocus()
+      break
+      case 'brand':
+      appendBrandBrandFocus()
+      break
+    }
     bannerimg()
     bannerimg2()
     bannerimg3()
@@ -68,11 +82,15 @@ router
     appendJoin()
     appendFooter()
   })
-  .on('/shop', function () {
+  .on('/shop', function (data) {
+    let url = new URL(document.location.href)
+    const searchParams = url.searchParams
+    console.log(searchParams.get('id'))
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
     appendShopContent()
+    appendProducts(` ${searchParams.get('id')}`, 4, 12)
     footerbanner()
     appendFooter()
   })
