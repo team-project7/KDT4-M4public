@@ -89,12 +89,10 @@ router
     const searchParams = url.searchParams
     console.log(searchParams.get('id'))
     document.body.innerHTML = ''
-    console.log(data.queryString)
     appendHeadersub()
     smallappendbanner()
-    appendProducts(data.queryString, 4, 12)
-    // appendShopContent()
-    appendProducts(` ${searchParams.get('id')}`, 4, 12)
+    appendShopContent()
+    // appendProducts(`${searchParams.get('id')}`, 4, 12)
     footerbanner()
     appendFooter()
   })

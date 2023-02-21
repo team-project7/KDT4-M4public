@@ -81,11 +81,15 @@ searchtitleEl.addEventListener('input', function() {
         findtitle(searchtext)
     })
 
-  
+    let searchtxtlist = []
 searchtitleEl.addEventListener('keydown', function (e) {
     let searchtext = searchtitleEl.value.trim();
     if(e.key === 'Enter' && !e.isComposing) {
-        location.replace(`/shop/?${searchtext}`)
+        
+        searchtxtlist.push(searchtext)
+        // localStorage.setItem('searchtxtlist', JSON.stringify(searchtxtlist));
+        aaa(searchtxtlist)
+        bbb(searchtext)
     }
 })
 
@@ -127,7 +131,11 @@ export function searchList(items,newseartext){
     
     `
     searchList? searchList.append(productListtag) : null
-
+    // productListtag.addEventListener('click', (e) => {
+ 
+    //     e.preventdefault();
+    //     localStorage.setItem('searchtxtlist', JSON.stringify(tags));
+    // })
     items.filter(a => a.title.toLowerCase().includes(newseartext)).map((title) => {
         let productListItem = document.createElement('div');
         productListItem.classList.add('search-list-item');
@@ -146,4 +154,11 @@ export function searchList(items,newseartext){
     }) 
 }
 
+
+// function aaa(searchtxtlist) {
+//     localStorage.setItem('searchtxtlist', JSON.stringify(searchtxtlist));
+// }
+function bbb(searchtext) {
+    location.replace(`/shop/?${searchtext}`)
+}
 
