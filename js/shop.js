@@ -34,5 +34,5 @@ export default function appendShopContent() {
 
     searchFilterEl.append(filterListEl)
   })
-  appendSmallProducts(' 남성', 4, 12, contentEl)
+  appendSmallProducts('남성', 4, 12, contentEl)
 }

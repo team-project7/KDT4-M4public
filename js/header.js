@@ -39,9 +39,12 @@ export function appendHeadermain() {
                             </ul>
                         </nav>
                         <div class="search_btn_box">
-                            <a href="" class="btn_search">
+                            <button class="btn_search">
                                 <img src="https://user-images.githubusercontent.com/98297436/217512067-d5706d42-f578-44c5-86cd-e2fe7080c304.png" alt="">
-                            </a>
+                            </button>
+                            <!-- <a href="" class="btn_search"> -->
+                                
+                            <!-- </a> -->
                         </div>
                     </div>
                 </div>
@@ -69,6 +72,7 @@ export function appendHeadermain() {
          <div class="main_inner"></div>
        </div>
           `
+          
  document.body.append(headerEl)
 
  let token = localStorage.getItem('token')
@@ -94,7 +98,11 @@ export function appendHeadermain() {
 // homeEl.addEventListener('click', () => {
 //     homeEl.classList.add('active')
 // })
+
+
 }
+
+
 
 export function appendHeadersub() {
     const headerEl = document.createElement('header')

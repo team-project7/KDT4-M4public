@@ -18,6 +18,7 @@ import appendBrandFocus from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
+import { appendsearch } from './search'
 const router = new Navigo('/')
 
 router
@@ -26,13 +27,14 @@ router
     appendbanner()
     appendShortcut()
     line()
-    appendProducts(' 남성', 4, 12)
+    appendProducts('남성', 4, 12)
     line()
     appendBrandFocus()
     bannerimg()
     bannerimg2()
     bannerimg3()
     bannerimg4()
+    appendsearch()
     footerbanner()
     appendFooter()
   })
@@ -48,11 +50,13 @@ router
     appendJoin()
     appendFooter()
   })
-  .on('/shop', function () {
+  .on('/shop', function (data) {
     document.body.innerHTML = ''
+    console.log(data.queryString)
     appendHeadersub()
     smallappendbanner()
-    appendShopContent()
+    appendProducts(data.queryString, 4, 12)
+    // appendShopContent()
     footerbanner()
     appendFooter()
   })
@@ -62,22 +66,22 @@ router
     appendHeadersub()
     switch (data.name) {
       // main banner-swiper 페이지
-      case ' 스마트워치' :
+      case '스마트워치' :
       exhibitions()
       appendProducts(data.name, 12)
       break
-      case ' 남성' :
+      case '남성' :
       exhibitsurgery()
       appendProducts(data.name, 12)
       break
-      case ' 셔츠' :
+      case '셔츠' :
       exhibitwnderkammer()
       appendProducts(data.name, 12)
       break
-      case ' 셔츠' :
+      case '셔츠' :
       break
       // shop small-swiper 페이지
-      case ' 스니커즈':
+      case '스니커즈':
       appendtitleNike()
       appendProducts(data.name, 12)
       break
@@ -94,19 +98,19 @@ router
       location.replace('https://www.instagram.com/kream.co.kr/')
       break
       // 고정 bannerimg 페이지
-      case ' 신발':
+      case '신발':
       appendtitleBW()
       appendProducts(data.name, 12)
       break
-      case ' 의류':
+      case '의류':
       appendtitlejacket()
       appendProducts(data.name, 12)
       break
-      case ' 후드':
+      case '후드':
       appendtitlehoodie()
       appendProducts(data.name, 12)
       break
-      case ' 패딩':
+      case '패딩':
       appendtitlepadding()
       appendProducts(data.name, 12)
       break
@@ -117,19 +121,11 @@ router
     footerbanner()
     appendFooter()
   })
-  .on('/tab/:exhibitions', function ({ data }) {
-    console.log(data)
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendProducts(' 남성', 4, 12)
-    footerbanner()
-    appendFooter()
-  })
   
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts(' 남성', 4, 12)
+    appendProducts('남성', 4, 12)
     footerbanner()
     appendFooter()
     // console.log(document.location.href)
