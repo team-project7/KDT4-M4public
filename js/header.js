@@ -1,9 +1,9 @@
 import { logout } from './request'
 
 export function appendHeadermain() {
-    const headerEl = document.createElement('header')
-    headerEl.className = 'header'
-    headerEl.innerHTML = /*html*/ `
+  const headerEl = document.createElement('header')
+  headerEl.className = 'header'
+  headerEl.innerHTML = /*html*/ `
        <div class="header">
          <div class="header_top">
             <div class="top_inner">
@@ -34,7 +34,7 @@ export function appendHeadermain() {
                                     <a href="/shop" class="gnb_link">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="" class="gnb_link">MY</a>
+                                    <a href="/my" class="gnb_link">MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -69,37 +69,36 @@ export function appendHeadermain() {
          <div class="main_inner"></div>
        </div>
           `
- document.body.append(headerEl)
+  document.body.append(headerEl)
 
- let token = localStorage.getItem('token')
- 
- const loginBtnEl = document.querySelector('#login')
- const logoutBtnEl = document.querySelector('#logout')
-    if(token) {
-        loginBtnEl.innerHTML = ''
-     } 
-     else {
-        logoutBtnEl.innerHTML = ''
-     }
+  let token = localStorage.getItem('token')
 
- logoutBtnEl.addEventListener('click', () => {
-       logout(token)
-       window.alert('로그아웃 완료!')
-        localStorage.removeItem('token')
-        localStorage.removeItem('email')
-        localStorage.removeItem('displayName')
-        location.replace('/login')
-})
-// const homeEl = document.querySelector('.gnb_link')
-// homeEl.addEventListener('click', () => {
-//     homeEl.classList.add('active')
-// })
+  const loginBtnEl = document.querySelector('#login')
+  const logoutBtnEl = document.querySelector('#logout')
+  if (token) {
+    loginBtnEl.innerHTML = ''
+  } else {
+    logoutBtnEl.innerHTML = ''
+  }
+
+  logoutBtnEl.addEventListener('click', () => {
+    logout(token)
+    window.alert('로그아웃 완료!')
+    localStorage.removeItem('token')
+    localStorage.removeItem('email')
+    localStorage.removeItem('displayName')
+    location.replace('/login')
+  })
+  // const homeEl = document.querySelector('.gnb_link')
+  // homeEl.addEventListener('click', () => {
+  //     homeEl.classList.add('active')
+  // })
 }
 
 export function appendHeadersub() {
-    const headerEl = document.createElement('header')
-    headerEl.className = 'header'
-    headerEl.innerHTML = /*html*/ `
+  const headerEl = document.createElement('header')
+  headerEl.className = 'header'
+  headerEl.innerHTML = /*html*/ `
        <div class="header">
          <div class="header_top">
             <div class="top_inner">
@@ -129,7 +128,7 @@ export function appendHeadersub() {
                                     <a href="/shop">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="">MY</a>
+                                    <a href="/my">MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -144,6 +143,5 @@ export function appendHeadersub() {
          </div>
        </div>
           `
- document.body.append(headerEl)
+  document.body.append(headerEl)
 }
-  
