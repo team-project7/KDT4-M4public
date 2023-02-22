@@ -33,7 +33,7 @@ export function appendProducts(tag, dpnum, num, listIndex) {
   })
 }
 /** 상점페이지 제품 목록을 렌더링하는 메소드*/
-export function appendSmallProducts(tag, dpnum, num, content, listIndex) {
+export function appendSmallProducts(tag, dpnum, content, listIndex) {
   const productEl = document.createElement('div')
   productEl.className = 'product'
   productEl.innerHTML = /*html */ `
@@ -50,7 +50,7 @@ export function appendSmallProducts(tag, dpnum, num, content, listIndex) {
     `
   content.append(productEl)
 
-  appendSmallItem(tag, dpnum, num, listIndex)
+  appendSmallItem(tag, dpnum, listIndex)
   // 여기는 한번만 렌더링
   const productListEl = document.querySelector('.product__list')
   const moreListEl = document.createElement('div')
@@ -63,6 +63,6 @@ export function appendSmallProducts(tag, dpnum, num, content, listIndex) {
   const morebtnEl = document.querySelector('.morebtn')
   morebtnEl.addEventListener('click', () => {
     listIndex++
-    appendSmallItem(tag, dpnum, num, listIndex)
+    appendSmallItem(tag, dpnum, listIndex)
   })
 }
