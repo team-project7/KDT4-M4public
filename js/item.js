@@ -16,7 +16,6 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
     container.querySelector('.product__list__more').remove()
   }
   const productListFirstEl = container.querySelector('.product__list__first')
-  console.log(chunk)
   // 제품 아이템 엘리먼트
   chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
