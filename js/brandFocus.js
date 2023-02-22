@@ -31,7 +31,6 @@ function appendBrandFocus() {
   
     brandItems.map((brand) => {
       const recommendBrandEl = document.createElement('div')
-    
       recommendBrandEl.innerHTML = `
         <div class="recommendBrand">
           <a href="/shop?id=${brand.engname}" id="${brand.engname}">
@@ -39,7 +38,7 @@ function appendBrandFocus() {
             <h4>${brand.name}</h4>
           </a>
         </div>
-            `
+      `
       // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
             
       recommendBrandEls.append(recommendBrandEl)

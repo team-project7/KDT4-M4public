@@ -61,77 +61,77 @@ import imgBrandArchives from '../image/brandBrandFocus_archives.jpg'
 export let brandItems = [
   {
     name: '샤넬',
-    engname: 'chanel',
+    engname: 'Chanel',
     img: `${imgRecommandChanel}`
   },
   {
     name: '아미',
-    engname: 'ami',
+    engname: 'Ami',
     img: `${imgRecommandAmi}`
   },
   {
     name: '롤렉스',
-    engname: 'rolex',
+    engname: 'Rolex',
     img: `${imgRecommandRolex}`
   },
   {
     name: '르메르',
-    engname: 'lemaire',
+    engname: 'Lemaire',
     img: `${imgRecommandLemaire}`
   },
   {
     name: '레고',
-    engname: 'lego',
+    engname: 'Lego',
     img: `${imgRecommandLego}`
   },
   {
     name: '스톤 아일랜드',
-    engname: 'stoneisland',
+    engname: 'Stone Island',
     img: `${imgRecommandStoneisland}`
   },
   {
     name: '아크네',
-    engname: 'acne',
+    engname: 'Acne',
     img: `${imgRecommandAcne}`
   },
   {
     name: '루이비통',
-    engname: 'louis',
+    engname: 'Louis Vuitton',
     img: `${imgRecommandLouis}`
   },
   {
     name: '메종 키츠네',
-    engname: 'maison',
+    engname: 'Maison Kitsune',
     img: `${imgRecommandMaison}`
   },
   {
     name: '미우 미우',
-    engname: 'miumiu',
+    engname: 'Miu Miu',
     img: `${imgRecommandMiumiu}`
   },
   {
     name: '폴로',
-    engname: 'polo',
+    engname: 'Polo Ralph Lauren',
     img: `${imgRecommandPolo}`
   },
   {
     name: '에르메스',
-    engname: 'hermes',
+    engname: 'Hermes',
     img: `${imgRecommandHermes}`
   },
   {
     name: '우영미',
-    engname: 'wooyoungmi',
+    engname: 'Wooyoungmi',
     img: `${imgRecommandWooyoungmi}`
   },
   {
     name: '애플',
-    engname: 'apple',
+    engname: 'Apple',
     img: `${imgRecommandApple}`
   },
   {
     name: '비비안 웨스트우드',
-    engname: 'vivienne',
+    engname: 'Vivienne Westwood',
     img: `${imgRecommandVivienne}`
   },
 ]
@@ -141,52 +141,52 @@ export let brandItems = [
 export let manBrandItems = [
   {
     name: '파타고니아',
-    engname: 'patagonia',
+    engname: 'Patagonia',
     img: `${imgManPatagonia}`
   },
   {
     name: '소니',
-    engname: 'soni',
+    engname: 'Soni',
     img: `${imgManSoni}`
   },
   {
     name: '바버',
-    engname: 'barbour',
+    engname: 'Barbour',
     img: `${imgManBarbour}`
   },
   {
     name: '보테가 베네타',
-    engname: 'bottegaveneta',
+    engname: 'Bottegaveneta',
     img: `${imgManBottegaveneta}`
   },
   {
     name: '피어오브갓',
-    engname: 'fearofgod',
+    engname: 'Fear of god',
     img: `${imgManFearofgod}`
   },
   {
     name: '아크테릭스',
-    engname: 'arcteryx',
+    engname: 'Arcteryx',
     img: `${imgManArcteryx}`
   },
   {
     name: '우영미',
-    engname: 'wooyoungmi',
+    engname: 'Wooyoungmi',
     img: `${imgManWooyoungmi}`
   },
   {
     name: '톰브라운',
-    engname: 'thombrowne',
+    engname: 'Thombrowne',
     img: `${imgManThombrowne}`
   },
   {
     name: 'C.P.컴퍼니',
-    engname: 'cpcompany',
+    engname: 'Cpcompany',
     img: `${imgManCpcompany}`
   },
   {
     name: '야스히로',
-    engname: 'miharayasuhiro',
+    engname: 'Miharayasuhiro',
     img: `${imgManMiharayasuhiro}`
   },
 ]
@@ -196,52 +196,52 @@ export let manBrandItems = [
 export let womanBrandItems = [
   {
     name: '생로랑',
-    engname: 'saintlaurent',
+    engname: 'Saintlaurent',
     img: `${imgWomanSaintlaurent}`
   },
   {
     name: '가니',
-    engname: 'ganni',
+    engname: 'Ganni',
     img: `${imgWomanGanni}`
   },
   {
     name: '마르지엘라',
-    engname: 'maisonmargiela',
+    engname: 'Maison Margiela',
     img: `${imgWomanMaisonmargiela}`
   },
   {
     name: '비비안 웨스트우드',
-    engname: 'viviennewestwood',
+    engname: 'Vivienne Westwood',
     img: `${imgWomanViviennewestwood}`
   },
   {
     name: '디올',
-    engname: 'dior',
+    engname: 'Dior',
     img: `${imgWomanDior}`
   },
   {
     name: '셀린느',
-    engname: 'celine',
+    engname: 'Celine',
     img: `${imgWomanCeline}`
   },
   {
     name: '텔파',
-    engname: 'telfar',
+    engname: 'Telfar',
     img: `${imgWomanTelfar}`
   },
   {
     name: '프라다',
-    engname: 'prada',
+    engname: 'Prada',
     img: `${imgWomanPrada}`
   },
   {
     name: '이자벨 마랑',
-    engname: 'isabelmarant',
+    engname: 'Isabelmarant',
     img: `${imgWomanIsabelmarant}`
   },
   {
     name: '다이슨',
-    engname: 'dyson',
+    engname: 'Dyson',
     img: `${imgWomanDyson}`
   },
 ]
@@ -251,77 +251,77 @@ export let womanBrandItems = [
 export let brandBrandItems = [
   {
     name: '폴리테루',
-    engname: 'polyteru',
+    engname: 'Polyteru',
     img: `${imgBrandPolyteru}`
   },
   {
     name: '크레커',
-    engname: 'kracker',
+    engname: 'Kracker',
     img: `${imgBrandKracker}`
   },
   {
     name: '소니',
-    engname: 'soni',
+    engname: 'Soni',
     img: `${imgBrandSoni}`
   },
   {
     name: '킨',
-    engname: 'keen',
+    engname: 'Keen',
     img: `${imgBrandKeen}`
   },
   {
     name: '사파리스팟',
-    engname: 'safarispot',
+    engname: 'Safarispot',
     img: `${imgBrandSafarispot}`
   },
   {
     name: '에스티유',
-    engname: 'stu',
+    engname: 'Stu',
     img: `${imgBrandStu}`
   },
   {
     name: '렉토',
-    engname: 'recto',
+    engname: 'Recto',
     img: `${imgBrandRecto}`
   },
   {
     name: '써저리',
-    engname: 'surgery',
+    engname: 'Surgery',
     img: `${imgBrandSurgery}`
   },
   {
     name: '이미스',
-    engname: 'emis',
+    engname: 'Emis',
     img: `${imgBrandEmis}`
   },
   {
     name: '더뮤지엄비지터',
-    engname: 'themuseumvisitor',
+    engname: 'The Museum Visitor',
     img: `${imgBrandThemuseumvisitor}`
   },
   {
     name: '넘버링',
-    engname: 'numbering',
+    engname: 'Numbering',
     img: `${imgBrandNumbering}`
   },
   {
     name: '인스턴트펑크',
-    engname: 'instantfunk',
+    engname: 'Instantfunk',
     img: `${imgBrandInstantfunk}`
   },
   {
     name: '스쿠도',
-    engname: 'scudo',
+    engname: 'Scudo',
     img: `${imgBrandScudo}`
   },
   {
     name: '미수아바흐브',
-    engname: 'misuabarbe',
+    engname: 'Misuabarbe',
     img: `${imgBrandMisuabarbe}`
   },
   {
     name: '2000아카이브스',
-    engname: 'archives',
+    engname: 'Archives',
     img: `${imgBrandArchives}`
   },
 ]
