@@ -58,14 +58,17 @@ export async function searchAll() {
   )
   return res.json()
 }
-console.log(searchAll())
-export async function searchByName() {
+
+export async function searchByName(searchText) {
   headers.masterKey = true
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
     {
       method: 'POST',
       headers,
+      body: JSON.stringify({
+        searchText: searchText,
+      }),
     }
   )
  

@@ -20,7 +20,7 @@ function appendBrandFocus() {
   //호출
   renderItems(brandItems)
 
-  // redering
+  // rendering
   document.body.append(brandFocusEl)
   brandFocusEl.append(h3El)
   brandFocusEl.append(smallEl)
