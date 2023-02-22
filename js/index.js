@@ -39,11 +39,13 @@ import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
 import { adminPage, appendAdminPage } from './admin'
+import appendDetailedItem from './detailedItem'
 const router = new Navigo('/')
 
 router
   .on('/', function (data) {
     console.log(data)
+    appendDetailedItem()
     appendHeadermain()
     appendbanner()
     appendShortcut()
