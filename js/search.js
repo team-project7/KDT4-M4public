@@ -149,7 +149,7 @@ searchtitleEl.addEventListener('keydown', function (e) {
     }
         
         localStorage.setItem('searchtxtlist', searchtxtlist);
-      location.href = `/shop/?${searchtext}`
+      location.href = `/shop/?id=${searchtext}`
         
        
     }
@@ -223,7 +223,7 @@ export function searchList(items,newseartext){
     let newlist = []
     let newsearchlist = localStorage.getItem('searchtxtlist')
     let tagselect = document.getElementById('tag_select')
-   
+    tagselect?
     tagselect.addEventListener('click', () => {
     if(newsearchlist === null) {
         newlist.push(tags)
@@ -231,7 +231,7 @@ export function searchList(items,newseartext){
         newlist.push(newsearchlist, tags)
     }
         localStorage.setItem('searchtxtlist', newlist);
-   }) 
+   }) : null
 
     
     items.filter(a => a.title.toLowerCase().includes(newseartext)).map((title) => {
