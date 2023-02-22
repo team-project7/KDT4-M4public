@@ -89,9 +89,6 @@ router
     appendFooter()
   })
   .on('/shop', function (data) {
-    let url = new URL(document.location.href)
-    const searchParams = url.searchParams
-    console.log(searchParams.get('id'))
     document.body.innerHTML = ''
     appendHeadersub()
     smallappendbanner()
