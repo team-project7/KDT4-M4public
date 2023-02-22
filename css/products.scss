@@ -118,6 +118,18 @@ div {
             box-sizing: border-box;
             height: auto;
 
+            &--sm {
+              width: 230px;
+              height: 230px;
+
+              img {
+                color: inherit;
+                box-sizing: border-box;
+                width: 230px;
+                height: 230px;
+              }
+            }
+
             img {
               color: inherit;
               box-sizing: border-box;
@@ -155,8 +167,6 @@ div {
           padding: 0;
           &__text {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
             overflow: hidden;
             display: inline-block;
             vertical-align: top;
@@ -171,6 +181,18 @@ div {
             border-bottom: 1px solid #222;
             width: fit-content;
             max-width: 100%;
+
+            &--sm {
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              line-height: 16px;
+              font-size: 13px;
+              letter-spacing: -0.07px;
+              font-weight: 700;
+              color: #333;
+              margin-bottom: 2px;
+            }
           }
         }
         .name {
@@ -184,6 +206,13 @@ div {
           color: #222;
           max-height: 44px;
           margin-bottom: 2px;
+          &--sm {
+            box-sizing: border-box;
+            line-height: 16px;
+            font-size: 13px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
         }
         .price {
           color: inherit;
@@ -206,6 +235,13 @@ div {
               font-size: 15px;
               font-weight: 700;
               letter-spacing: -0.04px;
+
+              &--sm {
+                box-sizing: border-box;
+                line-height: 17px;
+                font-size: 14px;
+                font-weight: 700;
+              }
             }
           }
         }

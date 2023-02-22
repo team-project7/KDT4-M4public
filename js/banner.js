@@ -1,26 +1,15 @@
-import banner1 from '../image/banner1.jpg';
-import banner2 from '../image/banner2.jpg';
-import banner3 from '../image/banner3.jpg';
-import banner4 from '../image/banner4.jpg';
-import banner5 from '../image/banner5.jpg';
-import banner6 from '../image/banner6.jpg';
-import footerbanner1 from '../image/footerbanner1.png';
-import footerbanner2 from '../image/footerbanner2.png';
-
-
-const srcarray = [banner1,banner2,banner3,banner4,banner5,banner6,footerbanner1,footerbanner2]
-const bannercolor = ['#F2F2F2','#9A9C9E','#9094A5','#BFBBB3','#C3C8C4','#D1D3D7']
-const linkarray = ["/shop"]
-
+import { srcarray } from './banneritems';
+import { appendHeadermain, appendHeadersub, appendtitleBW, appendtitleNike, appendtitlejacket, appendtitlechanel, appendtitlepadding } from './header'
 export function bannerimg() {
+   
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
-    bannerEl.style.backgroundColor = `${bannercolor[0]}`;
+    bannerEl.style.backgroundColor = `${srcarray[0].bannercolor}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = `/exhibitions/${srcarray[0].name}`
     const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[0];
+    bannerimgEl.src = srcarray[0].img;
     bannerimgEl.alt = 'banner';
 
 
@@ -34,11 +23,11 @@ export function bannerimg2() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
-    bannerEl.style.backgroundColor = `${bannercolor[1]}`;
+    bannerEl.style.backgroundColor = `${srcarray[1].bannercolor}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = `/exhibitions/${srcarray[1].name}`
     const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[1];
+    bannerimgEl.src = srcarray[1].img;
     bannerimgEl.alt = 'banner';
 
     document.body.append(bannerHTML)
@@ -51,11 +40,11 @@ export function bannerimg3() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
-    bannerEl.style.backgroundColor = `${bannercolor[2]}`;
+    bannerEl.style.backgroundColor = `${srcarray[2].bannercolor}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = `/exhibitions/${srcarray[2].name}`
     const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[2];
+    bannerimgEl.src = srcarray[2].img;
     bannerimgEl.alt = 'banner';
 
     document.body.append(bannerHTML)
@@ -68,45 +57,11 @@ export function bannerimg4() {
     const bannerHTML = document.createElement('div')
     let bannerEl = document.createElement('div');
     bannerEl.className = 'banner';
-    bannerEl.style.backgroundColor = `${bannercolor[3]}`;
+    bannerEl.style.backgroundColor = `${srcarray[3].bannercolor}`;
     const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
+    linkEl.href = `/exhibitions/${srcarray[3].name}`
     const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[3];
-    bannerimgEl.alt = 'banner';
-
-    document.body.append(bannerHTML)
-    bannerHTML.append(bannerEl)
-    bannerEl.append(linkEl)
-    linkEl.append(bannerimgEl);
-
-}
-export function bannerimg5() {
-    const bannerHTML = document.createElement('div')
-    let bannerEl = document.createElement('div');
-    bannerEl.className = 'banner';
-    bannerEl.style.backgroundColor = `${bannercolor[4]}`;
-    const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
-    const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[4];
-    bannerimgEl.alt = 'banner';
-
-    document.body.append(bannerHTML)
-    bannerHTML.append(bannerEl)
-    bannerEl.append(linkEl)
-    linkEl.append(bannerimgEl);
-
-}
-export function bannerimg6() {
-    const bannerHTML = document.createElement('div')
-    let bannerEl = document.createElement('div');
-    bannerEl.className = 'banner';
-    bannerEl.style.backgroundColor = `${bannercolor[5]}`;
-    const linkEl = document.createElement('a')
-    linkEl.href = linkarray[0]
-    const bannerimgEl = document.createElement('img')
-    bannerimgEl.src = srcarray[5];
+    bannerimgEl.src = srcarray[3].img;
     bannerimgEl.alt = 'banner';
 
     document.body.append(bannerHTML)
@@ -143,13 +98,11 @@ export function footerbanner() {
 
     linkEl.className = 'banner_box'
     linkEl2.className = 'banner_box'
-    linkEl.href = linkarray[0]
-    linkEl2.href = linkarray[0]
     const banbottomimg = document.createElement('img')
     const banbottomimg2 = document.createElement('img')
 
-    banbottomimg.src = srcarray[6];
-    banbottomimg2.src = srcarray[7];
+    banbottomimg.src = srcarray[4].img;
+    banbottomimg2.src = srcarray[5].img;
     banbottomimg.alt = 'banbottom';
     banbottomimg2.alt = 'banbottom';
     document.body.append(bannerbottom)
@@ -167,4 +120,11 @@ export function footerbanner() {
     infotitle2.innerHTML = 'KREAM 앱을 설치하여<br>한정판 스니커즈를 FLEX 하세요!.'
     infotxt2.innerHTML = '앱 설치하기'
 
+}
+
+
+export function line () {
+    const lineEl = document.createElement('div')
+    lineEl.className = 'line'
+    document.body.append(lineEl)
 }
