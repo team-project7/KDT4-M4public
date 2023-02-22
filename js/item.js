@@ -178,7 +178,7 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
         wishicon.src = wishOn
       }
     })
-
+    
     wishicon.onclick = (e) => {
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
       if (wishicon.src == wishOn) {
