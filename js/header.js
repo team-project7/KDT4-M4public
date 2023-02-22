@@ -49,16 +49,16 @@ export function appendHeadermain() {
          </div>
          <ul class="ul_tab">
             <li class="li_tab">
-                <a href="" class="tab"><span class="tab_name">추천</span></a>
+                <a href="?" class="tab"><span class="tab_name">추천</span></a>
             </li>
             <li class="li_tab">
-                <a href="" class="tab"><span class="tab_name">남성</span></a>
+                <a href="?man" class="tab"><span class="tab_name">남성</span></a>
             </li>
             <li class="li_tab">
-                <a href="" class="tab"><span class="tab_name">여성</span></a>
+                <a href="?woman" class="tab"><span class="tab_name">여성</span></a>
             </li>
             <li class="li_tab">
-                <a href="" class="tab"><span class="tab_name">브랜드</span></a>
+                <a href="?brand" class="tab"><span class="tab_name">브랜드</span></a>
             </li>
             
             <li class="li_tab">

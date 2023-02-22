@@ -1,10 +1,9 @@
 import wishOff from '../image/wish-off.png'
 import wishOn from '../image/wish-on.png'
 import { searchByTag } from './request'
-import { listIndex } from './products'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
-export async function appendItem(tag, dpnum, num) {
+export async function appendItem(tag, dpnum, num, container, listIndex) {
   const chunk = []
   const resultData = await searchByTag(tag)
   const chunkData = resultData.slice(0, num)
@@ -14,10 +13,10 @@ export async function appendItem(tag, dpnum, num) {
   }
   // 모든 제품이 렌더링 되었을 경우 더보기 버튼 제거
   if (listIndex + 1 === chunk.length) {
-    document.querySelector('.product__list__more').remove()
+    container.querySelector('.product__list__more').remove()
   }
-  const productListFirstEl = document.querySelector('.product__list__first')
-
+  const productListFirstEl = container.querySelector('.product__list__first')
+  console.log(chunk)
   // 제품 아이템 엘리먼트
   chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
@@ -93,13 +92,12 @@ export async function appendItem(tag, dpnum, num) {
   })
 }
 
-export async function appendSmallItem(tag, dpnum, num) {
+export async function appendSmallItem(tag, dpnum, listIndex) {
   const chunk = []
   const resultData = await searchByTag(tag)
-  const chunkData = resultData.slice(0, num)
-  chunk.push(chunkData.slice(0, dpnum))
-  for (let i = dpnum; i < chunkData.length; i += 8) {
-    chunk.push(chunkData.slice(i, i + 8))
+  chunk.push(resultData.slice(0, dpnum))
+  for (let i = dpnum; i < resultData.length; i += 8) {
+    chunk.push(resultData.slice(i, i + 8))
   }
   // 모든 제품이 렌더링 되었을 경우 더보기 버튼 제거
   if (listIndex + 1 === chunk.length) {
