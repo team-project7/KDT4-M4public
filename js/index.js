@@ -66,10 +66,13 @@ router
         break
     }
     bannerimg()
+    appendProducts('스니커즈', 4, 12, 0)
     bannerimg2()
     appendProducts('여성', 4, 12, 0)
     bannerimg3()
+    appendProducts('후드', 4, 12, 0)
     bannerimg4()
+    appendProducts('패딩', 4, 12, 0)
     appendsearch()
     footerbanner()
     appendFooter()
@@ -110,22 +113,22 @@ router
       // main banner-swiper 페이지
       case '스마트워치' :
       exhibitions()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case '남성' :
       exhibitsurgery()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case '셔츠' :
       exhibitwnderkammer()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case '셔츠' :
       break
       // shop small-swiper 페이지
       case '스니커즈':
       appendtitleNike()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case 'payco':
         exhibitpayco()
@@ -142,22 +145,22 @@ router
       // 고정 bannerimg 페이지
       case '신발':
       appendtitleBW()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case '의류':
       appendtitlejacket()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case '후드':
       appendtitlehoodie()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
       case '패딩':
       appendtitlepadding()
-      appendProducts(data.name, 12)
+      appendProducts(data.name, 8, 12, 0)
       break
     default: 
-    appendProducts(data.name, 12)
+    appendProducts(data.name, 12, 12, 0)
     }
 
     footerbanner()
@@ -167,7 +170,7 @@ router
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts('남성', 4, 12)
+    appendProducts('남성', 4, 12, 0)
     footerbanner()
     appendFooter()
     // console.log(document.location.href)

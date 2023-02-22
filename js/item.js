@@ -1,6 +1,7 @@
 import wishOff from '../image/wish-off.png'
 import wishOn from '../image/wish-on.png'
 import { searchByTag } from './request'
+import { listIndex } from './products'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
 export async function appendItem(tag, dpnum, num, container, listIndex) {
@@ -16,7 +17,7 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
     container.querySelector('.product__list__more').remove()
   }
   const productListFirstEl = container.querySelector('.product__list__first')
-  console.log(chunk)
+
   // 제품 아이템 엘리먼트
   chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
@@ -161,7 +162,7 @@ export async function appendSmallItem(tag, dpnum, num, listIndex) {
         wishicon.src = wishOn
       }
     })
-
+    
     wishicon.onclick = (e) => {
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
       if (wishicon.src == wishOn) {

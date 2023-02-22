@@ -63,7 +63,7 @@ export async function searchAll(searchtext) {
   searchList(json,newseartext)
   return json
 }
-
+console.log(searchAll())
 export async function searchByName(searchText) {
   headers.masterKey = true
   const res = await fetch(
