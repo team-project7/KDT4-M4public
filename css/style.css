@@ -12,4 +12,6 @@
 @import url('./my/myPoint.scss');
 @import url('./my/myProfile.scss');
 @import url('./my/myWish.scss');
-/*# sourceMappingURL=style.css.map */
+@import url('./exhibitionsimg.scss');
+@import url('./admin.scss');
+@import url('./error.scss'); /*# sourceMappingURL=style.css.map */

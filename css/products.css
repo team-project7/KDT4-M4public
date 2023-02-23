@@ -110,6 +110,16 @@ div {
   box-sizing: border-box;
   height: auto;
 }
+.product__item__inner .thumb_box .item__img--sm {
+  width: 230px;
+  height: 230px;
+}
+.product__item__inner .thumb_box .item__img--sm img {
+  color: inherit;
+  box-sizing: border-box;
+  width: 230px;
+  height: 230px;
+}
 .product__item__inner .thumb_box .item__img img {
   color: inherit;
   box-sizing: border-box;
@@ -145,8 +155,6 @@ div {
 }
 .product__item__inner .info_box .brand__text {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
   display: inline-block;
   vertical-align: top;
@@ -163,6 +171,17 @@ div {
   width: fit-content;
   max-width: 100%;
 }
+.product__item__inner .info_box .brand__text--sm {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+  font-size: 13px;
+  letter-spacing: -0.07px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2px;
+}
 .product__item__inner .info_box .name {
   box-sizing: border-box;
   line-height: 17px;
@@ -174,6 +193,13 @@ div {
   color: #222;
   max-height: 44px;
   margin-bottom: 2px;
+}
+.product__item__inner .info_box .name--sm {
+  box-sizing: border-box;
+  line-height: 16px;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .product__item__inner .info_box .price {
   color: inherit;
@@ -196,4 +222,10 @@ div {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.04px;
+}
+.product__item__inner .info_box .price .amount .amount_num--sm {
+  box-sizing: border-box;
+  line-height: 17px;
+  font-size: 14px;
+  font-weight: 700;
 }/*# sourceMappingURL=products.css.map */

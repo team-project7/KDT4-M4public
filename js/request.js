@@ -1,3 +1,5 @@
+import { searchList } from './search'
+
 const headers = {
   'content-type': 'application/json',
   apikey: 'FcKdtJs202301',
@@ -47,7 +49,7 @@ export async function logout(token) {
   return res.json()
 }
 
-export async function searchAll() {
+export async function searchAll(searchtext) {
   headers.masterKey = true
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products',
@@ -56,18 +58,25 @@ export async function searchAll() {
       headers,
     }
   )
-  return res.json()
+  let json = await res.json()
+  let newseartext = searchtext;
+  searchList(json,newseartext)
+  return json
 }
-
-export async function searchByName() {
+console.log(searchAll())
+export async function searchByName(searchText) {
   headers.masterKey = true
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
     {
       method: 'POST',
       headers,
+      body: JSON.stringify({
+        searchText: searchText,
+      }),
     }
   )
+ 
   return res.json()
 }
 
