@@ -6,4 +6,10 @@
 @import url('./header.scss');
 @import url('./shortcut.scss');
 @import url('./shop.scss');
-@import url('./my.scss'); /*# sourceMappingURL=style.css.map */
+@import url('./my/my.scss');
+@import url('./my/myAddress.scss');
+@import url('./my/myBuying.scss');
+@import url('./my/myPoint.scss');
+@import url('./my/myProfile.scss');
+@import url('./my/myWish.scss');
+/*# sourceMappingURL=style.css.map */

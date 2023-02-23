@@ -2,7 +2,7 @@ import appendFooter from './footer'
 import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
-import { appendMySnb } from './my'
+import { appendMySnb } from './my/my'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
 import shop from './shop'
@@ -21,6 +21,11 @@ import appendBrandFocus from './brandFocus'
 import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
+import { appendMyAddress } from './my/myAddress'
+import { appendMyBuying } from './my/myBuying'
+import { appendMyPoint } from './my/myPoint'
+import { appendMyProfile } from './my/myProfile'
+import { appendMyWish } from './my/myWish'
 const router = new Navigo('/')
 
 router
@@ -63,7 +68,36 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendMySnb()
-    footerbanner()
+    appendFooter()
+  })
+  .on('/my/address', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyAddress()
+    appendFooter()
+  })
+  .on('/my/buying', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyBuying()
+    appendFooter()
+  })
+  .on('/my/point', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyPoint()
+    appendFooter()
+  })
+  .on('/my/profile', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyProfile()
+    appendFooter()
+  })
+  .on('/my/wish', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyWish()
     appendFooter()
   })
   .on('/exhibitions/816', function () {

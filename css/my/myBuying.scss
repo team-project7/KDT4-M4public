@@ -1,0 +1,62 @@
+.content_area {
+  .my_purchase {
+    .content_title {
+      display: flex;
+      padding: 5px 0 6px;
+      .title {
+        font-size: 24px;
+        letter-spacing: -0.36px;
+        margin-bottom: 50px;
+        h3 {
+          line-height: 29px;
+          font-size: inherit;
+        }
+      }
+    }
+    .empty_area {
+      padding: 80px 0;
+      text-align: center;
+      p {
+        font-size: 13px;
+        letter-spacing: -0.07px;
+        color: rgba(34, 34, 34, 0.5);
+      }
+    }
+    .purchase_list_display_item {
+      background-color: rgb(255, 255, 255);
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ebebeb;
+      border-bottom: 1px solid #ebebeb;
+      align-items: center;
+      .list_item_img_wrap {
+        position: relative;
+        cursor: pointer;
+      }
+      .list_item_title {
+        margin-left: 30px;
+        line-height: 17px;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        cursor: pointer;
+      }
+      .item_date {
+        display: flex;
+        margin-left: auto;
+        margin-right: 10px;
+        .secondary_title {
+          color: rgba(34, 34, 34, 0.5);
+          font-size: 13px;
+          display: block;
+          align-items: end;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+        }
+      }
+    }
+  }
+}
