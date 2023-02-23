@@ -1,6 +1,6 @@
 // import brandFocus from '../image/brandFocus_acne.jpg'
 import { brandItems, manBrandItems, womanBrandItems, brandBrandItems } from './brandItems'
-export{ appendBrandFocus, appendBrandBrandFocus, appendWomanBrandFocus , appendManBrandFocus }
+export { appendBrandFocus, appendBrandBrandFocus, appendWomanBrandFocus , appendManBrandFocus }
 
 
 // 추천 브랜드 포커스
