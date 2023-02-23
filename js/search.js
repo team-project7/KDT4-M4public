@@ -154,22 +154,24 @@ searchtitleEl.addEventListener('keydown', function (e) {
        
     }
 })
-// let searchlist
-let searchlist = localStorage.getItem('searchtxtlist').split(',')
-// searchlist? localStorage.getItem('searchtxtlist').split(',') : null
-const recentlist = document.getElementById('recent_list')
+ if(localStorage.getItem('searchtxtlist')) {
+    let searchlist = localStorage.getItem('searchtxtlist').split(',')
 
-searchlist.map((list) =>  {
-    let linkEl = document.createElement('a')
-    linkEl.className = 'search_list_items'
-    linkEl.href = `/shop/?id=${list}`
-    linkEl.innerHTML = `
-     <span>${list}</span>
-     <img src = '${close}'>
-    `
-    recentlist.append(linkEl)
+    const recentlist = document.getElementById('recent_list')
+    searchlist?
+    searchlist.map((list) =>  {
+        let linkEl = document.createElement('a')
+        linkEl.className = 'search_list_items'
+        linkEl.href = `/shop/?id=${list}`
+        linkEl.innerHTML = `
+         <span>${list}</span>
+         <img src = '${close}'>
+        `
+        recentlist.append(linkEl)
+    
+    }) : null
+ }
 
-}) 
 let list_delete = document.getElementById('search_list_delete')
 list_delete.addEventListener('click', () => {
     localStorage.removeItem('searchtxtlist');
@@ -200,18 +202,19 @@ export function searchList(items,newseartext){
     const searchList = document.getElementById('search-list');
 
     items.map((title) => {
-     let b = title.tags.filter((a) => a.toLowerCase().includes(newseartext))
-    
-     tagsarr.push(...b)
-    
-    }) 
+        if(newseartext && Array.isArray(title.tags)) {
+            let b = title.tags.filter((a) => a.toLowerCase().includes(newseartext))
+            tagsarr.push(...b)
+        } 
+    })
+   
     let set = new Set(tagsarr);
     let tags = [...set].join('')
     searchList? searchList.innerHTML = "" : null;
     let productListtag = document.createElement('div');
     productListtag.classList.add('search-list-tags');
     productListtag.innerHTML = ` 
-    <a href='/shop/?${tags}' id='tag_select'>
+    <a href='/shop/?id=${tags}' id='tag_select'>
         <div>
         <p>${tags}</p>
         </div>
