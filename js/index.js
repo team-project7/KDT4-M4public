@@ -39,11 +39,11 @@ import { logout, searchAll } from './request'
 import { appendProducts } from './products'
 import appendShopContent from './shop'
 import { adminPage, appendAdminPage } from './admin'
+import appendErrorPage from './error'
 const router = new Navigo('/')
 
 router
   .on('/', function (data) {
-    console.log(data)
     appendHeadermain()
     appendbanner()
     appendShortcut()
@@ -173,11 +173,14 @@ router
     appendProducts('남성', 4, 12)
     footerbanner()
     appendFooter()
-    // console.log(document.location.href)
-    // let url = new URL(document.location.href)
-    // const searchParams = url.searchParams
-
-    // console.log(searchParams.get('name'))
+  })
+// 오류 페이지
+router
+  .notFound(() => {
+    document.body.innerHTML = ''
+    appendHeadermain()
+    //에러 페이지 추가
+    appendErrorPage()
   })
   .resolve()
 
