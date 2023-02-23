@@ -1,6 +1,6 @@
+export { appendDetailedItem }
 
-
-export function appendDetailedItem () {
+function appendDetailedItem () {
   // 상세 품목 페이지 렌더링
   const detailedItem = document.createElement('div')
   detailedItem.className = 'detailedItem'
@@ -218,6 +218,6 @@ export function appendDetailedItem () {
     </section>
   </div>
   `
-
+  document.body.append(detailedItem)
   
 }
