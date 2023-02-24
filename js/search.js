@@ -97,7 +97,7 @@ export function appendsearch() {
         let brandwarap = document.createElement('div')
         brandwarap.className = 'brandwrap'
         brandwarap.innerHTML = `
-         <a href = /shop/?id=${brandlist.name} class='brandlink'>
+         <a href = /shop/?id=${brandlist.id} class='brandlink'>
           <div class = "brand_item_wrap">
           <img src = ${brandlist.img}>
           </div>
@@ -163,7 +163,7 @@ searchtitleEl.addEventListener('keydown', function (e) {
         linkEl.className = 'search_list_items'
         linkEl.href = `/shop/?id=${list}`
         linkEl.innerHTML = `
-         <span class="tagslist">${list}</span>
+         <span>${list}</span>
         `
         recentlist.append(linkEl)
     
