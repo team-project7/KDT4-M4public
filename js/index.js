@@ -85,6 +85,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendLogin()
+    appendsearch()
     footerbanner()
     appendFooter()
   })
