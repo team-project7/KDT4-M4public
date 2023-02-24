@@ -42,43 +42,53 @@ export const category = [
 ]
 export const brand = [
     {   
-        name: '신발',
+        id: 'Hermes',
+        name: 'Hermes',
         img: `${brand1}`,
     },
     {   
-        name: '의류',
+        id: 'Rolex',
+        name: 'Rolex',
         img: `${brand2}`,
     },
     {   
-        name: '패션잡화',
+        id: 'Chanel',
+        name: 'Chanel',
         img: `${brand3}`,
     },
     {   
-        name: 'Lego',
+        id: 'Louis%20Vuitton',
+        name:'Louis Vuitton',
         img: `${brand4}`,
     },
     {   
-        name: 'Apple',
+        id: 'Lemaire',
+        name: 'Lemaire',
         img: `${brand5}`,
     },
     {   
-        name: 'Apple',
+        id: 'Miu%20Miu',
+        name: 'Miu Miu',
         img: `${brand6}`,
     },
     {   
-        name: 'Apple',
+        id: 'Acne%20Studios',
+        name: 'Acne Studios',
         img: `${brand7}`,
     },
     {   
-        name: 'Apple',
+        id: 'Stone%20Island',
+        name: 'Stone Island',
         img: `${brand8}`,
     },
     {   
-        name: 'Apple',
+        id: 'Vivienne%20Westwood',
+        name: 'Vivienne Westwood',
         img: `${brand9}`,
     },
     {   
-        name: 'Apple',
+        id: 'Maison%20Kitsune',
+        name: 'Maison Kitsune',
         img: `${brand10}`,
     },
 
