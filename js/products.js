@@ -97,7 +97,7 @@ export function appendSmallProducts(tag, dpnum, content, listIndex) {
         <div class="loading__item__text--sm blink_me"></div>
       </div>
        </div>
-        <div class="product__list__first">
+        <div class="product__list__first none">
     </div>
       </div>
     `
