@@ -11,11 +11,30 @@ export function appendProducts(tag, dpnum, num, listIndex) {
         </div>
       </div>
       <div class="product__list">
-        <div class="product__list__first">
-    </div>
+       <div class="loading">
+        <div class="loading__item ">
+          <div class="loading__item__image blink_me"></div>
+        <div class="loading__item__text blink_me"></div>
+      </div>
+       <div class="loading__item ">
+          <div class="loading__item__image blink_me"></div>
+        <div class="loading__item__text blink_me"></div>
+      </div>
+       <div class="loading__item ">
+          <div class="loading__item__image blink_me"></div>
+        <div class="loading__item__text blink_me"></div>
+      </div>
+       <div class="loading__item ">
+          <div class="loading__item__image blink_me"></div>
+        <div class="loading__item__text blink_me"></div>
+      </div>
+       </div>
+        <div class="product__list__first none">
+        </div>
       </div>
     `
   document.body.append(productEl)
+
   appendItem(tag, dpnum, num, productEl, listIndex)
   // 여기는 한번만 렌더링
   const productListEl = productEl.querySelector('.product__list')
@@ -44,6 +63,40 @@ export function appendSmallProducts(tag, dpnum, content, listIndex) {
         </div>
       </div>
       <div class="product__list">
+        <div class="loading">
+        <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+        <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+        <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+        <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+       <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+      <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+      <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+      <div class="loading__item ">
+          <div class="loading__item__image--sm blink_me"></div>
+        <div class="loading__item__text--sm blink_me"></div>
+      </div>
+       </div>
         <div class="product__list__first">
     </div>
       </div>

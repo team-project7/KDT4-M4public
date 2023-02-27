@@ -1,3 +1,10 @@
+// 깜빡이는 블링크 애니메이션
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 div {
   margin: 0;
   padding: 0;
@@ -5,7 +12,7 @@ div {
 .product {
   margin-top: 30px;
   margin-bottom: 56px;
-
+  width: 100%;
   &__title {
     margin: 0 auto 16px;
     padding: 0 40px;
@@ -39,6 +46,69 @@ div {
     margin: 0 auto;
     max-width: 1280px;
 
+    .loading {
+      color: #222;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-column-gap: 8px;
+      padding-left: 40px;
+      padding-right: 40px;
+      grid-row-gap: 28px;
+      row-gap: 28px;
+
+      &--sm {
+        border: 0;
+        font: inherit;
+        vertical-align: baseline;
+        margin: 0;
+        padding: 0;
+        color: #222;
+        box-sizing: border-box;
+        grid-column-gap: 8px;
+        grid-row-gap: 28px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        row-gap: 28px;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: grid;
+      }
+
+      &__item {
+        &__image {
+          width: 294px;
+          height: 294px;
+          border-radius: 12px;
+          background-color: #e0e0e0;
+
+          &--sm {
+            width: 230px;
+            height: 230px;
+            border-radius: 12px;
+            background-color: #e0e0e0;
+          }
+        }
+        &__text {
+          margin-top: 9px;
+          width: 294px;
+          height: 94.5px;
+          border-radius: 12px;
+          background-color: #e0e0e0;
+          &--sm {
+            margin-top: 9px;
+            width: 230px;
+            height: 70px;
+            border-radius: 12px;
+            background-color: #e0e0e0;
+          }
+        }
+
+        .blink_me {
+          background-color: #e0e0e0;
+          animation: blinker 1s linear infinite;
+        }
+      }
+    }
     &__first {
       color: #222;
       box-sizing: border-box;
@@ -49,6 +119,10 @@ div {
       padding-right: 40px;
       grid-row-gap: 28px;
       row-gap: 28px;
+
+      &.none {
+        opacity: 0;
+      }
     }
 
     &__more {
@@ -86,7 +160,6 @@ div {
     box-sizing: border-box;
     display: inline-block;
     vertical-align: top;
-
     width: 100%;
 
     &__inner {
@@ -104,7 +177,6 @@ div {
         .item {
           color: inherit;
           box-sizing: border-box;
-
           position: relative;
           overflow: hidden;
           display: flex;
@@ -160,6 +232,7 @@ div {
         color: inherit;
         box-sizing: border-box;
         padding-top: 9px;
+
         .brand {
           color: inherit;
           box-sizing: border-box;
