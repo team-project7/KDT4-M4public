@@ -11,9 +11,12 @@
 
   .search_filter {
     box-sizing: border-box;
+    position: sticky;
+    top: 150px;
     margin: 0;
     padding: 0;
     width: 210px;
+    height: 650px;
     margin-right: 10px;
     padding-right: 10px;
     overflow-x: hidden;
