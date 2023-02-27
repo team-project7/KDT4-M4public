@@ -126,14 +126,23 @@ function closemodal() {
     searchlayer.style.display = 'none'
 }
 
+function debounce(callback, limit = 100) {
+    let timeout
+    return function(...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            callback.apply(this, args)
+        }, limit)
+    }
+}
 
 const searchtitleEl = document.getElementById('search_title')
-searchtitleEl.addEventListener('input', function() {
+searchtitleEl.addEventListener('input', debounce(function() {
    
     let searchtext = searchtitleEl.value.trim();
         findtitle(searchtext)
-    })
-
+    }, 200)
+)
     let searchtxtlist = []
     // let search
    let search = localStorage.getItem('searchtxtlist')
