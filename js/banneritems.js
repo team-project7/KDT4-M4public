@@ -9,28 +9,28 @@ import footerbanner2 from '../image/footerbanner2.png';
 export const srcarray = [
     {   
         id: 1,
-        name: ' 신발',
+        name: '신발',
         bannercolor: '#F2F2F2',
         img: `${banner1}`,
 
     },
     {   
         id: 2,
-        name: ' 의류',
+        name: '의류',
         bannercolor: '#9094A5',
         img: `${banner2}`,
 
     },
     {   
         id: 3,
-        name: ' 후드',
+        name: '후드',
         bannercolor: '#99A6B6',
         img: `${banner3}`,
 
     },
     {   
         id: 4,
-        name: ' 패딩',
+        name: '패딩',
         bannercolor: '#D1D3D7',
         img: `${banner4}`,
 

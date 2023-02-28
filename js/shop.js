@@ -16,8 +16,6 @@ async function getData() {
   })
   return brandlist
 }
-// 브랜드 네임을 받아서 브랜드 리스트를 만드는 메서드
-getData().then((res) => appendFilterList('브랜드', [...res]))
 
 export default function appendShopContent() {
   const contentEl = document.createElement('div')
@@ -127,8 +125,18 @@ export default function appendShopContent() {
     { title: '30만원-50만원 이하' },
     { title: '50만원 이상' },
   ])
+  // 브랜드 네임을 받아서 브랜드 리스트를 만드는 메서드
+  getData().then((res) => appendFilterList('브랜드', [...res]))
 
-  appendSmallProducts('남성', 12, contentEl, 0)
+  let url = new URL(document.location.href)
+  const searchParams = url.searchParams
+  const searchKeyword = searchParams.get('id')
+
+  if (searchKeyword) {
+    appendSmallProducts(searchKeyword, 12, contentEl, 0)
+  } else {
+    appendSmallProducts('남성', 12, contentEl, 0)
+  }
 }
 
 export function appendFilterList(category, menu) {
@@ -197,12 +205,13 @@ export function appendMenu(container, menu, isfirst) {
           }
         })
     }
+    // 메뉴중 하나를 선택할때 동작하는 이벤트
     li.addEventListener('click', (event) => {
       const productEl = document.querySelector('.product')
       const contentEl = document.querySelector('.content')
       const tagname = li.getAttribute('tag-name')
       productEl.remove()
-      appendSmallProducts(`${tagname}`, 12, contentEl, 0)
+      appendSmallProducts(tagname, 12, contentEl, 0)
       event.preventDefault()
       event.stopPropagation()
       toggleOnly(li)

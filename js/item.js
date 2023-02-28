@@ -1,6 +1,6 @@
 import wishOff from '../image/wish-off.png'
 import wishOn from '../image/wish-on.png'
-import { searchByTag } from './request'
+import { searchAll, searchByTag } from './request'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
 export async function appendItem(tag, dpnum, num, container, listIndex) {
@@ -16,7 +16,6 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
     container.querySelector('.product__list__more').remove()
   }
   const productListFirstEl = container.querySelector('.product__list__first')
-  console.log(chunk)
   // 제품 아이템 엘리먼트
   chunk[listIndex].map((e, index) => {
     const productItemEl = document.createElement('div')
@@ -94,7 +93,26 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
 
 export async function appendSmallItem(tag, dpnum, listIndex) {
   const chunk = []
-  const resultData = await searchByTag(tag)
+  let resultData = []
+  // 가격별로 만족하는데이터 정렬
+  const allData = await searchAll()
+  switch (tag) {
+    case '10만원 이하':
+      resultData = allData.filter((e) => e.price <= 100000)
+      break
+    case '10만원-30만원 이하':
+      resultData = allData.filter((e) => e.price > 100000 && e.price <= 300000)
+      break
+    case '30만원-50만원 이하':
+      resultData = allData.filter((e) => e.price > 300000 && e.price <= 500000)
+      break
+    case '50만원 이상':
+      resultData = allData.filter((e) => e.price > 500000)
+      break
+    default:
+      resultData = await searchByTag(tag)
+      break
+  }
   chunk.push(resultData.slice(0, dpnum))
   for (let i = dpnum; i < resultData.length; i += 8) {
     chunk.push(resultData.slice(i, i + 8))
@@ -160,7 +178,7 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
         wishicon.src = wishOn
       }
     })
-
+    
     wishicon.onclick = (e) => {
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
       if (wishicon.src == wishOn) {

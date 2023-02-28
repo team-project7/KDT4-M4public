@@ -10,6 +10,8 @@ input {
   padding: 0 32px;
 }
 
+
+
 .modal-container {
   position: fixed;
   top: 0;
@@ -107,32 +109,60 @@ input {
     } //add-modal ends
 
     .acc-modal {
-
+      
       &__account {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
+        &.swiper-container {
+          position: relative;
+          height: auto;
+          
+          .swiper-button-prev,
+          .swiper-button-next {
+            // top: 50%;
+            width: 15px;
+            height: 15px;
+          }
+          
+          & > .swiper-wrapper {
+            height: auto;
+
+            & > .swiper-slide {
+              height: auto;
+            }
+          }
+        }
+        
 
         &-item {
-          width: 260px;
-          height: 140px;
+          background-color: #ebebeb;
           border-radius: 10px;
-          background-color: #fafafa;
           cursor: pointer;
-          border: 3px dotted rgba(0,0,0, 0.1);
+          border: 3px solid #000;
+
+          &.empty {
+            background-color: #fafafa;
+            border: 3px dotted rgba(0,0,0, 0.1);
+          }
           
           & > span {
             font-family: Apple SD Gothic Neo;
             display: block;
-            font-weight: 400;
+            height: 50px;
+            font-weight: bold;
             line-height: 25px;
             font-size: 17px;
             text-align: center;
           }
 
           & > span:first-of-type {
-            margin-top: 42px;
+            margin-top: 32px;
+    
+          }
+          & > span:last-of-type {
+            margin-bottom: 32px;
           }
 
         }
@@ -197,20 +227,51 @@ input {
         padding: 10px 20px;
         text-align: right;
         border-top: 1px solid rgba(0,0,0, 0.1);
-        button {
-          background-color: #000;
-          color: #FFF;
-          border-radius: 77px;
-          font-size: 16px;
-          width: 176px;
-          padding: 0 25px;
-          height: 52px;
-          font-weight: 700;
-        }
+
       }
 
     }//acc-modal ends
-  }
+
+    .newAcc-modal {
+      
+      &__input {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 8px;
+
+        & > select {
+          padding: 17px 12px;
+          border: 1px solid #ebebeb;
+          border-radius: 10px;
+          width: 100%;
+        }
+        & > input {
+          padding: 17px 12px;
+          border: 1px solid #ebebeb;
+          margin-top: 8px;
+          box-sizing: border-box;
+          border-radius: 10px;
+          width: 100%;
+
+          &::-webkit-inner-spin-button {
+            display: none;
+          }
+        }
+        &-sig {
+          padding: 20px 0;
+          width: 100%;
+          text-align: end;
+        }
+      }
+
+      &__btns {
+        padding: 20px 0;
+        width: 100%;
+        text-align: end;
+      }
+    }
+  }//modal ends
 
   
 } //modal-container ends
