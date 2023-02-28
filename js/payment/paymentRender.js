@@ -6,10 +6,11 @@ export function renderPaymentPage(item) {
   paymentContent.append(
     renderProductInfoArea(item),
     renderDelieveryInfoArea(),
-    renderOrderTotalArea(item.price),
+    renderOrderTotalArea(item.price, true),
     renderPaymentMethodArea(),
-    renderChecklistArea(),
-    renderAccountModal()
+    renderChecklistArea(item),
+    renderAccountModal(),
+    renderNewAccountModal()
   )
 
   const paymentContainer = document.createElement('div')
@@ -111,41 +112,42 @@ function renderDelieveryInfoArea() {
     </dl>
     <button class="payment-btn" id="payment__shipping-memo-btn">
       <span>배송 시 요청사항을 선택하세요.</span>
-      <span>></span>
+      <span>►</span>
     </button>
   `
 
-  const deliveryMethod = document.createElement('div')
-  deliveryMethod.classList.add('delivery-method')
-  deliveryMethod.innerHTML = /*html*/ `
-    <h1>배송 방법</h1>
-    <div class="delivery-method__methods">
-      <button class="payment-btn wide selectable selected">
-        <div class="method__img-wrapper">
-          <img class="method__img" src="../../image/general-delivery.png" alt="일반 배송 이미지" />
-        </div>
-        <div class="method__text-wrapper">
-          <div class="method__title">
-            <span>일반배송</span>
-            <span>3,000원</span>
+    const deliveryMethod = document.createElement('div')
+    deliveryMethod.classList.add('delivery-method')
+    deliveryMethod.innerHTML = /*html*/ `
+      <h1>배송 방법</h1>
+      <div class="delivery-method__methods">
+        <button class="payment-btn wide selectable selected">
+          <div class="method__img-wrapper">
+            <img class="method__img" src="../../image/general-delivery.png" alt="일반 배송 이미지" />
           </div>
-          <span class="method__desc">검수 후 배송 ・ 5-7일 내 도착 예정</span>
-        </div>
-      </button>
-      <button class="payment-btn wide selectable">
-        <div class="method__img-wrapper">
-          <img class="method__img" src="../../image/storage-pickup.png" alt="창고 보관 이미지" />
-        </div>
-        <div class="method__text-wrapper">
-          <div class="method__title">
-            <span>창고보관</span>
-            <span>첫 30일 무료 <svg width="15px" height="15px"xmlns="http://www.w3.org/2000/svg" id="i-ico-help" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#fff"></circle><circle cx="8" cy="8" r="7.5" stroke="#222" stroke-opacity=".3"></circle><path d="M7.086 9.346h1.213v-.334c0-.592.217-.908.972-1.354.774-.463 1.231-1.101 1.231-2.004v-.006c0-1.26-1.049-2.173-2.59-2.173-1.7 0-2.578 1.007-2.654 2.267l-.006.07h1.213l.006-.052c.064-.715.568-1.207 1.377-1.207.797 0 1.324.48 1.324 1.148v.006c0 .598-.252.938-.961 1.365-.803.48-1.149 1.008-1.13 1.805l.005.469zm.615 2.719c.44 0 .774-.335.774-.762a.75.75 0 00-.774-.756.753.753 0 00-.767.756c0 .427.34.761.767.761z" fill="#222" fill-opacity=".4"></path></svg></span>
+          <div class="method__text-wrapper">
+            <div class="method__title">
+              <span>일반배송</span>
+              <span>3,000원</span>
+            </div>
+            <span class="method__desc">검수 후 배송 ・ 5-7일 내 도착 예정</span>
           </div>
-          <span class="method__desc">배송 없이 창고에 보관 ・ 빠르게 판매 가능</span>
-        </div>
-      </button>
-    </div>
-  `
+        </button>
+        <button class="payment-btn wide selectable">
+          <div class="method__img-wrapper">
+            <img class="method__img" src="../../image/storage-pickup.png" alt="창고 보관 이미지" />
+          </div>
+          <div class="method__text-wrapper">
+            <div class="method__title">
+              <span>창고보관</span>
+              <span>첫 30일 무료 <svg width="15px" height="15px"xmlns="http://www.w3.org/2000/svg" id="i-ico-help" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#fff"></circle><circle cx="8" cy="8" r="7.5" stroke="#222" stroke-opacity=".3"></circle><path d="M7.086 9.346h1.213v-.334c0-.592.217-.908.972-1.354.774-.463 1.231-1.101 1.231-2.004v-.006c0-1.26-1.049-2.173-2.59-2.173-1.7 0-2.578 1.007-2.654 2.267l-.006.07h1.213l.006-.052c.064-.715.568-1.207 1.377-1.207.797 0 1.324.48 1.324 1.148v.006c0 .598-.252.938-.961 1.365-.803.48-1.149 1.008-1.13 1.805l.005.469zm.615 2.719c.44 0 .774-.335.774-.762a.75.75 0 00-.774-.756.753.753 0 00-.767.756c0 .427.34.761.767.761z" fill="#222" fill-opacity=".4"></path></svg></span>
+            </div>
+            <span class="method__desc">배송 없이 창고에 보관 ・ 빠르게 판매 가능</span>
+          </div>
+        </button>
+      </div>
+    `
+
   const delieveryArea = document.createElement('section')
   delieveryArea.classList.add('delivery-area')
 
@@ -154,8 +156,9 @@ function renderDelieveryInfoArea() {
   return delieveryArea
 }
 
-function renderOrderTotalArea(price) {
+function renderOrderTotalArea(price, isDelivery) {
   const orderTotalArea = document.createElement('section')
+  
   orderTotalArea.classList.add('order-area')
   orderTotalArea.innerHTML = /*html*/ `
     <h1>최종 주문 정보</h1>
@@ -166,7 +169,9 @@ function renderOrderTotalArea(price) {
         <h1>총 결제금액</h1>
         <div class="order-content__total-amount">
           <span id="order-content__total-amount">
-            ${(price + 2400 + 3000).toLocaleString()}원
+            ${isDelivery 
+            ? (price + 2400 + 3000).toLocaleString()
+            : price.toLocaleString()}원
           </span>
         </div>
 
@@ -197,13 +202,19 @@ function renderOrderTotalArea(price) {
             <span>수수료</span>
             <svg width="15px" height="15px"xmlns="http://www.w3.org/2000/svg" id="i-ico-help" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#fff"></circle><circle cx="8" cy="8" r="7.5" stroke="#222" stroke-opacity=".3"></circle><path d="M7.086 9.346h1.213v-.334c0-.592.217-.908.972-1.354.774-.463 1.231-1.101 1.231-2.004v-.006c0-1.26-1.049-2.173-2.59-2.173-1.7 0-2.578 1.007-2.654 2.267l-.006.07h1.213l.006-.052c.064-.715.568-1.207 1.377-1.207.797 0 1.324.48 1.324 1.148v.006c0 .598-.252.938-.961 1.365-.803.48-1.149 1.008-1.13 1.805l.005.469zm.615 2.719c.44 0 .774-.335.774-.762a.75.75 0 00-.774-.756.753.753 0 00-.767.756c0 .427.34.761.767.761z" fill="#222" fill-opacity=".4"></path></svg></span>
           </dt>
-          <dd  class="price-text">2,400원</dd>
+          <dd class="price-text">${isDelivery
+            ? (2400).toLocaleString() + "원"
+            : "-"}
+          </dd>
         </dl>
         <dl class="order-content__desc-details">
           <dt class="price-title">
             <span >배송비</span>
           </dt>
-          <dd class="price-text">3,000원</dd>
+          <dd class="price-text">${isDelivery
+            ? (3000).toLocaleString() + "원"
+            : "-"}
+          </dd>
         </dl>
 
       </div>
@@ -239,7 +250,7 @@ function renderPaymentMethodArea() {
           <span>
             첫 등록 시
             <span class="method-simple__point-text">3,000P</span>
-            <
+            ▼
           </span>
         </button>
         
@@ -259,7 +270,7 @@ function renderPaymentMethodArea() {
         
         <button id="method-simple__card-btn" class="payment-btn wide">
           <span>카드를 등록해주세요.</span>
-          <span><</span>
+          <span>▼</span>
         </button>
         
       </div>
@@ -393,7 +404,7 @@ function renderPaymentMethodArea() {
   return paymentMethodArea
 }
 
-function renderChecklistArea() {
+function renderChecklistArea(item) {
   const checklistArea = document.createElement('section')
   checklistArea.classList.add('checklist-area')
   checklistArea.innerHTML = /*html*/ `
@@ -497,11 +508,11 @@ function renderChecklistArea() {
       <dl class="checklist-total__price">
         <dt class="checklist-total__price-title">총 결제금액</dt>
         <dd class="checklist-total__price-amount">
-          <span class="amount">521,000원</span>
+          <span class="amount">${(item.price).toLocaleString()}원</span>
         </dd>
       </dl>
     </div>
-    <button class="payment-btn wide confirm" disabled="true">
+    <button id="payment-final-btn" class="payment-btn wide confirm unabled">
         결제하기
     </button>
 
@@ -518,7 +529,7 @@ export function renderAddProfileModal() {
   addProfileModal.innerHTML = /*html*/ `
   <div class="modal add-modal">
     <div class="modal-header">
-      <a  id="add-modal-header__close-btn" class="modal-header__close-btn">X</a>
+      <a  id="add-modal-header__close-btn" class="modal-header__close-btn">✖</a>
       <h1 class="modal-header__title">새 주소 추가</h1>
     </div>
     <div class="modal-inner">
@@ -564,7 +575,7 @@ export function renderGetProfilesModal(delieveryProfiles) {
   profilesModal.classList.add('get-modal-container')
   profilesModal.innerHTML = /*html*/ `
     <div class="get-modal-header">
-      <a  id="get-modal__close-btn" class="close-btn">X</a>
+      <a  id="get-modal__close-btn" class="close-btn">✖</a>
       <h1 class="get-modal__title">주소록</h1>
     </div>
 
@@ -587,16 +598,24 @@ function renderAccountModal() {
   accountModal.innerHTML = /*html*/`
   <div class="modal acc-modal">
     <div class="modal-header">
-      <a id="acc-modal-header__close-btn" class="modal-header__close-btn">X</a>
+      <a id="acc-modal-header__close-btn" class="modal-header__close-btn">✖</a>
       <h1 class="modal-header__title">계좌선택</h1>
     </div>
     <div class="modal-inner">
-      <div class="acc-modal__account">
-        <div id="acc-modal__add-acc-btn" class="acc-modal__account-item">
-          <span>+</span>
-          <span>계좌 등록하기</span>
+      <div class="swiper-container acc-modal__account">
+        <div id="acc-modal__swiper-wrapper" class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div id="acc-modal__add-acc-btn" class="acc-modal__account-item empty">
+              <span>+</span>
+              <span>계좌 등록하기</span>
+            </div>
+            <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+          </div>
         </div>
-        <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
       </div>
 
       <div class="acc-modal__receipt">
@@ -610,7 +629,7 @@ function renderAccountModal() {
           </div>
         </div>
         
-        <select class="acc-modal__receipt-select" selected="cell">
+        <select class="acc-modal__receipt-select">
           <option value="cell">
             개인소득공제(휴대폰)
           </option>
@@ -631,7 +650,7 @@ function renderAccountModal() {
         </p>
         
         <div class="acc-modal__btns">
-          <button class="payment-btn">저장하기</button>
+          <button class="payment-btn modal-btn">저장하기</button>
         </div>
 
 
@@ -640,6 +659,97 @@ function renderAccountModal() {
 
   `
   return accountModal
+}
+
+export function renderBankSlide(account) {
+  const slide = document.createElement('div')
+  slide.classList.add('swiper-slide')
+  
+  slide.innerHTML = /*html*/`
+    <div data-bank="${account.id}" class="acc-modal__account-item">
+      <span>${account.bankName}</span>
+      <span>${account.accountNumber}</span>
+      <span>잔액: ${account.balance.toLocaleString()}원</span>
+    </div>
+    <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span> 
+  `
+  return slide
+}
+
+export function renderEmptySlide() {
+  const emptySlide = document.createElement('div')
+  emptySlide.classList.add('swiper-slide')
+  emptySlide.innerHTML = /*html*/`
+    <div id="acc-modal__add-acc-btn" class="acc-modal__account-item empty">
+      <span>+</span>
+      <span>계좌 등록하기</span>
+    </div>
+    <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+
+  `
+
+  return emptySlide
+}
+
+function renderNewAccountModal() {
+  const newAccountModal = document.createElement('div')
+  newAccountModal.classList.add('modal-container', 'hidden')
+  newAccountModal.setAttribute('id', 'newAcc-modal-container')
+
+  newAccountModal.innerHTML = /*html*/ `
+    <div class="modal newAcc-modal">
+      <div class="modal-header">
+        <a id="newAcc-modal-header__close-btn" class="modal-header__close-btn">✖</a>
+        <h1 class="modal-header__title">계좌추가</h1>
+      </div>
+
+      <div class="modal-inner">
+        <div class="newAcc-modal__input">
+          <label for="newAcc-modal__bankCode">은행</label>
+          <select id="newAcc-modal__bankCode" selected="default">
+            <option value="default" hidden="true">
+              연결할 계좌의 은행을 선택하세요.
+            </option>  
+            <option value="004" data-digit=12>
+              KB국민은행
+            </option>
+            <option value="088">
+              신한은행
+            </option>
+            <option value="020">
+              우리은행
+            </option>
+            <option value="081">
+              하나은행
+            </option>
+            <option value="089">
+              케이뱅크
+            </option>
+            <option value="090">
+              카카오뱅크
+            </option>
+            <option value="011">
+              NH농협은행
+            </option>
+          </select>
+          <label for="newAcc-modal__acc-digit">계좌번호</label>
+          <input id="newAcc-modal__acc-digit" type="text" autocomplete="off" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" placeholder="은행 선택 후 -없이 입력" maxlength="0" />
+          <label for="newAcc-modal__phone">휴대폰번호</label>
+          <input id="newAcc-modal__phone" type="text" autocomplete="off" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" placeholder="-없이 입력" maxlength="11" />
+          <div class="newAcc-modal__input-sig">
+            <label for="newAcc-modal__sig">서명확인</label>
+            <input id="newAcc-modal__sig" type="checkbox" />
+          </div>
+        </div>
+
+        <div class="newAcc-modal__btns">
+          <button id="newAcc-modal__add-btn" class="payment-btn modal-btn unabled">추가</button>
+        </div>
+      </div>
+    </div>
+  `
+
+  return newAccountModal
 }
 
 function renderTotopBtn() {

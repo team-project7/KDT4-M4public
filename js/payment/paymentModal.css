@@ -96,24 +96,45 @@ input:focus {
   align-items: center;
   margin-top: 20px;
 }
+.modal-container .modal .acc-modal__account.swiper-container {
+  position: relative;
+  height: auto;
+}
+.modal-container .modal .acc-modal__account.swiper-container .swiper-button-prev,
+.modal-container .modal .acc-modal__account.swiper-container .swiper-button-next {
+  width: 15px;
+  height: 15px;
+}
+.modal-container .modal .acc-modal__account.swiper-container > .swiper-wrapper {
+  height: auto;
+}
+.modal-container .modal .acc-modal__account.swiper-container > .swiper-wrapper > .swiper-slide {
+  height: auto;
+}
 .modal-container .modal .acc-modal__account-item {
-  width: 260px;
-  height: 140px;
+  background-color: #ebebeb;
   border-radius: 10px;
-  background-color: #fafafa;
   cursor: pointer;
+  border: 3px solid #000;
+}
+.modal-container .modal .acc-modal__account-item.empty {
+  background-color: #fafafa;
   border: 3px dotted rgba(0, 0, 0, 0.1);
 }
 .modal-container .modal .acc-modal__account-item > span {
   font-family: Apple SD Gothic Neo;
   display: block;
-  font-weight: 400;
+  height: 50px;
+  font-weight: bold;
   line-height: 25px;
   font-size: 17px;
   text-align: center;
 }
 .modal-container .modal .acc-modal__account-item > span:first-of-type {
-  margin-top: 42px;
+  margin-top: 32px;
+}
+.modal-container .modal .acc-modal__account-item > span:last-of-type {
+  margin-bottom: 32px;
 }
 .modal-container .modal .acc-modal__text {
   font-weight: 400;
@@ -166,13 +187,36 @@ input:focus {
   text-align: right;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-.modal-container .modal .acc-modal__btns button {
-  background-color: #000;
-  color: #FFF;
-  border-radius: 77px;
-  font-size: 16px;
-  width: 176px;
-  padding: 0 25px;
-  height: 52px;
-  font-weight: 700;
+.modal-container .modal .newAcc-modal__input {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+}
+.modal-container .modal .newAcc-modal__input > select {
+  padding: 17px 12px;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  width: 100%;
+}
+.modal-container .modal .newAcc-modal__input > input {
+  padding: 17px 12px;
+  border: 1px solid #ebebeb;
+  margin-top: 8px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+}
+.modal-container .modal .newAcc-modal__input > input::-webkit-inner-spin-button {
+  display: none;
+}
+.modal-container .modal .newAcc-modal__input-sig {
+  padding: 20px 0;
+  width: 100%;
+  text-align: end;
+}
+.modal-container .modal .newAcc-modal__btns {
+  padding: 20px 0;
+  width: 100%;
+  text-align: end;
 }/*# sourceMappingURL=paymentModal.css.map */

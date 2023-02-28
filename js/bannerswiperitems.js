@@ -17,7 +17,7 @@ import smallswiper5 from '../image/smallswiper5.jpg';
 export const srcarray = [
     {   
         id: 1,
-        name: ' 스마트워치',
+        name: '스마트워치',
         newcolor: '#F5F3F3',
         img: `${swiper1}`,
 
@@ -30,19 +30,19 @@ export const srcarray = [
     },
     {
         id: 3,
-        name: ' 남성',
+        name: '남성',
         newcolor: '#6A665E',
         img: `${swiper3}`,
     },
     {
         id: 4,
-        name: ' 셔츠',
+        name: '셔츠',
         newcolor: '#93586E',
         img: `${swiper4}`,
     },
     {
         id: 5,
-        name: ' 스니커즈',
+        name: '스니커즈',
         newcolor: '#F0EAE5',
         img: `${swiper5}`,
     },
@@ -51,7 +51,7 @@ export const srcarray = [
 export const smallswiper = [
     {   
         id: 1,
-        name: ' 스니커즈',
+        name: '스니커즈',
         newcolor: '#E8F0F9',
         img: `${smallswiper1}`,
 
