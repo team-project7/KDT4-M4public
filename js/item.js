@@ -4,6 +4,7 @@ import { searchAll, searchByTag } from './request'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
 export async function appendItem(tag, dpnum, num, container, listIndex) {
+  let isdone = false
   const chunk = []
   const resultData = await searchByTag(tag)
   const chunkData = resultData.slice(0, num)
@@ -52,6 +53,7 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
 
     productListFirstEl.append(productItemEl)
   })
+
   const items = document.querySelectorAll('.product__item')
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
   let wishlist =
@@ -89,6 +91,12 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
       e.stopPropagation()
     }
   })
+  const loading = document.querySelector('.loading')
+  //productListFirstEl에서 근처 loading div 찾기
+  if (loading) {
+    loading.remove()
+    productListFirstEl.classList.remove('none')
+  }
 }
 
 export async function appendSmallItem(tag, dpnum, listIndex) {
@@ -178,7 +186,7 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
         wishicon.src = wishOn
       }
     })
-    
+
     wishicon.onclick = (e) => {
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
       if (wishicon.src == wishOn) {
@@ -196,4 +204,13 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
       e.stopPropagation()
     }
   })
+  isdone = true
+  const loading = document.querySelector('.loading')
+  //productListFirstEl에서 근처 loading div 찾기
+  if (isdone) {
+    productListFirstEl.classList.remove('none')
+    if (loading) {
+      loading.remove()
+    }
+  }
 }
