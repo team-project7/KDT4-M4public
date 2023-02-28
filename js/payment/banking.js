@@ -9,15 +9,15 @@ const headers = {
 }
 const API_URL =
   'https://asia-northeast3-heropy-api.cloudfunctions.net/api/account'
+const API_URL_PRODUCT = 'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products'
 
-
-export async function buy(item, account) {
-  const res = await fetch(API_URL + "/banks", {
+export async function buy(item, key) {
+  const res = await fetch(API_URL_PRODUCT + "/buy", {
     method: 'POST',
     headers,
     body: JSON.stringify({
       productId: item.id, // 거래할 제품 ID (필수!)
-      accountId: account.id // 결제할 사용자 계좌 ID (필수!)
+      accountId: key // 결제할 사용자 계좌 ID (필수!)
     }) 
   })
 

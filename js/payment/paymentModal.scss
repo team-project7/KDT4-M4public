@@ -115,13 +115,13 @@ input {
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
+        
         &.swiper-container {
           position: relative;
           height: auto;
           
           .swiper-button-prev,
           .swiper-button-next {
-            // top: 50%;
             width: 15px;
             height: 15px;
           }
@@ -145,12 +145,16 @@ input {
           &.empty {
             background-color: #fafafa;
             border: 3px dotted rgba(0,0,0, 0.1);
+
+            & > span {
+              height: 45px;
+            }
           }
           
           & > span {
             font-family: Apple SD Gothic Neo;
             display: block;
-            height: 50px;
+            height: 30px;
             font-weight: bold;
             line-height: 25px;
             font-size: 17px;

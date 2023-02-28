@@ -666,13 +666,13 @@ export function renderBankSlide(account) {
   slide.classList.add('swiper-slide')
   
   slide.innerHTML = /*html*/`
-    <div data-bankCode="${account.bankCode}" class="acc-modal__account-item">
+    <div data-bank="${account.id}" class="acc-modal__account-item">
       <span>${account.bankName}</span>
       <span>${account.accountNumber}</span>
+      <span>잔액: ${account.balance.toLocaleString()}원</span>
     </div>
     <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span> 
   `
-
   return slide
 }
 
