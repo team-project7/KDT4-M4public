@@ -144,9 +144,7 @@ searchtitleEl.addEventListener('input', debounce(function() {
     }, 200)
 )
     let searchtxtlist = []
-    // let search
    let search = localStorage.getItem('searchtxtlist')
-//   search? localStorage.getItem('searchtxtlist') : null
 searchtitleEl.addEventListener('keydown', function (e) {
     let searchtext = searchtitleEl.value.trim();
     if(e.key === 'Enter' && !e.isComposing) {
