@@ -1,4 +1,5 @@
 import { searchList } from './search'
+import { vailed } from './header'
 
 const headers = {
   'content-type': 'application/json',
@@ -93,3 +94,24 @@ export async function searchByTag(tags) {
   )
   return res.json()
 }
+
+export async function validation(token) {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+    {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        "apikey": process.env.API_KEY,
+        "username": process.env.USER_NAME,
+        "Authorization": `Bearer ${token}`,
+     },
+
+    }
+  )
+  let json = await res.json()
+  vailed(json)
+  return json
+}
+
+

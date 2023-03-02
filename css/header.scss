@@ -9,6 +9,7 @@ body {
     z-index: 99;
     background-color: #fff;
     height: 130px;
+    border-bottom: 1px solid #ebebeb;;
 }
 
 .header_top .top_inner {
@@ -103,9 +104,7 @@ body {
 .tab_name .span:active {
     border-bottom: 2px solid #222;
 }
-// .tab_name:active {
-//     font-weight: 700;
-// }
+
 .li_tab+.li_tab {
     margin-left: 27px;
 }
