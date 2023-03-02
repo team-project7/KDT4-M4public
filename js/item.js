@@ -57,9 +57,8 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
   const items = document.querySelectorAll('.product__item')
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
   let wishlist =
-    localStorage.getItem('wishlist').length === 0
-      ? []
-      : localStorage.getItem('wishlist').split(',')
+    localStorage.getItem('wishlist')? localStorage.getItem('wishlist').split(',') : []
+     
 
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
@@ -204,7 +203,7 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
       e.stopPropagation()
     }
   })
-  isdone = true
+  let isdone = true
   const loading = document.querySelector('.loading')
   //productListFirstEl에서 근처 loading div 찾기
   if (isdone) {

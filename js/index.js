@@ -50,14 +50,16 @@ const router = new Navigo('/')
 
 router
   .on('/', function (data) {
+    document.body.innerHTML = ''
     appendHeadermain()
-    appendbanner()
-    appendShortcut()
-    line()
-    appendProducts('남성', 4, 12, 0)
-    line()
+    
     switch (data.queryString) {
       case '':
+        appendbanner()
+        appendShortcut()
+        line()
+        appendProducts('남성', 4, 12, 0)
+        line()
         appendBrandFocus()
         bannerimg()
         appendProducts('스니커즈', 4, 12, 0)
@@ -69,7 +71,6 @@ router
         appendProducts('패딩', 4, 12, 0)
         break
       case 'man':
-        document.body.innerHTML = ''
         appendHeadermain()
         appendmenShortcut()
         line()
@@ -90,7 +91,6 @@ router
         appendProducts('니트웨어', 4, 12, 0)
         break
       case 'woman':
-        document.body.innerHTML = ''
         appendHeadermain()
         appendwomenShortcut()
         line()
@@ -111,7 +111,6 @@ router
         appendProducts('셔츠', 4, 12, 0)
         break
       case 'brand':
-        document.body.innerHTML = ''
         appendHeadermain()
         appendbrandShortcut()
         line()
