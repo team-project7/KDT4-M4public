@@ -43,11 +43,15 @@ import { appendsearch } from './search'
 import { adminPage, appendAdminPage } from './admin'
 import appendErrorPage from './error'
 import { searchIndividualItem } from './adminRequest'
+import dotenv from 'dotenv'
+
+dotenv.config()
 const router = new Navigo('/')
 // ;(async () => {
 //   const test = await searchIndividualItem('1BzZO12KDG0if5FpdYlj')
 //   appendPayment(test)
 // })()
+
 router
   .on('/', function (data) {
     appendHeadermain()
