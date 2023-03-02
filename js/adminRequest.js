@@ -1,4 +1,5 @@
 
+
 const headers = {
   'content-type': 'application/json',
   apikey: 'FcKdtJs202301',
@@ -6,10 +7,11 @@ const headers = {
   masterKey: 'true'
 }
 const API_URL =
-  'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products'
-
+  'https://asia-northeast3-heropy-api.cloudfunctions.net/api'
+const PRODUCTS_QUERY = "/products"
+const USERS_QUERY = "/auth/users"
 export async function addItem(item) {
-  const res = await fetch(API_URL, {
+  const res = await fetch(API_URL + PRODUCTS_QUERY, {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -24,7 +26,7 @@ export async function addItem(item) {
 }
 
 export async function searchAllItems() {
-  const res = await fetch(API_URL, {
+  const res = await fetch(API_URL + PRODUCTS_QUERY, {
     method: 'GET',
     headers,
   })
@@ -34,7 +36,7 @@ export async function searchAllItems() {
 }
 
 export async function removeItem(id) {
-  const res = await fetch(`${API_URL}/${id}`, {
+  const res = await fetch(`${API_URL + PRODUCTS_QUERY}/${id}`, {
     method: 'DELETE',
     headers,
   })
@@ -42,7 +44,7 @@ export async function removeItem(id) {
 }
 
 export async function editItem(item) {
-  const res = await fetch(`${API_URL}/${item.id}`, {
+  const res = await fetch(`${API_URL + PRODUCTS_QUERY}/${item.id}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify({
@@ -58,7 +60,7 @@ export async function editItem(item) {
 }
 
 export async function searchIndividualItem(id) {
-  const res = await fetch(`${API_URL}/${id}`, {
+  const res = await fetch(`${API_URL + PRODUCTS_QUERY}/${id}`, {
     method: 'GET',
     headers
   })
@@ -66,3 +68,22 @@ export async function searchIndividualItem(id) {
   return json
 }
 
+
+export async function searchAllTransactions() {
+  const res = await fetch(`${API_URL + PRODUCTS_QUERY + "/transactions/all"}`, {
+    method: 'GET',
+    headers
+  })
+  const json = await res.json()
+  return json
+}
+
+
+export async function searchAllUsers() {
+  const res = await fetch(`${API_URL + USERS_QUERY}`, {
+    method: 'GET',
+    headers
+  })
+  const json = await res.json()
+  return json
+}

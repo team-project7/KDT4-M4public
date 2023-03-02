@@ -1,5 +1,5 @@
 @import url("./paymentModal.scss");
-@import url('../../node_modules/swiper/swiper-bundle.css');
+@import url('../node_modules/swiper/swiper-bundle.css');
 
 body {
   margin: 0;
@@ -105,7 +105,7 @@ body {
     padding: 0 25px;
     height: 52px;
     font-weight: 700;
-    &.unabled {
+    &.disabled {
       background-color: #ebebeb;
       color: #fff;
       border: 1px solid transparent;
@@ -458,7 +458,10 @@ body {
           }
         }
 
-        & > .payment-btn {
+        &__acc {
+          width: 100%;
+          display: flex;
+          align-items: center;
           justify-content: space-between;
           font-size: 14px;
           letter-spacing: -0.21px;
