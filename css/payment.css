@@ -73,7 +73,7 @@ body {
   height: 52px;
   font-weight: 700;
 }
-.payment-btn.modal-btn.unabled {
+.payment-btn.modal-btn.disabled {
   background-color: #ebebeb;
   color: #fff;
   border: 1px solid transparent;
@@ -378,12 +378,15 @@ body {
   font-weight: 400;
   color: rgba(34, 34, 34, 0.5);
 }
-.payment-container .payment-content .method-content .method-simple > .payment-btn {
+.payment-container .payment-content .method-content .method-simple__acc {
+  width: 100%;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   font-size: 14px;
   letter-spacing: -0.21px;
 }
-.payment-container .payment-content .method-content .method-simple > .payment-btn .method-simple__point-text {
+.payment-container .payment-content .method-content .method-simple__acc .method-simple__point-text {
   color: rgb(124, 114, 238);
 }
 .payment-container .payment-content .method-content .method-general {
