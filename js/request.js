@@ -59,8 +59,8 @@ export async function searchAll(searchtext) {
     }
   )
   let json = await res.json()
-  let newseartext = searchtext;
-  searchList(json,newseartext)
+  let newseartext = searchtext
+  searchList(json, newseartext)
   return json
 }
 console.log(searchAll())
@@ -76,7 +76,7 @@ export async function searchByName(searchText) {
       }),
     }
   )
- 
+
   return res.json()
 }
 
