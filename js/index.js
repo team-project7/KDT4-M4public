@@ -3,7 +3,7 @@ import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
-import { appendShortcut } from './shortcut'
+import { appendShortcut, appendmenShortcut, appendwomenShortcut, appendbrandShortcut } from './shortcut'
 import { appendPayment } from './payment'
 import {
   exhibitions,
@@ -21,6 +21,11 @@ import {
   appendtitlejacket,
   appendtitlehoodie,
   appendtitlepadding,
+  appendtitlemenshorcut,
+  appendtitlewomenshorcut,
+  appendtitletechshorcut,
+  appendtitleluxshorcut,
+  
 } from './header'
 import {
   bannerimg,
@@ -50,35 +55,85 @@ const router = new Navigo('/')
 
 router
   .on('/', function (data) {
+    document.body.innerHTML = ''
     appendHeadermain()
-    appendbanner()
-    appendShortcut()
-
-    line()
-    appendProducts('남성', 4, 12, 0)
-    line()
+    
     switch (data.queryString) {
       case '':
+        appendbanner()
+        appendShortcut()
+        line()
+        appendProducts('남성', 4, 12, 0)
+        line()
         appendBrandFocus()
+        bannerimg()
+        appendProducts('스니커즈', 4, 12, 0)
+        bannerimg2()
+        appendProducts('여성', 4, 12, 0)
+        bannerimg3()
+        appendProducts('후드', 4, 12, 0)
+        bannerimg4()
+        appendProducts('패딩', 4, 12, 0)
         break
       case 'man':
+        appendmenShortcut()
+        line()
+        appendProducts('남성', 4, 12, 0)
+        line()
+        appendProducts('신발', 4, 12, 0)
+        line()
+        appendProducts('패딩', 4, 12, 0)
+        line()
         appendManBrandFocus()
+        line()
+        appendProducts('셔츠', 4, 12, 0)
+        line()
+        appendProducts('아미', 4, 12, 0)
+        line()
+        appendProducts('후드', 4, 12, 0)
+        line()
+        appendProducts('니트웨어', 4, 12, 0)
         break
       case 'woman':
+        appendwomenShortcut()
+        line()
+        appendProducts('여성', 4, 12, 0)
+        line()
+        appendProducts('아미', 4, 12, 0)
+        line()
+        appendProducts('Miu Miu', 4, 12, 0)
+        line()
         appendWomanBrandFocus()
+        line()
+        appendProducts('니트웨어', 4, 12, 0)
+        line()
+        appendProducts('의류', 4, 12, 0)
+        line()
+        appendProducts('샌들/슬리퍼', 4, 12, 0)
+        line()
+        appendProducts('셔츠', 4, 12, 0)
         break
       case 'brand':
+        appendbrandShortcut()
+        line()
+        appendProducts('Miu Miu', 4, 12, 0)
+        line()
+        appendProducts('Louis Vuitton', 4, 12, 0)
+        line()
+        appendProducts('Chanel', 4, 12, 0)
+        line()
         appendBrandBrandFocus()
+        line()
+        appendProducts('Vivienne Westwood', 4, 12, 0)
+        line()
+        appendProducts('Rolex', 4, 12, 0)
+        line()
+        appendProducts('Maison Kitsune', 4, 12, 0)
+        line()
+        appendProducts('Lego', 4, 12, 0)
         break
     }
-    bannerimg()
-    appendProducts('스니커즈', 4, 12, 0)
-    bannerimg2()
-    appendProducts('여성', 4, 12, 0)
-    bannerimg3()
-    appendProducts('후드', 4, 12, 0)
-    bannerimg4()
-    appendProducts('패딩', 4, 12, 0)
+  
     appendsearch()
     footerbanner()
     appendFooter()
@@ -96,6 +151,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendLogin()
+    appendsearch()
     footerbanner()
     appendFooter()
   })
@@ -165,11 +221,28 @@ router
         appendProducts(data.name, 8, 12, 0)
         break
       case '패딩':
-        appendtitlepadding()
-        appendProducts(data.name, 8, 12, 0)
-        break
-      default:
-        appendProducts(data.name, 12, 12, 0)
+      appendtitlepadding()
+      appendProducts(data.name, 8, 12, 0)
+      break
+      // 추천tab shorcut페이지
+      case '남성 추천':
+      appendtitlemenshorcut()
+      appendProducts('남성', 20, 20, 0) 
+      break
+      case '여성 추천':
+      appendtitlewomenshorcut()
+      appendProducts('여성', 20, 20, 0) 
+      break
+      case '정가 아래':
+      appendtitletechshorcut() 
+      appendProducts('테크', 20, 20, 0) 
+      break
+      case '인기 럭셔리':
+      appendtitleluxshorcut()
+      appendProducts('Chanel', 20, 20, 0) 
+      break
+    default: 
+    appendProducts(data.name, 12, 12, 0)
     }
     appendsearch()
     footerbanner()
