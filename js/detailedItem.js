@@ -301,14 +301,31 @@ function appendDetailedItem() {
           </div>
           </section>
         </div>
+        <div class="purchase_popUp_background">
+          <div class="purchase_popUp hide">
+            <h3 class="popUp_title">상품 특이 사항</h3>
+            <span class="material-symbols-outlined popUp_close">
+              close
+            </span>
+            <h4 class="popUp_warning">보유한 상품만 거래되는 것이 원칙입니다.</h4>
+            <div class="popUp_content">
+              <p class="bold">반드시 보유한 상품만 거래 하세요.</p>
+              <p class="content_txt">판매자는 거래 체결 후, 48시간 이내(일,공휴일 제외)에 상품을 발송하여야 합니다.</p>
+              <p class="content_txt">보유한 상품이 아니거나, 즉시 발송이 불가능한 경우의 사전 거래 체결은 발송지연, 미입고 등으로 <span class="txt_red">페널티 15%</span>가 부과되며 향후 거래가 제한될 수 있습니다.</p>
+              <p class="content_txt">구매자는 조기 거래 체결 시, 판매자의 상품 미보유 혹은 정식 발매 제품과 상이한 모델, 가품 등으로 인한 거래 실패 가능성이 있으므로 주의가 필요합니다.</p>
+            </div>
+          </div>
+        </div>
       `
-      
-      header.after(detailedItem)
-      
-      const anotherBody = document.querySelector('.another_body')
-      appendSmallProducts(tags[0], 12, anotherBody, 0)
-      // console.log(appendProducts(tags[0], 12, 36, 0))
 
+    // 페이지 랜더링
+    header.after(detailedItem)
+
+    const anotherBody = document.querySelector('.another_body')
+    appendSmallProducts(tags[0], 12, anotherBody, 0)
+    // console.log(appendProducts(tags[0], 12, 36, 0))
+
+    // 안내 창 오픈 클로즈
     const heads = document.querySelectorAll('.dropdown_head')
     const contents = document.querySelectorAll('.dropdown_content')
 
