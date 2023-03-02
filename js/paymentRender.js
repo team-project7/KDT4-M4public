@@ -6,11 +6,12 @@ export function renderPaymentPage(item) {
   paymentContent.append(
     renderProductInfoArea(item),
     renderDelieveryInfoArea(),
-    renderOrderTotalArea(item.price, true),
+    renderOrderTotalArea(item, true),
     renderPaymentMethodArea(),
     renderChecklistArea(item),
     renderAccountModal(),
-    renderNewAccountModal()
+    renderNewAccountModal(),
+    renderAddProfileModal()
   )
 
   const paymentContainer = document.createElement('div')
@@ -56,7 +57,7 @@ function renderPageHeader(centerText) {
   return headerEl
 }
 
-function renderProductInfoArea(item) {
+export function renderProductInfoArea(item) {
   const productInfoArea = document.createElement('section')
   productInfoArea.classList.add('product-info-area')
 
@@ -121,10 +122,8 @@ function renderDelieveryInfoArea() {
     deliveryMethod.innerHTML = /*html*/ `
       <h1>배송 방법</h1>
       <div class="delivery-method__methods">
-        <button class="payment-btn wide selectable selected">
-          <div class="method__img-wrapper">
-            <img class="method__img" src="../../image/general-delivery.png" alt="일반 배송 이미지" />
-          </div>
+        <button id="delivery-method__delivery-select-btn" class="payment-btn wide selectable selected">
+          <div class="method__img-wrapper delivery"></div>
           <div class="method__text-wrapper">
             <div class="method__title">
               <span>일반배송</span>
@@ -133,10 +132,8 @@ function renderDelieveryInfoArea() {
             <span class="method__desc">검수 후 배송 ・ 5-7일 내 도착 예정</span>
           </div>
         </button>
-        <button class="payment-btn wide selectable">
-          <div class="method__img-wrapper">
-            <img class="method__img" src="../../image/storage-pickup.png" alt="창고 보관 이미지" />
-          </div>
+        <button id="delivery-method__storage-select-btn" class="payment-btn wide selectable">
+          <div class="method__img-wrapper storage"></div>
           <div class="method__text-wrapper">
             <div class="method__title">
               <span>창고보관</span>
@@ -156,7 +153,7 @@ function renderDelieveryInfoArea() {
   return delieveryArea
 }
 
-function renderOrderTotalArea(price, isDelivery) {
+function renderOrderTotalArea(item, isDelivery) {
   const orderTotalArea = document.createElement('section')
   
   orderTotalArea.classList.add('order-area')
@@ -169,9 +166,7 @@ function renderOrderTotalArea(price, isDelivery) {
         <h1>총 결제금액</h1>
         <div class="order-content__total-amount">
           <span id="order-content__total-amount">
-            ${isDelivery 
-            ? (price + 2400 + 3000).toLocaleString()
-            : price.toLocaleString()}원
+            ${(item.price + 2400 + 3000).toLocaleString()}원
           </span>
         </div>
 
@@ -183,7 +178,7 @@ function renderOrderTotalArea(price, isDelivery) {
           <dt class="price-title">
             <span>즉시 구매가</span>
           </dt>
-          <dd class="price-text">${(price).toLocaleString()}원</dd>
+          <dd class="price-text">${(item.price).toLocaleString()}원</dd>
         </dl>
         <dl class="order-content__desc-details">
           <dt class="price-title">
@@ -202,18 +197,16 @@ function renderOrderTotalArea(price, isDelivery) {
             <span>수수료</span>
             <svg width="15px" height="15px"xmlns="http://www.w3.org/2000/svg" id="i-ico-help" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#fff"></circle><circle cx="8" cy="8" r="7.5" stroke="#222" stroke-opacity=".3"></circle><path d="M7.086 9.346h1.213v-.334c0-.592.217-.908.972-1.354.774-.463 1.231-1.101 1.231-2.004v-.006c0-1.26-1.049-2.173-2.59-2.173-1.7 0-2.578 1.007-2.654 2.267l-.006.07h1.213l.006-.052c.064-.715.568-1.207 1.377-1.207.797 0 1.324.48 1.324 1.148v.006c0 .598-.252.938-.961 1.365-.803.48-1.149 1.008-1.13 1.805l.005.469zm.615 2.719c.44 0 .774-.335.774-.762a.75.75 0 00-.774-.756.753.753 0 00-.767.756c0 .427.34.761.767.761z" fill="#222" fill-opacity=".4"></path></svg></span>
           </dt>
-          <dd class="price-text">${isDelivery
-            ? (2400).toLocaleString() + "원"
-            : "-"}
+          <dd id="order-content__transaction-fee" class="price-text">
+            2400원
           </dd>
         </dl>
         <dl class="order-content__desc-details">
           <dt class="price-title">
             <span >배송비</span>
           </dt>
-          <dd class="price-text">${isDelivery
-            ? (3000).toLocaleString() + "원"
-            : "-"}
+          <dd id="order-content__delivery-charge" class="price-text">
+            3000원
           </dd>
         </dl>
 
@@ -295,8 +288,8 @@ function renderPaymentMethodArea() {
               <span class="grid-title">
                 네이버
               </span>
-              <div class="grid-img">
-                <img src="../../image/naver-pay.png" alt="naver 이미지" />
+              <div class="grid-img naver">
+                
               </div>
             </a>
           </li>
@@ -305,8 +298,8 @@ function renderPaymentMethodArea() {
               <span class="grid-title">
                 카카오
               </span>
-              <div class="grid-img">
-                <img src="../../image/kakao-pay.png" alt="kakao 이미지" />
+              <div class="grid-img kakao">
+                
               </div>
             </a>
           </li>
@@ -315,8 +308,8 @@ function renderPaymentMethodArea() {
               <span class="grid-title">
                 토스
               </span>
-              <div class="grid-img">
-                <img src="../../image/toss-pay.png" alt="toss 이미지" />
+              <div class="grid-img toss">
+                
               </div>
             </a>
           </li>
@@ -325,8 +318,8 @@ function renderPaymentMethodArea() {
               <span class="grid-title">
                 페이코
               </span>
-              <div class="grid-img">
-                <img src="../../image/payco-pay.png" alt="payco 이미지" />
+              <div class="grid-img payco">
+                
               </div>
             </a>
           </li>
@@ -508,11 +501,11 @@ function renderChecklistArea(item) {
       <dl class="checklist-total__price">
         <dt class="checklist-total__price-title">총 결제금액</dt>
         <dd class="checklist-total__price-amount">
-          <span class="amount">${(item.price).toLocaleString()}원</span>
+          <span id="checklist-total__amount" class="amount">${(item.price).toLocaleString()}원</span>
         </dd>
       </dl>
     </div>
-    <button id="payment-final-btn" class="payment-btn wide confirm unabled">
+    <button id="payment-final-btn" class="payment-btn wide confirm">
         결제하기
     </button>
 
@@ -524,45 +517,45 @@ export function renderAddProfileModal() {
   const addProfileModal = document.createElement('aside')
   addProfileModal.classList.add('modal-container')
   addProfileModal.classList.add('hidden')
-  addProfileModal.setAttribute('id','add-modal-container')
+  addProfileModal.setAttribute('id','add-profile-modal-container')
   
   addProfileModal.innerHTML = /*html*/ `
   <div class="modal add-modal">
     <div class="modal-header">
-      <a  id="add-modal-header__close-btn" class="modal-header__close-btn">✖</a>
+      <a id="add-profile-modal-header__close-btn" class="modal-header__close-btn">✖</a>
       <h1 class="modal-header__title">새 주소 추가</h1>
     </div>
     <div class="modal-inner">
     <div class="add-modal-section">
         <h2 class="add-modal-section__title">이름</h2>
-        <input id="add-modal__name-input" class="add-modal-section__input" type="text" placeholder="수령인의 이름" />
+        <input id="add-profile-modal__name-input" class="add-modal-section__input" type="text" placeholder="수령인의 이름" />
         <span class="add-modal-section__input-error">올바른 이름을 입력해주세요. (2-50자)</span>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">휴대폰 번호</h2>
-        <input id="add-modal__phone-input" class="add-modal-section__input" type="text" placeholder="- 없이 입력" />
+        <input id="add-profile-modal__phone-input" class="add-modal-section__input" type="text" placeholder="- 없이 입력" />
         <span class="add-modal-section__input-error">정확한 휴대폰 번호를 입력해주세요.</span>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">우편번호</h2>
-        <input id="add-modal-section__zipcode-input" class="add-modal-section__input" type="text" placeholder="우편 번호를 검색하세요" readonly="readonly" />
-        <button id="add-modal-section__search-btn" class="payment-btn grey">우편번호</button>
+        <input id="add-profile-modal-section__zipcode-input" class="add-modal-section__input" type="text" placeholder="우편 번호를 검색하세요" readonly="readonly" />
+        <button id="add-profile-modal-section__search-btn" class="payment-btn grey">우편번호</button>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">주소</h2>
-        <input id="add-modal-section__name" class="add-modal-section__input" type="text" placeholder="우편 번호 검색 후, 자동 입력 됩니다." readonly="readonly"/>
+        <input id="add-profile-modal-section__name" class="add-modal-section__input" type="text" placeholder="우편 번호 검색 후, 자동 입력 됩니다." readonly="readonly"/>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">상세 주소</h2>
-        <input id="add-modal-section__address-input" class="add-modal-section__input" type="text" placeholder="건물, 아파트, 동/호수 입력" />
+        <input id="add-profile-modal-section__address-input" class="add-modal-section__input" type="text" placeholder="건물, 아파트, 동/호수 입력" />
       </div>
       <div class="add-modal__checkbox">
-        <input id="add-modal__set-default" type="checkbox" />
+        <input id="add-profile-modal__set-default" type="checkbox" />
         <span>기본 배송지로 설정</span>
       </div>
       <div class="add-modal__btns">
-        <button id="add-modal__btns-cancel-btn" class="payment-btn grey">취소</button>
-        <button id="add-modal__btns-save-btn" class="payment-btn" disabled="true">저장하기</button>
+        <button id="add-profile-modal__btns-cancel-btn" class="payment-btn grey">취소</button>
+        <button id="add-profile-modal__btns-save-btn" class="payment-btn" disabled="true">저장하기</button>
       </div>
     </div>
   </div>
@@ -650,7 +643,7 @@ function renderAccountModal() {
         </p>
         
         <div class="acc-modal__btns">
-          <button class="payment-btn modal-btn">저장하기</button>
+          <button id="acc-modal__save-btn" class="payment-btn modal-btn">저장하기</button>
         </div>
 
 
@@ -692,7 +685,7 @@ export function renderEmptySlide() {
 }
 
 function renderNewAccountModal() {
-  const newAccountModal = document.createElement('div')
+  const newAccountModal = document.createElement('aside')
   newAccountModal.classList.add('modal-container', 'hidden')
   newAccountModal.setAttribute('id', 'newAcc-modal-container')
 
@@ -743,7 +736,7 @@ function renderNewAccountModal() {
         </div>
 
         <div class="newAcc-modal__btns">
-          <button id="newAcc-modal__add-btn" class="payment-btn modal-btn unabled">추가</button>
+          <button id="newAcc-modal__add-btn" class="payment-btn modal-btn disabled">추가</button>
         </div>
       </div>
     </div>
@@ -752,10 +745,40 @@ function renderNewAccountModal() {
   return newAccountModal
 }
 
-function renderTotopBtn() {
-  const toTopBtn = document.createElement('button')
-  toTopBtn.setAttribute('id', 'payment__to-top-btn')
-  toTopBtn.classList.add('payment-topBtn')
+export function renderOnPurchaseSuccess(item, isDelivery) {
+  const successPage = document.createElement('section')
+  successPage.classList.add('purchase-success')
+  
+  successPage.innerHTML = /*html*/`
+      <h1>구매 완료</h1>
+      
+      <dl class="purchase-success-list">
 
-  return toTopBtn
+        <div class="info-box">
+          <dt class="purchase-success__title">
+              결제 금액
+          </dt>
+          <dd class="purchase-success__desc">${item.price.toLocaleString()}원</dd>
+        </div>
+
+        <div class="info-box">
+          <dt class="purchase-success__title">
+            배송 방법
+          </dt>
+          <dd class="purchase-success__desc">${isDelivery ? "배송" : "창고 보관"}</dd>
+        </div>
+      </dl>
+
+      <div class="purchase-success__btns">
+        <a href="/" class="payment-btn">홈으로</a>
+        <a href="#shop" class="payment-btn">상품 더 보기</a>
+      </div>
+  
+  `
+  
+  return successPage
+}
+
+export function renderOnPurchaseFailed() {
+  
 }

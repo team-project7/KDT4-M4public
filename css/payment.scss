@@ -1,5 +1,6 @@
 @import url("./paymentModal.scss");
 @import url('../../node_modules/swiper/swiper-bundle.css');
+@import url('./onPurchase.scss');
 body {
   margin: 0;
   padding: 0;
@@ -9,12 +10,30 @@ body {
   color: #222;
   box-sizing: border-box;
 }
+@mixin dataLabelBox() {
+  display: flex;
+  margin-bottom: 6px;
+  line-height: 17px;
+  letter-spacing: -0.15px;
+}
+@mixin dataLabelTitle() {
+  min-width: 80px;
+  font-size: 13px;
+  letter-spacing: -0.07px;
+  color: rgba(34, 34, 34, 0.5);
+}
 
-a {
+@mixin dataLabelDesc() {
+  overflow: hidden;
+  font-size: 14px;
+  letter-spacing: -0.21px;
+}
+
+.payment-content a {
   text-decoration: none;
   color: #000;
   &:visited {
-    color: rgba(34, 34, 34, 0.8);
+    color: #000;
   }
 }
 
@@ -25,14 +44,14 @@ a {
   line-height: 22px;
 }
 
-.payment-topBtn {
-  position: absolute;
-  right: 10rem;
-  bottom: 10rem;
-  width: 20px;
-  height: 20px;
-  background-color: #000;
-}
+// .payment-topBtn {
+//   position: absolute;
+//   right: 10rem;
+//   bottom: 10rem;
+//   width: 20px;
+//   height: 20px;
+//   background-color: #000;
+// }
 
 .payment-btn {
   padding: 0 20px;
@@ -67,7 +86,7 @@ a {
     justify-content: center;
   }
 
-  &.unabled {
+  &.disabled {
     background-color: #ebebeb;
     color: #fff;
     border: 1px solid transparent;
@@ -148,7 +167,7 @@ a {
     a {
       width: 120px;
       height: 50px;
-      background: url('../../image/kream-logo.png');
+      background: url('../image/kream-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -258,25 +277,17 @@ a {
           padding-right: 80px;
 
           .info-box {
-            display: flex;
-            margin-bottom: 6px;
-            line-height: 17px;
-            letter-spacing: -0.15px;
+           @include dataLabelBox();
 
             &:last-of-type {
               margin-bottom: 12px;
             }
             .delivery-info__title {
-              min-width: 80px;
-              font-size: 13px;
-              letter-spacing: -0.07px;
-              color: rgba(34, 34, 34, 0.5);
+            @include dataLabelTitle();
             }
 
             .delivery-info__desc {
-              overflow: hidden;
-              font-size: 14px;
-              letter-spacing: -0.21px;
+             @include dataLabelDesc();
             }
           }
 
@@ -327,11 +338,18 @@ a {
           .method__img-wrapper {
             width: 40px;
             height: 40px;
-
-            img {
-              width: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+          
+            &.delivery {
+              background-image: url("../image/general-delivery.png");
+            }
+          
+            &.storage {
+              background-image: url("../image/storage-pickup.png");
             }
           }
+          
 
           .method__text-wrapper {
             display: flex;
@@ -506,7 +524,25 @@ a {
               .grid-img {
                 width: 40px;
                 height: 40px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
                 margin-left: auto;
+
+                &.naver {
+                  background-image: url("../image/naver-pay.png");
+                }
+                &.kakao {
+                  background-color: #F7E111;
+                  border-radius: 50%;
+                  background-image: url("../image/kakao-pay.png");
+                }
+                &.toss {
+                  background-image: url("../image/toss-pay.png");
+                }
+                &.payco {
+                  background-image: url("../image/payco-pay.png");
+                }
               }
             }
           }
@@ -602,5 +638,34 @@ a {
         
       }
     } //checklist-area ends
+  }
+}
+
+.purchase-success {
+  .purchase-success-list {
+    margin-top: 1rem;
+    .info-box {
+      @include dataLabelBox();
+
+      .purchase-success__title {
+        @include dataLabelTitle();
+      }
+      .purchase-success__desc {
+        @include dataLabelTitle();
+      }
+    }
+  }
+
+  &__btns {
+    margin-top: 2rem;
+    a {
+      padding: 10px 15px;
+      transition: all 0.4s ease;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid transparent;
+      }
+    }
   }
 }

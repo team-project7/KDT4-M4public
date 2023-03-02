@@ -1,24 +1,94 @@
-import appendFooter from '../footer'
-import { searchIndividualItem } from '../adminRequest'
+import appendFooter from './footer'
+import { searchIndividualItem } from './adminRequest'
 import {
   renderPaymentPage,
   renderBankSlide,
   renderEmptySlide,
+  renderOnPurchaseSuccess,
+  renderProductInfoArea,
 } from './paymentRender'
 import * as Banking from './banking'
 import Swiper from 'swiper/swiper-bundle'
 import 'swiper/swiper-bundle.css'
-export default async function appendPayment(item) {
-  const item = await searchIndividualItem(item.id)
+
+
+export async function appendPayment(item) {
   document.body.append(renderPaymentPage(item))
   appendFooter()
 
+  
+  //[상품 정보]
+  //[배송]
+  //배송지 추가 버튼 이벤트 핸들러
+  const addDeliveryProfileBtn = document.querySelector(
+    '#payment__add-delivery-profile'
+  )
+  addDeliveryProfileBtn.addEventListener('click', () => {
+    const profileContainer = document.querySelector(
+      '#add-profile-modal-container'
+    )
+    profileContainer.classList.remove('hidden')
+    document
+      .querySelector('#add-profile-modal-header__close-btn')
+      .addEventListener('click', () => {
+        profileContainer.classList.add('hidden')
+      })
+    document
+      .querySelector('#add-profile-modal__btns-cancel-btn')
+      .addEventListener('click', () => {
+        profileContainer.classList.add('hidden')
+      })
+  })
+  
+  //[배송 방법]
+  let isDelivery = true
+  document.querySelector('#delivery-method__delivery-select-btn')
+  .addEventListener('click', () => {
+    isDelivery = true
+    updateAmountInfo()
+  })
+
+  document.querySelector('#delivery-method__storage-select-btn')
+  .addEventListener('click', () => {
+    isDelivery = false
+    updateAmountInfo()
+  })
+  const selectableBtns = document.querySelectorAll('.selectable')
+  Array.from(selectableBtns).forEach(btn => {
+    btn.addEventListener('click', event => {
+      siblings(event.currentTarget).forEach( sibling => {
+        sibling.classList.remove('selected')
+      })
+      event.currentTarget.classList.add('selected')
+    })
+  })
+  //[주문 정보]
+  
+  function updateAmountInfo() {
+    document.querySelector('#order-content__transaction-fee')
+    .textContent = `${isDelivery
+      ? (2400).toLocaleString() + "원"
+      : "-"}`
+    document.querySelector('#order-content__delivery-charge')
+    .textContent = `${isDelivery
+      ? (3000).toLocaleString() + "원"
+      : "-"}`
+    document.querySelector('#order-content__total-amount')
+    .textContent =  `${isDelivery 
+      ? (item.price + 2400 + 3000).toLocaleString()
+      : (item.price).toLocaleString()
+      }원`
+    document.querySelector('#checklist-total__amount')
+    .textContent =  `${isDelivery 
+      ? (item.price + 2400 + 3000).toLocaleString()
+      : (item.price).toLocaleString()
+      }원`
+  }
   //[계좌 정보 모달]
   const accModalBtn = document.querySelector('#method-simple__acc-btn')
   accModalBtn.addEventListener('click', onAddAccBtnClicked)
-
+  const accModal = document.querySelector('#acc-modal-container')
   function onAddAccBtnClicked() {
-    const accModal = document.querySelector('#acc-modal-container')
     accModal.classList.remove('hidden')
     document.body.style.overflowY = 'hidden'
 
@@ -76,6 +146,13 @@ export default async function appendPayment(item) {
     swiper.appendSlide(emptySlide)
   }
 
+  document
+    .querySelector('#acc-modal__save-btn')
+    .addEventListener('click', () => {
+      accModal.classList.add('hidden')
+      document.body.style.overflowY = 'scroll'
+    })
+
   //[계좌 정보 모달] 계좌 추가 모달 디스플레이 버튼
   const addNewAccBtn = document.querySelector('#acc-modal__add-acc-btn')
   addNewAccBtn.addEventListener('click', onModalAccAddBtnClicked)
@@ -132,14 +209,24 @@ export default async function appendPayment(item) {
     newAccAddBtn.classList.toggle('unabled')
   })
 
+  //[구매]
   document
     .querySelector('#payment-final-btn')
     .addEventListener('click', async () => {
       const accId = swiper.slides[swiper.activeIndex].children[0]
       const key = accId.dataset.bank
-      const isPaid = await Banking.buy(item, key)
+      const isPaid = await Banking.buy(test, key)
       if (isPaid) {
-        alert(`${item.title}구매 완료`)
+        alert(`${test.title}구매 완료`)
+        const paymentContent = document.querySelector('.payment-content')
+        paymentContent.innerHTML = ""
+        paymentContent.append(renderProductInfoArea(test))
+        paymentContent.append(renderOnPurchaseSuccess(test, false))
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
       } else {
         alert('구매 실패')
       }
@@ -175,6 +262,11 @@ export default async function appendPayment(item) {
 
       default:
         return 0
-    }
+    }    
   }
+
+  function siblings(el) {
+    return [...el.parentElement.children].filter(node => node != el);
+  }
+  
 }
