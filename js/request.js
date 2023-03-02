@@ -93,3 +93,15 @@ export async function searchByTag(tags) {
   )
   return res.json()
 }
+
+// export async function getProduct() {
+//   const res = await fetch(`https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${productName}`, {
+//     method: 'GET',
+//     headers
+//   })
+
+//   const json = await res.json()
+//   console.log(json)
+  
+//   return json
+// }

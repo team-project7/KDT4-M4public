@@ -170,7 +170,6 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendDetailedItem()
-    appendProducts('남성', 4, 12)
     footerbanner()
     appendFooter()
   })
