@@ -2,8 +2,6 @@
 @import url('../node_modules/swiper/swiper-bundle.css');
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, Roboto,
     AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕, Segoe UI,
     Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
@@ -98,22 +96,20 @@ body {
   }
   &.modal-btn {
     background-color: #000;
-    color: #FFF;
+    color: #fff;
     border-radius: 77px;
     font-size: 16px;
     width: 176px;
     padding: 0 25px;
     height: 52px;
     font-weight: 700;
-    &.unabled {
+    &.disabled {
       background-color: #ebebeb;
       color: #fff;
       border: 1px solid transparent;
     }
-  
   }
 }
-
 
 .selectable {
   border: 1px solid #d3d3d3;
@@ -126,7 +122,6 @@ body {
 .flex-space {
   flex-grow: 1;
 }
-
 
 .page-header {
   position: fixed;
@@ -277,17 +272,17 @@ body {
           padding-right: 80px;
 
           .info-box {
-           @include dataLabelBox();
+            @include dataLabelBox();
 
             &:last-of-type {
               margin-bottom: 12px;
             }
             .delivery-info__title {
-            @include dataLabelTitle();
+              @include dataLabelTitle();
             }
 
             .delivery-info__desc {
-             @include dataLabelDesc();
+              @include dataLabelDesc();
             }
           }
 
@@ -340,16 +335,15 @@ body {
             height: 40px;
             background-repeat: no-repeat;
             background-size: contain;
-          
+
             &.delivery {
-              background-image: url("../image/general-delivery.png");
+              background-image: url('../image/general-delivery.png');
             }
-          
+
             &.storage {
-              background-image: url("../image/storage-pickup.png");
+              background-image: url('../image/storage-pickup.png');
             }
           }
-          
 
           .method__text-wrapper {
             display: flex;
@@ -458,7 +452,10 @@ body {
           }
         }
 
-        & > .payment-btn {
+        &__acc {
+          width: 100%;
+          display: flex;
+          align-items: center;
           justify-content: space-between;
           font-size: 14px;
           letter-spacing: -0.21px;
@@ -530,18 +527,18 @@ body {
                 margin-left: auto;
 
                 &.naver {
-                  background-image: url("../image/naver-pay.png");
+                  background-image: url('../image/naver-pay.png');
                 }
                 &.kakao {
-                  background-color: #F7E111;
+                  background-color: #f7e111;
                   border-radius: 50%;
-                  background-image: url("../image/kakao-pay.png");
+                  background-image: url('../image/kakao-pay.png');
                 }
                 &.toss {
-                  background-image: url("../image/toss-pay.png");
+                  background-image: url('../image/toss-pay.png');
                 }
                 &.payco {
-                  background-image: url("../image/payco-pay.png");
+                  background-image: url('../image/payco-pay.png');
                 }
               }
             }
@@ -613,7 +610,6 @@ body {
       }
 
       .checklist-total {
-
         &__price {
           padding-top: 16px;
           padding-bottom: 12px;
@@ -635,7 +631,6 @@ body {
             font-weight: bold;
           }
         }
-        
       }
     } //checklist-area ends
   }

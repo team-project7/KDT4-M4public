@@ -4,6 +4,7 @@ import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import { appendShortcut } from './shortcut'
+import { appendPayment } from './payment'
 import {
   exhibitions,
   exhibitsurgery,
@@ -41,6 +42,10 @@ import appendShopContent from './shop'
 import { appendsearch } from './search'
 import { adminPage, appendAdminPage } from './admin'
 import appendErrorPage from './error'
+import { searchIndividualItem } from './adminRequest'
+import dotenv from 'dotenv'
+
+dotenv.config()
 import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')
 
@@ -49,6 +54,7 @@ router
     appendHeadermain()
     appendbanner()
     appendShortcut()
+
     line()
     appendProducts('남성', 4, 12, 0)
     line()
@@ -79,8 +85,13 @@ router
     appendFooter()
   })
   .on('/admin', function () {
+    if (localStorage.getItem("email") === process.env.ADMIN_USER){
     document.body.innerHTML = ''
     adminPage()
+    }
+    else {
+      location.replace("/")
+    }
   })
   .on('/login', function () {
     document.body.innerHTML = ''
@@ -110,25 +121,25 @@ router
     appendHeadersub()
     switch (data.name) {
       // main banner-swiper 페이지
-      case '스마트워치' :
-      exhibitions()
-      appendProducts(data.name, 8, 12, 0)
-      break
-      case '남성' :
-      exhibitsurgery()
-      appendProducts(data.name, 8, 12, 0)
-      break
-      case '셔츠' :
-      exhibitwnderkammer()
-      appendProducts(data.name, 8, 12, 0)
-      break
-      case '셔츠' :
-      break
+      case '스마트워치':
+        exhibitions()
+        appendProducts(data.name, 8, 12, 0)
+        break
+      case '남성':
+        exhibitsurgery()
+        appendProducts(data.name, 8, 12, 0)
+        break
+      case '셔츠':
+        exhibitwnderkammer()
+        appendProducts(data.name, 8, 12, 0)
+        break
+      case '셔츠':
+        break
       // shop small-swiper 페이지
       case '스니커즈':
-      appendtitleNike()
-      appendProducts(data.name, 8, 12, 0)
-      break
+        appendtitleNike()
+        appendProducts(data.name, 8, 12, 0)
+        break
       case 'payco':
         exhibitpayco()
         break
@@ -143,29 +154,29 @@ router
         break
       // 고정 bannerimg 페이지
       case '신발':
-      appendtitleBW()
-      appendProducts(data.name, 8, 12, 0)
-      break
+        appendtitleBW()
+        appendProducts(data.name, 8, 12, 0)
+        break
       case '의류':
-      appendtitlejacket()
-      appendProducts(data.name, 8, 12, 0)
-      break
+        appendtitlejacket()
+        appendProducts(data.name, 8, 12, 0)
+        break
       case '후드':
-      appendtitlehoodie()
-      appendProducts(data.name, 8, 12, 0)
-      break
+        appendtitlehoodie()
+        appendProducts(data.name, 8, 12, 0)
+        break
       case '패딩':
-      appendtitlepadding()
-      appendProducts(data.name, 8, 12, 0)
-      break
-    default: 
-    appendProducts(data.name, 12, 12, 0)
+        appendtitlepadding()
+        appendProducts(data.name, 8, 12, 0)
+        break
+      default:
+        appendProducts(data.name, 12, 12, 0)
     }
     appendsearch()
     footerbanner()
     appendFooter()
   })
-  
+
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()

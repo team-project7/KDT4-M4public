@@ -2,8 +2,8 @@ import { searchList } from './search'
 
 const headers = {
   'content-type': 'application/json',
-  apikey: 'FcKdtJs202301',
-  username: 'KDT4_TEAM7',
+  apikey: process.env.API_KEY,
+  username: process.env.USER_NAME,
 }
 
 export async function createUser(id, pw, displayname) {
@@ -59,8 +59,8 @@ export async function searchAll(searchtext) {
     }
   )
   let json = await res.json()
-  let newseartext = searchtext;
-  searchList(json,newseartext)
+  let newseartext = searchtext
+  searchList(json, newseartext)
   return json
 }
 console.log(searchAll())
@@ -76,7 +76,7 @@ export async function searchByName(searchText) {
       }),
     }
   )
- 
+
   return res.json()
 }
 
