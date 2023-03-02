@@ -3,7 +3,7 @@ import swiper1 from '../image/bannerswiper1.jpg';
 import swiper2 from '../image/bannerswiper2.jpg';
 import swiper3 from '../image/bannerswiper3.jpg';
 import swiper4 from '../image/bannerswiper4.jpg';
-import swiper5 from '../image/bannerswiper5.jpg';
+import swiper5 from '../image/smallpayco1.jpg';
 
 
 // small-swiper-banner
@@ -42,8 +42,8 @@ export const srcarray = [
     },
     {
         id: 5,
-        name: '스니커즈',
-        newcolor: '#F0EAE5',
+        name: 'payco',
+        newcolor: '#262626',
         img: `${swiper5}`,
     },
 ]
