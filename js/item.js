@@ -58,8 +58,8 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
   let wishlist =
     localStorage.getItem('wishlist')? localStorage.getItem('wishlist').split(',') : []
-     
-
+    
+    let token = localStorage.getItem('token')
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
     const itemLink = el.querySelector('.product__item__inner')
@@ -73,7 +73,24 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
       }
     })
 
-    wishicon.onclick = (e) => {
+    wishicon.onclick = async (e) => {
+      e.preventDefault()
+      //인증 api
+        const res = await fetch(
+          'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+          {
+            method: 'POST',
+            headers: {
+              "content-type": "application/json",
+              "apikey": "FcKdtJs202301",
+              "username": "KDT4_TEAM7",
+              "Authorization": `Bearer ${token}`,
+           },
+          }
+        )
+        let json = await res.json()
+        if(json.email) {
+
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
       if (wishicon.src == wishOn) {
         wishlist = wishlist.filter((e) => e !== el.getAttribute('data-id'))
@@ -85,9 +102,11 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
         console.log(wishlist)
       }
       wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
-
-      e.preventDefault()
       e.stopPropagation()
+        } else {
+          alert('로그인 후에 다시 시도해주세요')
+        }
+        return json
     }
   })
   const loading = document.querySelector('.loading')
@@ -168,11 +187,10 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
   })
   const items = document.querySelectorAll('.product__item')
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
+  
   let wishlist =
-    localStorage.getItem('wishlist').length === 0
-      ? []
-      : localStorage.getItem('wishlist').split(',')
-
+  localStorage.getItem('wishlist')? localStorage.getItem('wishlist').split(',') : []
+  let token = localStorage.getItem('token')
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
     const itemLink = el.querySelector('.product__item__inner')
@@ -185,8 +203,24 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
         wishicon.src = wishOn
       }
     })
-
-    wishicon.onclick = (e) => {
+   
+    wishicon.onclick = async (e) => {
+      e.preventDefault()
+       //인증 api
+       const res = await fetch(
+        'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+        {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            "apikey": "FcKdtJs202301",
+            "username": "KDT4_TEAM7",
+            "Authorization": `Bearer ${token}`,
+         },
+        }
+      )
+      let json = await res.json()
+      if(json.email) {
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
       if (wishicon.src == wishOn) {
         wishlist = wishlist.filter((e) => e !== el.getAttribute('data-id'))
@@ -199,8 +233,12 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
       }
       wishicon.src = wishicon.src === wishOff ? wishOn : wishOff
 
-      e.preventDefault()
+
       e.stopPropagation()
+      } else {
+        alert('로그인 후에 다시 시도해주세요')
+      }
+      
     }
   })
   let isdone = true
@@ -213,3 +251,5 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
     }
   }
 }
+
+

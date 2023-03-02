@@ -1,4 +1,4 @@
-import { logout } from './request'
+import { logout, validation } from './request'
 
 export function appendHeadermain() {
     const headerEl = document.createElement('header')
@@ -34,7 +34,7 @@ export function appendHeadermain() {
                                     <a href="/shop" class="gnb_link">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="" class="gnb_link">MY</a>
+                                    <a href="" class="gnb_link" id='my_gnb_link'>MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -86,8 +86,21 @@ export function appendHeadermain() {
         localStorage.removeItem('displayName')
         location.replace('/login')
 })
-}
+const vailBunEl = document.querySelector('#my_gnb_link')
+vailBunEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    validation(token)
 
+})
+
+}
+export function vailed(json) {
+    if(json.email) {
+        location.replace('/login')
+      }else {
+        alert('로그인 후에 다시 시도해주세요!')
+      }
+}
 
 
 export function appendHeadersub() {
