@@ -40,6 +40,7 @@ import { appendProducts } from './products'
 import appendShopContent from './shop'
 import { adminPage, appendAdminPage } from './admin'
 import appendErrorPage from './error'
+import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')
 
 router
@@ -170,6 +171,7 @@ router
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
+    appendDetailedItem()
     appendProducts('남성', 4, 12)
     footerbanner()
     appendFooter()
