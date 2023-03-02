@@ -44,7 +44,7 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
                 <p class="name">${e.description}</p>
                 <div class="price">
                   <div class="amount">
-                    <em class="amount_num">${e.price}</em>
+                    <em class="amount_num">${e.price.toLocaleString()}원</em>
                   </div>
                 </div>
               </div>
@@ -56,11 +56,9 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
 
   const items = document.querySelectorAll('.product__item')
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
-  let wishlist =
-    localStorage.getItem('wishlist').length === 0
-      ? []
-      : localStorage.getItem('wishlist').split(',')
-
+  let wishlist = localStorage.getItem('wishlist')
+    ? localStorage.getItem('wishlist').split(',')
+    : []
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
     const itemLink = el.querySelector('.product__item__inner')
@@ -158,7 +156,7 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
                 <p class="name--sm">${e.description}</p>
                 <div class="price">
                   <div class="amount">
-                    <em class="amount_num--sm">${e.price}</em>
+                    <em class="amount_num--sm">${e.price.toLocaleString()}원</em>
                   </div>
                 </div>
               </div>

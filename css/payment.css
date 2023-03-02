@@ -65,7 +65,7 @@ body {
 }
 .payment-btn.modal-btn {
   background-color: #000;
-  color: #FFF;
+  color: #fff;
   border-radius: 77px;
   font-size: 16px;
   width: 176px;
@@ -450,7 +450,7 @@ body {
   background-image: url("../image/naver-pay.png");
 }
 .payment-container .payment-content .method-content .method-general__grid-item > a .grid-img.kakao {
-  background-color: #F7E111;
+  background-color: #f7e111;
   border-radius: 50%;
   background-image: url("../image/kakao-pay.png");
 }

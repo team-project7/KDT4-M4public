@@ -47,7 +47,10 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 const router = new Navigo('/')
-
+;(async () => {
+  const test = await searchIndividualItem("1N5UPOC4UaayQxa8vNDf")
+  appendPayment(test)
+})()
 router
   .on('/', function (data) {
     appendHeadermain()

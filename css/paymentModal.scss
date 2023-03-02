@@ -122,8 +122,14 @@ input {
           
           .swiper-button-prev,
           .swiper-button-next {
+            
             width: 15px;
             height: 15px;
+          }
+
+          .swiper-button-next::after,
+          .swiper-button-prev::after {
+            color:#000;
           }
           
           & > .swiper-wrapper {
@@ -137,13 +143,14 @@ input {
         
 
         &-item {
-          background-color: #ebebeb;
+          background-color: #fafafa;
           border-radius: 10px;
           cursor: pointer;
-          border: 3px solid #000;
+          border: 3px solid transparent;
+          filter: drop-shadow(0 0 8px #d0d0d0);
 
           &.empty {
-            background-color: #fafafa;
+
             border: 3px dotted rgba(0,0,0, 0.1);
 
             & > span {
