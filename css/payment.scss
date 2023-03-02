@@ -1,4 +1,4 @@
-@import url("./paymentModal.scss");
+@import url('./paymentModal.scss');
 @import url('../node_modules/swiper/swiper-bundle.css');
 
 body {
@@ -96,7 +96,7 @@ body {
   }
   &.modal-btn {
     background-color: #000;
-    color: #FFF;
+    color: #fff;
     border-radius: 77px;
     font-size: 16px;
     width: 176px;
@@ -108,10 +108,8 @@ body {
       color: #fff;
       border: 1px solid transparent;
     }
-  
   }
 }
-
 
 .selectable {
   border: 1px solid #d3d3d3;
@@ -124,7 +122,6 @@ body {
 .flex-space {
   flex-grow: 1;
 }
-
 
 .page-header {
   position: fixed;
@@ -275,17 +272,17 @@ body {
           padding-right: 80px;
 
           .info-box {
-           @include dataLabelBox();
+            @include dataLabelBox();
 
             &:last-of-type {
               margin-bottom: 12px;
             }
             .delivery-info__title {
-            @include dataLabelTitle();
+              @include dataLabelTitle();
             }
 
             .delivery-info__desc {
-             @include dataLabelDesc();
+              @include dataLabelDesc();
             }
           }
 
@@ -338,16 +335,15 @@ body {
             height: 40px;
             background-repeat: no-repeat;
             background-size: contain;
-          
+
             &.delivery {
-              background-image: url("../image/general-delivery.png");
+              background-image: url('../image/general-delivery.png');
             }
-          
+
             &.storage {
-              background-image: url("../image/storage-pickup.png");
+              background-image: url('../image/storage-pickup.png');
             }
           }
-          
 
           .method__text-wrapper {
             display: flex;
@@ -531,18 +527,18 @@ body {
                 margin-left: auto;
 
                 &.naver {
-                  background-image: url("../image/naver-pay.png");
+                  background-image: url('../image/naver-pay.png');
                 }
                 &.kakao {
-                  background-color: #F7E111;
+                  background-color: #f7e111;
                   border-radius: 50%;
-                  background-image: url("../image/kakao-pay.png");
+                  background-image: url('../image/kakao-pay.png');
                 }
                 &.toss {
-                  background-image: url("../image/toss-pay.png");
+                  background-image: url('../image/toss-pay.png');
                 }
                 &.payco {
-                  background-image: url("../image/payco-pay.png");
+                  background-image: url('../image/payco-pay.png');
                 }
               }
             }
@@ -614,7 +610,6 @@ body {
       }
 
       .checklist-total {
-
         &__price {
           padding-top: 16px;
           padding-bottom: 12px;
@@ -636,7 +631,6 @@ body {
             font-weight: bold;
           }
         }
-        
       }
     } //checklist-area ends
   }
