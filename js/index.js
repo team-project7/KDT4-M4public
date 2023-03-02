@@ -47,17 +47,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 const router = new Navigo('/')
-// ;(async () => {
-//   const test = await searchIndividualItem('1BzZO12KDG0if5FpdYlj')
-//   appendPayment(test)
-// })()
 
-import { appendPayment } from "./payment"
-import { searchIndividualItem } from './adminRequest'
-;(async () => {
-  const test = await searchIndividualItem("3Zxl48Yg8OFVmFZECaUL")
-  appendPayment(test)
-})()
 router
   .on('/', function (data) {
     appendHeadermain()
@@ -94,8 +84,13 @@ router
     appendFooter()
   })
   .on('/admin', function () {
+    if (localStorage.getItem("email") === process.env.ADMIN_USER){
     document.body.innerHTML = ''
     adminPage()
+    }
+    else {
+      location.replace("/")
+    }
   })
   .on('/login', function () {
     document.body.innerHTML = ''

@@ -172,7 +172,6 @@ export function renderAccInfo(account) {
     <span>${account.accountString}</span>
     `
   }
-  console.log(accInfoEl)
   return accInfoEl
 }
 
