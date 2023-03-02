@@ -42,9 +42,6 @@ export function appendHeadermain() {
                             <button class="btn_search">
                                 <img src="https://user-images.githubusercontent.com/98297436/217512067-d5706d42-f578-44c5-86cd-e2fe7080c304.png" alt="">
                             </button>
-                            <!-- <a href="" class="btn_search"> -->
-                                
-                            <!-- </a> -->
                         </div>
                     </div>
                 </div>
@@ -74,29 +71,6 @@ export function appendHeadermain() {
           `
 
   document.body.append(headerEl)
-
-  let token = localStorage.getItem('token')
-
-  const loginBtnEl = document.querySelector('#login')
-  const logoutBtnEl = document.querySelector('#logout')
-  if (token) {
-    loginBtnEl.innerHTML = ''
-  } else {
-    logoutBtnEl.innerHTML = ''
-  }
-
-  logoutBtnEl.addEventListener('click', () => {
-    logout(token)
-    window.alert('로그아웃 완료!')
-    localStorage.removeItem('token')
-    localStorage.removeItem('email')
-    localStorage.removeItem('displayName')
-    location.replace('/login')
-  })
-  // const homeEl = document.querySelector('.gnb_link')
-  // homeEl.addEventListener('click', () => {
-  //     homeEl.classList.add('active')
-  // })
 }
 
 export function appendHeadersub() {
@@ -140,9 +114,9 @@ export function appendHeadersub() {
                             </ul>
                         </nav>
                         <div class="search_btn_box">
-                            <a href="" class="btn_search">
+                        <button class="btn_search">
                                 <img src="https://user-images.githubusercontent.com/98297436/217512067-d5706d42-f578-44c5-86cd-e2fe7080c304.png" alt="">
-                            </a>
+                        </button>
                         </div>
                     </div>
                 </div>

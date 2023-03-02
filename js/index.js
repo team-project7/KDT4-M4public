@@ -104,6 +104,7 @@ router
     smallappendbanner()
     appendShopContent()
     /*  appendProducts(` ${searchParams.get('id')}`, 4, 12) */
+    appendsearch()
     footerbanner()
     appendFooter()
   })
@@ -193,7 +194,7 @@ router
       default:
         appendProducts(data.name, 12, 12, 0)
     }
-
+    appendsearch()
     footerbanner()
     appendFooter()
   })

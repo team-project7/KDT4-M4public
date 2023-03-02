@@ -1,5 +1,4 @@
 import { searchAll } from './request'
-import close from '../image/close.png'
 import { category,brand } from './searchitems'
 
 export function appendsearch() {
@@ -98,7 +97,7 @@ export function appendsearch() {
         let brandwarap = document.createElement('div')
         brandwarap.className = 'brandwrap'
         brandwarap.innerHTML = `
-         <a href = /shop/?id=${brandlist.name} class='brandlink'>
+         <a href = /shop/?id=${brandlist.id} class='brandlink'>
           <div class = "brand_item_wrap">
           <img src = ${brandlist.img}>
           </div>
@@ -165,17 +164,17 @@ searchtitleEl.addEventListener('keydown', function (e) {
         linkEl.href = `/shop/?id=${list}`
         linkEl.innerHTML = `
          <span>${list}</span>
-         <img src = '${close}'>
         `
         recentlist.append(linkEl)
     
     }) : null
  }
-
+ const recentlist = document.getElementById('recent_list')
 let list_delete = document.getElementById('search_list_delete')
 list_delete.addEventListener('click', () => {
     localStorage.removeItem('searchtxtlist');
-    location.reload();
+    recentlist.style.display = 'none'
+   
 }) 
 
 function findtitle(searchtext) {
