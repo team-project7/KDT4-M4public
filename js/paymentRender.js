@@ -34,12 +34,12 @@ function renderPageHeader(centerText) {
       <span class="flex-space"></span>
       <ul class="page-header__top-menus">
         <li>
-          <a >
+          <a>
             관심상품
           </a>
         </li>
         <li>
-        <a >
+        <a href="/login">
             로그아웃
           </a>
         </li>
@@ -771,7 +771,7 @@ export function renderOnPurchaseSuccess(item, isDelivery) {
 
       <div class="purchase-success__btns">
         <a href="/" class="payment-btn">홈으로</a>
-        <a href="#shop" class="payment-btn">상품 더 보기</a>
+        <a href="/shop" class="payment-btn">상품 더 보기</a>
       </div>
   
   `

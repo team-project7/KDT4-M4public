@@ -1,5 +1,4 @@
 import appendFooter from './footer'
-import { searchIndividualItem } from './adminRequest'
 import {
   renderPaymentPage,
   renderBankSlide,
@@ -13,6 +12,7 @@ import 'swiper/swiper-bundle.css'
 
 
 export async function appendPayment(item) {
+  document.body.innerHTML = ''
   document.body.append(renderPaymentPage(item))
   appendFooter()
 
