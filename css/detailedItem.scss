@@ -73,7 +73,7 @@ section.detailedItem_item {
         
       }
     }
-    a.purchase_btn {
+    a.floatingPurchase_btn {
       width: 200px;
       height: 50px;
       background-color: #ef6253;
@@ -90,6 +90,7 @@ section.detailedItem_item {
 }
 
 section.detailedItem_item {
+  margin-top: 150px;
   /* item_leftSide */
   .item_leftSide {
     box-sizing: border-box;
@@ -97,10 +98,13 @@ section.detailedItem_item {
     max-width: 600px;
     padding-right: 40px;
     .item_img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 500px;
       height: 500px;
-      background-color: #ff8824;
       margin: 0 auto;
+      overflow: hidden;
     }
     .item_salesAlert {
       padding-top: 20px;
@@ -228,6 +232,20 @@ section.detailedItem_item {
         font-size: 18px;
         letter-spacing: -.27px;
       }
+    }
+    a.purchase_btn {
+      display: block;
+      height: 60px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 18px;
+      letter-spacing: -.09px;
+      font-weight: 700;
+      background-color: rgb(239, 98, 83);
+      color: rgb(255, 255, 255);
+      cursor: pointer;
     }
     a.wishlist_btn {
       display: flex;
@@ -399,33 +417,9 @@ section.detailedItem_item {
     }
   }
 }
-section.detailedItem_style {
-  margin-top: 50px;
-  .style_head h3 {
-    display: flex;
-    padding-top: 40px;
-    margin: 0 40px;
-    -webkit-box-align: center;
-    align-items: center;
-    border-top: 1px solid #ebebeb;
-    font-size: 20px;
-    letter-spacing: -.3px;
-    font-weight: 700;
-  }
-  .style_body {
-    height: 500px;
-    padding: 18px 0 30px;
-    p.empty_txt {
-      padding-top: 250px;
-      font-size: 14px;
-      letter-spacing: -.21px;
-      color: rgba(34,34,34,.8);
-      text-align: center;
-    }
-  }
-}
 
 section.detailedItem_another {
+  padding-top: 50px;
   .another_head {
     display: flex;
     padding-top: 50px;
@@ -436,6 +430,9 @@ section.detailedItem_another {
       line-height: 24px;
       font-size: 20px;
       letter-spacing: -.15px;
+      span {
+        font-weight: 700;
+      }
     }
     a {
       display: flex;
@@ -444,6 +441,11 @@ section.detailedItem_another {
     }
   }
   .another_body {
-    height: 500px;
+    margin-top: 50px;
+    .product {
+      .product__title {
+        display: none;
+      }
+    }
   }
 }

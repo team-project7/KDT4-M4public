@@ -166,7 +166,7 @@ section.detailedItem_item {
   letter-spacing: -.27px;
 }
 
-.item_rightSide .purchase_btn {
+.item_rightSide a.purchase_btn {
   display: block;
   height: 60px;
   margin-bottom: 12px;
