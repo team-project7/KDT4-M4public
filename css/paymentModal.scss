@@ -60,11 +60,11 @@ input {
         padding: 10px 0 14px;
         width: 100%;
         position: relative;
-        &.hasError &__title {
-        }
-        &.hasError &__input-error {
-          // visibility: visible;
-        }
+        // &.hasError &__title {
+        // }
+        // &.hasError &__input-error {
+        //   // visibility: visible;
+        // }
 
         &__title {
           font-size: 13px;
