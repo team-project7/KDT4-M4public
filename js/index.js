@@ -76,7 +76,6 @@ router
         appendProducts('패딩', 4, 12, 0)
         break
       case 'man':
-        appendHeadermain()
         appendmenShortcut()
         line()
         appendProducts('남성', 4, 12, 0)
@@ -96,7 +95,6 @@ router
         appendProducts('니트웨어', 4, 12, 0)
         break
       case 'woman':
-        appendHeadermain()
         appendwomenShortcut()
         line()
         appendProducts('여성', 4, 12, 0)
@@ -116,7 +114,6 @@ router
         appendProducts('셔츠', 4, 12, 0)
         break
       case 'brand':
-        appendHeadermain()
         appendbrandShortcut()
         line()
         appendProducts('Miu Miu', 4, 12, 0)
