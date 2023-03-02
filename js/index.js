@@ -44,7 +44,6 @@ import { adminPage, appendAdminPage } from './admin'
 import appendErrorPage from './error'
 import { appendMyAddress } from './my/myAddress'
 import { appendMyBuying } from './my/myBuying'
-import { appendMyPoint } from './my/myPoint'
 import { appendMyProfile } from './my/myProfile'
 import { appendMyWish } from './my/myWish'
 const router = new Navigo('/')
@@ -124,12 +123,6 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendMyBuying()
-    appendFooter()
-  })
-  .on('/my/point', function () {
-    document.body.innerHTML = ''
-    appendHeadersub()
-    appendMyPoint()
     appendFooter()
   })
   .on('/my/profile', function () {

@@ -59,8 +59,8 @@ export async function searchAll(searchtext) {
     }
   )
   let json = await res.json()
-  let newseartext = searchtext;
-  searchList(json,newseartext)
+  let newseartext = searchtext
+  searchList(json, newseartext)
   return json
 }
 console.log(searchAll())
@@ -76,7 +76,7 @@ export async function searchByName(searchText) {
       }),
     }
   )
- 
+
   return res.json()
 }
 
@@ -92,4 +92,71 @@ export async function searchByTag(tags) {
     }
   )
   return res.json()
+}
+
+export async function modifyUserPassword() {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/user',
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        oldPassword: document.querySelector('#oldPassword').value, // 기존 비밀번호
+        newPassword: document.querySelector('.input_password').value, // 새로운 비밀번호
+      }),
+    }
+  )
+  const json = await res.json()
+  return json
+}
+
+export async function modifyUserName() {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/user',
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        displayName: document.querySelector('.input_name').value, // 새로운 표시 이름
+      }),
+    }
+  )
+  const json = await res.json()
+  return json
+}
+
+export async function getUserInfo() {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }
+  )
+  const json = await res.json()
+  return json
+}
+
+export async function getBuyingList() {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/details ',
+    {
+      method: 'GET',
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }
+  )
+  const json = await res.json()
+  return json
 }

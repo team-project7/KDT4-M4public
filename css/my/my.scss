@@ -1,3 +1,8 @@
+@forward './myAddress.scss';
+@forward './myBuying.scss';
+@forward './myProfile.scss';
+@forward './myWish.scss';
+
 body {
   a {
     text-decoration: none;
@@ -114,15 +119,6 @@ body {
         -webkit-box-pack: center;
         justify-content: center;
 
-        ::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 50%;
-          bottom: 0;
-          background-color: #ebebeb;
-          width: 1px;
-        }
         .membership_item {
           display: inline-block;
           width: 159px;

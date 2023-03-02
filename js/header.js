@@ -77,6 +77,14 @@ export function appendHeadermain() {
 
   let token = localStorage.getItem('token')
 
+  const loginBtnEl = document.querySelector('#login')
+  const logoutBtnEl = document.querySelector('#logout')
+  if (token) {
+    loginBtnEl.innerHTML = ''
+  } else {
+    logoutBtnEl.innerHTML = ''
+  }
+
   logoutBtnEl.addEventListener('click', () => {
     logout(token)
     window.alert('로그아웃 완료!')

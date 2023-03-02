@@ -1,7 +1,11 @@
+import { doc } from 'prettier'
+import { htmlMySideBar } from './my'
+
 export function appendMyAddress() {
   const myAddressEl = document.createElement('div')
-  myAddressEl.className = 'my_address'
-  myAddressEl.innerHTML = /* html */ `
+  myAddressEl.className = 'mypage address'
+  myAddressEl.innerHTML = htmlMySideBar
+  myAddressEl.innerHTML += /* html */ `
   <div class="my_address">
     <div class="my_addressbook">
       <div class="content_title">
@@ -15,6 +19,8 @@ export function appendMyAddress() {
     </div>
   </div>
   `
+
+  document.body.append(myAddressEl)
   const myAddressModal = document.createElement('div')
   myAddressModal.className = 'layer_delivery layer lg'
   myAddressModal.innerHTML = /* html */ `
@@ -110,5 +116,4 @@ export function appendMyAddress() {
   //모달클릭이벤트
   const btnAdd = document.querySelector('.btn_add')
   btnAdd.addEventListener('click', () => {})
-  return myAddressEl
 }

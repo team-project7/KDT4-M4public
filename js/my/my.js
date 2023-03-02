@@ -1,35 +1,35 @@
-import { appendMyAddress } from './myAddress.js'
-import { appendMyBuying } from './myBuying.js'
+import { doc } from 'prettier'
+import blank_profile from '../../image/blank_profile.png'
+import { getUserInfo } from '../request'
 
-export function appendMySnb() {
+export const htmlMySideBar = /* html */ `
+<div class="snb_area">
+  <a href="/my">
+    <h2 class="snb_main_title">마이 페이지</h2>
+  </a>
+  <nav class="snb">
+    <div class="snb_list">
+      <p class="snb_title">쇼핑 정보</p>
+      <ul class="snb_menu">
+        <li><a href="/my/buying">구매 내역</a></li>
+        <li><a href="/my/wish">관심 상품</a></li>
+      </ul>
+    </div>
+    <div class="snb_list">
+      <p class="snb_title">내 정보</p>
+      <ul class="snb_menu">
+        <li><a href="/my/profile">프로필 정보</a></li>
+        <li><a href="/my/address">주소록</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+`
+export async function appendMySnb() {
   const mySnbEl = document.createElement('div')
   mySnbEl.className = 'mypage'
-  mySnbEl.innerHTML = /* html */ `
-  <div class="snb_area">
-    <a href="">
-      <h2 class="snb_main_title">마이 페이지</h2>
-    </a>
-    <nav class="snb">
-      <div class="snb_list">
-        <p class="snb_title">쇼핑 정보</p>
-        <ul class="snb_menu">
-          <li><a href="/my/buying">구매 내역</a></li>
-          <li><a href="/my/wish">관심 상품</a></li>
-        </ul>
-      </div>
-      <div class="snb_list">
-        <p class="snb_title">내 정보</p>
-        <ul class="snb_menu">
-          <li><a href="/my/profile">프로필 정보</a></li>
-          <li><a href="/my/address">주소록</a></li>
-          <li><a href="/my/point">포인트</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  `
-  const myAdderssEl = appendMyBuying()
-  mySnbEl.append(myAdderssEl)
+  mySnbEl.innerHTML = htmlMySideBar
+
   const myHomeEl = document.createElement('div')
   myHomeEl.className = 'container my md'
   myHomeEl.innerHTML = /* html */ `
@@ -37,22 +37,18 @@ export function appendMySnb() {
     <div class="user_membership">
       <div class="user_detail">
         <div class="user_thumb">
-          <img src="../image/blank_profile.png" alt="thumb_img" />
+          <img class="user_img"src="${blank_profile}" alt="thumb_img" />
         </div>
         <div class="user_info">
-          <strong class="name">닉네임</strong>
-          <p class="email">이메일 x*******x@naver.com</p>
-          <a href="" type="button" class="profile btn outlinegrey small">프로필 수정</a>
+          <strong class="name"></strong>
+          <p class="email"></p>
+          <a href="/my/profile" type="button" class="profile btn outlinegrey small">프로필 수정</a>
         </div>
       </div>
       <div class="membership_detail">
         <a href="" class="membership_item disabled">
-          <strong class="info">회원</strong>
+          <strong class="info">일반 회원</strong>
           <p class="title">회원 등급</p>
-        </a>
-        <a href="" class="membership_item">
-          <strong class="info">0P</strong>
-          <p class="title">포인트</p>
         </a>
       </div>
     </div>
@@ -67,14 +63,6 @@ export function appendMySnb() {
         <a href="" class="tab_link">
           <dl class="tab_box">
             <dt class="title">전체</dt>
-            <dd class="count">0</dd>
-          </dl>
-        </a>
-      </div>
-      <div class="tab_item tab_on">
-        <a href="" class="tab_link">
-          <dl class="tab_box">
-            <dt class="title">입찰 중</dt>
             <dd class="count">0</dd>
           </dl>
         </a>
@@ -104,9 +92,17 @@ export function appendMySnb() {
   <div class="interest_product">
     <div class="product_list"></div>
   </div>
-  
-
-`
-  // mySnbEl.append(myHomeEl)
+  `
+  mySnbEl.append(myHomeEl)
   document.body.append(mySnbEl)
+
+  const userInfo = await getUserInfo()
+  console.log(userInfo) //
+
+  const myUserName = document.querySelector('.name')
+  const myUserID = document.querySelector('.email')
+  const myUserImg = document.querySelector('.user_img')
+  myUserName.innerText = userInfo.displayName
+  myUserID.innerText = userInfo.email
+  if (userInfo.profileImg) myUserImg.src = userInfo.profileImg
 }

@@ -1,0 +1,35 @@
+.my_address {
+  min-height: 315px;
+  .my_addressbook {
+    .content_title {
+      display: flex;
+      padding: 5px 0 6px;
+      .title {
+        font-size: 24px;
+        letter-spacing: -0.36px;
+        h3 {
+          line-height: 29px;
+          font-size: inherit;
+        }
+      }
+      .btn_box {
+        display: flex;
+        margin-left: auto;
+        padding-left: 30px;
+        flex-shrink: 0;
+        .btn_add {
+          margin-right: 0;
+          padding: 0 14px;
+          height: 34px;
+          line-height: 32px;
+          border-radius: 10px;
+          border: 1px solid #222;
+          font-size: 12px;
+          letter-spacing: -0.06px;
+          .btn_txt {
+          }
+        }
+      }
+    }
+  }
+}
