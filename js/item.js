@@ -4,6 +4,7 @@ import { searchAll, searchByTag } from './request'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
 export async function appendItem(tag, dpnum, num, container, listIndex) {
+  let isdone = false
   const chunk = []
   const resultData = await searchByTag(tag)
   const chunkData = resultData.slice(0, num)
@@ -52,6 +53,7 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
 
     productListFirstEl.append(productItemEl)
   })
+
   const items = document.querySelectorAll('.product__item')
   let wishlist =
     localStorage.getItem('wishlist')? localStorage.getItem('wishlist').split(',') : []
@@ -91,6 +93,12 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
       e.stopPropagation()
     }
   })
+  const loading = document.querySelector('.loading')
+  //productListFirstEl에서 근처 loading div 찾기
+  if (loading) {
+    loading.remove()
+    productListFirstEl.classList.remove('none')
+  }
 }
 
 export async function appendSmallItem(tag, dpnum, listIndex) {
@@ -198,4 +206,13 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
       e.stopPropagation()
     }
   })
+  isdone = true
+  const loading = document.querySelector('.loading')
+  //productListFirstEl에서 근처 loading div 찾기
+  if (isdone) {
+    productListFirstEl.classList.remove('none')
+    if (loading) {
+      loading.remove()
+    }
+  }
 }
