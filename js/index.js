@@ -43,12 +43,12 @@ import { adminPage, appendAdminPage } from './admin'
 import appendErrorPage from './error'
 const router = new Navigo('/')
 
-// import { appendPayment } from "./payment"
-// import { searchIndividualItem } from './adminRequest'
-// ;(async () => {
-//   const test = await searchIndividualItem("3Zxl48Yg8OFVmFZECaUL")
-//   appendPayment(test)
-// })()
+import { appendPayment } from "./payment"
+import { searchIndividualItem } from './adminRequest'
+;(async () => {
+  const test = await searchIndividualItem("3Zxl48Yg8OFVmFZECaUL")
+  appendPayment(test)
+})()
 router
   .on('/', function (data) {
     appendHeadermain()
