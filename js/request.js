@@ -102,8 +102,8 @@ export async function validation(token) {
       method: 'POST',
       headers: {
         "content-type": "application/json",
-        "apikey": "FcKdtJs202301",
-        "username": "KDT4_TEAM7",
+        "apikey": process.env.API_KEY,
+        "username": process.env.USER_NAME,
         "Authorization": `Bearer ${token}`,
      },
 
