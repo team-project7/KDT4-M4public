@@ -41,13 +41,12 @@ import {
   appendWomanBrandFocus,
   appendBrandBrandFocus,
 } from './brandFocus'
-import { logout, searchAll } from './request'
+
 import { appendProducts } from './products'
 import appendShopContent from './shop'
 import { appendsearch } from './search'
-import { adminPage, appendAdminPage } from './admin'
+import { adminPage } from './admin'
 import appendErrorPage from './error'
-import { searchIndividualItem } from './adminRequest'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -139,12 +138,11 @@ router
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem("email") === process.env.ADMIN_USER){
-    document.body.innerHTML = ''
-    adminPage()
-    }
-    else {
-      location.replace("/")
+    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
+      document.body.innerHTML = ''
+      adminPage()
+    } else {
+      router.navigate('/')
     }
   })
   .on('/login', function () {

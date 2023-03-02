@@ -26,7 +26,7 @@ export async function appendPayment(item) {
     localStorage.removeItem('displayName')
     location.replace('/login')
   })
-  //[상품 정보]
+
   //[배송]
   //배송지 추가 버튼 이벤트 핸들러
   const addDeliveryProfileBtn = document.querySelector(
@@ -196,14 +196,23 @@ export async function appendPayment(item) {
   const newAccAddBtn = document.querySelector('#newAcc-modal__add-btn')
 
   newAccAddBtn.addEventListener('click', async () => {
+    
+      console.log(newAccBankCode.value)
+      console.log(newAccDigitInput.value)
+      console.log(newAccDigitInput.value.length)
+      console.log(getAccLength(newAccBankCode.value))
+      console.log(newAccPhoneInput.value )
+      console.log(newAccPhoneInput.value.length === 11 )
+      console.log(newAccSigInput.value)
     if (
       newAccBankCode.value &&
       newAccDigitInput.value &&
-      newAccDigitInput.value.length < getAccLength(newAccBankCode) &&
+      newAccDigitInput.value.length === getAccLength(newAccBankCode.value) &&
       newAccPhoneInput.value &&
-      newAccPhoneInput.value.length < 11 &&
+      newAccPhoneInput.value.length === 11 &&
       newAccSigInput.value
     ) {
+      console.log('test')
       const obj = {
         //input 값을 토대로 객체 생성
         bankCode: newAccBankCode.value,
@@ -211,7 +220,7 @@ export async function appendPayment(item) {
         phoneNumber: newAccPhoneInput.value,
         signature: newAccSigInput.value === 'on' ? true : false,
       }
-
+      
       await Banking.addAccount(obj) // 객체로 계좌 생성 요청
       await updateBankSlides() // 현재 사용자 계좌 조회 후 슬라이드 업데이트
       alert('계좌 추가 완료')
@@ -220,6 +229,7 @@ export async function appendPayment(item) {
       alert(
         '계좌 정보 미입력\n은행 선택 및 계좌번호 또는 핸드폰 번호 자릿수를 확인하시고 서명 확인을 체크해주세요. '
       )
+      console.log(obj)
     }
   })
 

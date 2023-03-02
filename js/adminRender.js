@@ -201,7 +201,7 @@ function renderSearchArea() {
   searchEl.classList.add('admin-search')
   searchEl.innerHTML = 
   /*html*/`
-    <input type=text id="admin-search__input">
+    <input type=text id="admin-search__input" autocomplete="off" placeholder="태그 또는 이름을 입력하세요...">
     <div class="admin-search__btn-wrapper">
       <button id="admin-search__search-all-btn">모든 상품 보기</button>
       <button id="admin-search__search-tag-btn">태그 검색</button>
