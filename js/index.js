@@ -84,8 +84,13 @@ router
     appendFooter()
   })
   .on('/admin', function () {
+    if (localStorage.getItem("email") === process.env.ADMIN_USER){
     document.body.innerHTML = ''
     adminPage()
+    }
+    else {
+      location.replace("/")
+    }
   })
   .on('/login', function () {
     document.body.innerHTML = ''
