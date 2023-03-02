@@ -84,12 +84,11 @@ router
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem("email") === process.env.ADMIN_USER){
-    document.body.innerHTML = ''
-    adminPage()
-    }
-    else {
-      location.replace("/")
+    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
+      document.body.innerHTML = ''
+      adminPage()
+    } else {
+      router.navigate('/')
     }
   })
   .on('/login', function () {

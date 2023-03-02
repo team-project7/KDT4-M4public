@@ -298,13 +298,16 @@ export function adminPage() {
    * @returns nothing when searchInput field is empty
    */
   async function appendSearchByTag() {
-    const tagName = searchInput.value
-    if (!tagName) return
-    searchContainer.innerHTML = ''
-
+    let tagName = searchInput.value
+    if (!tagName) {
+      alert("검색어가 필요합니다!")
+      return
+    }
+    tagName = capitalizeEveryWord(tagName)
     const result = await searchByTag(tagName)
     const arr = [...result]
 
+    searchContainer.innerHTML = ''
     searchContainer.append(renderSearchResult(arr))
     const count = document.querySelector('#admin-search-count')
     count.textContent = arr.length
@@ -317,20 +320,44 @@ export function adminPage() {
    * @returns nothing when searchInput field is empty
    */
   async function appendSearchByName() {
-    const name = searchInput.value
-    if (!name) return
-    searchContainer.innerHTML = ''
-
+    let name = searchInput.value
+    if (!name) {
+      alert("검색어가 필요합니다!")
+      return
+    }
+    name = capitalizeEveryWord(name)
+    
     const result = await searchByName(name)
     const arr = [...result]
 
+    searchContainer.innerHTML = ''
     searchContainer.append(renderSearchResult(arr))
     const count = document.querySelector('#admin-search-count')
     count.textContent = arr.length
     const itemIds = document.querySelectorAll('.admin-item-id')
     copyOnClick(itemIds)
   }
+  /**
+   * 영문 첫 글자를 대문자로 변환 후 반환
+   * @param { string } 변환할 문자열 
+   * @returns 변환된 문자열 반환
+   */
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
+  /**
+   * 영문 첫 글자와 공백 이후의 첫 글자를 대문자로 변환 후 반환
+   * @param { string } 변환할 문자열 
+   * @returns 변환된 문자열 반환
+   */
+  function capitalizeEveryWord(str) {
+    let words = str.split(" ");
+    for(let i = 0; i < words.length; i++) {
+      words[i] = capitalize(words[i]);
+    }
+    return words.join(" ");
+  }
   /**
    * request search all items and append rendered results
    * @void
@@ -373,16 +400,6 @@ export function adminPage() {
     count.textContent = arr.length
     const userEmails = document.querySelectorAll('.admin-user-email')
     copyOnClick(userEmails)
-
-    const gridHeader = document.querySelector('.admin-page-search__row-header')
-    gridHeader.classList.add('grid')
-    gridHeader.style.setProperty('grid-template-columns', 'repeat(4, 1fr)')
-   
-    const gridItems = document.querySelectorAll('.admin-page-search__item')
-    Array.from(gridItems).forEach(item => {
-      item.classList.add('grid')
-      item.style.setProperty('grid-template-columns', 'repeat(4, 1fr)')
-    })
   }
 
 }
