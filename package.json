@@ -26,6 +26,7 @@
     "eslint-config-prettier": "^8.6.0",
     "os-browserify": "^0.3.0",
     "parcel": "^2.8.3",
+    "parcel-reporter-static-files-copy": "^1.5.0",
     "path-browserify": "^1.0.1",
     "prettier": "2.8.3",
     "process": "^0.11.10",
@@ -45,6 +46,9 @@
       "ADMIN_USER",
       "ADMIN_PASSWORD"
     ]
+  },
+  "staticFiles": {
+    "staticPath": ".env"
   },
   "keywords": []
 }
