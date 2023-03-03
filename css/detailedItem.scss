@@ -469,7 +469,9 @@ section.detailedItem_another {
   background-color: rgba(34, 34, 34, .5);
   .purchase_popUp {
     width: 580px;
+    height: 630px;
     border: 1px solid;
+    padding: 0 18px 18px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -490,7 +492,30 @@ section.detailedItem_another {
       background-color: #fff;
     }
     span.popUp_close {
-      
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    h4.popUp_warning {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      font-weight: 800;
+      font-size: 25px;
+      line-height: 32px;
+      letter-spacing: -1.2px;
+      border-bottom: 2px solid #222;
+    }
+    .popUp_content {
+      p.bold {
+        font-weight: bold;
+      }
+      p.content_txt {
+        margin: 20px 0;
+        letter-spacing: -.3px;
+        word-break: keep-all;
+      }
     }
   }
 }
