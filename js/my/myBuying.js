@@ -54,6 +54,11 @@ export async function appendMyBuying() {
   $('.my_loading').style.display = 'flex'
 
   const buyingList = await getBuyingList()
+  if (!buyingList) {
+    $('.my_loading').style.display = 'none'
+
+    return
+  }
 
   $('.total_count').innerText = buyingList.length
 

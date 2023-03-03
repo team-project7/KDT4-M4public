@@ -169,8 +169,11 @@ export async function getBuyingList() {
       },
     }
   )
-  const json = await res.json()
-  return json
+  if (res.ok) {
+    const json = await res.json()
+    return json
+  }
+  return null
 }
 
 export async function getProduct(ID) {

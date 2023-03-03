@@ -2,6 +2,7 @@ import blank_profile from '../../image/blank_profile.png'
 import { getBuyingList, getUserInfo } from '../request'
 import loading from '../../image/loading.gif'
 import { $ } from './util'
+import { buy } from '../banking'
 
 //사이드바 html, 로딩 html
 export const htmlMySideBar = /* html */ `
@@ -98,6 +99,7 @@ export async function appendMySnb() {
   `
   mySnbEl.append(myHomeEl)
   document.body.append(mySnbEl)
+  $('.my_loading').style.display = 'flex'
 
   //유저데이터 api
   const userInfo = await getUserInfo()
@@ -110,14 +112,16 @@ export async function appendMySnb() {
 
   //유저 구매내역 api
   const buyingList = await getBuyingList()
+  if (buyingList) {
+    $('.total_count').innerText = buyingList.length
 
-  $('.total_count').innerText = buyingList.length
+    let cntDone = 0
+    buyingList.map((data) => {
+      if (!data.done) ++cntDone
+    })
 
-  let cntDone = 0
-  buyingList.map((data) => {
-    if (!data.done) ++cntDone
-  })
-
-  $('.proceeding_count').innerText = cntDone
-  $('.finish_count').innerText = buyingList.length - cntDone
+    $('.proceeding_count').innerText = cntDone
+    $('.finish_count').innerText = buyingList.length - cntDone
+  }
+  $('.my_loading').style.display = 'none'
 }
