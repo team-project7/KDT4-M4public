@@ -129,7 +129,7 @@ function renderDelieveryInfoArea() {
               <span>일반배송</span>
               <span>3,000원</span>
             </div>
-            <span class="method__desc">검수 후 배송 ・ 5-7일 내 도착 예정</span>
+            <span class="method__desc">현재 배달이 불가능합니다. 결제액은 상품금액만 반영됩니다.</span>
           </div>
         </button>
         <button id="delivery-method__storage-select-btn" class="payment-btn wide selectable">
@@ -282,7 +282,7 @@ function renderPaymentMethodArea() {
         
         <button id="method-simple__card-btn" class="payment-btn wide">
           <span class="method-simple__acc">
-            <span>카드를 등록해주세요.</span>
+            <span>카드 결제 점검중・불편을 끼쳐드려 죄송합니다.</span>
             <span>▼</span>
           </span>
         </button>

@@ -306,7 +306,6 @@ router
   .on('/products/payment', async function (data) {
     const URLSearch = new URLSearchParams(location.search)
     const res = await searchById(URLSearch.get('productId'))
-    console.log(res)
     document.body.innerHTML = ''
     appendPayment(res)
   })
