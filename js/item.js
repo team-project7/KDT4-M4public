@@ -55,11 +55,14 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
   })
 
   const items = document.querySelectorAll('.product__item')
-  // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
   let wishlist =
     localStorage.getItem('wishlist')? localStorage.getItem('wishlist').split(',') : []
-    
-    let token = localStorage.getItem('token')
+  // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
+  // let wishlist =
+  //   localStorage.getItem('wishlist').length === 0
+  //     ? []
+  //     : localStorage.getItem('wishlist').split(',')
+
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
     const itemLink = el.querySelector('.product__item__inner')
