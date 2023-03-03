@@ -260,6 +260,9 @@ section.detailedItem_item {
       border: 1px solid #ebebeb;
       border-radius: 10px;
       color: #333;
+      span.material-symbols-outlined.wishlist_mark {
+        
+      }
       span.wishlist_txt {
         margin-left: 4px;
         font-size: 15px;
@@ -458,6 +461,7 @@ section.detailedItem_another {
 
 .purchase_popUp_background {
   .purchase_popUp {
+    border: 1px solid;
     h3.popUp_title {
       line-height: 22px;
       padding: 18px 50px 20px;
@@ -474,4 +478,7 @@ section.detailedItem_another {
       
     }
   }
+}
+.purchase_popUp_background.hide {
+  display: none;
 }

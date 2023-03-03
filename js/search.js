@@ -13,7 +13,7 @@ export function appendsearch() {
                         <div class="search_area">
                             <div class="search">
                                 <img src="https://user-images.githubusercontent.com/98297436/217512067-d5706d42-f578-44c5-86cd-e2fe7080c304.png" alt="">
-                                <input type="text" class="input_search" id="search_title" placeholder="브랜드명, 모델명, 모델번호 등" >
+                                <input type="text" class="input_search" id="search_title" placeholder="제목명, 태그명" >
                               
                             </div>
                         </div>
@@ -126,18 +126,25 @@ function closemodal() {
     searchlayer.style.display = 'none'
 }
 
+function debounce(callback, limit = 100) {
+    let timeout
+    return function(...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            callback.apply(this, args)
+        }, limit)
+    }
+}
 
 const searchtitleEl = document.getElementById('search_title')
-searchtitleEl.addEventListener('input', function() {
+searchtitleEl.addEventListener('input', debounce(function() {
    
     let searchtext = searchtitleEl.value.trim();
         findtitle(searchtext)
-    })
-
+    }, 200)
+)
     let searchtxtlist = []
-    // let search
    let search = localStorage.getItem('searchtxtlist')
-//   search? localStorage.getItem('searchtxtlist') : null
 searchtitleEl.addEventListener('keydown', function (e) {
     let searchtext = searchtitleEl.value.trim();
     if(e.key === 'Enter' && !e.isComposing) {
@@ -240,7 +247,7 @@ export function searchList(items,newseartext){
         let productListItem = document.createElement('div');
         productListItem.classList.add('search-list-item');
         productListItem.innerHTML = `    
-        <a href='${title.id}' class = "search_area_link">
+        <a href='products?name=${title.id}' class = "search_area_link">
         <div class = "search-item-thumbnail">
          <img src = '${title.thumbnail}'>
         </div>
