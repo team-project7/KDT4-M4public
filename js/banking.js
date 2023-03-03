@@ -44,7 +44,6 @@ export async function checkAccountBalance() {
 
 
 export async function addAccount(newAcc) {
-  console.log(newAcc)
   const res = await fetch(API_URL, {
     method: 'POST',
     headers,
@@ -55,7 +54,7 @@ export async function addAccount(newAcc) {
       signature: newAcc.signature // 사용자 서명 (필수!)
     }),
   })
-  return res.json()
+  return res
 }
 
 
