@@ -22,7 +22,14 @@ export function appendMyWish() {
 
   $('.my_loading').style.display = 'flex'
 
-  const wishList = Array.from(localStorage.getItem('wishlist').split(','))
+  let wishList = localStorage.getItem('wishlist')
+
+  if (wishList) {
+    wishList = Array.from(wishList.split(','))
+  } else {
+    $('.my_loading').style.display = 'none'
+    return
+  }
 
   const content = wishList.map(async (data) => await getProduct(data))
 
