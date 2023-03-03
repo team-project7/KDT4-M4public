@@ -57,7 +57,6 @@ router
   .on('/', function (data) {
     document.body.innerHTML = ''
     appendHeadermain()
-    
     switch (data.queryString) {
       case '':
         appendbanner()
@@ -171,7 +170,6 @@ router
     appendFooter()
   })
   .on('/exhibitions/:name', function ({ data }) {
-    console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
     switch (data.name) {
