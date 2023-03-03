@@ -329,7 +329,6 @@ function appendDetailedItem() {
     const purchase = document.querySelector('a.purchase_btn')
     let token = localStorage.getItem('token')
 
-    
     purchase.addEventListener('click', async () => {
       const res = await fetch(
         'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
@@ -347,6 +346,35 @@ function appendDetailedItem() {
       
       if(json.email) {
         location.replace(`/products/payment` + `?productId=${id}`)
+      }else {
+        alert('로그인 후에 다시 시도해주세요!')
+        location.replace('/login')
+      }
+      
+      return json
+    })
+
+    // 사이즈 체크
+    const sizeCheckSlot = document.querySelector('a.size_btn')
+
+    sizeCheckSlot.addEventListener('click', async () => {
+      const res = await fetch(
+        'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+        {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            "apikey": process.env.API_KEY,
+            "username": process.env.USER_NAME,
+            "Authorization": `Bearer ${token}`,
+        },
+        }
+      )
+      let json = await res.json()
+      
+      if(json.email) {
+        alert('현재 제품은 원 사이즈입니다.')
+        //location.replace(`/products/payment` + `?productId=${id}`)
       }else {
         alert('로그인 후에 다시 시도해주세요!')
         location.replace('/login')
