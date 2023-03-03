@@ -57,8 +57,10 @@ import { appendMyBuying } from './my/myBuying'
 import { appendMyProfile } from './my/myProfile'
 import { appendMyWish } from './my/myWish'
 import dotenv from 'dotenv'
+import { searchById } from './request'
 
 dotenv.config()
+import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')
 
 router
@@ -147,11 +149,12 @@ router
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
-      document.body.innerHTML = ''
-      adminPage()
-    } else {
-      router.navigate('/')
+    if (localStorage.getItem("email") === process.env.ADMIN_USER){
+    document.body.innerHTML = ''
+    adminPage()
+    }
+    else {
+      router.nevigate("/")
     }
   })
   .on('/login', function () {
@@ -288,10 +291,20 @@ router
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts('남성', 4, 12, 0)
+    appendDetailedItem()
     footerbanner()
     appendFooter()
   })
+
+  .on('/products/payment', async function (data) {
+    const URLSearch = new URLSearchParams(location.search)
+    const res = await searchById(URLSearch.get('productId'));
+    console.log(res)
+    document.body.innerHTML = '';
+    appendPayment(res);
+  })
+
+  
 // 오류 페이지
 router
   .notFound(() => {
