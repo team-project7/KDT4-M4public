@@ -1,5 +1,5 @@
 import { searchList } from './search'
-import { vailed } from './header'
+
 
 const headers = {
   'content-type': 'application/json',
@@ -64,7 +64,7 @@ export async function searchAll(searchtext) {
   searchList(json, newseartext)
   return json
 }
-console.log(searchAll())
+
 export async function searchByName(searchText) {
   headers.masterKey = true
   const res = await fetch(

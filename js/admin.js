@@ -29,7 +29,7 @@ export function adminPage() {
   addFileInput.addEventListener('change', onAddFileChange)
 
   /**
-   * Create new item based on input filed values in add modal
+   * Create new item based on input values in add modal
    * reset input values after addition request
    * @void
    */

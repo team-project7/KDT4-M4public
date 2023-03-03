@@ -10,6 +10,7 @@ body {
   z-index: 99;
   background-color: #fff;
   height: 130px;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .header_top .top_inner {

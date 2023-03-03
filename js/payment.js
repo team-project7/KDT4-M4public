@@ -12,7 +12,7 @@ import Swiper from 'swiper/swiper-bundle'
 import 'swiper/swiper-bundle.css'
 
 export async function appendPayment(item) {
-  document.body.innerHTML = ''
+
   document.body.append(renderPaymentPage(item))
   appendFooter()
 
@@ -64,7 +64,9 @@ export async function appendPayment(item) {
       isDelivery = false
       updateAmountInfo()
     })
-  const selectableBtns = document.querySelectorAll('.selectable')
+  //[배송 방법] 배송 선택 효과
+  const deliveryMethod = document.querySelector('.delivery-method__methods')
+  const selectableBtns = deliveryMethod.querySelectorAll('.selectable')
   Array.from(selectableBtns).forEach((btn) => {
     btn.addEventListener('click', (event) => {
       siblings(event.currentTarget).forEach((sibling) => {
@@ -94,11 +96,20 @@ export async function appendPayment(item) {
     }원`
   }
   //[결제 방법]
-  const selectedAccount = {
-    id: null,
-    bankName: null,
-    accountString: null,
-  }
+
+
+  //[결제 방법]카드 버튼 선택 효과
+  const generalPaymentList = document.querySelector('.method-general__grid')
+  const generalPaymentCards = generalPaymentList.querySelectorAll('.selectable')
+
+  Array.from(generalPaymentCards).forEach( card => {
+    card.addEventListener('click', (event) => {
+      siblings(event.target.parentElement).forEach((sibling) => {
+        sibling.children[0].classList.remove('selected')
+      })
+      event.target.classList.add('selected')
+    })
+  })
   //[계좌 정보 모달]
   const accModalBtn = document.querySelector('#method-simple__acc-btn')
   accModalBtn.addEventListener('click', onAddAccBtnClicked)
@@ -128,13 +139,54 @@ export async function appendPayment(item) {
   })
 
   //[계좌 정보 모달] 캐러셀 업데이트
+  
+  let accountList 
+  let accountIndex = 0
   const slideWrapper = document.querySelector('#acc-modal__swiper-wrapper')
-  await updateBankSlides()
   const accInfoText = document.querySelector('#method-simple__acc-info')
+
+  //init
+  await updateBankSlides()
   updateAccountInfo()
+
+  //[계좌 정보 모달] accountList를 서버 응답 데이터와 동기화
+  async function updateAccountList() {
+    const res = await Banking.checkAccountBalance()
+    const newAccountList = Array.from(res.accounts)
+    accountList = newAccountList
+  }
+  
+  //결제 방법 계좌 선택란에 현재 선택된 계좌로 업데이트
   function updateAccountInfo() {
     accInfoText.innerHTML = ''
-    accInfoText.append(renderAccInfo(selectedAccount))
+    accInfoText.append(renderAccInfo(getSelectedAccount()))
+  }
+  //[계좌 정보 모달] 계좌 선택
+  function updateAccountSelect() {
+    accountIndex = swiper.activeIndex
+  }
+  //[계좌 정보 모달] 선택 계좌 반환
+  function getSelectedAccount() {
+    return accountList[accountIndex]
+  }
+  //[계좌 정보 모달] 계좌 삭제 이벤트 핸들러
+  async function onSlideDoubleClicked(e) {
+    const targetSlideIndex = parseInt(e.currentTarget.children[0].dataset.n)
+    const targetAccount = accountList[targetSlideIndex]
+    const confirmRes = confirm(`정말로 삭제하시겠어요?\n은행 이름: ${targetAccount.bankName}\n계좌 번호: ${targetAccount.accountNumber}`)
+    //삭제 동의 시 삭제 진행
+    if(confirmRes) {
+      const res = await Banking.deleteAccount(accountList[targetSlideIndex])
+      if (res) {
+        await updateAccountList()
+        await updateBankSlides()
+        updateAccountSelect()
+        updateAccountInfo()
+      }
+      else {
+        alert("계좌 삭제 실패")
+      }
+    }
   }
   /**
    * 로컬스토리지에 있는 token으로 현재 사용자의 계좌 조회
@@ -142,13 +194,18 @@ export async function appendPayment(item) {
    */
   async function updateBankSlides() {
     slideWrapper.innerHTML = ''
-    const accList = await Banking.checkAccountBalance()
-
     swiper.removeAllSlides()
-    if (accList.accounts.length > 0) {
-      Array.from(accList.accounts).forEach((account) => {
-        const slide = renderBankSlide(account)
+    accountList = []
+
+    const res = await Banking.checkAccountBalance()
+    accountList = Array.from(res.accounts)
+
+ 
+    if (accountList.length > 0) {
+      accountList.forEach((account, index) => {
+        const slide = renderBankSlide(account, index)
         swiper.appendSlide(slide)
+        slide.addEventListener('dblclick', onSlideDoubleClicked)
       })
     }
     // 계좌 추가 슬라이드
@@ -156,7 +213,7 @@ export async function appendPayment(item) {
     swiper.appendSlide(emptySlide)
     updateAccountSelect()
   }
-
+  //선택된 계좌 저장
   document
     .querySelector('#acc-modal__save-btn')
     .addEventListener('click', () => {
@@ -188,6 +245,7 @@ export async function appendPayment(item) {
     })
   }
 
+
   //[계좌 추가 모달]
   const newAccBankCode = document.querySelector('#newAcc-modal__bankCode')
   const newAccDigitInput = document.querySelector('#newAcc-modal__acc-digit')
@@ -196,14 +254,6 @@ export async function appendPayment(item) {
   const newAccAddBtn = document.querySelector('#newAcc-modal__add-btn')
 
   newAccAddBtn.addEventListener('click', async () => {
-    
-      console.log(newAccBankCode.value)
-      console.log(newAccDigitInput.value)
-      console.log(newAccDigitInput.value.length)
-      console.log(getAccLength(newAccBankCode.value))
-      console.log(newAccPhoneInput.value )
-      console.log(newAccPhoneInput.value.length === 11 )
-      console.log(newAccSigInput.value)
     if (
       newAccBankCode.value &&
       newAccDigitInput.value &&
@@ -212,7 +262,6 @@ export async function appendPayment(item) {
       newAccPhoneInput.value.length === 11 &&
       newAccSigInput.value
     ) {
-      console.log('test')
       const obj = {
         //input 값을 토대로 객체 생성
         bankCode: newAccBankCode.value,
@@ -229,13 +278,12 @@ export async function appendPayment(item) {
       alert(
         '계좌 정보 미입력\n은행 선택 및 계좌번호 또는 핸드폰 번호 자릿수를 확인하시고 서명 확인을 체크해주세요. '
       )
-      console.log(obj)
     }
   })
 
   newAccSigInput.addEventListener('change', () => {
-    //추가 버튼 효과 전환용
-    newAccAddBtn.classList.toggle('disabled')
+   
+    newAccAddBtn.classList.toggle('disabled') //추가 버튼 효과 전환
   })
 
   //[구매]]
@@ -244,7 +292,11 @@ export async function appendPayment(item) {
   document
     .querySelector('#payment-final-btn')
     .addEventListener('click', async () => {
-      const isPaid = await Banking.buy(item, selectedAccount.id)
+      if(getSelectedAccount().balance < item.price) {
+        alert("잔액이 부족합니다.")
+        return
+      }
+      const isPaid = await Banking.buy(item, getSelectedAccount().id)
       if (isPaid) {
         const paymentContent = document.querySelector('.payment-content')
         paymentContent.innerHTML = ''
@@ -260,15 +312,7 @@ export async function appendPayment(item) {
       }
     })
 
-  //[계좌 정보 모달] 계좌 선택
-  function updateAccountSelect() {
-    const currentSelected = swiper.slides[swiper.activeIndex].children[0]
-    Object.assign(selectedAccount, {
-      id: currentSelected.dataset.id,
-      bankName: getBankName(currentSelected.dataset.bankcode),
-      accountString: currentSelected.dataset.accstring,
-    })
-  }
+
 
   /**
    * 은행 별 계좌번호 자릿수를 반환해주는 함수
@@ -302,39 +346,8 @@ export async function appendPayment(item) {
         return 0
     }
   }
-  /**
-   * 은행 별 계좌번호 자릿수를 반환해주는 함수
-   * @param { String } bankCode
-   * @returns { Integer } 계좌번호 자릿수
-   */
-  function getBankName(bankCode) {
-    switch (bankCode) {
-      case '004':
-        return 'KB국민은행'
 
-      case '088':
-        return '신한은행'
-
-      case '020':
-        return '우리은행'
-
-      case '081':
-        return '하나은행'
-
-      case '089':
-        return '케이뱅크'
-
-      case '090':
-        return '카카오뱅크'
-
-      case '011':
-        return 'NH농협은행'
-
-      default:
-        return null
-    }
-  }
-
+  //el의 형제요소들을 배열로 반환하는 함수
   function siblings(el) {
     return [...el.parentElement.children].filter((node) => node != el)
   }

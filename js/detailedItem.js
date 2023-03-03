@@ -103,7 +103,7 @@ function appendDetailedItem() {
   
             <div class="item_price">
               <span class="price_txt">구매가</span>
-              <span class="price_nowPrice">${price}</span>
+              <span class="price_nowPrice">${price.toLocaleString()}</span>
               <span class="price_won">원</span>
             </div>
   
@@ -307,7 +307,7 @@ function appendDetailedItem() {
             <span class="material-symbols-outlined popUp_close">
               close
             </span>
-            <h4 class="popUp_warning">보유한 상품만 거래되는 것이 원칙입니다.</h4>
+            <h4 class="popUp_warning">보유한 상품만 거래되는 것이<br> 원칙입니다.</h4>
             <div class="popUp_content">
               <p class="bold">반드시 보유한 상품만 거래 하세요.</p>
               <p class="content_txt">판매자는 거래 체결 후, 48시간 이내(일,공휴일 제외)에 상품을 발송하여야 합니다.</p>
@@ -329,7 +329,6 @@ function appendDetailedItem() {
     const purchase = document.querySelector('a.purchase_btn')
     let token = localStorage.getItem('token')
 
-    
     purchase.addEventListener('click', async () => {
       const res = await fetch(
         'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
@@ -355,6 +354,35 @@ function appendDetailedItem() {
       return json
     })
 
+    // 사이즈 체크
+    const sizeCheckSlot = document.querySelector('a.size_btn')
+
+    sizeCheckSlot.addEventListener('click', async () => {
+      const res = await fetch(
+        'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+        {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            "apikey": process.env.API_KEY,
+            "username": process.env.USER_NAME,
+            "Authorization": `Bearer ${token}`,
+        },
+        }
+      )
+      let json = await res.json()
+      
+      if(json.email) {
+        alert('현재 제품은 원 사이즈입니다.')
+        //location.replace(`/products/payment` + `?productId=${id}`)
+      }else {
+        alert('로그인 후에 다시 시도해주세요!')
+        location.replace('/login')
+      }
+      
+      return json
+    })
+
     // 관심상품 
 
 
@@ -369,7 +397,21 @@ function appendDetailedItem() {
         content.classList.toggle('hide')
       })
     })
-  }
 
+    // 경고창 오픈 
+    const warningSlot = document.querySelector('.item_salesAlert a')
+    const warningPopUp = document.querySelector('.purchase_popUp_background')
+    
+    warningSlot.addEventListener('click', () => {
+      warningPopUp.classList.remove('hide')
+    })
+
+    // 팝업 클로즈
+    const popUpClose = document.querySelector('span.popUp_close')
+
+    popUpClose.addEventListener('click', () => {
+      warningPopUp.classList.add('hide')
+    })
+  }
   renderDetailProduct(productName)
 }
