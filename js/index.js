@@ -149,12 +149,11 @@ router
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem("email") === process.env.ADMIN_USER){
-    document.body.innerHTML = ''
-    adminPage()
-    }
-    else {
-      router.nevigate("/")
+    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
+      document.body.innerHTML = ''
+      adminPage()
+    } else {
+      router.nevigate('/')
     }
   })
   .on('/login', function () {
@@ -181,6 +180,11 @@ router
     appendFooter()
   })
   .on('/my', function () {
+    if (!localStorage.getItem('token')) {
+      alert('로그인이 필요한 서비스입니다')
+      router.navigate('/login')
+      return
+    }
     document.body.innerHTML = ''
     appendHeadersub()
     appendMySnb()
@@ -298,13 +302,12 @@ router
 
   .on('/products/payment', async function (data) {
     const URLSearch = new URLSearchParams(location.search)
-    const res = await searchById(URLSearch.get('productId'));
+    const res = await searchById(URLSearch.get('productId'))
     console.log(res)
-    document.body.innerHTML = '';
-    appendPayment(res);
+    document.body.innerHTML = ''
+    appendPayment(res)
   })
 
-  
 // 오류 페이지
 router
   .notFound(() => {
