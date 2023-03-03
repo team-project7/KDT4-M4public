@@ -3,7 +3,7 @@
 const headers = {
   'content-type': 'application/json',
   apikey: process.env.API_KEY,
-  username: process.env.ADMIN_USER,
+  username: process.env.USER_NAME,
   masterKey: 'true'
 }
 const API_URL =

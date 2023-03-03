@@ -4,7 +4,7 @@
 const headers = {
   'content-type': 'application/json',
   apikey: process.env.API_KEY,
-  username: process.env.ADMIN_USER,
+  username: process.env.USER_NAME,
   Authorization: `${localStorage.getItem('token')}`
 }
 const API_URL =
@@ -59,12 +59,12 @@ export async function addAccount(newAcc) {
 }
 
 
-export async function deleteAccount() {
+export async function deleteAccount(account) {
   const res = await fetch(API_URL, {
     method: 'DELETE',
     headers,
     body: JSON.stringify({
-      accountId: `${localStorage.getItem('email')}`,
+      accountId: account.id,
       signature: true
     })
   })

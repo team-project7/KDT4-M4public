@@ -129,7 +129,7 @@ function renderDelieveryInfoArea() {
               <span>일반배송</span>
               <span>3,000원</span>
             </div>
-            <span class="method__desc">검수 후 배송 ・ 5-7일 내 도착 예정</span>
+            <span class="method__desc">현재 배달이 불가능합니다. 결제액은 상품금액만 반영됩니다.</span>
           </div>
         </button>
         <button id="delivery-method__storage-select-btn" class="payment-btn wide selectable">
@@ -169,7 +169,7 @@ export function renderAccInfo(account) {
   else {
     accInfoEl.innerHTML = /*html*/ `
     <span>${account.bankName}</span>
-    <span>${account.accountString}</span>
+    <span>${account.accountNumber}</span>
     `
   }
   return accInfoEl
@@ -282,7 +282,7 @@ function renderPaymentMethodArea() {
         
         <button id="method-simple__card-btn" class="payment-btn wide">
           <span class="method-simple__acc">
-            <span>카드를 등록해주세요.</span>
+            <span>카드 결제 점검중・불편을 끼쳐드려 죄송합니다.</span>
             <span>▼</span>
           </span>
         </button>
@@ -623,7 +623,7 @@ function renderAccountModal() {
               <span>+</span>
               <span>계좌 등록하기</span>
             </div>
-            <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+            <span class="acc-modal__text">더블 클릭 시 계좌 삭제</span>
           </div>
         </div>
 
@@ -675,17 +675,16 @@ function renderAccountModal() {
   return accountModal
 }
 
-export function renderBankSlide(account) {
+export function renderBankSlide(account, index) {
   const slide = document.createElement('div')
   slide.classList.add('swiper-slide')
-  
   slide.innerHTML = /*html*/`
-    <div data-id="${account.id}" data-bankcode="${account.bankCode}"  data-accstring="${account.accountNumber}"class="acc-modal__account-item">
+    <div data-n="${index}" class="acc-modal__account-item">
       <span>${account.bankName}</span>
       <span>${account.accountNumber}</span>
       <span>잔액: ${account.balance.toLocaleString()}원</span>
     </div>
-    <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span> 
+    <span class="acc-modal__text">더블 클릭 시 계좌 삭제</span> 
   `
   return slide
 }
@@ -698,7 +697,7 @@ export function renderEmptySlide() {
       <span>+</span>
       <span>계좌 등록하기</span>
     </div>
-    <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+    <span class="acc-modal__text">상단 카드 클릭 시 계좌 추가</span>
 
   `
 
