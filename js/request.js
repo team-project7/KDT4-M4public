@@ -1,6 +1,5 @@
 import { searchList } from './search'
 import { vailed } from './header'
-import { validation } from './request'
 
 const headers = {
   'content-type': 'application/json',
@@ -102,12 +101,11 @@ export async function validation(token) {
     {
       method: 'POST',
       headers: {
-        "content-type": "application/json",
-        "apikey": process.env.API_KEY,
-        "username": process.env.USER_NAME,
-        "Authorization": `Bearer ${token}`,
-     },
-
+        'content-type': 'application/json',
+        apikey: process.env.API_KEY,
+        username: process.env.USER_NAME,
+        Authorization: `Bearer ${token}`,
+      },
     }
   )
   let json = await res.json()
@@ -134,6 +132,6 @@ export async function searchById(id) {
 
 //   const json = await res.json()
 //   console.log(json)
-  
+
 //   return json
 // }
