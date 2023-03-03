@@ -34,7 +34,7 @@ function renderPageHeader(centerText) {
       <span class="flex-space"></span>
       <ul class="page-header__top-menus">
         <li>
-          <a>
+          <a href="/my/wish">
             관심상품
           </a>
         </li>
