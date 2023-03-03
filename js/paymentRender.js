@@ -39,7 +39,7 @@ function renderPageHeader(centerText) {
           </a>
         </li>
         <li>
-        <a href="/login">
+        <a id="page-header__logout">
             로그아웃
           </a>
         </li>
@@ -153,6 +153,28 @@ function renderDelieveryInfoArea() {
   return delieveryArea
 }
 
+export function renderAccInfo(account) {
+  const accInfoEl = document.createElement('div')
+  accInfoEl.classList.add('method-simple__acc')
+  if(!account.id) {
+    accInfoEl.innerHTML = /*html*/ `
+    <span>계좌를 등록해주세요.</span>
+    <span>
+      첫 등록 시
+      <span class="method-simple__point-text">3,000P</span>
+      ▼
+    </span>
+    `
+  }
+  else {
+    accInfoEl.innerHTML = /*html*/ `
+    <span>${account.bankName}</span>
+    <span>${account.accountString}</span>
+    `
+  }
+  return accInfoEl
+}
+
 function renderOrderTotalArea(item, isDelivery) {
   const orderTotalArea = document.createElement('section')
   
@@ -239,11 +261,8 @@ function renderPaymentMethodArea() {
         </div>
 
         <button id="method-simple__acc-btn" class="payment-btn wide selectable">
-          <span>계좌를 등록해주세요.</span>
-          <span>
-            첫 등록 시
-            <span class="method-simple__point-text">3,000P</span>
-            ▼
+          <span id="method-simple__acc-info">
+
           </span>
         </button>
         
@@ -262,8 +281,10 @@ function renderPaymentMethodArea() {
         </div>
         
         <button id="method-simple__card-btn" class="payment-btn wide">
-          <span>카드를 등록해주세요.</span>
-          <span>▼</span>
+          <span class="method-simple__acc">
+            <span>카드를 등록해주세요.</span>
+            <span>▼</span>
+          </span>
         </button>
         
       </div>
@@ -659,7 +680,7 @@ export function renderBankSlide(account) {
   slide.classList.add('swiper-slide')
   
   slide.innerHTML = /*html*/`
-    <div data-bank="${account.id}" class="acc-modal__account-item">
+    <div data-id="${account.id}" data-bankcode="${account.bankCode}"  data-accstring="${account.accountNumber}"class="acc-modal__account-item">
       <span>${account.bankName}</span>
       <span>${account.accountNumber}</span>
       <span>잔액: ${account.balance.toLocaleString()}원</span>

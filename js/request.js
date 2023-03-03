@@ -1,9 +1,10 @@
 import { searchList } from './search'
+import { vailed } from './header'
 
 const headers = {
   'content-type': 'application/json',
-  apikey: 'FcKdtJs202301',
-  username: 'KDT4_TEAM7',
+  apikey: process.env.API_KEY,
+  username: process.env.USER_NAME,
 }
 
 export async function createUser(id, pw, displayname) {

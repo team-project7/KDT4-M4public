@@ -96,3 +96,10 @@ dist
 
 dist
 .parcel-cache/
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local

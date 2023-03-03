@@ -1,3 +1,5 @@
+import { adminPage } from "./admin"
+
 /**
  * appends 
  * - modal for an item addition
@@ -18,11 +20,16 @@ export function appendAdminPage() {
   adminEditModalWrapper.setAttribute('id', 'admin-modal-edit')
   adminEditModalWrapper.append(renderAdminEditModal())
 
-  document.body.append(adminModalWrapper)
-  document.body.append(adminEditModalWrapper)
-  document.body.append(renderNavBar());
-  document.body.append(renderSearchArea());
-  document.body.append(renderSearchContainer());
+  const adminPageContainer = document.createElement('div')
+  adminPageContainer.classList.add('admin-page')
+  adminPageContainer.append(
+    adminModalWrapper,
+    adminEditModalWrapper,
+    renderNavBar(),
+    renderSearchArea(),
+    renderSearchContainer()
+  )
+  document.body.append(adminPageContainer)
 }
 
 /**
@@ -161,21 +168,25 @@ function renderNavBar() {
   adminPageNavBar.classList.add('admin-page-nav')
   adminPageNavBar.innerHTML = 
   /*html*/`
-    <button id="admin-page-nav__toggle-btn">
-      <<
+    <button class="toggle" id="admin-page-nav__toggle-btn">
+      <span>➜</span>
     </button>
     <section class="admin-page-btns">
-      <button id="admin-page-btns__add-btn">
-        ADD
+      <button title="ADD" id="admin-page-btns__add-btn">
+        +
       </button>
-      <button id="admin-page-btns__edit-btn">
-        EDIT
-      </button>
-      <input id="admin-edit-input" type=text placeholder="ID to EDIT">
-      <button id="admin-page-btns__remove-btn">
-        REMOVE
-      </button>
-      <input  id="admin-remove-input" type=text placeholder="ID to REMOVE">
+      <div class="admin-page-btns__edit">
+        <button title="EDIT" id="admin-page-btns__edit-btn">
+          ✎
+        </button>
+        <input id="admin-edit-input" type=text placeholder="ID to EDIT">
+      </div>
+      <div class="admin-page-btns__remove">
+        <button title="REMOVE" id="admin-page-btns__remove-btn">
+          -
+        </button>
+        <input  id="admin-remove-input" type=text placeholder="ID to REMOVE">
+      </div>
     </section>
   `
   return adminPageNavBar
@@ -190,11 +201,12 @@ function renderSearchArea() {
   searchEl.classList.add('admin-search')
   searchEl.innerHTML = 
   /*html*/`
-    <input type=text id="admin-search__input">
+    <input type=text id="admin-search__input" autocomplete="off" placeholder="태그 또는 이름을 입력하세요...">
     <div class="admin-search__btn-wrapper">
       <button id="admin-search__search-all-btn">모든 상품 보기</button>
       <button id="admin-search__search-tag-btn">태그 검색</button>
       <button id="admin-search__search-name-btn">이름 검색</button>
+      <button id="admin-search__search-all-users">모든 사용자 보기</button>
     </div>
     <span id="admin-search-count"></span>
   `
@@ -209,4 +221,54 @@ function renderSearchContainer() {
   const sectionEl = document.createElement('section')
   sectionEl.classList.add('admin-page__search-container')
   return sectionEl
+}
+
+export function renderSearchAllUsers(resultArray) {
+  if(resultArray.length === 0) return document.createElement('span').innerHTML = "no result"
+  const searchResultList = document.createElement('ul')
+  searchResultList.classList.add('admin-page-search')
+  searchResultList.innerHTML = 
+  /*html*/`
+   
+    <div class="admin-page-search__row-header">
+      <span>Index</span>
+      <span>Image</span>
+      <span>Email</span>
+      <span>Display Name</span>
+    </div>
+  `
+  resultArray.forEach( (user, index) => {
+    searchResultList.append(renderSearchUser(user, index))
+  });
+  return searchResultList
+}
+
+function renderSearchUser(user, index) {
+  const liEl = document.createElement('li')
+  liEl.classList.add("admin-page-search__item")
+  const indexEl = document.createElement('span')
+  indexEl.textContent = `${index}`
+  
+  const imgWrapper = document.createElement('div')
+  imgWrapper.classList.add('admin-page-search__item-img')
+  
+  const profileImg = new Image()
+  profileImg.alt = "User Image"
+  profileImg.src = user.profileImg 
+  ? user.profileImg 
+  : "../image/no-profile.png"
+  
+  profileImg.addEventListener('load', () => {
+    imgWrapper.append(profileImg)
+  })
+  
+  
+  const email = document.createElement('span')
+  email.classList.add('.admin-user-email')
+  email.textContent = `${user.email}`
+  const displayName = document.createElement('span')
+  displayName.textContent = `${user.displayName}`
+
+  liEl.append(indexEl, imgWrapper, email, displayName)
+  return liEl
 }

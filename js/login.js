@@ -1,6 +1,9 @@
 import Navigo from 'navigo'
 import appendJoin from './join'
 import { login } from './request'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export default function appendLogin() {
   const loginEl = document.createElement('div')
@@ -91,7 +94,7 @@ export default function appendLogin() {
       loginBtnEl.classList.add('disable')
     }
   })
-//아이디:adminTEAM7 비밀번호: adminTEAM7!
+
   document
     .querySelector('.login__btn__link')
     .addEventListener('click', async () => {
@@ -105,10 +108,12 @@ export default function appendLogin() {
           localStorage.setItem('email', result.user.email)
           localStorage.setItem('displayName', result.user.displayName)
           localStorage.setItem('token', result.accessToken)
-          if(idInput.value === "adminteam7@abc.com" && pwInput.value === "adminteam7!") {
+          if (
+            idInput.value === process.env.ADMIN_USER &&
+            pwInput.value === process.env.ADMIN_PASSWORD
+          ) {
             location.replace('/admin')
-          }
-          else{
+          } else {
             location.replace('/')
           }
           
