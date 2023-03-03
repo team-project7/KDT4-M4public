@@ -2,6 +2,7 @@ import appendFooter from './footer'
 import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
+import { appendMySnb } from './my/my'
 import { appendbanner, smallappendbanner } from './bannerswiper'
 import {
   appendShortcut,
@@ -51,6 +52,10 @@ import appendShopContent from './shop'
 import { appendsearch } from './search'
 import { adminPage } from './admin'
 import appendErrorPage from './error'
+import { appendMyAddress } from './my/myAddress'
+import { appendMyBuying } from './my/myBuying'
+import { appendMyProfile } from './my/myProfile'
+import { appendMyWish } from './my/myWish'
 import dotenv from 'dotenv'
 import { searchById } from './request'
 
@@ -62,7 +67,6 @@ router
   .on('/', function (data) {
     document.body.innerHTML = ''
     appendHeadermain()
-
     switch (data.queryString) {
       case '':
         appendbanner()
@@ -144,12 +148,11 @@ router
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem("email") === process.env.ADMIN_USER){
-    document.body.innerHTML = ''
-    adminPage()
-    }
-    else {
-      router.nevigate("/")
+    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
+      document.body.innerHTML = ''
+      adminPage()
+    } else {
+      router.nevigate('/')
     }
   })
   .on('/login', function () {
@@ -175,8 +178,45 @@ router
     footerbanner()
     appendFooter()
   })
+
+  .on('/my', function () {
+    if (!localStorage.getItem('token')) {
+      alert('로그인이 필요한 서비스입니다')
+      router.navigate('/login')
+      return
+    }
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMySnb()
+    appendFooter()
+  })
+  .on('/my/address', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyAddress()
+    appendFooter()
+  })
+  .on('/my/buying', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyBuying()
+    appendFooter()
+  })
+  .on('/my/profile', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyProfile()
+    appendFooter()
+  })
+  .on('/my/wish', function () {
+    document.body.innerHTML = ''
+    appendHeadersub()
+    appendMyWish()
+    appendFooter()
+  })
+ 
+
   .on('/exhibitions/:name', function ({ data }) {
-    console.log(data)
     document.body.innerHTML = ''
     appendHeadersub()
     switch (data.name) {
@@ -264,13 +304,12 @@ router
 
   .on('/products/payment', async function (data) {
     const URLSearch = new URLSearchParams(location.search)
-    const res = await searchById(URLSearch.get('productId'));
+    const res = await searchById(URLSearch.get('productId'))
     console.log(res)
-    document.body.innerHTML = '';
-    appendPayment(res);
+    document.body.innerHTML = ''
+    appendPayment(res)
   })
 
-  
 // 오류 페이지
 router
   .notFound(() => {

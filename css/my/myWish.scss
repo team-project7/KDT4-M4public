@@ -1,0 +1,57 @@
+.content_area {
+  overflow: hidden;
+  min-height: 380px;
+  .my_purchase {
+    .content_title {
+      padding-bottom: 16px;
+      border-bottom: 3px solid #222;
+      .title {
+        font-size: 24px;
+        letter-spacing: -0.36px;
+        h3 {
+          line-height: 29px;
+          font-size: inherit;
+        }
+      }
+    }
+    .wish_list {
+      li {
+        display: flex;
+        list-style: none;
+        margin-right: 30px;
+        width: 100%;
+        padding: 12px;
+        border-bottom: 1px solid #ebebeb;
+        align-items: center;
+        cursor: pointer;
+        .list_item_img_wrap {
+          .list_item_img {
+            flex: none;
+            width: 80px;
+            height: 80px;
+          }
+        }
+        .list_item_title {
+          line-height: 17px;
+          font-size: 14px;
+          overflow: hidden;
+        }
+        .item_date {
+          display: flex;
+          margin-left: auto;
+          margin-right: 10px;
+        }
+        .secondary_title {
+          color: rgba(34, 34, 34, 0.5);
+          font-size: 13px;
+          display: block;
+          align-items: end;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+        }
+      }
+    }
+  }
+}
