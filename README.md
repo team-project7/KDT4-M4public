@@ -128,9 +128,15 @@
 <br>
 <br>
 
-## 💹 사이트맵맵
+## 💹 사이트맵
 
 <img src="https://user-images.githubusercontent.com/56331400/222495640-a967324b-5de8-4ac4-bd08-cd554a62e526.jpg" >
+
+## 플로우 차트
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/56331400/222724165-3b2dfabe-47bf-4f98-a568-567bf8f85456.png">
+</div>
 
 ## 🗺️ 구현 전략
 

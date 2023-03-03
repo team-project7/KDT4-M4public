@@ -57,11 +57,9 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
   const items = document.querySelectorAll('.product__item')
   let wishlist =
     localStorage.getItem('wishlist')? localStorage.getItem('wishlist').split(',') : []
+    let token = localStorage.getItem('token')
   // 로드 되면서 위시리스트의 데이터를 가져온다. 만약 아무것도 없으면 빈 배열로 지정
-  // let wishlist =
-  //   localStorage.getItem('wishlist').length === 0
-  //     ? []
-  //     : localStorage.getItem('wishlist').split(',')
+ 
 
   items.forEach((el, index) => {
     // 쿼리 스트링 추가
@@ -92,6 +90,7 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
           }
         )
         let json = await res.json()
+        console.log(json)
         if(json.email) {
 
       // 찜목록 클릭시, 찜목록 이미지 src값에 따라 제품의 id값을 로컬 스토리지에 추가/제거
