@@ -34,7 +34,7 @@ export function appendHeadermain() {
                                     <a href="/shop" class="gnb_link">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="/my" class="gnb_link" id='my_gnb_link'>MY</a>
+                                    <a href="" class="gnb_link" id='my_gnb_link'>MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -87,15 +87,16 @@ export function appendHeadermain() {
   })
   const vailBunEl = document.querySelector('#my_gnb_link')
   vailBunEl.addEventListener('click', (e) => {
-    // e.preventDefault()
-    //validation(token)
+    e.preventDefault()
+    validation(token)
   })
 }
 export function vailed(json) {
   if (json.email) {
-    location.replace('/login')
+    location.replace('/my')
   } else {
     alert('로그인 후에 다시 시도해주세요!')
+    location.replace('/login')
   }
 }
 
