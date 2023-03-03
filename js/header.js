@@ -1,9 +1,9 @@
 import { logout, validation } from './request'
 
 export function appendHeadermain() {
-    const headerEl = document.createElement('header')
-    headerEl.className = 'header'
-    headerEl.innerHTML = /*html*/ `
+  const headerEl = document.createElement('header')
+  headerEl.className = 'header'
+  headerEl.innerHTML = /*html*/ `
        <div class="header">
          <div class="header_top">
             <div class="top_inner">
@@ -34,7 +34,7 @@ export function appendHeadermain() {
                                     <a href="/shop" class="gnb_link">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="" class="gnb_link" id='my_gnb_link'>MY</a>
+                                    <a href="/my" class="gnb_link" id='my_gnb_link'>MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -64,49 +64,45 @@ export function appendHeadermain() {
          <div class="main_inner"></div>
        </div>
           `
-          
- document.body.append(headerEl)
 
- let token = localStorage.getItem('token')
- 
- const loginBtnEl = document.querySelector('#login')
- const logoutBtnEl = document.querySelector('#logout')
-    if(token) {
-        loginBtnEl.innerHTML = ''
-     } 
-     else {
-        logoutBtnEl.innerHTML = ''
-     }
+  document.body.append(headerEl)
 
- logoutBtnEl.addEventListener('click', () => {
-       logout(token)
-       window.alert('로그아웃 완료!')
-        localStorage.removeItem('token')
-        localStorage.removeItem('email')
-        localStorage.removeItem('displayName')
-        location.replace('/login')
-})
-const vailBunEl = document.querySelector('#my_gnb_link')
-vailBunEl.addEventListener('click', (e) => {
-    e.preventDefault();
-    validation(token)
+  let token = localStorage.getItem('token')
 
-})
+  const loginBtnEl = document.querySelector('#login')
+  const logoutBtnEl = document.querySelector('#logout')
+  if (token) {
+    loginBtnEl.innerHTML = ''
+  } else {
+    logoutBtnEl.innerHTML = ''
+  }
 
+  logoutBtnEl.addEventListener('click', () => {
+    logout(token)
+    window.alert('로그아웃 완료!')
+    localStorage.removeItem('token')
+    localStorage.removeItem('email')
+    localStorage.removeItem('displayName')
+    location.replace('/login')
+  })
+  const vailBunEl = document.querySelector('#my_gnb_link')
+  vailBunEl.addEventListener('click', (e) => {
+    // e.preventDefault()
+    //validation(token)
+  })
 }
 export function vailed(json) {
-    if(json.email) {
-        location.replace('/login')
-      }else {
-        alert('로그인 후에 다시 시도해주세요!')
-      }
+  if (json.email) {
+    location.replace('/login')
+  } else {
+    alert('로그인 후에 다시 시도해주세요!')
+  }
 }
 
-
 export function appendHeadersub() {
-    const headerEl = document.createElement('header')
-    headerEl.className = 'header'
-    headerEl.innerHTML = /*html*/ `
+  const headerEl = document.createElement('header')
+  headerEl.className = 'header'
+  headerEl.innerHTML = /*html*/ `
        <div class="header">
          <div class="header_top">
             <div class="top_inner">
@@ -126,7 +122,6 @@ export function appendHeadersub() {
             <div class="main_inner">
                 <div class="center">                  
                     <a href="/" class="logo"><img src="https://kream.co.kr/_nuxt/img/login_title.9f9ccc8.png" alt=""></a>
-
                     </div>
                 <div class="right">
                     <div class="gnb_area">
@@ -139,7 +134,7 @@ export function appendHeadersub() {
                                     <a href="/shop">SHOP</a>
                                 </li>
                                 <li class="gnb_item">
-                                    <a href="">MY</a>
+                                    <a href="/my">MY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -154,34 +149,32 @@ export function appendHeadersub() {
          </div>
        </div>
           `
- document.body.append(headerEl)
+  document.body.append(headerEl)
 
- let token = localStorage.getItem('token')
- 
- const loginBtnEl = document.querySelector('#login')
- const logoutBtnEl = document.querySelector('#logout')
-    if(token) {
-        loginBtnEl.innerHTML = ''
-     } 
-     else {
-        logoutBtnEl.innerHTML = ''
-     }
+  let token = localStorage.getItem('token')
 
- logoutBtnEl.addEventListener('click', () => {
-       logout(token)
-       window.alert('로그아웃 완료!')
-        localStorage.removeItem('token')
-        localStorage.removeItem('email')
-        localStorage.removeItem('displayName')
-        location.replace('/login')
-})
+  const loginBtnEl = document.querySelector('#login')
+  const logoutBtnEl = document.querySelector('#logout')
+  if (token) {
+    loginBtnEl.innerHTML = ''
+  } else {
+    logoutBtnEl.innerHTML = ''
+  }
+
+  logoutBtnEl.addEventListener('click', () => {
+    logout(token)
+    window.alert('로그아웃 완료!')
+    localStorage.removeItem('token')
+    localStorage.removeItem('email')
+    localStorage.removeItem('displayName')
+    location.replace('/login')
+  })
 }
-  
 
 export function appendtitleBW() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>Best Shoes</h2>
@@ -189,13 +182,13 @@ export function appendtitleBW() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 
 export function appendtitleNike() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>Nike AF1</h2>
@@ -203,13 +196,13 @@ export function appendtitleNike() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 
 export function appendtitlejacket() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>Director Classic Varsity Jacket</h2>
@@ -217,12 +210,12 @@ export function appendtitlejacket() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 export function appendtitlehoodie() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>The Best Hoodie</h2>
@@ -230,12 +223,12 @@ export function appendtitlehoodie() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 export function appendtitlepadding() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>간절기 필수 패딩 베스트</h2>
@@ -243,14 +236,14 @@ export function appendtitlepadding() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 
 //추천 tab shorcut 페이지
 export function appendtitlemenshorcut() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>남성 추천 컬렉션</h2>
@@ -258,12 +251,12 @@ export function appendtitlemenshorcut() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 export function appendtitlewomenshorcut() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>여성 추천 컬렉션</h2>
@@ -271,12 +264,12 @@ export function appendtitlewomenshorcut() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 export function appendtitletechshorcut() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>Under Retail</h2>
@@ -284,12 +277,12 @@ export function appendtitletechshorcut() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 export function appendtitleluxshorcut() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>Luxury Collection</h2>
@@ -297,12 +290,12 @@ export function appendtitleluxshorcut() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
 export function appendtitlespringshorcut() {
-    const headertitleEl = document.createElement('div')
-    headertitleEl.className = 'exhibition_title'
-    headertitleEl.innerHTML = /*html*/ `
+  const headertitleEl = document.createElement('div')
+  headertitleEl.className = 'exhibition_title'
+  headertitleEl.innerHTML = /*html*/ `
        <div class='exhibition_title_item'>
          <div class='exhibition_title_wrapper'>
             <h2 class='title'>Winter to Spring</h2>
@@ -310,5 +303,5 @@ export function appendtitlespringshorcut() {
          </div>
        </div>
     `
-    document.body.append(headertitleEl)
+  document.body.append(headertitleEl)
 }
