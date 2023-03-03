@@ -169,7 +169,7 @@ export function renderAccInfo(account) {
   else {
     accInfoEl.innerHTML = /*html*/ `
     <span>${account.bankName}</span>
-    <span>${account.accountString}</span>
+    <span>${account.accountNumber}</span>
     `
   }
   return accInfoEl
@@ -623,7 +623,7 @@ function renderAccountModal() {
               <span>+</span>
               <span>계좌 등록하기</span>
             </div>
-            <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+            <span class="acc-modal__text">더블 클릭 시 계좌 삭제</span>
           </div>
         </div>
 
@@ -675,17 +675,16 @@ function renderAccountModal() {
   return accountModal
 }
 
-export function renderBankSlide(account) {
+export function renderBankSlide(account, index) {
   const slide = document.createElement('div')
   slide.classList.add('swiper-slide')
-  
   slide.innerHTML = /*html*/`
-    <div data-id="${account.id}" data-bankcode="${account.bankCode}"  data-accstring="${account.accountNumber}"class="acc-modal__account-item">
+    <div data-n="${index}" class="acc-modal__account-item">
       <span>${account.bankName}</span>
       <span>${account.accountNumber}</span>
       <span>잔액: ${account.balance.toLocaleString()}원</span>
     </div>
-    <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span> 
+    <span class="acc-modal__text">더블 클릭 시 계좌 삭제</span> 
   `
   return slide
 }
@@ -698,7 +697,7 @@ export function renderEmptySlide() {
       <span>+</span>
       <span>계좌 등록하기</span>
     </div>
-    <span class="acc-modal__text">은행당 1개 계좌만 등록할 수 있습니다.</span>
+    <span class="acc-modal__text">상단 카드 클릭 시 계좌 추가</span>
 
   `
 

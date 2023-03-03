@@ -95,30 +95,17 @@ export async function searchByTag(tags) {
   return res.json()
 }
 
-export async function searchById(id) {
-  const res = await fetch(
-    `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
-    {
-      method: 'GET',
-      headers,
-
-    }
-  )
-  return res.json()
-}
-
 export async function validation(token) {
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
     {
       method: 'POST',
       headers: {
-        "content-type": "application/json",
-        "apikey": process.env.API_KEY,
-        "username": process.env.USER_NAME,
-        "Authorization": `Bearer ${token}`,
-     },
-
+        'content-type': 'application/json',
+        apikey: process.env.API_KEY,
+        username: process.env.USER_NAME,
+        Authorization: `Bearer ${token}`,
+      },
     }
   )
   let json = await res.json()
@@ -126,4 +113,25 @@ export async function validation(token) {
   return json
 }
 
+export async function searchById(id) {
+  const res = await fetch(
+    `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
+    {
+      method: 'GET',
+      headers,
+    }
+  )
+  return res.json()
+}
 
+// export async function getProduct() {
+//   const res = await fetch(`https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${productName}`, {
+//     method: 'GET',
+//     headers
+//   })
+
+//   const json = await res.json()
+//   console.log(json)
+
+//   return json
+// }

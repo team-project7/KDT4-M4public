@@ -3,7 +3,12 @@ import Navigo from 'navigo'
 import appendLogin from './login'
 import appendJoin from './join'
 import { appendbanner, smallappendbanner } from './bannerswiper'
-import { appendShortcut, appendmenShortcut, appendwomenShortcut, appendbrandShortcut } from './shortcut'
+import {
+  appendShortcut,
+  appendmenShortcut,
+  appendwomenShortcut,
+  appendbrandShortcut,
+} from './shortcut'
 import { appendPayment } from './payment'
 import {
   exhibitions,
@@ -25,7 +30,6 @@ import {
   appendtitlewomenshorcut,
   appendtitletechshorcut,
   appendtitleluxshorcut,
-  
 } from './header'
 import {
   bannerimg,
@@ -50,18 +54,16 @@ import appendErrorPage from './error'
 import dotenv from 'dotenv'
 import { searchById } from './request'
 
+
 dotenv.config()
+import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')
-;(async () => {
-  const test = await searchById("3Zxl48Yg8OFVmFZECaUL")
-  document.body.innerHTML = ""
-  appendPayment(test)
-})()
+
 router
   .on('/', function (data) {
     document.body.innerHTML = ''
     appendHeadermain()
-    
+
     switch (data.queryString) {
       case '':
         appendbanner()
@@ -137,17 +139,18 @@ router
         appendProducts('Lego', 4, 12, 0)
         break
     }
-  
+
     appendsearch()
     footerbanner()
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
-      document.body.innerHTML = ''
-      adminPage()
-    } else {
-      router.navigate('/')
+    if (localStorage.getItem("email") === process.env.ADMIN_USER){
+    document.body.innerHTML = ''
+    adminPage()
+    }
+    else {
+      router.nevigate("/")
     }
   })
   .on('/login', function () {
@@ -224,28 +227,28 @@ router
         appendProducts(data.name, 8, 12, 0)
         break
       case '패딩':
-      appendtitlepadding()
-      appendProducts(data.name, 8, 12, 0)
-      break
+        appendtitlepadding()
+        appendProducts(data.name, 8, 12, 0)
+        break
       // 추천tab shorcut페이지
       case '남성 추천':
-      appendtitlemenshorcut()
-      appendProducts('남성', 20, 20, 0) 
-      break
+        appendtitlemenshorcut()
+        appendProducts('남성', 20, 20, 0)
+        break
       case '여성 추천':
-      appendtitlewomenshorcut()
-      appendProducts('여성', 20, 20, 0) 
-      break
+        appendtitlewomenshorcut()
+        appendProducts('여성', 20, 20, 0)
+        break
       case '정가 아래':
-      appendtitletechshorcut() 
-      appendProducts('테크', 20, 20, 0) 
-      break
+        appendtitletechshorcut()
+        appendProducts('테크', 20, 20, 0)
+        break
       case '인기 럭셔리':
-      appendtitleluxshorcut()
-      appendProducts('Chanel', 20, 20, 0) 
-      break
-    default: 
-    appendProducts(data.name, 12, 12, 0)
+        appendtitleluxshorcut()
+        appendProducts('Chanel', 20, 20, 0)
+        break
+      default:
+        appendProducts(data.name, 12, 12, 0)
     }
     appendsearch()
     footerbanner()
@@ -255,22 +258,20 @@ router
   .on('/products', function () {
     document.body.innerHTML = ''
     appendHeadersub()
-    appendProducts('남성', 4, 12, 0)
+    appendDetailedItem()
     footerbanner()
     appendFooter()
   })
 
-  .on('/products/payment:productId', async function (data) {
-    const res = await searchById(data.params.productId);
+  .on('/products/payment', async function (data) {
+    const URLSearch = new URLSearchParams(location.search)
+    const res = await searchById(URLSearch.get('productId'));
+    console.log(res)
     document.body.innerHTML = '';
     appendPayment(res);
-  });
+  })
 
-
-
-
-router.resolve();
-
+  
 // 오류 페이지
 router
   .notFound(() => {

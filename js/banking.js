@@ -59,12 +59,12 @@ export async function addAccount(newAcc) {
 }
 
 
-export async function deleteAccount() {
+export async function deleteAccount(account) {
   const res = await fetch(API_URL, {
     method: 'DELETE',
     headers,
     body: JSON.stringify({
-      accountId: `${localStorage.getItem('email')}`,
+      accountId: account.id,
       signature: true
     })
   })
