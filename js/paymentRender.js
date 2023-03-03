@@ -18,10 +18,7 @@ export function renderPaymentPage(item) {
   paymentContainer.classList.add('payment-container')
   paymentContainer.append(paymentContent)
 
-  paymentPage.append(
-    renderPageHeader("배송/결제"),
-    paymentContainer
-  )
+  paymentPage.append(renderPageHeader('배송/결제'), paymentContainer)
   return paymentPage
 }
 
@@ -34,7 +31,7 @@ function renderPageHeader(centerText) {
       <span class="flex-space"></span>
       <ul class="page-header__top-menus">
         <li>
-          <a>
+          <a href='/my/wish'>
             관심상품
           </a>
         </li>
@@ -117,9 +114,9 @@ function renderDelieveryInfoArea() {
     </button>
   `
 
-    const deliveryMethod = document.createElement('div')
-    deliveryMethod.classList.add('delivery-method')
-    deliveryMethod.innerHTML = /*html*/ `
+  const deliveryMethod = document.createElement('div')
+  deliveryMethod.classList.add('delivery-method')
+  deliveryMethod.innerHTML = /*html*/ `
       <h1>배송 방법</h1>
       <div class="delivery-method__methods">
         <button id="delivery-method__delivery-select-btn" class="payment-btn wide selectable selected">
@@ -156,7 +153,7 @@ function renderDelieveryInfoArea() {
 export function renderAccInfo(account) {
   const accInfoEl = document.createElement('div')
   accInfoEl.classList.add('method-simple__acc')
-  if(!account.id) {
+  if (!account.id) {
     accInfoEl.innerHTML = /*html*/ `
     <span>계좌를 등록해주세요.</span>
     <span>
@@ -165,8 +162,7 @@ export function renderAccInfo(account) {
       ▼
     </span>
     `
-  }
-  else {
+  } else {
     accInfoEl.innerHTML = /*html*/ `
     <span>${account.bankName}</span>
     <span>${account.accountNumber}</span>
@@ -177,7 +173,7 @@ export function renderAccInfo(account) {
 
 function renderOrderTotalArea(item, isDelivery) {
   const orderTotalArea = document.createElement('section')
-  
+
   orderTotalArea.classList.add('order-area')
   orderTotalArea.innerHTML = /*html*/ `
     <h1>최종 주문 정보</h1>
@@ -200,7 +196,7 @@ function renderOrderTotalArea(item, isDelivery) {
           <dt class="price-title">
             <span>즉시 구매가</span>
           </dt>
-          <dd class="price-text">${(item.price).toLocaleString()}원</dd>
+          <dd class="price-text">${item.price.toLocaleString()}원</dd>
         </dl>
         <dl class="order-content__desc-details">
           <dt class="price-title">
@@ -522,7 +518,7 @@ function renderChecklistArea(item) {
       <dl class="checklist-total__price">
         <dt class="checklist-total__price-title">총 결제금액</dt>
         <dd class="checklist-total__price-amount">
-          <span id="checklist-total__amount" class="amount">${(item.price).toLocaleString()}원</span>
+          <span id="checklist-total__amount" class="amount">${item.price.toLocaleString()}원</span>
         </dd>
       </dl>
     </div>
@@ -538,8 +534,8 @@ export function renderAddProfileModal() {
   const addProfileModal = document.createElement('aside')
   addProfileModal.classList.add('modal-container')
   addProfileModal.classList.add('hidden')
-  addProfileModal.setAttribute('id','add-profile-modal-container')
-  
+  addProfileModal.setAttribute('id', 'add-profile-modal-container')
+
   addProfileModal.innerHTML = /*html*/ `
   <div class="modal add-modal">
     <div class="modal-header">
@@ -600,7 +596,6 @@ export function renderGetProfilesModal(delieveryProfiles) {
 }
 
 function renderGetProfile(profile) {
-
   return liEl
 }
 
@@ -608,8 +603,8 @@ function renderAccountModal() {
   const accountModal = document.createElement('aside')
   accountModal.classList.add('modal-container')
   accountModal.classList.add('hidden')
-  accountModal.setAttribute('id','acc-modal-container')
-  accountModal.innerHTML = /*html*/`
+  accountModal.setAttribute('id', 'acc-modal-container')
+  accountModal.innerHTML = /*html*/ `
   <div class="modal acc-modal">
     <div class="modal-header">
       <a id="acc-modal-header__close-btn" class="modal-header__close-btn">✖</a>
@@ -678,7 +673,7 @@ function renderAccountModal() {
 export function renderBankSlide(account, index) {
   const slide = document.createElement('div')
   slide.classList.add('swiper-slide')
-  slide.innerHTML = /*html*/`
+  slide.innerHTML = /*html*/ `
     <div data-n="${index}" class="acc-modal__account-item">
       <span>${account.bankName}</span>
       <span>${account.accountNumber}</span>
@@ -692,7 +687,7 @@ export function renderBankSlide(account, index) {
 export function renderEmptySlide() {
   const emptySlide = document.createElement('div')
   emptySlide.classList.add('swiper-slide')
-  emptySlide.innerHTML = /*html*/`
+  emptySlide.innerHTML = /*html*/ `
     <div id="acc-modal__add-acc-btn" class="acc-modal__account-item empty">
       <span>+</span>
       <span>계좌 등록하기</span>
@@ -768,8 +763,8 @@ function renderNewAccountModal() {
 export function renderOnPurchaseSuccess(item, isDelivery) {
   const successPage = document.createElement('section')
   successPage.classList.add('purchase-success')
-  
-  successPage.innerHTML = /*html*/`
+
+  successPage.innerHTML = /*html*/ `
       <h1>구매 완료</h1>
       
       <dl class="purchase-success-list">
@@ -785,7 +780,9 @@ export function renderOnPurchaseSuccess(item, isDelivery) {
           <dt class="purchase-success__title">
             배송 방법
           </dt>
-          <dd class="purchase-success__desc">${isDelivery ? "배송" : "창고 보관"}</dd>
+          <dd class="purchase-success__desc">${
+            isDelivery ? '배송' : '창고 보관'
+          }</dd>
         </div>
       </dl>
 
@@ -795,10 +792,8 @@ export function renderOnPurchaseSuccess(item, isDelivery) {
       </div>
   
   `
-  
+
   return successPage
 }
 
-export function renderOnPurchaseFailed() {
-  
-}
+export function renderOnPurchaseFailed() {}

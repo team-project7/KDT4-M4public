@@ -9,7 +9,7 @@ export function appendHeadermain() {
             <div class="top_inner">
                 <ul class="top_list">
                     <li class="top_item">
-                        <a href="" class="top_link">관심상품</a>
+                        <a href="/my/wish" class="top_link">관심상품</a>
                     </li>
                     <li class="top_item">
                         <a href="/login" class="top_link" id="login">로그인</a>

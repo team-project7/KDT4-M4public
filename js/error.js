@@ -20,6 +20,6 @@ export default function appendErrorPage() {
   //5초뒤에 메인페이지로 이동
 
   setTimeout(() => {
-    location.href = 'http://localhost:1234/'
+    location.replace('/')
   }, 5000)
 }
