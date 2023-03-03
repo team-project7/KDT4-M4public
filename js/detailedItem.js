@@ -42,7 +42,7 @@ function appendDetailedItem() {
     // 상세 품목 페이지 렌더링
     const detailedItem = document.createElement('div')
     const header = document.querySelector('.header')
-
+    
     detailedItem.classList.add('detailedItem')
 
     detailedItem.innerHTML = /*html*/ `
@@ -110,7 +110,7 @@ function appendDetailedItem() {
             <a href="javascript:void(0)" class="purchase_btn">구매하기</a>
   
             <a href="javascript:void(0)" class="wishlist_btn">
-              <span class="material-symbols-outlined">
+              <span class="material-symbols-outlined wishlist_mark">
                 bookmark
               </span>
               <span class="wishlist_txt">관심상품</span>
@@ -301,7 +301,7 @@ function appendDetailedItem() {
           </div>
           </section>
         </div>
-        <div class="purchase_popUp_background">
+        <div class="purchase_popUp_background hide">
           <div class="purchase_popUp hide">
             <h3 class="popUp_title">상품 특이 사항</h3>
             <span class="material-symbols-outlined popUp_close">
@@ -324,6 +324,38 @@ function appendDetailedItem() {
     const anotherBody = document.querySelector('.another_body')
     appendSmallProducts(tags[0], 12, anotherBody, 0)
     // console.log(appendProducts(tags[0], 12, 36, 0))
+
+    // 구매하기
+    const purchase = document.querySelector('a.purchase_btn')
+    let token = localStorage.getItem('token')
+
+    
+    purchase.addEventListener('click', async () => {
+      const res = await fetch(
+        'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+        {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            "apikey": process.env.API_KEY,
+            "username": process.env.USER_NAME,
+            "Authorization": `Bearer ${token}`,
+        },
+        }
+      )
+      let json = await res.json()
+      
+      if(json.email) {
+        location.replace(`/product/payment:productId=${id}`)
+      }else {
+        alert('로그인 후에 다시 시도해주세요!')
+        location.replace('/login')
+      }
+      return json
+    })
+
+    // 관심상품 
+
 
     // 안내 창 오픈 클로즈
     const heads = document.querySelectorAll('.dropdown_head')
