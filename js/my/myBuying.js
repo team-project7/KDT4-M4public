@@ -52,7 +52,7 @@ export async function appendMyBuying() {
 
   //로딩화면 표시
   $('.my_loading').style.display = 'flex'
-
+  
   const buyingList = await getBuyingList()
   if (!buyingList) {
     $('.my_loading').style.display = 'none'

@@ -1,5 +1,5 @@
 import { searchList } from './search'
-
+import { vailed } from './header'
 
 const headers = {
   'content-type': 'application/json',
@@ -160,7 +160,7 @@ export async function getUserInfo() {
 
 export async function getBuyingList() {
   const res = await fetch(
-    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/details ',
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/details',
     {
       method: 'GET',
       headers: {
@@ -169,12 +169,14 @@ export async function getBuyingList() {
       },
     }
   )
+  
   if (res.ok) {
     const json = await res.json()
     return json
   }
   return null
 }
+
 
 export async function getProduct(ID) {
   const res = await fetch(
@@ -203,5 +205,23 @@ export async function setBuyingDone(ID) {
     }
   )
   const json = await res.json()
+  return json
+}
+
+export async function validation(token) {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+    {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        "apikey": process.env.API_KEY,
+        "username": process.env.USER_NAME,
+        "Authorization": `Bearer ${token}`,
+     },
+    }
+  )
+  const json = await res.json()
+  vailed(json)
   return json
 }
