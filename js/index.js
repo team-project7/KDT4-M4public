@@ -67,7 +67,6 @@ router
   .on('/', function (data) {
     document.body.innerHTML = ''
     appendHeadermain()
-
     switch (data.queryString) {
       case '':
         appendbanner()
@@ -179,6 +178,7 @@ router
     footerbanner()
     appendFooter()
   })
+
   .on('/my', function () {
     if (!localStorage.getItem('token')) {
       alert('로그인이 필요한 서비스입니다')
@@ -214,7 +214,9 @@ router
     appendMyWish()
     appendFooter()
   })
-  .on('/exhibitions/816', function () {
+ 
+
+  .on('/exhibitions/:name', function ({ data }) {
     document.body.innerHTML = ''
     appendHeadersub()
     switch (data.name) {
