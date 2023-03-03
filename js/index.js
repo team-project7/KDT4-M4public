@@ -189,30 +189,35 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendMySnb()
+    appendsearch()
     appendFooter()
   })
   .on('/my/address', function () {
     document.body.innerHTML = ''
     appendHeadersub()
     appendMyAddress()
+    appendsearch()
     appendFooter()
   })
   .on('/my/buying', function () {
     document.body.innerHTML = ''
     appendHeadersub()
     appendMyBuying()
+    appendsearch()
     appendFooter()
   })
   .on('/my/profile', function () {
     document.body.innerHTML = ''
     appendHeadersub()
     appendMyProfile()
+    appendsearch()
     appendFooter()
   })
   .on('/my/wish', function () {
     document.body.innerHTML = ''
     appendHeadersub()
     appendMyWish()
+    appendsearch()
     appendFooter()
   })
  

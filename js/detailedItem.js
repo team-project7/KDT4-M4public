@@ -94,7 +94,7 @@ function appendDetailedItem() {
             <div class="item_size">
               <span class="size_txt">사이즈</span>
               <a href="javascript:void(0)" class="size_btn">
-                <span class="btn_txt">모든 사이즈(예시)</span>
+                <span class="btn_txt">모든 사이즈</span>
                 <span class="material-symbols-outlined">
                   arrow_drop_down
                 </span>
@@ -316,6 +316,17 @@ function appendDetailedItem() {
             </div>
           </div>
         </div>
+        <div class="size_popUp_background hide">
+          <div class="size_popUp">
+            <h3 class="popUp_title">사이즈</h3>
+            <span class="material-symbols-outlined popUp_close">
+              close
+            </span>
+            <div class="popUp_content">
+              구현중...
+            </div>
+          </div>
+        </div>
       `
 
     // 페이지 랜더링
@@ -329,7 +340,6 @@ function appendDetailedItem() {
     const purchase = document.querySelector('a.purchase_btn')
     let token = localStorage.getItem('token')
 
-    
     purchase.addEventListener('click', async () => {
       const res = await fetch(
         'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
@@ -353,6 +363,44 @@ function appendDetailedItem() {
       }
       
       return json
+    })
+
+    // 사이즈 체크
+    const sizeCheckSlot = document.querySelector('a.size_btn')
+    const sizePopUp = document.querySelector('.size_popUp_background')
+    
+
+    sizeCheckSlot.addEventListener('click', async () => {
+      const res = await fetch(
+        'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',
+        {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            "apikey": process.env.API_KEY,
+            "username": process.env.USER_NAME,
+            "Authorization": `Bearer ${token}`,
+        },
+        }
+      )
+      let json = await res.json()
+      
+      if(json.email) {
+        // alert('현재 제품은 원 사이즈입니다.')
+        //location.replace(`/products/payment` + `?productId=${id}`)
+        sizePopUp.classList.remove('hide')
+      }else {
+        alert('로그인 후에 다시 시도해주세요!')
+        location.replace('/login')
+      }
+      
+      return json
+    })
+
+    const sizePopUpClose = document.querySelector('.size_popUp span.popUp_close')
+
+    sizePopUpClose.addEventListener('click', () => {
+      sizePopUp.classList.add('hide')
     })
 
     // 관심상품 
