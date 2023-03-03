@@ -98,12 +98,16 @@ input:focus {
 }
 .modal-container .modal .acc-modal__account.swiper-container {
   position: relative;
-  height: auto;
+  height: 177px;
 }
 .modal-container .modal .acc-modal__account.swiper-container .swiper-button-prev,
 .modal-container .modal .acc-modal__account.swiper-container .swiper-button-next {
   width: 15px;
   height: 15px;
+}
+.modal-container .modal .acc-modal__account.swiper-container .swiper-button-next::after,
+.modal-container .modal .acc-modal__account.swiper-container .swiper-button-prev::after {
+  color: #000;
 }
 .modal-container .modal .acc-modal__account.swiper-container > .swiper-wrapper {
   height: auto;
@@ -112,13 +116,13 @@ input:focus {
   height: auto;
 }
 .modal-container .modal .acc-modal__account-item {
-  background-color: #ebebeb;
+  background-color: #fafafa;
   border-radius: 10px;
   cursor: pointer;
-  border: 3px solid #000;
+  border: 3px solid transparent;
+  filter: drop-shadow(0 0 8px #d0d0d0);
 }
 .modal-container .modal .acc-modal__account-item.empty {
-  background-color: #fafafa;
   border: 3px dotted rgba(0, 0, 0, 0.1);
 }
 .modal-container .modal .acc-modal__account-item.empty > span {

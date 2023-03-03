@@ -59,6 +59,7 @@ import { appendMyWish } from './my/myWish'
 import dotenv from 'dotenv'
 import { searchById } from './request'
 
+
 dotenv.config()
 import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')
@@ -305,7 +306,6 @@ router
   .on('/products/payment', async function (data) {
     const URLSearch = new URLSearchParams(location.search)
     const res = await searchById(URLSearch.get('productId'))
-    console.log(res)
     document.body.innerHTML = ''
     appendPayment(res)
   })
