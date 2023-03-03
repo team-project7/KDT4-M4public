@@ -128,7 +128,7 @@
 <br>
 <br>
 
-## 💹 사이트 플로우 차트
+## 💹 사이트맵맵
 
 <img src="https://user-images.githubusercontent.com/56331400/222495640-a967324b-5de8-4ac4-bd08-cd554a62e526.jpg" >
 

@@ -44,7 +44,7 @@ export async function appendItem(tag, dpnum, num, container, listIndex) {
                 <p class="name">${e.description}</p>
                 <div class="price">
                   <div class="amount">
-                    <em class="amount_num">${e.price}</em>
+                    <em class="amount_num">${e.price.toLocaleString()}원</em>
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export async function appendSmallItem(tag, dpnum, listIndex) {
                 <p class="name--sm">${e.description}</p>
                 <div class="price">
                   <div class="amount">
-                    <em class="amount_num--sm">${e.price}</em>
+                    <em class="amount_num--sm">${e.price.toLocaleString()}원</em>
                   </div>
                 </div>
               </div>

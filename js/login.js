@@ -116,6 +116,7 @@ export default function appendLogin() {
           } else {
             location.replace('/')
           }
+          
         } else {
           window.alert(`${result}`)
           return

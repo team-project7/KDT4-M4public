@@ -2,10 +2,11 @@
   "name": "kdt4-m4public",
   "version": "1.0.0",
   "description": "this is test",
-  "main": "index.js",
+  "source": "index.html",
   "scripts": {
     "dev": "parcel --no-cache ./index.html",
-    "login": "parcel ./page/login.html"
+    "login": "parcel ./page/login.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -18,12 +19,15 @@
   },
   "homepage": "https://github.com/team-project7/KDT4-M4public#readme",
   "devDependencies": {
+    "@parcel/transformer-css": "^2.8.3",
     "@parcel/transformer-sass": "^2.8.3",
     "buffer": "^5.7.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
+    "lightningcss": "^1.19.0",
     "os-browserify": "^0.3.0",
     "parcel": "^2.8.3",
+    "parcel-reporter-static-files-copy": "^1.5.0",
     "path-browserify": "^1.0.1",
     "prettier": "2.8.3",
     "process": "^0.11.10",
@@ -35,6 +39,17 @@
     "navigo": "^8.11.1",
     "sass": "^1.58.0",
     "swiper": "^9.0.2"
+  },
+  "@parcel/transformer-js": {
+    "inlineEnvironment": [
+      "API_KEY",
+      "USER_NAME",
+      "ADMIN_USER",
+      "ADMIN_PASSWORD"
+    ]
+  },
+  "staticFiles": {
+    "staticPath": "static"
   },
   "keywords": []
 }
