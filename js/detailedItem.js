@@ -346,11 +346,12 @@ function appendDetailedItem() {
       let json = await res.json()
       
       if(json.email) {
-        location.replace(`/product/payment:productId=${id}`)
+        location.replace(`/products/payment` + `?productId=${id}`)
       }else {
         alert('로그인 후에 다시 시도해주세요!')
         location.replace('/login')
       }
+      
       return json
     })
 

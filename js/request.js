@@ -117,7 +117,7 @@ export async function validation(token) {
 
 export async function searchById(id) {
   const res = await fetch(
-    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/:productId',
+    `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
     {
       method: 'GET',
       headers,

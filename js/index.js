@@ -144,11 +144,12 @@ router
     appendFooter()
   })
   .on('/admin', function () {
-    if (localStorage.getItem('email') === process.env.ADMIN_USER) {
-      document.body.innerHTML = ''
-      adminPage()
-    } else {
-      router.navigate('/')
+    if (localStorage.getItem("email") === process.env.ADMIN_USER){
+    document.body.innerHTML = ''
+    adminPage()
+    }
+    else {
+      router.nevigate("/")
     }
   })
   .on('/login', function () {
@@ -261,11 +262,15 @@ router
     appendFooter()
   })
 
-  .on('.product/payment:productId', async function (data) {
-    const res = await searchById(data.params.productId);
+  .on('/products/payment', async function (data) {
+    const URLSearch = new URLSearchParams(location.search)
+    const res = await searchById(URLSearch.get('productId'));
+    console.log(res)
     document.body.innerHTML = '';
     appendPayment(res);
-  });
+  })
+
+  
 // 오류 페이지
 router
   .notFound(() => {
