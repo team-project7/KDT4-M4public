@@ -7,6 +7,7 @@ import {
   renderProductInfoArea,
   renderAccInfo,
 } from './paymentRender'
+import { logout } from './request'
 import * as Banking from './banking'
 import Swiper from 'swiper/swiper-bundle'
 import 'swiper/swiper-bundle.css'
@@ -19,7 +20,7 @@ export async function appendPayment(item) {
   //[헤더]
   const headerLogoutBtn = document.querySelector('#page-header__logout')
   headerLogoutBtn.addEventListener('click', () => {
-    logout(token)
+    logout(localStorage.getItem('token'))
     window.alert('로그아웃 완료!')
     localStorage.removeItem('token')
     localStorage.removeItem('email')
@@ -144,7 +145,7 @@ export async function appendPayment(item) {
   let accountIndex = 0
   const slideWrapper = document.querySelector('#acc-modal__swiper-wrapper')
   const accInfoText = document.querySelector('#method-simple__acc-info')
-
+  const emptySlide = renderEmptySlide()
   //init
   await updateBankSlides()
   updateAccountInfo()
@@ -209,7 +210,7 @@ export async function appendPayment(item) {
       })
     }
     // 계좌 추가 슬라이드
-    const emptySlide = renderEmptySlide()
+    
     swiper.appendSlide(emptySlide)
     updateAccountSelect()
   }
@@ -223,10 +224,9 @@ export async function appendPayment(item) {
       updateAccountInfo()
     })
 
-  //[계좌 정보 모달] 계좌 추가 모달 디스플레이 버튼
-  const addNewAccBtn = document.querySelector('#acc-modal__add-acc-btn')
-  addNewAccBtn.addEventListener('click', onModalAccAddBtnClicked)
+  //[계좌 추가 모달] 계좌 추가 모달 디스플레이 버튼
   const newAccModal = document.querySelector('#newAcc-modal-container')
+
   function onModalAccAddBtnClicked() {
     newAccModal.classList.remove('hidden')
     const newAccBankSelect = document.querySelector('#newAcc-modal__bankCode')
@@ -245,15 +245,22 @@ export async function appendPayment(item) {
     })
   }
 
-
-  //[계좌 추가 모달]
   const newAccBankCode = document.querySelector('#newAcc-modal__bankCode')
   const newAccDigitInput = document.querySelector('#newAcc-modal__acc-digit')
   const newAccPhoneInput = document.querySelector('#newAcc-modal__phone')
   const newAccSigInput = document.querySelector('#newAcc-modal__sig')
   const newAccAddBtn = document.querySelector('#newAcc-modal__add-btn')
+  newAccSigInput.addEventListener('change', () => {
+    newAccAddBtn.classList.toggle('disabled') //추가 버튼 효과 전환
+  })
 
   newAccAddBtn.addEventListener('click', async () => {
+    console.log(newAccBankCode.value)
+    console.log(newAccDigitInput.value)
+    console.log(newAccDigitInput.value.length === getAccLength(newAccBankCode.value))
+    console.log(newAccPhoneInput.value)
+    console.log(newAccPhoneInput.value.length === 11)
+    console.log(newAccSigInput.checked)
     if (
       newAccBankCode.value &&
       newAccDigitInput.value &&
@@ -262,29 +269,40 @@ export async function appendPayment(item) {
       newAccPhoneInput.value.length === 11 &&
       newAccSigInput.value
     ) {
+      //input 값을 토대로 객체 생성
       const obj = {
-        //input 값을 토대로 객체 생성
         bankCode: newAccBankCode.value,
         accountNumber: newAccDigitInput.value,
         phoneNumber: newAccPhoneInput.value,
-        signature: newAccSigInput.value === 'on' ? true : false,
+        signature: true,
       }
       
-      await Banking.addAccount(obj) // 객체로 계좌 생성 요청
-      await updateBankSlides() // 현재 사용자 계좌 조회 후 슬라이드 업데이트
-      alert('계좌 추가 완료')
-      newAccModal.classList.add('hidden')
-    } else {
+     // 객체로 계좌 생성 요청
+      const res = await Banking.addAccount(obj)
+      if(res.ok) {
+        await updateBankSlides() // 현재 사용자 계좌 조회 후 슬라이드 업데이트
+        alert('계좌 추가 완료')
+        newAccModal.classList.add('hidden')
+      }
+      else {
+        alert("중복된 계좌는 추가할 수 없습니다.")
+      }
+      resetNewAccInputs()
+    } //if절 끝
+    else {
       alert(
         '계좌 정보 미입력\n은행 선택 및 계좌번호 또는 핸드폰 번호 자릿수를 확인하시고 서명 확인을 체크해주세요. '
       )
     }
   })
+  function resetNewAccInputs() {
+    newAccBankCode.value = "default"
+    newAccDigitInput.value = ""
+    newAccDigitInput.setAttribute('maxlength', 0)
+    newAccPhoneInput.value = ""
+    newAccSigInput.value = false
+  }
 
-  newAccSigInput.addEventListener('change', () => {
-   
-    newAccAddBtn.classList.toggle('disabled') //추가 버튼 효과 전환
-  })
 
   //[구매]]
 
