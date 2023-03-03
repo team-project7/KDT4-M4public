@@ -49,7 +49,7 @@
     ]
   },
   "staticFiles": {
-    "staticPath": ".env"
+    "staticPath": "static"
   },
   "keywords": []
 }
