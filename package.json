@@ -40,7 +40,10 @@
   },
   "@parcel/transformer-js": {
     "inlineEnvironment": [
-      "SENTRY_*"
+      "API_KEY",
+      "USER_NAME",
+      "ADMIN_USER",
+      "ADMIN_PASSWORD"
     ]
   },
   "keywords": []
