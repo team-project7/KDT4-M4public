@@ -12,7 +12,7 @@ import Swiper from 'swiper/swiper-bundle'
 import 'swiper/swiper-bundle.css'
 
 export async function appendPayment(item) {
-  document.body.innerHTML = ''
+
   document.body.append(renderPaymentPage(item))
   appendFooter()
 
@@ -64,7 +64,8 @@ export async function appendPayment(item) {
       isDelivery = false
       updateAmountInfo()
     })
-  const selectableBtns = document.querySelectorAll('.selectable')
+  const deliveryMethod = document.querySelector('.delivery-method__methods')
+  const selectableBtns = deliveryMethod.querySelectorAll('.selectable')
   Array.from(selectableBtns).forEach((btn) => {
     btn.addEventListener('click', (event) => {
       siblings(event.currentTarget).forEach((sibling) => {
@@ -99,6 +100,17 @@ export async function appendPayment(item) {
     bankName: null,
     accountString: null,
   }
+  const generalPaymentList = document.querySelector('.method-general__grid')
+  const generalPaymentCards = generalPaymentList.querySelectorAll('.selectable')
+
+  Array.from(generalPaymentCards).forEach( card => {
+    card.addEventListener('click', (event) => {
+      siblings(event.target.parentElement).forEach((sibling) => {
+        sibling.children[0].classList.remove('selected')
+      })
+      event.target.classList.add('selected')
+    })
+  })
   //[계좌 정보 모달]
   const accModalBtn = document.querySelector('#method-simple__acc-btn')
   accModalBtn.addEventListener('click', onAddAccBtnClicked)
@@ -132,6 +144,7 @@ export async function appendPayment(item) {
   await updateBankSlides()
   const accInfoText = document.querySelector('#method-simple__acc-info')
   updateAccountInfo()
+
   function updateAccountInfo() {
     accInfoText.innerHTML = ''
     accInfoText.append(renderAccInfo(selectedAccount))
@@ -156,7 +169,7 @@ export async function appendPayment(item) {
     swiper.appendSlide(emptySlide)
     updateAccountSelect()
   }
-
+  //선택된 계좌 저장
   document
     .querySelector('#acc-modal__save-btn')
     .addEventListener('click', () => {
@@ -196,14 +209,6 @@ export async function appendPayment(item) {
   const newAccAddBtn = document.querySelector('#newAcc-modal__add-btn')
 
   newAccAddBtn.addEventListener('click', async () => {
-    
-      console.log(newAccBankCode.value)
-      console.log(newAccDigitInput.value)
-      console.log(newAccDigitInput.value.length)
-      console.log(getAccLength(newAccBankCode.value))
-      console.log(newAccPhoneInput.value )
-      console.log(newAccPhoneInput.value.length === 11 )
-      console.log(newAccSigInput.value)
     if (
       newAccBankCode.value &&
       newAccDigitInput.value &&
@@ -212,7 +217,6 @@ export async function appendPayment(item) {
       newAccPhoneInput.value.length === 11 &&
       newAccSigInput.value
     ) {
-      console.log('test')
       const obj = {
         //input 값을 토대로 객체 생성
         bankCode: newAccBankCode.value,
@@ -229,13 +233,12 @@ export async function appendPayment(item) {
       alert(
         '계좌 정보 미입력\n은행 선택 및 계좌번호 또는 핸드폰 번호 자릿수를 확인하시고 서명 확인을 체크해주세요. '
       )
-      console.log(obj)
     }
   })
 
   newAccSigInput.addEventListener('change', () => {
-    //추가 버튼 효과 전환용
-    newAccAddBtn.classList.toggle('disabled')
+   
+    newAccAddBtn.classList.toggle('disabled') //추가 버튼 효과 전환
   })
 
   //[구매]]
@@ -303,9 +306,9 @@ export async function appendPayment(item) {
     }
   }
   /**
-   * 은행 별 계좌번호 자릿수를 반환해주는 함수
+   * 은행 코드별 은행 이름을 반환해주는 함수
    * @param { String } bankCode
-   * @returns { Integer } 계좌번호 자릿수
+   * @returns { String } 은행 이름
    */
   function getBankName(bankCode) {
     switch (bankCode) {

@@ -95,6 +95,18 @@ export async function searchByTag(tags) {
   return res.json()
 }
 
+export async function searchById(id) {
+  const res = await fetch(
+    `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
+    {
+      method: 'GET',
+      headers,
+
+    }
+  )
+  return res.json()
+}
+
 export async function validation(token) {
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/me',

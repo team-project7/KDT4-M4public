@@ -48,10 +48,15 @@ import { appendsearch } from './search'
 import { adminPage } from './admin'
 import appendErrorPage from './error'
 import dotenv from 'dotenv'
+import { searchById } from './request'
 
 dotenv.config()
 const router = new Navigo('/')
-
+;(async () => {
+  const test = await searchById("3Zxl48Yg8OFVmFZECaUL")
+  document.body.innerHTML = ""
+  appendPayment(test)
+})()
 router
   .on('/', function (data) {
     document.body.innerHTML = ''
@@ -254,6 +259,18 @@ router
     footerbanner()
     appendFooter()
   })
+
+  .on('/products/payment:productId', async function (data) {
+    const res = await searchById(data.params.productId);
+    document.body.innerHTML = '';
+    appendPayment(res);
+  });
+
+
+
+
+router.resolve();
+
 // 오류 페이지
 router
   .notFound(() => {
