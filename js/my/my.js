@@ -1,7 +1,9 @@
-import { doc } from 'prettier'
 import blank_profile from '../../image/blank_profile.png'
-import { getUserInfo } from '../request'
+import { getBuyingList, getUserInfo } from '../request'
+import loading from '../../image/loading.gif'
+import { $ } from './util'
 
+//사이드바 html, 로딩 html
 export const htmlMySideBar = /* html */ `
 <div class="snb_area">
   <a href="/my">
@@ -24,14 +26,19 @@ export const htmlMySideBar = /* html */ `
     </div>
   </nav>
 </div>
+<div class="my_loading">
+    <img src="${loading}" alt="로딩중..."/>
+  </div>
 `
 export async function appendMySnb() {
+  //마이페이지 메인
   const mySnbEl = document.createElement('div')
   mySnbEl.className = 'mypage'
   mySnbEl.innerHTML = htmlMySideBar
 
   const myHomeEl = document.createElement('div')
   myHomeEl.className = 'container my md'
+  //메인 html
   myHomeEl.innerHTML = /* html */ `
   <div class="my_home">
     <div class="user_membership">
@@ -60,49 +67,57 @@ export async function appendMySnb() {
   <div class="recent_purchase">
     <div class="purchase_list_tab">
       <div class="tab_item total">
-        <a href="" class="tab_link">
+        <a href="/my/buying" class="tab_link">
           <dl class="tab_box">
             <dt class="title">전체</dt>
-            <dd class="count">0</dd>
+            <dd class="count total_count">0</dd>
           </dl>
         </a>
       </div>
       <div class="tab_item">
-        <a href="" class="tab_link">
+        <a href="/my/buying" class="tab_link">
           <dl class="tab_box">
             <dt class="title">진행 중</dt>
-            <dd class="count">0</dd>
+            <dd class="count proceeding_count">0</dd>
           </dl>
         </a>
       </div>
       <div class="tab_item">
-        <a href="" class="tab_link">
+        <a href="/my/buying" class="tab_link">
           <dl class="tab_box">
             <dt class="title">종료</dt>
-            <dd class="count">0</dd>
+            <dd class="count finish_count">0</dd>
           </dl>
         </a>
       </div>
     </div>
   </div>
-  <div class="my_home_title">
+  <!-- <div class="my_home_title">
     <h3>관심 상품</h3>
-  </div>
-
-  <div class="interest_product">
-    <div class="product_list"></div>
-  </div>
+  </div> -->
   `
   mySnbEl.append(myHomeEl)
   document.body.append(mySnbEl)
 
+  //유저데이터 api
   const userInfo = await getUserInfo()
-  console.log(userInfo) //
 
-  const myUserName = document.querySelector('.name')
-  const myUserID = document.querySelector('.email')
-  const myUserImg = document.querySelector('.user_img')
-  myUserName.innerText = userInfo.displayName
-  myUserID.innerText = userInfo.email
-  if (userInfo.profileImg) myUserImg.src = userInfo.profileImg
+  $('.name').innerText = userInfo.displayName
+  $('.email').innerText = userInfo.email
+  if (userInfo.profileImg) {
+    $('.user_img').src = userInfo.profileImg
+  }
+
+  //유저 구매내역 api
+  const buyingList = await getBuyingList()
+
+  $('.total_count').innerText = buyingList.length
+
+  let cntDone = 0
+  buyingList.map((data) => {
+    if (!data.done) ++cntDone
+  })
+
+  $('.proceeding_count').innerText = cntDone
+  $('.finish_count').innerText = buyingList.length - cntDone
 }

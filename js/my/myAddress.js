@@ -1,5 +1,5 @@
-import { doc } from 'prettier'
 import { htmlMySideBar } from './my'
+import { $ } from './util'
 
 export function appendMyAddress() {
   const myAddressEl = document.createElement('div')
@@ -114,6 +114,6 @@ export function appendMyAddress() {
   </div>
   `
   //모달클릭이벤트
-  const btnAdd = document.querySelector('.btn_add')
+  const btnAdd = $('.btn_add')
   btnAdd.addEventListener('click', () => {})
 }

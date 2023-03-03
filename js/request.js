@@ -160,3 +160,33 @@ export async function getBuyingList() {
   const json = await res.json()
   return json
 }
+
+export async function getProduct(ID) {
+  const res = await fetch(
+    `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${ID}`,
+    {
+      method: 'GET',
+      headers,
+    }
+  )
+  const json = await res.json()
+  return json
+}
+
+export async function setBuyingDone(ID) {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/ok',
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        detailId: ID,
+      }),
+    }
+  )
+  const json = await res.json()
+  return json
+}

@@ -11,7 +11,7 @@ body {
     margin-top: 86px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1000px;
+    margin-bottom: 300px;
     max-width: 1280px;
     padding: 40px 40px 160px;
     box-sizing: border-box;
@@ -199,5 +199,22 @@ body {
         }
       }
     }
+  }
+}
+.my_loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+  display: none;
+  z-index: 1000;
+  img {
+    width: 200px;
+    height: 200px;
   }
 }

@@ -1,9 +1,8 @@
 import { htmlMySideBar } from './my.js'
 import blank_profile from '../../image/blank_profile.png'
-import { doc } from 'prettier'
 import { getUserInfo, modifyUserName, modifyUserPassword } from '../request.js'
+import { $ } from './util.js'
 
-const $ = (selector) => document.querySelector(selector)
 export async function appendMyProfile() {
   const myProfileEl = document.createElement('div')
   myProfileEl.className = 'mypage my_profile'
@@ -130,7 +129,7 @@ export async function appendMyProfile() {
     )
 
     const changePassword = await modifyUserPassword()
-    console.log(changePassword)
+
     if (changePassword.email) {
       alert('비밀번호가 변경되었습니다.')
       modify_password.style.display = 'none'
@@ -145,7 +144,7 @@ export async function appendMyProfile() {
     const displayNameValidation = new RegExp(
       '^[A-Za-z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{3,10}$'
     )
-    console.log($('.input_name').value)
+
     if (displayNameValidation.test($('.input_name').value)) {
       const changeName = await modifyUserName()
       alert('닉네임이 변경되었습니다.')
@@ -155,9 +154,4 @@ export async function appendMyProfile() {
       alert('유효한 닉네임이 아닙니다.')
     }
   })
-}
-
-function test() {
-  if (confirm('정말 지우시겠습니까?')) console.log(1)
-  else console.log(2)
 }

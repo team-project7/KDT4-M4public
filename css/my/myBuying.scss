@@ -1,60 +1,90 @@
 .content_area {
+  margin-left: 200px;
   .my_purchase {
     .content_title {
       display: flex;
       padding: 5px 0 6px;
+      border-bottom: 3px solid #222;
       .title {
         font-size: 24px;
         letter-spacing: -0.36px;
-        margin-bottom: 50px;
+        padding-bottom: 16px;
         h3 {
           line-height: 29px;
           font-size: inherit;
         }
       }
     }
-    .empty_area {
-      padding: 80px 0;
-      text-align: center;
-      p {
-        font-size: 13px;
-        letter-spacing: -0.07px;
-        color: rgba(34, 34, 34, 0.5);
-      }
+    .tab_link {
+      cursor: default;
     }
     .purchase_list_display_item {
       background-color: rgb(255, 255, 255);
-      display: flex;
+      // display: flex;
       padding: 12px;
       border-top: 1px solid #ebebeb;
       border-bottom: 1px solid #ebebeb;
       align-items: center;
-      .list_item_img_wrap {
-        position: relative;
-        cursor: pointer;
-      }
-      .list_item_title {
-        margin-left: 30px;
-        line-height: 17px;
-        font-size: 14px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block;
-        cursor: pointer;
-      }
-      .item_date {
-        display: flex;
-        margin-left: auto;
-        margin-right: 10px;
-        .secondary_title {
-          color: rgba(34, 34, 34, 0.5);
-          font-size: 13px;
-          display: block;
-          align-items: end;
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          margin-inline-start: 0px;
-          margin-inline-end: 0px;
+      .buying_list {
+        li {
+          display: flex;
+          gap: 20px;
+          padding: 12px;
+          border-bottom: 1px solid #ebebeb;
+
+          align-items: center;
+          .list_item_img_wrap {
+            display: flex;
+            position: relative;
+            cursor: pointer;
+            .list_item_img {
+              width: 80px;
+              height: 80px;
+              object-fit: cover;
+              border-radius: 12px;
+            }
+          }
+
+          .list_item_title {
+            cursor: pointer;
+            line-height: 17px;
+            font-size: 14px;
+            overflow: hidden;
+          }
+
+          .item_date {
+            display: flex;
+            margin-left: auto;
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            .secondary_title {
+              color: #222;
+              font-size: 13px;
+              display: block;
+              align-items: end;
+              margin-block-start: 1em;
+              margin-block-end: 1em;
+              margin-inline-start: 0px;
+              margin-inline-end: 0px;
+            }
+            .btn_done_false {
+              background-color: #ef6253;
+              border-radius: 5px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              color: #fff;
+              font-weight: bold;
+            }
+            .btn_done_true {
+              background-color: #999;
+              border-radius: 5px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              color: #fff;
+              font-weight: bold;
+            }
+          }
         }
       }
     }
