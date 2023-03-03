@@ -3,8 +3,8 @@
 
 const headers = {
   'content-type': 'application/json',
-  'apikey': 'FcKdtJs202301',
-  'username': 'KDT4_TEAM7',
+  apikey: process.env.API_KEY,
+  username: process.env.ADMIN_USER,
   Authorization: `${localStorage.getItem('token')}`
 }
 const API_URL =

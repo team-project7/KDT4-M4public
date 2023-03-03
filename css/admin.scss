@@ -215,15 +215,15 @@ input:focus {
       }
       &__row-header {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        // grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
         position: sticky;
         z-index: 3;
         top: 0;
         background-color: #fff;
         filter: drop-shadow(0 0 10px grey);
-        &.grid {
-          grid-template-columns: repeat($adminGridUnit, 1fr);
-        }
+        
+        
       }
 
       span {
@@ -237,12 +237,10 @@ input:focus {
 
       &__item {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-auto-rows: minmax(160px, auto);
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        grid-auto-rows: repeat(auto-fit, minmax(0, 1fr));
         transition: background-color 0.3s ease;
-        &.grid {
-          grid-template-columns: repeat($adminGridUnit, 1fr);
-        }
+
         &:hover {
           background-color: #cdcdcd;
         }

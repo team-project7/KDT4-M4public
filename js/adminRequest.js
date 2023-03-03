@@ -2,14 +2,15 @@
 
 const headers = {
   'content-type': 'application/json',
-  apikey: 'FcKdtJs202301',
-  username: 'KDT4_TEAM7',
+  apikey: process.env.API_KEY,
+  username: process.env.ADMIN_USER,
   masterKey: 'true'
 }
 const API_URL =
   'https://asia-northeast3-heropy-api.cloudfunctions.net/api'
 const PRODUCTS_QUERY = "/products"
 const USERS_QUERY = "/auth/users"
+
 export async function addItem(item) {
   const res = await fetch(API_URL + PRODUCTS_QUERY, {
     method: 'POST',
