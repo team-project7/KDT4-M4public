@@ -169,12 +169,14 @@ export async function getBuyingList() {
       },
     }
   )
+  
   if (res.ok) {
     const json = await res.json()
     return json
   }
   return null
 }
+
 
 export async function getProduct(ID) {
   const res = await fetch(
