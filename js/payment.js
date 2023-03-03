@@ -285,7 +285,7 @@ export async function appendPayment(item) {
         newAccModal.classList.add('hidden')
       }
       else {
-        alert("중복된 계좌는 추가할 수 없습니다.")
+        alert("중복된 은행 계좌는 추가할 수 없습니다.")
       }
       resetNewAccInputs()
     } //if절 끝
