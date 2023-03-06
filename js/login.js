@@ -1,9 +1,6 @@
 import Navigo from 'navigo'
 import appendJoin from './join'
 import { login } from './request'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 export default function appendLogin() {
   const loginEl = document.createElement('div')
@@ -116,7 +113,6 @@ export default function appendLogin() {
           } else {
             location.replace('/')
           }
-          
         } else {
           window.alert(`${result}`)
           return

@@ -169,14 +169,13 @@ export async function getBuyingList() {
       },
     }
   )
-  
+
   if (res.ok) {
     const json = await res.json()
     return json
   }
   return null
 }
-
 
 export async function getProduct(ID) {
   const res = await fetch(
@@ -214,11 +213,11 @@ export async function validation(token) {
     {
       method: 'POST',
       headers: {
-        "content-type": "application/json",
-        "apikey": process.env.API_KEY,
-        "username": process.env.USER_NAME,
-        "Authorization": `Bearer ${token}`,
-     },
+        'content-type': 'application/json',
+        apikey: process.env.API_KEY,
+        username: process.env.USER_NAME,
+        Authorization: `Bearer ${token}`,
+      },
     }
   )
   const json = await res.json()
