@@ -304,6 +304,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendDetailedItem()
+    appendsearch()
     footerbanner()
     appendFooter()
   })
