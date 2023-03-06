@@ -1,4 +1,4 @@
-import { adminPage } from "./admin"
+import  noProfile  from "../image/no-profile.png"
 
 /**
  * appends 
@@ -256,8 +256,9 @@ function renderSearchUser(user, index) {
   profileImg.alt = "User Image"
   profileImg.src = user.profileImg 
   ? user.profileImg 
-  : "../image/no-profile.png"
-  
+  : noProfile
+
+
   profileImg.addEventListener('load', () => {
     imgWrapper.append(profileImg)
   })

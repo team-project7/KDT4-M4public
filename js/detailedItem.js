@@ -22,8 +22,8 @@ function appendDetailedItem() {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
-          apikey: 'FcKdtJs202301',
-          username: 'KDT4_TEAM7',
+          apikey: process.env.API_KEY,
+          username: process.env.USER_NAME,
         },
       }
     )
@@ -42,7 +42,7 @@ function appendDetailedItem() {
     // 상세 품목 페이지 렌더링
     const detailedItem = document.createElement('div')
     const header = document.querySelector('.header')
-    
+
     detailedItem.classList.add('detailedItem')
 
     detailedItem.innerHTML = /*html*/ `
@@ -346,29 +346,28 @@ function appendDetailedItem() {
         {
           method: 'POST',
           headers: {
-            "content-type": "application/json",
-            "apikey": process.env.API_KEY,
-            "username": process.env.USER_NAME,
-            "Authorization": `Bearer ${token}`,
-        },
+            'content-type': 'application/json',
+            apikey: process.env.API_KEY,
+            username: process.env.USER_NAME,
+            Authorization: `Bearer ${token}`,
+          },
         }
       )
       let json = await res.json()
-      
-      if(json.email) {
+
+      if (json.email) {
         location.replace(`/products/payment` + `?productId=${id}`)
-      }else {
+      } else {
         alert('로그인 후에 다시 시도해주세요!')
         location.replace('/login')
       }
-      
+
       return json
     })
 
     // 사이즈 체크
     const sizeCheckSlot = document.querySelector('a.size_btn')
     const sizePopUp = document.querySelector('.size_popUp_background')
-    
 
     sizeCheckSlot.addEventListener('click', async () => {
       const res = await fetch(
@@ -376,35 +375,36 @@ function appendDetailedItem() {
         {
           method: 'POST',
           headers: {
-            "content-type": "application/json",
-            "apikey": process.env.API_KEY,
-            "username": process.env.USER_NAME,
-            "Authorization": `Bearer ${token}`,
-        },
+            'content-type': 'application/json',
+            apikey: process.env.API_KEY,
+            username: process.env.USER_NAME,
+            Authorization: `Bearer ${token}`,
+          },
         }
       )
       let json = await res.json()
-      
-      if(json.email) {
+
+      if (json.email) {
         // alert('현재 제품은 원 사이즈입니다.')
         //location.replace(`/products/payment` + `?productId=${id}`)
         sizePopUp.classList.remove('hide')
-      }else {
+      } else {
         alert('로그인 후에 다시 시도해주세요!')
         location.replace('/login')
       }
-      
+
       return json
     })
 
-    const sizePopUpClose = document.querySelector('.size_popUp span.popUp_close')
+    const sizePopUpClose = document.querySelector(
+      '.size_popUp span.popUp_close'
+    )
 
     sizePopUpClose.addEventListener('click', () => {
       sizePopUp.classList.add('hide')
     })
 
-    // 관심상품 
-
+    // 관심상품
 
     // 안내 창 오픈 클로즈
     const heads = document.querySelectorAll('.dropdown_head')
@@ -418,10 +418,10 @@ function appendDetailedItem() {
       })
     })
 
-    // 경고창 오픈 
+    // 경고창 오픈
     const warningSlot = document.querySelector('.item_salesAlert a')
     const warningPopUp = document.querySelector('.purchase_popUp_background')
-    
+
     warningSlot.addEventListener('click', () => {
       warningPopUp.classList.remove('hide')
     })

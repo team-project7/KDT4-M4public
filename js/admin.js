@@ -370,11 +370,19 @@ export function adminPage() {
     searchContainer.append(renderSearchResult(arr))
     const count = document.querySelector('#admin-search-count')
     count.textContent = arr.length
+    const itemEls = document.querySelectorAll('.admin-page-search__item')
+    Array.from(itemEls).forEach( item => {
+      item.addEventListener('click', onSearchItemClicked)
+    })
     const itemIds = document.querySelectorAll('.admin-item-id')
     copyOnClick(itemIds)
     
     document.querySelector('.admin-page-search__row-header')
     .style.setProperty('$--admin-grid-unit', 7)
+  }
+
+  function onSearchItemClicked(event) {
+    
   }
 
   /**

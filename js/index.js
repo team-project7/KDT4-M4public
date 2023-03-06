@@ -56,11 +56,9 @@ import { appendMyAddress } from './my/myAddress'
 import { appendMyBuying } from './my/myBuying'
 import { appendMyProfile } from './my/myProfile'
 import { appendMyWish } from './my/myWish'
-import dotenv from 'dotenv'
+
 import { searchById } from './request'
 
-
-dotenv.config()
 import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')
 
@@ -153,7 +151,7 @@ router
       document.body.innerHTML = ''
       adminPage()
     } else {
-      router.nevigate('/')
+      location.replace('/')
     }
   })
   .on('/login', function () {
@@ -220,7 +218,6 @@ router
     appendsearch()
     appendFooter()
   })
- 
 
   .on('/exhibitions/:name', function ({ data }) {
     document.body.innerHTML = ''
@@ -304,6 +301,7 @@ router
     document.body.innerHTML = ''
     appendHeadersub()
     appendDetailedItem()
+    appendsearch()
     footerbanner()
     appendFooter()
   })

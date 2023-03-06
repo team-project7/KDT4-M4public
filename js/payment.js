@@ -255,12 +255,6 @@ export async function appendPayment(item) {
   })
 
   newAccAddBtn.addEventListener('click', async () => {
-    console.log(newAccBankCode.value)
-    console.log(newAccDigitInput.value)
-    console.log(newAccDigitInput.value.length === getAccLength(newAccBankCode.value))
-    console.log(newAccPhoneInput.value)
-    console.log(newAccPhoneInput.value.length === 11)
-    console.log(newAccSigInput.checked)
     if (
       newAccBankCode.value &&
       newAccDigitInput.value &&

@@ -247,7 +247,7 @@ export function searchList(items,newseartext){
         let productListItem = document.createElement('div');
         productListItem.classList.add('search-list-item');
         productListItem.innerHTML = `    
-        <a href='products?name=${title.id}' class = "search_area_link">
+        <a href='/products?name=${title.id}' class = "search_area_link">
         <div class = "search-item-thumbnail">
          <img src = '${title.thumbnail}'>
         </div>
