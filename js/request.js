@@ -82,6 +82,7 @@ export async function searchByName(searchText) {
 }
 
 export async function searchByTag(tags) {
+  headers.masterKey = true
   const res = await fetch(
     'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search',
     {
@@ -136,6 +137,24 @@ export async function modifyUserName() {
       },
       body: JSON.stringify({
         displayName: document.querySelector('.input_name').value, // 새로운 표시 이름
+      }),
+    }
+  )
+  const json = await res.json()
+  return json
+}
+
+export async function modifyUserImg(base64) {
+  const res = await fetch(
+    'https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/user',
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        profileImgBase64: `${base64}` // 새로운 프로필 사진
       }),
     }
   )

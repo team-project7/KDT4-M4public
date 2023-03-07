@@ -1,6 +1,6 @@
 import { htmlMySideBar } from './my.js'
 import blank_profile from '../../image/blank_profile.png'
-import { getUserInfo, modifyUserName, modifyUserPassword } from '../request.js'
+import { getUserInfo, modifyUserImg, modifyUserName, modifyUserPassword } from '../request.js'
 import { $ } from './util.js'
 
 export async function appendMyProfile() {
@@ -27,8 +27,9 @@ export async function appendMyProfile() {
         <div class="profile_detail">
           <strong class="name"></strong>
           <div class="profile_btn_box">
-          <a href="javascript:void(0)" class="btn outlinegrey small change"> 이미지 변경 </a
-          ><a href="javascript:void(0)" class="btn outlinegrey small btndelete"> 삭제 </a>
+          <label for="input-file" class="btn outlinegrey small change"> 이미지 변경 </label>
+          <input type="file" id="input-file" accept="jpg, jpeg, webp, png, gif, svg" style= "display: none;" /> 
+          <a href="javascript:void(0)" class="btn outlinegrey small btndelete"> 삭제 </a>
         </div>
       </div>
     </div>
@@ -90,10 +91,13 @@ export async function appendMyProfile() {
   const myUserName = $('.name')
   const myUserID = $('.email')
   const nick_name = $('.nick_name')
+  const myUserImg = $('.thumb_img')
 
   myUserName.innerText = userInfo.displayName
   myUserID.innerText = userInfo.email
   nick_name.innerText = userInfo.displayName
+  myUserImg.src = userInfo.profileImg ? userInfo.profileImg : blank_profile
+
   const modify_password = $('.modify_password')
   const modify_name = $('.modify_name')
 
@@ -152,6 +156,25 @@ export async function appendMyProfile() {
       appendMyProfile()
     } else {
       alert('유효한 닉네임이 아닙니다.')
+    }
+  })
+
+  $('#input-file').addEventListener('change', async event => {
+    const file = event.target.files[0]
+    if (file.size > 1048576) {
+      alert('1MB 이하의 파일만 사용 가능합니다.')
+      return
+    }
+    
+    if (file) {
+      const reader = new FileReader()
+
+      reader.onload = async () => {
+        const base64 = reader.result
+        const res = await modifyUserImg(base64)
+        myUserImg.src = res.profileImg
+      }
+      reader.readAsDataURL(file)
     }
   })
 }
