@@ -19,6 +19,10 @@
 
 주어진 API를 분석해 자유롭게 프로젝트를 진행하는 과제에서 저희는 현재 신발,의류 및 다양한 제품을 판매하는 Kream 사이트를 클론코딩 해보기로 했습니다.
 
+pr 기록 확인은 : https://github.com/team-project7/KDT4-M4public 이곳을 참조해주세요
+
+## 배포 사이트 : https://kdt4-team7--hilarious-kleicha-d49179.netlify.app/
+
 <div align="center">
 <table>
 <tr>
@@ -128,6 +132,19 @@
 <br>
 <br>
 
+## 조원별 업무
+
+<div align="center">
+
+  | FE_정영찬 | FE_신환수 | FE_임성열 | FE_전우성 | FE_이승용 |
+  |:--------:|:--------:|:--------:|:--------:|:--------:|
+  | ![img](https://avatars.githubusercontent.com/u/56331400?width=200px&height=200px) | ![img](https://avatars.githubusercontent.com/u/98297436?width=200px&height=200px) | ![img](https://avatars.githubusercontent.com/u/120437898?width=200px&height=200px) | ![img](https://avatars.githubusercontent.com/u/120362689?width=200px&height=200px)|![img](https://avatars.githubusercontent.com/u/61074759?width=200px&height=200px)|
+  |<sup>- 로그인 input 구현</sup><br><sup>- 회원가입 input 구현</sup><br><sup>- 제품 아이템 구현</sup><br><sup>- 찜목록 기능 구현</sup><br><sup>- 상점 검색필터 구현</sup><br><sup>- 상점 페이지 전용 제품 <br>아이템 구현</sup><br><sup>- 오류페이지 구현</sup><br>|<sup>- 헤더 컴포넌트 구현</sup><br><sup>- 배너 컴포넌트 구현</sup><br><sup>- exhibition 페이지 구현</sup><br><sup>- 상점 검색 모달 컴포넌트 구현</sup><br><sup>- 메인 페이지 숏컷 링크 연결 및 <br>- 태그별 페이지 구현(남자, 여자, 브랜드)</sup><br>|<sup>- 관리자 페이지 구현</sup><br><sup>- 제품 데이터 관리</sup><br><sup>- 결제화면 컴포넌트 구현</sup><br><sup>- 결제 완료 페이지 구현</sup><br><sup>- 계정 인증 기능 구현</sup><br>|<sup>- 브랜드 포커스 컴포넌트 구현</sup><br><sup>- 메인 페이지 태그별 <br>브랜드 포커스 렌더링</sup><br><sup>- 제품 상세 페이지 구현</sup><br><sup>- 상세 페이지 경고 주의사항 구현</sup><br><sup>- 상세 페이지 안내사항 구현</sup><br>|<sup>- 마이페이지 구현</sup><br><sup>- 숏컷 컴포넌트 구현</sup><br><sup>- 찜 목록 표시 기능 구현</sup><br><sup>- 프로필 수정 기능 구현</sup><br><sup>- 구매 목록 조회 기능 구현</sup><br>|
+
+  
+  </div>
+
+  
 ## 💹 사이트맵
 
 <img src="https://user-images.githubusercontent.com/56331400/222495640-a967324b-5de8-4ac4-bd08-cd554a62e526.jpg" >
