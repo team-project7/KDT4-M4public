@@ -19,6 +19,10 @@
 
 주어진 API를 분석해 자유롭게 프로젝트를 진행하는 과제에서 저희는 현재 신발,의류 및 다양한 제품을 판매하는 Kream 사이트를 클론코딩 해보기로 했습니다.
 
+pr 기록 확인은 : https://github.com/team-project7/KDT4-M4public 이곳을 참조해주세요
+
+## 배포 사이트 : https://kdt4-team7--hilarious-kleicha-d49179.netlify.app/
+
 <div align="center">
 <table>
 <tr>
