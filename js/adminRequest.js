@@ -45,16 +45,19 @@ export async function removeItem(id) {
 }
 
 export async function editItem(item) {
+  const bodyObj = {
+    title: item.title, // 제품 이름
+    price: item.price, // 제품 가격
+    description: item.description, // 제품 상세 설명
+    tags: item.tags, // 제품 태그
+  }
+  if(item.thumbnailBase64) {
+    Object.assign(bodyObj, { thumbnailBase64: item.thumbnailBase64 })
+  }
   const res = await fetch(`${API_URL + PRODUCTS_QUERY}/${item.id}`, {
     method: 'PUT',
     headers,
-    body: JSON.stringify({
-      title: item.title, // 제품 이름
-      price: item.price, // 제품 가격
-      description: item.description, // 제품 상세 설명
-      tags: item.tags, // 제품 태그
-      thumbnailBase64: item.thumbnailBase64, // 제품 썸네일(대표) 사진(base64) - jpg, jpeg, webp, png, gif, svg
-    }),
+    body: JSON.stringify(bodyObj),
   })
   const json = await res.json()
   return json

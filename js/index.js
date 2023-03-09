@@ -151,7 +151,7 @@ router
       document.body.innerHTML = ''
       adminPage()
     } else {
-      router.nevigate('/')
+      location.replace('/')
     }
   })
   .on('/login', function () {
