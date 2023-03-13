@@ -1,4 +1,4 @@
-import { logout, validation } from './request'
+import { logout, validation } from './api/request'
 
 export function appendHeadermain() {
   const headerEl = document.createElement('header')

@@ -1,6 +1,6 @@
-import * as Admin from './adminRequest'
+import * as Admin from '../api/adminRequest'
 import { appendAdminPage, renderSearchResult, renderSearchAllUsers } from './adminRender.js'
-import { searchByTag, searchByName } from './request.js'
+import { searchByTag, searchByName } from '../api/request'
 
 export function adminPage() {
   //[init admin page]
@@ -282,15 +282,16 @@ export function adminPage() {
    * request search by tag name and append rendered results
    * @returns nothing when searchInput field is empty
    */
+  
   async function appendSearchByTag() {
-    let tagName = searchInput.value.trim()
+    const tagName = searchInput.value.trim()
     if (!tagName) {
       alert("검색어가 필요합니다!")
       return
     }
 
-    tagName = capitalizeEveryWord(tagName)
-    const result = await searchByTag(tagName)
+    const capitalizedTagName = capitalizeEveryWord(tagName)
+    const result = await searchByTag(capitalizedTagName)
     const arr = [...result]
 
     searchContainer.innerHTML = ''
@@ -307,14 +308,14 @@ export function adminPage() {
    * @returns nothing when searchInput field is empty
    */
   async function appendSearchByName() {
-    let name = searchInput.value.trim()
+    const name = searchInput.value.trim()
     if (!name) {
       alert("검색어가 필요합니다!")
       return
     }
-    name = capitalizeEveryWord(name)
+    const capitalizedName = capitalizeEveryWord(name)
     
-    const result = await searchByName(name)
+    const result = await searchByName(capitalizedName)
     const arr = [...result]
 
     searchContainer.innerHTML = ''
@@ -375,13 +376,13 @@ export function adminPage() {
 
   /**
    * add event handler to copy id to clipboard on click
-   * @param { item.id } itemIds
+   * @param { Array<Text> } array of text to copy
    * @void
    */
-  function copyOnClick(itemIds) {
-    Array.from(itemIds).forEach((item) => {
-      item.addEventListener('click', (e) => {
-        navigator.clipboard.writeText(e.target.textContent)
+  function copyOnClick(textArr) {
+    Array.from(textArr).forEach( text => {
+      text.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(event.target.textContent)
       })
     })
   }

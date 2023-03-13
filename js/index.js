@@ -57,7 +57,7 @@ import { appendMyBuying } from './my/myBuying'
 import { appendMyProfile } from './my/myProfile'
 import { appendMyWish } from './my/myWish'
 
-import { searchById } from './request'
+import { searchById } from './api/request'
 
 import { appendDetailedItem } from './detailedItem'
 const router = new Navigo('/')

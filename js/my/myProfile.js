@@ -1,6 +1,6 @@
 import { htmlMySideBar } from './my.js'
 import blank_profile from '../../image/blank_profile.png'
-import { getUserInfo, modifyUserImg, modifyUserName, modifyUserPassword } from '../request.js'
+import { getUserInfo, modifyUserImg, modifyUserName, modifyUserPassword } from '../api/request.js'
 import { $ } from './util.js'
 
 export async function appendMyProfile() {

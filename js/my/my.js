@@ -1,8 +1,8 @@
 import blank_profile from '../../image/blank_profile.png'
-import { getBuyingList, getUserInfo } from '../request'
+import { getBuyingList, getUserInfo } from '../api/request'
 import loading from '../../image/loading.gif'
 import { $ } from './util'
-import { buy } from '../banking'
+import { buy } from '../api/banking'
 
 //사이드바 html, 로딩 html
 export const htmlMySideBar = /* html */ `

@@ -1,4 +1,4 @@
-import { getBuyingList, setBuyingDone } from '../request'
+import { getBuyingList, setBuyingDone } from '../api/request'
 import { htmlMySideBar } from './my'
 import { $, $$, formatDate } from './util'
 
