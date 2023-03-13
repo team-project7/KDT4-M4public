@@ -282,15 +282,16 @@ export function adminPage() {
    * request search by tag name and append rendered results
    * @returns nothing when searchInput field is empty
    */
+  
   async function appendSearchByTag() {
-    let tagName = searchInput.value.trim()
+    const tagName = searchInput.value.trim()
     if (!tagName) {
       alert("검색어가 필요합니다!")
       return
     }
 
-    tagName = capitalizeEveryWord(tagName)
-    const result = await searchByTag(tagName)
+    const capitalizedTagName = capitalizeEveryWord(tagName)
+    const result = await searchByTag(capitalizedTagName)
     const arr = [...result]
 
     searchContainer.innerHTML = ''
@@ -307,14 +308,14 @@ export function adminPage() {
    * @returns nothing when searchInput field is empty
    */
   async function appendSearchByName() {
-    let name = searchInput.value.trim()
+    const name = searchInput.value.trim()
     if (!name) {
       alert("검색어가 필요합니다!")
       return
     }
-    name = capitalizeEveryWord(name)
+    const capitalizedName = capitalizeEveryWord(name)
     
-    const result = await searchByName(name)
+    const result = await searchByName(capitalizedName)
     const arr = [...result]
 
     searchContainer.innerHTML = ''
