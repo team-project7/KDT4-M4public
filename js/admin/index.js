@@ -1,6 +1,6 @@
-import * as Admin from './adminRequest'
+import * as Admin from '../api/adminRequest'
 import { appendAdminPage, renderSearchResult, renderSearchAllUsers } from './adminRender.js'
-import { searchByTag, searchByName } from './request.js'
+import { searchByTag, searchByName } from '../api/request'
 
 export function adminPage() {
   //[init admin page]
@@ -375,13 +375,13 @@ export function adminPage() {
 
   /**
    * add event handler to copy id to clipboard on click
-   * @param { item.id } itemIds
+   * @param { Array<Text> } array of text to copy
    * @void
    */
-  function copyOnClick(itemIds) {
-    Array.from(itemIds).forEach((item) => {
-      item.addEventListener('click', (e) => {
-        navigator.clipboard.writeText(e.target.textContent)
+  function copyOnClick(textArr) {
+    Array.from(textArr).forEach( text => {
+      text.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(event.target.textContent)
       })
     })
   }

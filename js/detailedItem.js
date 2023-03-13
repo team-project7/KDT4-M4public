@@ -2,7 +2,7 @@ export { appendDetailedItem }
 
 import { appendProducts, appendSmallProducts } from './products'
 import { appendSmallItem } from './item'
-import { getProduct } from './request'
+import { getProduct } from './api/request'
 // 이미지 모음
 import imgNomal from '../image/detailedItem_delivery.png'
 import imgPointBanner from '../image/detailedItem_pointBanner.jpg'

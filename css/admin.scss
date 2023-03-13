@@ -269,6 +269,13 @@ input:focus {
             width: 80px;
           }
         }
+
+        & .admin-user-email {
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
-import  noProfile  from "../image/no-profile.png"
-import logo from "../image/kream-logo.png"
+import  noProfile  from "../../image/no-profile.png"
+import logo from "../../image/kream-logo.png"
 /**
  * appends 
  * - modal for an item addition
@@ -275,7 +275,7 @@ function renderSearchUser(user, index) {
   
   
   const email = document.createElement('span')
-  email.classList.add('.admin-user-email')
+  email.classList.add('admin-user-email')
   email.textContent = `${user.email}`
   const displayName = document.createElement('span')
   displayName.textContent = `${user.displayName}`

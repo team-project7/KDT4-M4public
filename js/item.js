@@ -1,6 +1,6 @@
 import wishOff from '../image/wish-off.png'
 import wishOn from '../image/wish-on.png'
-import { searchAll, searchByTag } from './request'
+import { searchAll, searchByTag } from './api/request'
 
 /** 제품 아이템을 렌더링 하는 메소드 */
 export async function appendItem(tag, dpnum, num, container, listIndex) {

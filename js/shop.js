@@ -2,7 +2,7 @@ import { appendSmallProducts } from './products'
 import plus from '/image/plus.png'
 import unchecked from '/image/unchecked.png'
 import checked from '/image/checked.png'
-import { searchAll } from './request'
+import { searchAll } from './api/request'
 
 // api 에서 브랜드 값만 가져오는 메서드
 async function getData() {

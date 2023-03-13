@@ -11,7 +11,8 @@ export function renderPaymentPage(item) {
     renderChecklistArea(item),
     renderAccountModal(),
     renderNewAccountModal(),
-    renderAddProfileModal()
+    renderAddProfileModal(),
+    renderGetProfilesModal()
   )
 
   const paymentContainer = document.createElement('div')
@@ -83,34 +84,28 @@ function renderDelieveryInfoArea() {
   const deliveryContent = document.createElement('div')
   deliveryContent.classList.add('delivery-content')
   deliveryContent.innerHTML = /*html*/ `
-    <dl class="delivery-info-list">
+    <dl class="delivery-info">
 
       <div class="info-box">
-        <dt class="delivery-info__title">
-            받는 분
-        </dt>
-        <dd id="payment__delivery-name" class="delivery-info__desc">받는분</dd>
+        <dt class="delivery-info__title">수령인</dt>
+        <dd id="delivery-info__name" class="delivery-info__desc"></dd>
       </div>
 
       <div class="info-box">
-        <dt class="delivery-info__title">
-          연락처
-        </dt>
-        <dd id="payment__delivery-name" class="delivery-info__desc">연락처</dd>
+        <dt class="delivery-info__title">연락처</dt>
+        <dd id="delivery-info__phone" class="delivery-info__desc"></dd>
       </div>
 
       <div class="info-box">
-        <dt class="delivery-info__title">
-          배송 주소
-        </dt>
-        <dd id="payment__delivery-name" class="delivery-info__desc">배송주소</dd>
+        <dt class="delivery-info__title">배송 주소</dt>
+        <dd id="delivery-info__address" class="delivery-info__desc"></dd>
       </div>
       
-      <button class="payment-btn grey" id="payment__delivery-profile-change-btn">변경</button>
+      <button class="payment-btn grey" id="payment__delivery-profile-get-btn">변경</button>
     </dl>
     <button class="payment-btn" id="payment__shipping-memo-btn">
       <span>배송 시 요청사항을 선택하세요.</span>
-      <span>►</span>
+      <span>▼</span>
     </button>
   `
 
@@ -126,7 +121,7 @@ function renderDelieveryInfoArea() {
               <span>일반배송</span>
               <span>3,000원</span>
             </div>
-            <span class="method__desc">현재 배달이 불가능합니다. 결제액은 상품금액만 반영됩니다.</span>
+            <span class="method__desc">현재 배송이 불가능합니다. 결제액은 상품금액만 반영됩니다.</span>
           </div>
         </button>
         <button id="delivery-method__storage-select-btn" class="payment-btn wide selectable">
@@ -153,7 +148,7 @@ function renderDelieveryInfoArea() {
 export function renderAccInfo(account) {
   const accInfoEl = document.createElement('div')
   accInfoEl.classList.add('method-simple__acc')
-  if (!account.id) {
+  if (!account) {
     accInfoEl.innerHTML = /*html*/ `
     <span>계좌를 등록해주세요.</span>
     <span>
@@ -539,19 +534,19 @@ export function renderAddProfileModal() {
   addProfileModal.innerHTML = /*html*/ `
   <div class="modal add-modal">
     <div class="modal-header">
-      <a id="add-profile-modal-header__close-btn" class="modal-header__close-btn">✖</a>
+      <a class="modal-header__close-btn modal-close">✖</a>
       <h1 class="modal-header__title">새 주소 추가</h1>
     </div>
     <div class="modal-inner">
     <div class="add-modal-section">
         <h2 class="add-modal-section__title">이름</h2>
-        <input id="add-profile-modal__name-input" class="add-modal-section__input" type="text" placeholder="수령인의 이름" />
-        <span class="add-modal-section__input-error">올바른 이름을 입력해주세요. (2-50자)</span>
+        <input id="add-profile-modal__name-input" class="add-modal-section__input" type="text" placeholder="수령인의 이름" autocomplete="off" maxlength="5"/>
+        <span class="add-modal-section__input-error">올바른 이름을 입력해주세요. (2-5자)</span>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">휴대폰 번호</h2>
-        <input id="add-profile-modal__phone-input" class="add-modal-section__input" type="text" placeholder="- 없이 입력" />
-        <span class="add-modal-section__input-error">정확한 휴대폰 번호를 입력해주세요.</span>
+        <input id="add-profile-modal__phone-input" class="add-modal-section__input" type="text" placeholder="- 없이 입력"  autocomplete="off" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="-없이 입력" maxlength="11" />
+        <span class="add-modal-section__input-error">정확한 휴대폰 번호를 입력해주세요. (11자)</span>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">우편번호</h2>
@@ -560,19 +555,19 @@ export function renderAddProfileModal() {
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">주소</h2>
-        <input id="add-profile-modal-section__name" class="add-modal-section__input" type="text" placeholder="우편 번호 검색 후, 자동 입력 됩니다." readonly="readonly"/>
+        <input id="add-profile-modal-section__address-input" class="add-modal-section__input" type="text" placeholder="우편 번호 검색 후, 자동 입력 됩니다." readonly="readonly"/>
       </div>
       <div class="add-modal-section">
         <h2 class="add-modal-section__title">상세 주소</h2>
-        <input id="add-profile-modal-section__address-input" class="add-modal-section__input" type="text" placeholder="건물, 아파트, 동/호수 입력" />
+        <input id="add-profile-modal-section__detail-input" class="add-modal-section__input" type="text" placeholder="건물, 아파트, 동/호수 입력" />
       </div>
       <div class="add-modal__checkbox">
         <input id="add-profile-modal__set-default" type="checkbox" />
         <span>기본 배송지로 설정</span>
       </div>
       <div class="add-modal__btns">
-        <button id="add-profile-modal__btns-cancel-btn" class="payment-btn grey">취소</button>
-        <button id="add-profile-modal__btns-save-btn" class="payment-btn" disabled="true">저장하기</button>
+        <button id="add-profile-modal__btns-cancel-btn" class="payment-btn modal-btn modal-close">취소</button>
+        <button id="add-profile-modal__btns-save-btn" class="payment-btn modal-btn">저장하기</button>
       </div>
     </div>
   </div>
@@ -580,23 +575,44 @@ export function renderAddProfileModal() {
   return addProfileModal
 }
 
-export function renderGetProfilesModal(delieveryProfiles) {
-  const profilesModal = document.createElement('aside')
-  profilesModal.classList.add('get-modal-container')
+function renderGetProfilesModal() {
+  const profilesModalContainer = document.createElement('aside')
+  profilesModalContainer.setAttribute('class', 'modal-container hidden')
+  profilesModalContainer.setAttribute('id', 'get-profile-modal-container')
+
+  const profilesModal = document.createElement('div')
+  profilesModal.setAttribute('class', 'modal profile-modal')
+
   profilesModal.innerHTML = /*html*/ `
-    <div class="get-modal-header">
-      <a  id="get-modal__close-btn" class="close-btn">✖</a>
-      <h1 class="get-modal__title">주소록</h1>
+    <div class="modal-header">
+      <a class="modal-header__close-btn modal-close">✖</a>
+      <h1 class="modal-header__title">주소록</h1>
     </div>
 
-    <ul class="get-modal__profiles"></ul>
   `
+  const profileList = document.createElement('ul')
+  profileList.classList.add('profile-modal__profiles')
 
-  return profilesModal
+  profilesModal.append(profileList)
+  profilesModalContainer.append(profilesModal)
+  return profilesModalContainer
 }
 
-function renderGetProfile(profile) {
-  return liEl
+
+export function renderGetProfile(profile) {
+  const profileListEl = document.createElement('li')
+  profileListEl.classList.add('profile-modal__profiles__profile')
+  profileListEl.dataset.id = `${profile.id}`
+  profileListEl.innerHTML = /*html*/ `
+    <div class="name">${profile.name}</div>
+    <div class="phone">${profile.phone}</div>
+    <div class="address-box">
+      <span class="zipcode">(${profile.zip}) </span>
+      <span class="address">${profile.address}</span>
+    </div>
+    <span class="mark ${profile.isDefault ? "" : "hidden"}">기본 배송지</span>
+  `
+  return profileListEl
 }
 
 function renderAccountModal() {
@@ -607,7 +623,7 @@ function renderAccountModal() {
   accountModal.innerHTML = /*html*/ `
   <div class="modal acc-modal">
     <div class="modal-header">
-      <a id="acc-modal-header__close-btn" class="modal-header__close-btn">✖</a>
+      <a class="modal-header__close-btn modal-close">✖</a>
       <h1 class="modal-header__title">계좌선택</h1>
     </div>
     <div class="modal-inner">
@@ -741,9 +757,9 @@ function renderNewAccountModal() {
             </option>
           </select>
           <label for="newAcc-modal__acc-digit">계좌번호</label>
-          <input id="newAcc-modal__acc-digit" type="text" autocomplete="off" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" placeholder="은행 선택 후 -없이 입력" maxlength="0" />
+          <input id="newAcc-modal__acc-digit" type="text" autocomplete="off" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="은행 선택 후 -없이 입력" maxlength="0" />
           <label for="newAcc-modal__phone">휴대폰번호</label>
-          <input id="newAcc-modal__phone" type="text" autocomplete="off" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" placeholder="-없이 입력" maxlength="11" />
+          <input id="newAcc-modal__phone" type="text" autocomplete="off" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="-없이 입력" maxlength="11" />
           <div class="newAcc-modal__input-sig">
             <label for="newAcc-modal__sig">서명확인</label>
             <input id="newAcc-modal__sig" type="checkbox" />

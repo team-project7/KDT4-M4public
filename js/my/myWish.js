@@ -1,4 +1,4 @@
-import { getProduct } from '../request'
+import { getProduct } from '../api/request'
 import { htmlMySideBar } from './my'
 import { $ } from './util'
 

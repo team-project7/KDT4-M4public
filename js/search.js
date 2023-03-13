@@ -1,4 +1,4 @@
-import { searchAll } from './request'
+import { searchAll } from './api/request'
 import { category,brand } from './searchitems'
 
 export function appendsearch() {
