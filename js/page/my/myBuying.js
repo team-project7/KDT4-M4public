@@ -1,6 +1,6 @@
-import { getBuyingList, setBuyingDone } from '../api/request'
-import { htmlMySideBar } from './my'
-import { $, $$, formatDate } from './util'
+import { getBuyingList, setBuyingDone } from 'api/request'
+import { htmlMySideBar } from 'my/my'
+import { $, $$, formatDate } from 'component/util'
 
 export async function appendMyBuying() {
   const myBuyingEl = document.createElement('div')
@@ -52,7 +52,7 @@ export async function appendMyBuying() {
 
   //로딩화면 표시
   $('.my_loading').style.display = 'flex'
-  
+
   const buyingList = await getBuyingList()
   if (!buyingList) {
     $('.my_loading').style.display = 'none'

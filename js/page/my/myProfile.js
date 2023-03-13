@@ -1,7 +1,12 @@
-import { htmlMySideBar } from './my.js'
-import blank_profile from '../../image/blank_profile.png'
-import { getUserInfo, modifyUserImg, modifyUserName, modifyUserPassword } from '../api/request.js'
-import { $ } from './util.js'
+import { htmlMySideBar } from 'my/my'
+import blank_profile from 'image/blank_profile.png'
+import {
+  getUserInfo,
+  modifyUserImg,
+  modifyUserName,
+  modifyUserPassword,
+} from 'api/request.js'
+import { $ } from 'component/util.js'
 
 export async function appendMyProfile() {
   const myProfileEl = document.createElement('div')
@@ -159,13 +164,13 @@ export async function appendMyProfile() {
     }
   })
 
-  $('#input-file').addEventListener('change', async event => {
+  $('#input-file').addEventListener('change', async (event) => {
     const file = event.target.files[0]
     if (file.size > 1048576) {
       alert('1MB 이하의 파일만 사용 가능합니다.')
       return
     }
-    
+
     if (file) {
       const reader = new FileReader()
 

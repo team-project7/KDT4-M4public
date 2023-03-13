@@ -50,5 +50,13 @@
   "staticFiles": {
     "staticPath": "static"
   },
+  "alias": {
+    "page": "./js/page",
+    "api": "./js/api",
+    "my": "./js/page/my",
+    "admin": "./js/page/admin",
+    "image": "./image",
+    "component": "./js/component"
+  },
   "keywords": []
 }

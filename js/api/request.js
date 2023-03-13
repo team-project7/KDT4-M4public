@@ -1,5 +1,5 @@
-import { searchList } from '../search'
-import { vailed } from '../header'
+import { searchList } from 'component/search'
+import { vailed } from 'component/header'
 
 const headers = {
   'content-type': 'application/json',
@@ -154,7 +154,7 @@ export async function modifyUserImg(base64) {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify({
-        profileImgBase64: `${base64}` // 새로운 프로필 사진
+        profileImgBase64: `${base64}`, // 새로운 프로필 사진
       }),
     }
   )

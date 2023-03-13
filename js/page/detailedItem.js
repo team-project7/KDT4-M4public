@@ -1,14 +1,14 @@
 export { appendDetailedItem }
 
-import { appendProducts, appendSmallProducts } from './products'
-import { appendSmallItem } from './item'
-import { getProduct } from './api/request'
+import { appendProducts, appendSmallProducts } from 'component/products'
+import { appendSmallItem } from 'component/item'
+import { getProduct } from 'api/request'
 // 이미지 모음
-import imgNomal from '../image/detailedItem_delivery.png'
-import imgPointBanner from '../image/detailedItem_pointBanner.jpg'
-import imgThreeX from '../image/img_guide_item_3x.svg'
-import imgChecked from '../image/img_guide_item_checked.svg'
-import imgKreamBox from '../image/img_guide_item_kreamBox.svg'
+import imgNomal from 'image/detailedItem_delivery.png'
+import imgPointBanner from 'image/detailedItem_pointBanner.jpg'
+import imgThreeX from 'image/img_guide_item_3x.svg'
+import imgChecked from 'image/img_guide_item_checked.svg'
+import imgKreamBox from 'image/img_guide_item_kreamBox.svg'
 
 function appendDetailedItem() {
   const URLSearch = new URLSearchParams(location.search)

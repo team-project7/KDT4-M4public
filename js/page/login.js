@@ -1,6 +1,6 @@
 import Navigo from 'navigo'
-import appendJoin from './join'
-import { login } from './api/request'
+import appendJoin from 'page/join'
+import { login } from 'api/request'
 
 export default function appendLogin() {
   const loginEl = document.createElement('div')

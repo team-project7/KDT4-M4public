@@ -1,4 +1,9 @@
-import { shortcutItems, menshortcutItems, womenshortcutItems, brandshortcutItems } from './shortcutItems'
+import {
+  shortcutItems,
+  menshortcutItems,
+  womenshortcutItems,
+  brandshortcutItems,
+} from 'component/shortcutItems'
 
 export function appendShortcut() {
   const shortcutEl = document.createElement('div')

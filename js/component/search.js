@@ -1,10 +1,10 @@
-import { searchAll } from './api/request'
-import { category,brand } from './searchitems'
+import { searchAll } from 'api/request'
+import { category, brand } from 'component/searchitems'
 
 export function appendsearch() {
-    const searchEl = document.createElement('div')
-    searchEl.className = 'layer_btn'
-    searchEl.innerHTML = /*html*/ `
+  const searchEl = document.createElement('div')
+  searchEl.className = 'layer_btn'
+  searchEl.innerHTML = /*html*/ `
     <div class="layer_search">
         <div class="layer_container">
             <div class="layer_content">
@@ -77,12 +77,12 @@ export function appendsearch() {
     
     
     `
-    document.body.append(searchEl)
-    let ctegoryEl = document.querySelector('.category')
-    category.map((catelist) => {
-        let catewarap = document.createElement('div')
-        catewarap.className = 'catewrap'
-        catewarap.innerHTML = `
+  document.body.append(searchEl)
+  let ctegoryEl = document.querySelector('.category')
+  category.map((catelist) => {
+    let catewarap = document.createElement('div')
+    catewarap.className = 'catewrap'
+    catewarap.innerHTML = `
          <a href = /shop/?id=${catelist.name} class='catelink'>
           <div class = "cate_item_wrap">
           <img src = ${catelist.img}>
@@ -90,13 +90,13 @@ export function appendsearch() {
           <span>${catelist.name}</span>
           </a>
         `
-        ctegoryEl.append(catewarap)
-      })
-      let brandEl = document.querySelector('.brand')
-      brand.map((brandlist) => {
-        let brandwarap = document.createElement('div')
-        brandwarap.className = 'brandwrap'
-        brandwarap.innerHTML = `
+    ctegoryEl.append(catewarap)
+  })
+  let brandEl = document.querySelector('.brand')
+  brand.map((brandlist) => {
+    let brandwarap = document.createElement('div')
+    brandwarap.className = 'brandwrap'
+    brandwarap.innerHTML = `
          <a href = /shop/?id=${brandlist.id} class='brandlink'>
           <div class = "brand_item_wrap">
           <img src = ${brandlist.img}>
@@ -104,122 +104,115 @@ export function appendsearch() {
           <span>${brandlist.name}</span>
           </a>
         `
-        brandEl.append(brandwarap)
-      })
-    const searchbtn = document.querySelector('.btn_search')
+    brandEl.append(brandwarap)
+  })
+  const searchbtn = document.querySelector('.btn_search')
 
-searchbtn.addEventListener('click', () => {
-    openmodal() 
-})
-function openmodal() {
+  searchbtn.addEventListener('click', () => {
+    openmodal()
+  })
+  function openmodal() {
     const searchlayer = document.querySelector('.layer_btn')
-    searchlayer.style.display = 'flex';
- 
-}
+    searchlayer.style.display = 'flex'
+  }
 
-    const closebtn = document.querySelector('.btn_close')
-closebtn.addEventListener('click', () => {
+  const closebtn = document.querySelector('.btn_close')
+  closebtn.addEventListener('click', () => {
     closemodal()
-})
-function closemodal() {
+  })
+  function closemodal() {
     const searchlayer = document.querySelector('.layer_btn')
     searchlayer.style.display = 'none'
-}
+  }
 
-function debounce(callback, limit = 100) {
+  function debounce(callback, limit = 100) {
     let timeout
-    return function(...args) {
-        clearTimeout(timeout)
-        timeout = setTimeout(() => {
-            callback.apply(this, args)
-        }, limit)
+    return function (...args) {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        callback.apply(this, args)
+      }, limit)
     }
-}
+  }
 
-const searchtitleEl = document.getElementById('search_title')
-searchtitleEl.addEventListener('input', debounce(function() {
-   
-    let searchtext = searchtitleEl.value.trim();
-        findtitle(searchtext)
+  const searchtitleEl = document.getElementById('search_title')
+  searchtitleEl.addEventListener(
+    'input',
+    debounce(function () {
+      let searchtext = searchtitleEl.value.trim()
+      findtitle(searchtext)
     }, 200)
-)
-    let searchtxtlist = []
-   let search = localStorage.getItem('searchtxtlist')
-searchtitleEl.addEventListener('keydown', function (e) {
-    let searchtext = searchtitleEl.value.trim();
-    if(e.key === 'Enter' && !e.isComposing) {
-    if(search === null) {
+  )
+  let searchtxtlist = []
+  let search = localStorage.getItem('searchtxtlist')
+  searchtitleEl.addEventListener('keydown', function (e) {
+    let searchtext = searchtitleEl.value.trim()
+    if (e.key === 'Enter' && !e.isComposing) {
+      if (search === null) {
         searchtxtlist.push(searchtext)
-    } else {
+      } else {
         searchtxtlist.push(search, searchtext)
-    }
-        
-        localStorage.setItem('searchtxtlist', searchtxtlist);
+      }
+
+      localStorage.setItem('searchtxtlist', searchtxtlist)
       location.href = `/shop/?id=${searchtext}`
-        
-       
     }
-})
- if(localStorage.getItem('searchtxtlist')) {
+  })
+  if (localStorage.getItem('searchtxtlist')) {
     let searchlist = localStorage.getItem('searchtxtlist').split(',')
 
     const recentlist = document.getElementById('recent_list')
-    searchlist?
-    searchlist.map((list) =>  {
-        let linkEl = document.createElement('a')
-        linkEl.className = 'search_list_items'
-        linkEl.href = `/shop/?id=${list}`
-        linkEl.innerHTML = `
+    searchlist
+      ? searchlist.map((list) => {
+          let linkEl = document.createElement('a')
+          linkEl.className = 'search_list_items'
+          linkEl.href = `/shop/?id=${list}`
+          linkEl.innerHTML = `
          <span>${list}</span>
         `
-        recentlist.append(linkEl)
-    
-    }) : null
- }
- const recentlist = document.getElementById('recent_list')
-let list_delete = document.getElementById('search_list_delete')
-list_delete.addEventListener('click', () => {
-    localStorage.removeItem('searchtxtlist');
-    recentlist.style.display = 'none'
-   
-}) 
-
-function findtitle(searchtext) {
-    const searchList = document.getElementById('search-list');
-    let recentshow = document.querySelector('.search_content_wrap')
-    searchList.innerHTML = "";
-    if(searchtext.length > 0){
-        recentshow.style.display = 'none'
-        searchList.classList.remove('hide-search-list');
-        searchAll(searchtext) 
-    } else {
-        recentshow.style.display = 'flex'
-        searchList.classList.add('hide-search-list');
-    }
-   
+          recentlist.append(linkEl)
+        })
+      : null
   }
-  
+  const recentlist = document.getElementById('recent_list')
+  let list_delete = document.getElementById('search_list_delete')
+  list_delete.addEventListener('click', () => {
+    localStorage.removeItem('searchtxtlist')
+    recentlist.style.display = 'none'
+  })
+
+  function findtitle(searchtext) {
+    const searchList = document.getElementById('search-list')
+    let recentshow = document.querySelector('.search_content_wrap')
+    searchList.innerHTML = ''
+    if (searchtext.length > 0) {
+      recentshow.style.display = 'none'
+      searchList.classList.remove('hide-search-list')
+      searchAll(searchtext)
+    } else {
+      recentshow.style.display = 'flex'
+      searchList.classList.add('hide-search-list')
+    }
+  }
 }
 
+export function searchList(items, newseartext) {
+  let tagsarr = []
+  const searchList = document.getElementById('search-list')
 
-export function searchList(items,newseartext){
-    
-   let tagsarr = []
-    const searchList = document.getElementById('search-list');
+  items.map((title) => {
+    if (newseartext && Array.isArray(title.tags)) {
+      let b = title.tags.filter((a) => a.toLowerCase().includes(newseartext))
+      tagsarr.push(...b)
+    }
+  })
 
-    items.map((title) => {
-        if(newseartext && Array.isArray(title.tags)) {
-            let b = title.tags.filter((a) => a.toLowerCase().includes(newseartext))
-            tagsarr.push(...b)
-        } 
-    })
-   
-    let set = new Set(tagsarr);
-    let tags = [...set].join('')
-    searchList? searchList.innerHTML = "" : null;
-    let productListtag = document.createElement('div');
-    productListtag.classList.add('search-list-tags');
-    productListtag.innerHTML = ` 
+  let set = new Set(tagsarr)
+  let tags = [...set].join('')
+  searchList ? (searchList.innerHTML = '') : null
+  let productListtag = document.createElement('div')
+  productListtag.classList.add('search-list-tags')
+  productListtag.innerHTML = ` 
     <a href='/shop/?id=${tags}' id='tag_select'>
         <div>
         <p>${tags}</p>
@@ -227,26 +220,28 @@ export function searchList(items,newseartext){
     </a>
     
     `
-    searchList? searchList.append(productListtag) : null
-    // tags클릭시 tag가 localstorage에 저장
-    let newlist = []
-    let newsearchlist = localStorage.getItem('searchtxtlist')
-    let tagselect = document.getElementById('tag_select')
-    tagselect?
-    tagselect.addEventListener('click', () => {
-    if(newsearchlist === null) {
-        newlist.push(tags)
-    } else {
-        newlist.push(newsearchlist, tags)
-    }
-        localStorage.setItem('searchtxtlist', newlist);
-   }) : null
+  searchList ? searchList.append(productListtag) : null
+  // tags클릭시 tag가 localstorage에 저장
+  let newlist = []
+  let newsearchlist = localStorage.getItem('searchtxtlist')
+  let tagselect = document.getElementById('tag_select')
+  tagselect
+    ? tagselect.addEventListener('click', () => {
+        if (newsearchlist === null) {
+          newlist.push(tags)
+        } else {
+          newlist.push(newsearchlist, tags)
+        }
+        localStorage.setItem('searchtxtlist', newlist)
+      })
+    : null
 
-    
-    items.filter(a => a.title.toLowerCase().includes(newseartext)).map((title) => {
-        let productListItem = document.createElement('div');
-        productListItem.classList.add('search-list-item');
-        productListItem.innerHTML = `    
+  items
+    .filter((a) => a.title.toLowerCase().includes(newseartext))
+    .map((title) => {
+      let productListItem = document.createElement('div')
+      productListItem.classList.add('search-list-item')
+      productListItem.innerHTML = `    
         <a href='/products?name=${title.id}' class = "search_area_link">
         <div class = "search-item-thumbnail">
          <img src = '${title.thumbnail}'>
@@ -257,11 +252,6 @@ export function searchList(items,newseartext){
         </div>
         </a>
         `
-        searchList.append(productListItem)
-        
-    }) 
- 
-   
+      searchList.append(productListItem)
+    })
 }
-
-

@@ -1,6 +1,10 @@
-import * as Admin from '../api/adminRequest'
-import { appendAdminPage, renderSearchResult, renderSearchAllUsers } from './adminRender.js'
-import { searchByTag, searchByName } from '../api/request'
+import * as Admin from 'api/adminRequest'
+import {
+  appendAdminPage,
+  renderSearchResult,
+  renderSearchAllUsers,
+} from 'page/admin/adminRender.js'
+import { searchByTag, searchByName } from 'api/request'
 
 export function adminPage() {
   //[init admin page]
@@ -41,12 +45,14 @@ export function adminPage() {
       addPriceInput.value &&
       addFileInput.value
     ) {
-      if(addFileInput.files[0].size > 1048576) {
+      if (addFileInput.files[0].size > 1048576) {
         alert('1MB 이하의 파일만 사용 가능합니다.')
         return
       }
-      const file = await getBase64(addFileInput.files[0]).then((base64) => base64)
-      
+      const file = await getBase64(addFileInput.files[0]).then(
+        (base64) => base64
+      )
+
       await Admin.addItem({
         title: addTitleInput.value,
         description: addDescriptionInput.value,
@@ -72,19 +78,19 @@ export function adminPage() {
    * @returns ImageFile to base64
    */
   function getBase64(file) {
-    if(!file) return
+    if (!file) return
     return new Promise((resolve, reject) => {
       if (file) {
-        const reader = new FileReader();
-       
+        const reader = new FileReader()
+
         reader.onload = () => {
           resolve(reader.result)
         }
-  
+
         reader.onerror = reject
-  
+
         reader.readAsDataURL(file)
-      } 
+      }
     })
   }
 
@@ -169,8 +175,9 @@ export function adminPage() {
       editTagsInput.value &&
       editPriceInput.value
     ) {
- 
-      const file = editFileInput.value ? await getBase64(editFileInput.files[0]).then((base64) => base64) : null
+      const file = editFileInput.value
+        ? await getBase64(editFileInput.files[0]).then((base64) => base64)
+        : null
       const json = await Admin.editItem({
         id: `${editModalId.textContent}`,
         title: editTitleInput.value,
@@ -197,7 +204,7 @@ export function adminPage() {
   const editModalWrapper = document.querySelector('.admin-edit-modal-wrapper')
   const editModalId = document.querySelector('#admin-edit-id')
   const addBtn = document.querySelector('#admin-page-btns__add-btn')
-  const removeBtn = document.querySelector("#admin-page-btns__remove-btn")
+  const removeBtn = document.querySelector('#admin-page-btns__remove-btn')
 
   removeBtn.addEventListener('click', onRemoveBtnClicked)
   addBtn.addEventListener('click', onAddBtnClciekd)
@@ -217,7 +224,7 @@ export function adminPage() {
     const id = editModalId.textContent
     const res = await Admin.removeItem(id)
     if (res.title) return
-    alert("삭제 완료")
+    alert('삭제 완료')
     // setEditModalValues()
     toggleEditModal()
     appendSearchAll()
@@ -229,12 +236,12 @@ export function adminPage() {
    * @void
    */
   function setEditModalValues(item) {
-    if(!item) {
-      editModalId.textContent = ""
-      editTitleInput.value = ""
-      editDescriptionInput.value = ""
-      editTagsInput.value = ""
-      editPriceInput.value = ""
+    if (!item) {
+      editModalId.textContent = ''
+      editTitleInput.value = ''
+      editDescriptionInput.value = ''
+      editTagsInput.value = ''
+      editPriceInput.value = ''
       resetCanvas(editModalCanvas)
       return
     }
@@ -264,29 +271,34 @@ export function adminPage() {
 
   //[Search]
   const searchInput = document.querySelector('#admin-search__input')
-  const searchContainer = document.querySelector('.admin-page__search-container')
+  const searchContainer = document.querySelector(
+    '.admin-page__search-container'
+  )
 
   const searchAllBtn = document.querySelector('#admin-search__search-all-btn')
   const searchByTagBtn = document.querySelector('#admin-search__search-tag-btn')
-  const searchByNameBtn = document.querySelector('#admin-search__search-name-btn')
-  const searchAllUsersBtn = document.querySelector('#admin-search__search-all-users')
+  const searchByNameBtn = document.querySelector(
+    '#admin-search__search-name-btn'
+  )
+  const searchAllUsersBtn = document.querySelector(
+    '#admin-search__search-all-users'
+  )
   const count = document.querySelector('#admin-search-count')
 
   searchByTagBtn.addEventListener('click', appendSearchByTag)
   searchAllBtn.addEventListener('click', appendSearchAll)
   searchByNameBtn.addEventListener('click', appendSearchByName)
   searchAllUsersBtn.addEventListener('click', appendSearchAllUsers)
-  
 
   /**
    * request search by tag name and append rendered results
    * @returns nothing when searchInput field is empty
    */
-  
+
   async function appendSearchByTag() {
     const tagName = searchInput.value.trim()
     if (!tagName) {
-      alert("검색어가 필요합니다!")
+      alert('검색어가 필요합니다!')
       return
     }
 
@@ -298,7 +310,7 @@ export function adminPage() {
     searchContainer.append(renderSearchResult(arr))
     count.textContent = `검색 결과: ${arr.length}`
     const itemEls = document.querySelectorAll('.admin-page-search__item')
-    Array.from(itemEls).forEach( item => {
+    Array.from(itemEls).forEach((item) => {
       item.addEventListener('click', onSearchItemClicked)
     })
   }
@@ -310,43 +322,43 @@ export function adminPage() {
   async function appendSearchByName() {
     const name = searchInput.value.trim()
     if (!name) {
-      alert("검색어가 필요합니다!")
+      alert('검색어가 필요합니다!')
       return
     }
     const capitalizedName = capitalizeEveryWord(name)
-    
+
     const result = await searchByName(capitalizedName)
     const arr = [...result]
 
     searchContainer.innerHTML = ''
     searchContainer.append(renderSearchResult(arr))
-  
+
     count.textContent = `검색 결과: ${arr.length}`
     const itemEls = document.querySelectorAll('.admin-page-search__item')
-    Array.from(itemEls).forEach( item => {
+    Array.from(itemEls).forEach((item) => {
       item.addEventListener('click', onSearchItemClicked)
     })
   }
   /**
    * 영문 첫 글자를 대문자로 변환 후 반환
-   * @param { string } 변환할 문자열 
+   * @param { string } 변환할 문자열
    * @returns 변환된 문자열 반환
    */
   function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + str.slice(1)
   }
 
   /**
    * 영문 첫 글자와 공백 이후의 첫 글자를 대문자로 변환 후 반환
-   * @param { string } 변환할 문자열 
+   * @param { string } 변환할 문자열
    * @returns 변환된 문자열 반환
    */
   function capitalizeEveryWord(str) {
-    let words = str.split(" ");
-    for(let i = 0; i < words.length; i++) {
-      words[i] = capitalize(words[i]);
+    let words = str.split(' ')
+    for (let i = 0; i < words.length; i++) {
+      words[i] = capitalize(words[i])
     }
-    return words.join(" ");
+    return words.join(' ')
   }
   /**
    * request search all items and append rendered results
@@ -360,7 +372,7 @@ export function adminPage() {
     searchContainer.append(renderSearchResult(arr))
     count.textContent = `검색 결과: ${arr.length}`
     const itemEls = document.querySelectorAll('.admin-page-search__item')
-    Array.from(itemEls).forEach( item => {
+    Array.from(itemEls).forEach((item) => {
       item.addEventListener('click', onSearchItemClicked)
     })
   }
@@ -368,10 +380,9 @@ export function adminPage() {
   async function onSearchItemClicked(event) {
     const id = event.currentTarget.querySelector('.admin-item-id').textContent
     const item = await Admin.searchIndividualItem(id)
-    if(!item) return
+    if (!item) return
     setEditModalValues(item)
     toggleEditModal()
-    
   }
 
   /**
@@ -380,7 +391,7 @@ export function adminPage() {
    * @void
    */
   function copyOnClick(textArr) {
-    Array.from(textArr).forEach( text => {
+    Array.from(textArr).forEach((text) => {
       text.addEventListener('click', (event) => {
         navigator.clipboard.writeText(event.target.textContent)
       })
@@ -397,5 +408,4 @@ export function adminPage() {
     const userEmails = document.querySelectorAll('.admin-user-email')
     copyOnClick(userEmails)
   }
-
 }

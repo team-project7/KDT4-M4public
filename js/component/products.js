@@ -1,4 +1,4 @@
-import { appendItem, appendSmallItem } from './item'
+import { appendItem, appendSmallItem } from 'component/item'
 
 export function appendProducts(tag, dpnum, num, listIndex) {
   const productEl = document.createElement('div')

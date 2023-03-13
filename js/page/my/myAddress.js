@@ -1,5 +1,5 @@
-import { htmlMySideBar } from './my'
-import { $ } from './util'
+import { htmlMySideBar } from 'my/my'
+import { $ } from 'component/util'
 
 export function appendMyAddress() {
   const myAddressEl = document.createElement('div')

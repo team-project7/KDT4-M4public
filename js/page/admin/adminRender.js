@@ -1,7 +1,7 @@
-import  noProfile  from "../../image/no-profile.png"
-import logo from "../../image/kream-logo.png"
+import noProfile from 'image/no-profile.png'
+import logo from 'image/kream-logo.png'
 /**
- * appends 
+ * appends
  * - modal for an item addition
  * - modal for an item editing
  * - navigation bar
@@ -47,8 +47,7 @@ function renderAdminAddModal() {
   const adminModal = document.createElement('aside')
   adminModal.classList.add('admin-modal')
 
-  adminModal.innerHTML = 
-  /*html*/`
+  adminModal.innerHTML = /*html*/ `
     <section class="admin-modal-info">
       <div class="admin-modal-info__props">
         <label for="admin-add-title-input">・Title</label>
@@ -72,7 +71,7 @@ function renderAdminAddModal() {
       <button id="admin-add-modal-btns__close-btns">X</button>
     </div>
   `
-  
+
   return adminModal
 }
 
@@ -84,8 +83,7 @@ function renderAdminEditModal() {
   const adminEditModal = document.createElement('aside')
   adminEditModal.classList.add('admin-modal')
 
-  adminEditModal.innerHTML = 
-  /*html*/`
+  adminEditModal.innerHTML = /*html*/ `
     <section class="admin-modal-info">
       <div class="admin-modal-info__props">
         <span>・ID</span>
@@ -117,16 +115,17 @@ function renderAdminEditModal() {
 }
 
 /**
- * 
- * @param { Response[<item>] } resultArray 
+ *
+ * @param { Response[<item>] } resultArray
  * @returns Array.length ? <span>no result</span> : <ul class="admin-page-search"></ul>
  */
 export function renderSearchResult(resultArray) {
-  if(resultArray.length === 0) return document.createElement('span').innerHTML = "일치하는 항목이 없습니다."
+  if (resultArray.length === 0)
+    return (document.createElement('span').innerHTML =
+      '일치하는 항목이 없습니다.')
   const searchResultList = document.createElement('ul')
   searchResultList.classList.add('admin-page-search')
-  searchResultList.innerHTML = 
-  /*html*/`
+  searchResultList.innerHTML = /*html*/ `
    
     <div class="admin-page-search__row-header">
       <span>Index</span>
@@ -138,23 +137,22 @@ export function renderSearchResult(resultArray) {
       <span>Tags</span>
     </div>
   `
-  resultArray.forEach( (item, index) => {
+  resultArray.forEach((item, index) => {
     searchResultList.append(renderItem(item, index))
-  });
+  })
   return searchResultList
 }
 
 /**
- * 
- * @param { Object <item>} item 
- * @param { Integer } index 
+ *
+ * @param { Object <item>} item
+ * @param { Integer } index
  * @returns <li class="admin-page-search__item"></li>
  */
 function renderItem(item, index) {
   const searchItem = document.createElement('li')
   searchItem.classList.add('admin-page-search__item')
-  searchItem.innerHTML = 
-  /*html*/`
+  searchItem.innerHTML = /*html*/ `
     <span>${index}</span>
     <div class="admin-page-search__item-image">
       <img src="${item.thumbnail}" />
@@ -169,14 +167,13 @@ function renderItem(item, index) {
 }
 
 /**
- * 
+ *
  * @returns <nav class="admin-page-nav"></nav>
  */
 function renderNavBar() {
   const adminPageNavBar = document.createElement('nav')
   adminPageNavBar.classList.add('admin-page-nav')
-  adminPageNavBar.innerHTML = 
-  /*html*/`
+  adminPageNavBar.innerHTML = /*html*/ `
     <button class="toggle" id="admin-page-nav__toggle-btn">
       <span>➜</span>
     </button>
@@ -202,14 +199,13 @@ function renderNavBar() {
 }
 
 /**
- * 
+ *
  * @returns <section class="admin-search"></section>
  */
 function renderSearchArea() {
   const searchEl = document.createElement('section')
   searchEl.classList.add('admin-search')
-  searchEl.innerHTML = 
-  /*html*/`
+  searchEl.innerHTML = /*html*/ `
     <input type=text id="admin-search__input" autocomplete="off" placeholder="태그 또는 이름을 입력하세요...">
     <div class="admin-search__btn-wrapper">
       <button id="admin-search__search-all-btn">모든 상품 보기</button>
@@ -224,7 +220,7 @@ function renderSearchArea() {
 }
 
 /**
- * 
+ *
  * @returns <section class="admin-page__search-container"></section>
  */
 function renderSearchContainer() {
@@ -234,11 +230,11 @@ function renderSearchContainer() {
 }
 
 export function renderSearchAllUsers(resultArray) {
-  if(resultArray.length === 0) return document.createElement('span').innerHTML = "no result"
+  if (resultArray.length === 0)
+    return (document.createElement('span').innerHTML = 'no result')
   const searchResultList = document.createElement('ul')
   searchResultList.classList.add('admin-page-search')
-  searchResultList.innerHTML = 
-  /*html*/`
+  searchResultList.innerHTML = /*html*/ `
    
     <div class="admin-page-search__row-header">
       <span>Index</span>
@@ -247,33 +243,29 @@ export function renderSearchAllUsers(resultArray) {
       <span>Display Name</span>
     </div>
   `
-  resultArray.forEach( (user, index) => {
+  resultArray.forEach((user, index) => {
     searchResultList.append(renderSearchUser(user, index))
-  });
+  })
   return searchResultList
 }
 
 function renderSearchUser(user, index) {
   const liEl = document.createElement('li')
-  liEl.classList.add("admin-page-search__item")
+  liEl.classList.add('admin-page-search__item')
   const indexEl = document.createElement('span')
   indexEl.textContent = `${index}`
-  
+
   const imgWrapper = document.createElement('div')
   imgWrapper.classList.add('admin-page-search__item-profile')
-  
-  const profileImg = new Image()
-  profileImg.alt = "User Image"
-  profileImg.src = user.profileImg 
-  ? user.profileImg 
-  : noProfile
 
+  const profileImg = new Image()
+  profileImg.alt = 'User Image'
+  profileImg.src = user.profileImg ? user.profileImg : noProfile
 
   profileImg.addEventListener('load', () => {
     imgWrapper.append(profileImg)
   })
-  
-  
+
   const email = document.createElement('span')
   email.classList.add('admin-user-email')
   email.textContent = `${user.email}`

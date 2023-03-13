@@ -1,4 +1,4 @@
-import { createUser } from './api/request'
+import { createUser } from 'api/request'
 
 export default function appendJoin() {
   const loginEl = document.createElement('div')

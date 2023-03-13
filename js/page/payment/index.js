@@ -1,4 +1,4 @@
-import appendFooter from '../footer'
+import appendFooter from 'component/footer'
 import {
   renderPaymentPage,
   renderEmptySlide,
@@ -8,20 +8,19 @@ import {
   renderGetProfile,
   renderBankSlide,
 } from './paymentRender'
-import { logout } from '../api/request'
+import { logout } from 'api/request'
 import {
   checkAccountBalance,
   deleteAccount,
   addAccount,
   buy,
-} from '../api/banking'
+} from 'api/banking'
 import Swiper from 'swiper/swiper-bundle'
 import 'swiper/swiper-bundle.css'
 import { execDaumPostcode } from './addressPopup'
-import DeliveryProfile from '../DeliveryProfile'
+import DeliveryProfile from './DeliveryProfile'
 
 export async function appendPayment(item) {
- 
   document.body.append(renderPaymentPage(item))
   appendFooter()
 
@@ -127,9 +126,9 @@ export async function appendPayment(item) {
   const newDeliverySaveBtn = document.querySelector(
     '#add-profile-modal__btns-save-btn'
   )
-                      
+
   let deliveryProfiles //배송 프로필 목록
-  let defaultDeliveryProfile //기본 설정된 배송 프로필       
+  let defaultDeliveryProfile //기본 설정된 배송 프로필
 
   updateDeliveryProfiles() // localStorage에서 확인 후 있으면 동기화
 
@@ -145,16 +144,15 @@ export async function appendPayment(item) {
   /**
    * 새 배송지 프로필 저장 버튼 이벤트 핸들러
    * 생성 조건
-   * 1. 이름 2~5자 사이 
+   * 1. 이름 2~5자 사이
    * 2. 휴대폰 번호 11자리 (미만 시 false)
    * 3. 우편 번호 검색api로 응답받은 데이터가 존재
    * 4. 이름과 휴대폰 번호는 필터링 되어서 저장됨(예시: 김**, 010-2***-****)
    * 5. DeliveryProfile 클래스 객체로 생성하고, deliveryProfiles 와 localStorage 동기화로 관리함
-   * 
+   *
    * @returns 정보 입력이 올바르지 않을 경우
    */
   function onNewDeiliverySaveBtn() {
-
     //입력 검사
     switch (true) {
       case !newDeliveryNameInput.value:
@@ -177,7 +175,7 @@ export async function appendPayment(item) {
         return
     }
 
-    //이름, 휴대폰 번호 필터링 
+    //이름, 휴대폰 번호 필터링
     const filteredName = `${newDeliveryNameInput.value.charAt(0)}${'*'.repeat(
       newDeliveryNameInput.value.length - 1
     )}`
@@ -194,7 +192,7 @@ export async function appendPayment(item) {
       filteredPhoneNum, // phone
       newDeliveryAddressInput.value, // address
       newDeliveryDetailInput.value, // detail address
-      newDeliveryZipInput.value, // zipcode
+      newDeliveryZipInput.value // zipcode
     )
     // 사용자가 기본 배송지로 설정하기를 체크하였거나, 기본 배송지가 존재하지 않을 시 기본 배송지로 설정
     if (newDeliveryIsSetDefault.checked || deliveryProfiles.length === 0) {
@@ -230,15 +228,17 @@ export async function appendPayment(item) {
       JSON.parse(localStorage.getItem('deliveryProfiles')) || []
 
     localStorageData.forEach((data, index) => {
-      deliveryProfiles.push(new DeliveryProfile(
-        data.id,
-        data.name,
-        data.phone,
-        data.address,
-        data.detail,
-        data.zip
-      ))
-  
+      deliveryProfiles.push(
+        new DeliveryProfile(
+          data.id,
+          data.name,
+          data.phone,
+          data.address,
+          data.detail,
+          data.zip
+        )
+      )
+
       if (data.isDefault) {
         defaultDeliveryProfile = deliveryProfiles[index]
         deliveryProfiles[index].updateIsDefault(true)
@@ -264,8 +264,8 @@ export async function appendPayment(item) {
   //[배송] 배송 프로필 변경
 
   /**
-   * 
-   * @param { Number } id 
+   *
+   * @param { Number } id
    * @returns id와 일치하는 DeliveryProfile객체 || { 빈 객체 }
    */
   function getdeliveryProfile(id) {
@@ -277,10 +277,9 @@ export async function appendPayment(item) {
    * @void
    */
   function toggleDefaultDeliveryProfile(deliveryProfile) {
-    if(!deliveryProfile) return
+    if (!deliveryProfile) return
     const id = deliveryProfile.id
     Array.from(profileListEls.children).forEach((el) => {
-
       if (Number(el.dataset.id) === Number(id)) {
         el.querySelector('.mark').classList.remove('hidden')
       } else {
@@ -296,13 +295,12 @@ export async function appendPayment(item) {
   function updateDeliveryProfilesEls() {
     if (deliveryProfiles.length === 0) return
     profileListEls.innerHTML = ''
-    Array.from(deliveryProfiles).forEach(profile => {
+    Array.from(deliveryProfiles).forEach((profile) => {
       const profileEl = renderGetProfile(profile)
       profileEl.addEventListener('click', onDeliveryProfileEls)
       if (profile.isDefault) {
         profileListEls.prepend(profileEl)
-      }
-      else {
+      } else {
         profileListEls.append(profileEl)
       }
     })
@@ -313,7 +311,7 @@ export async function appendPayment(item) {
    * 클릭 시 기본 배송지 설정 동기화
    * 배송 정보 변경 창 렌더링 업데이트
    * 배송 정보 렌더링 업데이트
-   * @param { Event } event 
+   * @param { Event } event
    */
   function onDeliveryProfileEls(event) {
     const toDefaultId = Number(event.currentTarget.dataset.id)
@@ -326,14 +324,20 @@ export async function appendPayment(item) {
   }
 
   /**
-   * 배송 정보에 현재 설정된 배송 프로필의 정보 렌더링: 수령인, 연락처, 주소 
+   * 배송 정보에 현재 설정된 배송 프로필의 정보 렌더링: 수령인, 연락처, 주소
    * @returns 기본 설정된 배송 프로필이 없을 경우
    */
   function displaySelectDeliveryInfo() {
-    if(!defaultDeliveryProfile) return
-    document.querySelector("#delivery-info__name").textContent = `${defaultDeliveryProfile.name}`
-    document.querySelector("#delivery-info__phone").textContent = `${defaultDeliveryProfile.phone}`
-    document.querySelector("#delivery-info__address").textContent = `${defaultDeliveryProfile.address}`
+    if (!defaultDeliveryProfile) return
+    document.querySelector(
+      '#delivery-info__name'
+    ).textContent = `${defaultDeliveryProfile.name}`
+    document.querySelector(
+      '#delivery-info__phone'
+    ).textContent = `${defaultDeliveryProfile.phone}`
+    document.querySelector(
+      '#delivery-info__address'
+    ).textContent = `${defaultDeliveryProfile.address}`
   }
   //[배송 방법]
   let isDelivery = true

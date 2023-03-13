@@ -1,16 +1,16 @@
-import appendFooter from './footer'
+import appendFooter from './component/footer'
 import Navigo from 'navigo'
-import appendLogin from './login'
-import appendJoin from './join'
-import { appendMySnb } from './my/my'
-import { appendbanner, smallappendbanner } from './bannerswiper'
+import appendLogin from 'page/login'
+import appendJoin from 'page/join'
+import { appendMySnb } from 'page/my/my'
+import { appendbanner, smallappendbanner } from 'component/bannerswiper'
 import {
   appendShortcut,
   appendmenShortcut,
   appendwomenShortcut,
   appendbrandShortcut,
-} from './shortcut'
-import { appendPayment } from './payment'
+} from './component/shortcut'
+import { appendPayment } from './page/payment'
 import {
   exhibitions,
   exhibitsurgery,
@@ -18,7 +18,7 @@ import {
   exhibitpayco,
   exhibittoss,
   exhibitpoint,
-} from './exhibitions'
+} from 'page/exhibitions'
 import {
   appendHeadermain,
   appendHeadersub,
@@ -31,7 +31,7 @@ import {
   appendtitlewomenshorcut,
   appendtitletechshorcut,
   appendtitleluxshorcut,
-} from './header'
+} from 'component/header'
 import {
   bannerimg,
   bannerimg2,
@@ -39,27 +39,27 @@ import {
   bannerimg4,
   footerbanner,
   line,
-} from './banner'
+} from 'component/banner'
 import {
   appendBrandFocus,
   appendManBrandFocus,
   appendWomanBrandFocus,
   appendBrandBrandFocus,
-} from './brandFocus'
+} from 'component/brandFocus'
 
-import { appendProducts } from './products'
-import appendShopContent from './shop'
-import { appendsearch } from './search'
-import { adminPage } from './admin'
-import appendErrorPage from './error'
-import { appendMyAddress } from './my/myAddress'
-import { appendMyBuying } from './my/myBuying'
-import { appendMyProfile } from './my/myProfile'
-import { appendMyWish } from './my/myWish'
+import { appendProducts } from 'component/products'
+import appendShopContent from 'page/shop'
+import { appendsearch } from 'component/search'
+import { adminPage } from 'admin'
+import appendErrorPage from 'page/error'
+import { appendMyAddress } from './page/my/myAddress'
+import { appendMyBuying } from './page/my/myBuying'
+import { appendMyProfile } from './page/my/myProfile'
+import { appendMyWish } from './page/my/myWish'
 
 import { searchById } from './api/request'
 
-import { appendDetailedItem } from './detailedItem'
+import { appendDetailedItem } from './page/detailedItem'
 const router = new Navigo('/')
 
 router

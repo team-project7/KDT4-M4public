@@ -1,6 +1,6 @@
-import { getProduct } from '../api/request'
-import { htmlMySideBar } from './my'
-import { $ } from './util'
+import { getProduct } from 'api/request'
+import { htmlMySideBar } from 'my/my'
+import { $ } from 'component/util'
 
 export function appendMyWish() {
   const myWishEl = document.createElement('div')

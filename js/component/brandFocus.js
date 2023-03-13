@@ -1,7 +1,16 @@
 // import brandFocus from '../image/brandFocus_acne.jpg'
-import { brandItems, manBrandItems, womanBrandItems, brandBrandItems } from './brandItems'
-export { appendBrandFocus, appendBrandBrandFocus, appendWomanBrandFocus , appendManBrandFocus }
-
+import {
+  brandItems,
+  manBrandItems,
+  womanBrandItems,
+  brandBrandItems,
+} from 'component/brandItems'
+export {
+  appendBrandFocus,
+  appendBrandBrandFocus,
+  appendWomanBrandFocus,
+  appendManBrandFocus,
+}
 
 // 추천 브랜드 포커스
 function appendBrandFocus() {
@@ -27,11 +36,11 @@ function appendBrandFocus() {
   brandFocusEl.append(recommendBrandEls)
 
   // recommendBrandEls 안에 recommendBrandEl를 rendering 하는 기능
-  function renderItems (brandItems) {
-  
-    brandItems.map((brand) => {
-      const recommendBrandEl = document.createElement('div')
-      recommendBrandEl.innerHTML = `
+  function renderItems(brandItems) {
+    brandItems
+      .map((brand) => {
+        const recommendBrandEl = document.createElement('div')
+        recommendBrandEl.innerHTML = `
         <div class="recommendBrand">
           <a href="/shop?id=${brand.engname}" id="${brand.engname}">
             <img src="${brand.img}" alt="${brand.name}">
@@ -39,15 +48,16 @@ function appendBrandFocus() {
           </a>
         </div>
       `
-      // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
-            
-      recommendBrandEls.append(recommendBrandEl)
-      return brand
-    }).join()
+        // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
+
+        recommendBrandEls.append(recommendBrandEl)
+        return brand
+      })
+      .join()
   }
 }
 
-// 남성 브랜드 포커스 
+// 남성 브랜드 포커스
 
 function appendManBrandFocus() {
   const brandFocusEl = document.createElement('div')
@@ -72,12 +82,12 @@ function appendManBrandFocus() {
   brandFocusEl.append(recommendBrandEls)
 
   // recommendBrandEls 안에 recommendBrandEl를 rendering 하는 기능
-  function renderItems (manBrandItems) {
-  
-    manBrandItems.map((brand) => {
-      const recommendBrandEl = document.createElement('div')
-    
-      recommendBrandEl.innerHTML = `
+  function renderItems(manBrandItems) {
+    manBrandItems
+      .map((brand) => {
+        const recommendBrandEl = document.createElement('div')
+
+        recommendBrandEl.innerHTML = `
         <div class="recommendBrand">
           <a href="/shop?id=${brand.engname}" id="${brand.engname}">
             <img src="${brand.img}" alt="${brand.name}">
@@ -85,14 +95,14 @@ function appendManBrandFocus() {
             </a>
             </div>
             `
-      // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
-            
-      recommendBrandEls.append(recommendBrandEl)
-      return brand
-    }).join()
+        // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
+
+        recommendBrandEls.append(recommendBrandEl)
+        return brand
+      })
+      .join()
   }
 }
-
 
 // 여성 브랜드 포커스
 
@@ -119,12 +129,12 @@ function appendWomanBrandFocus() {
   brandFocusEl.append(recommendBrandEls)
 
   // recommendBrandEls 안에 recommendBrandEl를 rendering 하는 기능
-  function renderItems (womanBrandItems) {
-  
-    womanBrandItems.map((brand) => {
-      const recommendBrandEl = document.createElement('div')
-    
-      recommendBrandEl.innerHTML = `
+  function renderItems(womanBrandItems) {
+    womanBrandItems
+      .map((brand) => {
+        const recommendBrandEl = document.createElement('div')
+
+        recommendBrandEl.innerHTML = `
         <div class="recommendBrand">
           <a href="/shop?id=${brand.engname}" id="${brand.engname}">
             <img src="${brand.img}" alt="${brand.name}">
@@ -132,14 +142,14 @@ function appendWomanBrandFocus() {
             </a>
             </div>
             `
-      // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
-            
-      recommendBrandEls.append(recommendBrandEl)
-      return brand
-    }).join()
+        // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
+
+        recommendBrandEls.append(recommendBrandEl)
+        return brand
+      })
+      .join()
   }
 }
-
 
 // 브랜드 브랜드 포커스
 
@@ -166,12 +176,12 @@ function appendBrandBrandFocus() {
   brandFocusEl.append(recommendBrandEls)
 
   // recommendBrandEls 안에 recommendBrandEl를 rendering 하는 기능
-  function renderItems (brandBrandItems) {
-  
-    brandBrandItems.map((brand) => {
-      const recommendBrandEl = document.createElement('div')
-    
-      recommendBrandEl.innerHTML = `
+  function renderItems(brandBrandItems) {
+    brandBrandItems
+      .map((brand) => {
+        const recommendBrandEl = document.createElement('div')
+
+        recommendBrandEl.innerHTML = `
         <div class="recommendBrand">
           <a href="/shop?id=${brand.engname}" id="${brand.engname}">
             <img src="${brand.img}" alt="${brand.name}">
@@ -179,10 +189,11 @@ function appendBrandBrandFocus() {
             </a>
             </div>
             `
-      // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
-            
-      recommendBrandEls.append(recommendBrandEl)
-      return brand
-    }).join()
+        // 브랜드 포커스 안 각 브랜드를 클릭시 각각 맞는 브랜드 값으로 쿼리스트링을 사용하여 주소값을 준다.
+
+        recommendBrandEls.append(recommendBrandEl)
+        return brand
+      })
+      .join()
   }
 }
