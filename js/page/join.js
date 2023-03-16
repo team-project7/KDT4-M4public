@@ -163,14 +163,15 @@ export default function appendJoin() {
           pwInput.value,
           displayNameInput.value
         )
-        if (userData.acessToken) {
+
+        if (userData) {
           window.alert('가입이 완료되었습니다!!')
           localStorage.setItem('token', userData.accessToken)
           localStorage.setItem('email', userData.user.email)
           localStorage.setItem('displayName', userData.user.displayName)
           location.replace('/')
         } else {
-          window.alert(`${userData}`)
+          console.log(userData)
           return
         }
       } else {
