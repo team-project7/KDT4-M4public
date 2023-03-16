@@ -226,7 +226,7 @@ export async function appendPayment(item) {
     deliveryProfiles = []
     localStorageData =
       JSON.parse(localStorage.getItem('deliveryProfiles')) || []
-
+    if (!localStorageData) return
     localStorageData.forEach((data, index) => {
       deliveryProfiles.push(
         new DeliveryProfile(
